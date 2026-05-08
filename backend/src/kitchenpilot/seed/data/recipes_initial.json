@@ -1,0 +1,602 @@
+[
+  {
+    "id": 1,
+    "name": "番茄炒蛋",
+    "description": "酸甜开胃的新手家常菜，关键是鸡蛋先炒嫩、番茄炒出汁后再合炒。",
+    "difficulty": "easy",
+    "time_minutes": 15,
+    "beginner_friendly": true,
+    "cuisine": "家常菜",
+    "seasons": ["spring", "summer", "autumn", "winter"],
+    "ingredients": [
+      {"ingredient": "番茄", "amount": "2个", "required": true},
+      {"ingredient": "鸡蛋", "amount": "3个", "required": true},
+      {"ingredient": "小葱", "amount": "1根", "required": false},
+      {"ingredient": "蒜", "amount": "1瓣", "required": false},
+      {"ingredient": "食用油", "amount": "适量", "required": true},
+      {"ingredient": "盐", "amount": "适量", "required": true},
+      {"ingredient": "白糖", "amount": "少量", "required": false}
+    ],
+    "steps": [
+      {"order": 1, "content": "番茄洗净后切成滚刀块，小葱切葱花。", "beginner_tip": "番茄选成熟偏软的更容易炒出汁。", "risk_tip": null},
+      {"order": 2, "content": "鸡蛋打入碗中，加少量盐打散。", "beginner_tip": "蛋液打匀即可，不需要打出很多泡。", "risk_tip": null},
+      {"order": 3, "content": "热锅倒油，倒入蛋液，炒到刚凝固成大块后盛出。", "beginner_tip": "鸡蛋不要炒到完全干硬，后面还会回锅。", "risk_tip": "倒蛋液前确认锅中没有明显水分，避免热油飞溅。"},
+      {"order": 4, "content": "锅中补少量油，放入番茄翻炒到变软出汁。", "beginner_tip": "想要汤汁多，可以边炒边轻压番茄。", "risk_tip": null},
+      {"order": 5, "content": "按番茄酸度加入少量糖，再加盐调味。", "beginner_tip": "糖只是平衡酸味，不要一次放太多。", "risk_tip": null},
+      {"order": 6, "content": "倒回鸡蛋，快速翻炒到鸡蛋裹上番茄汁，撒葱花出锅。", "beginner_tip": "鸡蛋回锅后不要久炒，裹上番茄汁即可。", "risk_tip": null}
+    ],
+    "common_failures": ["鸡蛋炒老", "番茄不出汁", "糖放太多导致偏甜", "蛋块太碎影响口感"],
+    "substitutions": {"白糖": "可省略，或用少量番茄酱增强酸甜味。", "小葱": "可用香菜或不放。"},
+    "safety_notes": ["鸡蛋要炒熟后食用。", "热油下锅前尽量沥干食材表面水分。"],
+    "rag_chunks": [
+      {"chunk_type": "beginner_tip", "content": "番茄炒蛋想要好吃，番茄要炒到软化出汁，鸡蛋要先炒到刚凝固再盛出，最后短时间合炒。"},
+      {"chunk_type": "failure_reason", "content": "鸡蛋变老通常是第一次炒蛋时间过长，或回锅后继续久炒。"},
+      {"chunk_type": "substitution", "content": "不想放糖时，可以选更成熟的番茄，或加少量番茄酱提升风味。"}
+    ],
+    "source_urls": [
+      "https://lanfanapp.com/recipe/2039/",
+      "https://m.xiachufang.com/recipe/107620836/"
+    ]
+  },
+  {
+    "id": 2,
+    "name": "可乐鸡翅",
+    "description": "咸甜口鸡翅菜，适合入门练习煎制、焖煮和收汁。",
+    "difficulty": "medium",
+    "time_minutes": 40,
+    "beginner_friendly": true,
+    "cuisine": "家常菜",
+    "seasons": ["spring", "summer", "autumn", "winter"],
+    "ingredients": [
+      {"ingredient": "鸡翅中", "amount": "8-10个", "required": true},
+      {"ingredient": "可乐", "amount": "1罐", "required": true},
+      {"ingredient": "姜", "amount": "3片", "required": false},
+      {"ingredient": "生抽", "amount": "1-2勺", "required": true},
+      {"ingredient": "老抽", "amount": "少量", "required": false},
+      {"ingredient": "料酒", "amount": "1勺", "required": false},
+      {"ingredient": "盐", "amount": "少量", "required": false}
+    ],
+    "steps": [
+      {"order": 1, "content": "鸡翅洗净，两面各划两刀。", "beginner_tip": "划刀能帮助入味，但不要切太深。", "risk_tip": "处理生鸡肉后要清洗刀具和砧板。"},
+      {"order": 2, "content": "鸡翅冷水下锅，加入姜片和料酒，煮出浮沫后捞出。", "beginner_tip": "焯水可以降低腥味，也让新手更容易判断熟度。", "risk_tip": null},
+      {"order": 3, "content": "把焯好的鸡翅擦干或沥干水分。", "beginner_tip": "表面越干，后面煎的时候越不容易溅油。", "risk_tip": "鸡翅表面水分多会溅油，入锅前要擦干。"},
+      {"order": 4, "content": "锅中少油或不放油，将鸡翅煎到两面微黄。", "beginner_tip": "鸡皮面先下锅，更容易煎出香味。", "risk_tip": null},
+      {"order": 5, "content": "加入可乐、生抽、少量老抽和姜片，煮开。", "beginner_tip": "老抽主要负责上色，少量即可。", "risk_tip": null},
+      {"order": 6, "content": "转小火焖煮到鸡翅熟透，中途翻面一次。", "beginner_tip": "可乐不要一次收得太干，中途观察汤汁。", "risk_tip": "鸡肉必须完全熟透后食用。"},
+      {"order": 7, "content": "开大火收汁，汤汁浓稠并能挂在鸡翅表面时出锅。", "beginner_tip": "收汁阶段要勤翻动，避免糖分糊锅。", "risk_tip": null}
+    ],
+    "common_failures": ["鸡翅内部不熟", "收汁糊锅", "味道过甜", "颜色太深发苦"],
+    "substitutions": {"老抽": "可省略，颜色会浅一些。", "可乐": "可用无糖可乐，但甜味和收汁效果会变化。"},
+    "safety_notes": ["鸡翅属于禽肉，必须充分加热。", "生熟砧板和夹子尽量分开。"],
+    "rag_chunks": [
+      {"chunk_type": "failure_reason", "content": "可乐鸡翅糊锅多发生在收汁后期，因为可乐含糖，汤汁浓稠后需要持续翻动并及时关火。"},
+      {"chunk_type": "safety_note", "content": "鸡翅煎黄不代表内部熟透，仍需焖煮到完全熟。"},
+      {"chunk_type": "beginner_tip", "content": "新手做可乐鸡翅可以先焯水再煎，腥味更少，熟成更稳。"}
+    ],
+    "source_urls": [
+      "https://lanfanapp.com/recipe/281",
+      "https://www.xiachufang.com/recipe/1000229/"
+    ]
+  },
+  {
+    "id": 3,
+    "name": "蛋炒饭",
+    "description": "利用剩米饭制作的快手主食，重点是米饭干爽、蛋香明显、火候足。",
+    "difficulty": "easy",
+    "time_minutes": 15,
+    "beginner_friendly": true,
+    "cuisine": "家常菜",
+    "seasons": ["spring", "summer", "autumn", "winter"],
+    "ingredients": [
+      {"ingredient": "隔夜米饭", "amount": "1碗", "required": true},
+      {"ingredient": "鸡蛋", "amount": "2个", "required": true},
+      {"ingredient": "小葱", "amount": "1根", "required": false},
+      {"ingredient": "胡萝卜丁", "amount": "少量", "required": false},
+      {"ingredient": "火腿丁", "amount": "少量", "required": false},
+      {"ingredient": "盐", "amount": "适量", "required": true},
+      {"ingredient": "食用油", "amount": "适量", "required": true}
+    ],
+    "steps": [
+      {"order": 1, "content": "把米饭提前打散，明显结块的地方用勺子压开。", "beginner_tip": "冷藏过的米饭更容易炒散。", "risk_tip": "剩饭需充分加热后食用。"},
+      {"order": 2, "content": "鸡蛋打散，小葱切葱花，胡萝卜、火腿等配菜切小丁。", "beginner_tip": "配菜尽量切小，熟得快也更容易拌匀。", "risk_tip": null},
+      {"order": 3, "content": "热锅倒油，先炒鸡蛋到刚凝固，盛出备用。", "beginner_tip": "想要蛋香明显，可以先炒蛋再炒饭。", "risk_tip": null},
+      {"order": 4, "content": "锅中补少量油，下配菜丁炒到断生。", "beginner_tip": "如果配菜已经是熟的，这一步可以缩短。", "risk_tip": null},
+      {"order": 5, "content": "下米饭翻炒，把饭粒尽量炒散。", "beginner_tip": "不要急着调味，先把饭炒松散。", "risk_tip": null},
+      {"order": 6, "content": "倒回鸡蛋，加盐调味，撒葱花后翻炒均匀出锅。", "beginner_tip": "酱油可少量使用，避免饭变湿发粘。", "risk_tip": null}
+    ],
+    "common_failures": ["米饭结块", "饭太湿发粘", "鸡蛋炒老", "调味不均匀"],
+    "substitutions": {"隔夜米饭": "可用新米饭摊开放凉后再炒。", "火腿丁": "可用虾仁、玉米粒或不放。"},
+    "safety_notes": ["剩米饭应冷藏保存，炒制时彻底加热。"],
+    "rag_chunks": [
+      {"chunk_type": "beginner_tip", "content": "蛋炒饭最好使用冷藏后较干爽的米饭，新米饭可以摊开放凉散水汽。"},
+      {"chunk_type": "failure_reason", "content": "蛋炒饭发粘通常是米饭水分过高，或酱油等液体调料加入过多。"},
+      {"chunk_type": "safety_note", "content": "剩米饭不应长时间室温放置，炒饭时需要充分加热。"}
+    ],
+    "source_urls": [
+      "https://cook.aiursoft.cn/",
+      "https://www.xiachufang.com/"
+    ]
+  },
+  {
+    "id": 4,
+    "name": "热汤面",
+    "description": "适合早餐或夜宵的快手面食，核心是先调好汤底，再煮面和配菜。",
+    "difficulty": "easy",
+    "time_minutes": 15,
+    "beginner_friendly": true,
+    "cuisine": "家常菜",
+    "seasons": ["spring", "summer", "autumn", "winter"],
+    "ingredients": [
+      {"ingredient": "面条", "amount": "1人份", "required": true},
+      {"ingredient": "鸡蛋", "amount": "1个", "required": false},
+      {"ingredient": "青菜", "amount": "几棵", "required": false},
+      {"ingredient": "小葱", "amount": "1根", "required": false},
+      {"ingredient": "生抽", "amount": "1勺", "required": true},
+      {"ingredient": "盐", "amount": "适量", "required": true},
+      {"ingredient": "香油", "amount": "少量", "required": false}
+    ],
+    "steps": [
+      {"order": 1, "content": "小葱切葱花，青菜洗净，鸡蛋按需要提前煎好或准备做荷包蛋。", "beginner_tip": "青菜提前洗好，煮面时就不会手忙脚乱。", "risk_tip": null},
+      {"order": 2, "content": "碗中放生抽、盐、葱花和少量香油，准备成基础汤底。", "beginner_tip": "汤底先少放盐，面汤冲开后再调整。", "risk_tip": null},
+      {"order": 3, "content": "锅中烧水，水开后下面条。", "beginner_tip": "面条下锅后用筷子拨散，避免粘连。", "risk_tip": "沸水煮面时注意蒸汽和溅水烫伤。"},
+      {"order": 4, "content": "按面条粗细煮到接近无硬芯。", "beginner_tip": "不要煮到完全软烂，热汤里还会继续受热。", "risk_tip": null},
+      {"order": 5, "content": "加入青菜，烫到变色变软。", "beginner_tip": "青菜最后下，颜色更绿，口感更脆。", "risk_tip": null},
+      {"order": 6, "content": "用热面汤冲开碗底调料，捞入面条、青菜和鸡蛋即可。", "beginner_tip": "想要更鲜可加少量白胡椒或醋。", "risk_tip": null}
+    ],
+    "common_failures": ["面条煮烂", "汤底太咸", "青菜发黄", "面条粘连"],
+    "substitutions": {"青菜": "可用菠菜、小白菜、生菜或油麦菜。", "香油": "可用葱油或不放。"},
+    "safety_notes": ["煮面时注意沸水烫伤。", "鸡蛋如做荷包蛋需煮至凝固。"],
+    "rag_chunks": [
+      {"chunk_type": "beginner_tip", "content": "热汤面的汤底可以先在碗里调好，再用滚热面汤冲开，味道更均匀。"},
+      {"chunk_type": "failure_reason", "content": "热汤面变坨通常是面煮太久或煮好后放置太久，应现煮现吃。"},
+      {"chunk_type": "substitution", "content": "没有青菜时，可以用葱花、紫菜、番茄片或煎蛋补充风味。"}
+    ],
+    "source_urls": [
+      "https://www.xiachufang.com/",
+      "https://cook.aiursoft.cn/"
+    ]
+  },
+  {
+    "id": 5,
+    "name": "酸辣土豆丝",
+    "description": "酸辣爽脆的家常素菜，关键是土豆丝冲洗去淀粉并大火快炒。",
+    "difficulty": "easy",
+    "time_minutes": 20,
+    "beginner_friendly": true,
+    "cuisine": "家常菜",
+    "seasons": ["spring", "summer", "autumn", "winter"],
+    "ingredients": [
+      {"ingredient": "土豆", "amount": "1个", "required": true},
+      {"ingredient": "青椒", "amount": "半个", "required": false},
+      {"ingredient": "干辣椒", "amount": "2-3个", "required": false},
+      {"ingredient": "蒜", "amount": "2瓣", "required": false},
+      {"ingredient": "醋", "amount": "1-2勺", "required": true},
+      {"ingredient": "盐", "amount": "适量", "required": true},
+      {"ingredient": "食用油", "amount": "适量", "required": true}
+    ],
+    "steps": [
+      {"order": 1, "content": "土豆去皮，先切片再切成尽量均匀的细丝。", "beginner_tip": "粗细均匀比切得很细更重要。", "risk_tip": "切丝时注意手指和刀具安全。"},
+      {"order": 2, "content": "土豆丝用清水反复冲洗，泡水后沥干。", "beginner_tip": "冲掉表面淀粉是保持爽脆的关键。", "risk_tip": null},
+      {"order": 3, "content": "青椒切丝，蒜切末，干辣椒剪段。", "beginner_tip": "不吃辣可以去掉干辣椒。", "risk_tip": null},
+      {"order": 4, "content": "热锅倒油，先爆香干辣椒和蒜。", "beginner_tip": "干辣椒容易糊，闻到香味就进入下一步。", "risk_tip": null},
+      {"order": 5, "content": "下土豆丝大火快炒。", "beginner_tip": "土豆丝入锅前尽量沥干，减少溅油。", "risk_tip": null},
+      {"order": 6, "content": "土豆丝断生后加醋和盐，放青椒丝，快速翻炒出锅。", "beginner_tip": "醋早一点加能帮助保持脆感。", "risk_tip": null}
+    ],
+    "common_failures": ["土豆丝发粘", "口感发软", "切丝粗细不均", "醋味过重"],
+    "substitutions": {"醋": "可用米醋、陈醋或白醋。", "干辣椒": "不吃辣可省略。"},
+    "safety_notes": ["切土豆丝时注意刀具安全。", "湿土豆丝下锅前要沥干。"],
+    "rag_chunks": [
+      {"chunk_type": "failure_reason", "content": "酸辣土豆丝发粘通常是土豆丝没有充分冲洗淀粉，或火太小、炒制时间太久。"},
+      {"chunk_type": "beginner_tip", "content": "土豆丝切好后用清水多冲几遍，炒前沥干，大火快炒更容易保持脆口。"},
+      {"chunk_type": "substitution", "content": "没有白醋时可以用米醋或陈醋，颜色和香气会略有不同。"}
+    ],
+    "source_urls": [
+      "https://www.xiachufang.com/recipe/37746/",
+      "https://cook.aiursoft.cn/dishes/vegetable_dish/%E9%85%B8%E8%BE%A3%E5%9C%9F%E8%B1%86%E4%B8%9D/"
+    ]
+  },
+  {
+    "id": 6,
+    "name": "红烧鱼块",
+    "description": "咸鲜下饭的鱼块菜，适合练习鱼块煎定型和中小火焖煮入味。",
+    "difficulty": "medium",
+    "time_minutes": 35,
+    "beginner_friendly": false,
+    "cuisine": "家常菜",
+    "seasons": ["spring", "summer", "autumn", "winter"],
+    "ingredients": [
+      {"ingredient": "草鱼块", "amount": "500g", "required": true},
+      {"ingredient": "姜", "amount": "适量", "required": true},
+      {"ingredient": "蒜", "amount": "适量", "required": true},
+      {"ingredient": "料酒", "amount": "1勺", "required": true},
+      {"ingredient": "生抽", "amount": "1-2勺", "required": true},
+      {"ingredient": "老抽", "amount": "少量", "required": false},
+      {"ingredient": "豆瓣酱", "amount": "1勺", "required": false},
+      {"ingredient": "青红椒", "amount": "少量", "required": false}
+    ],
+    "steps": [
+      {"order": 1, "content": "鱼块洗净，检查明显鱼刺和鱼鳞残留。", "beginner_tip": "鱼块大小尽量接近，熟成更均匀。", "risk_tip": "处理鱼时注意鱼刺和刀具。"},
+      {"order": 2, "content": "用料酒、姜和少量盐腌制鱼块。", "beginner_tip": "腌制十几分钟可以帮助去腥。", "risk_tip": null},
+      {"order": 3, "content": "煎之前把鱼块表面水分擦干。", "beginner_tip": "擦干水分能减少粘锅和溅油。", "risk_tip": "鱼块表面水分会导致热油飞溅。"},
+      {"order": 4, "content": "热锅倒油，鱼块下锅后先不要急着翻动，煎到定型微黄再翻面。", "beginner_tip": "鱼块未定型就翻会碎。", "risk_tip": null},
+      {"order": 5, "content": "煎好的鱼块盛出，锅中留底油，爆香姜蒜。", "beginner_tip": "如果锅底有焦黑碎渣，先清理再炒料。", "risk_tip": null},
+      {"order": 6, "content": "可加入豆瓣酱炒香，再放回鱼块。", "beginner_tip": "豆瓣酱有咸味，后续盐要少放。", "risk_tip": null},
+      {"order": 7, "content": "加入生抽、少量老抽和水，中小火焖煮几分钟。", "beginner_tip": "水量不要太多，能让鱼块入味即可。", "risk_tip": "鱼肉要煮熟，食用时注意鱼刺。"},
+      {"order": 8, "content": "加入青红椒，大火略收汁后出锅。", "beginner_tip": "收汁不要太干，留一点汤汁更适合拌饭。", "risk_tip": null}
+    ],
+    "common_failures": ["鱼块煎碎", "腥味重", "酱汁过咸", "鱼刺处理不充分"],
+    "substitutions": {"草鱼": "可用鲈鱼块、黑鱼块或鲤鱼块。", "豆瓣酱": "可省略，改用生抽和少量糖调味。"},
+    "safety_notes": ["鱼块必须充分加热。", "食用时注意鱼刺。", "煎鱼前擦干表面水分。"],
+    "rag_chunks": [
+      {"chunk_type": "failure_reason", "content": "红烧鱼块煎碎通常是鱼块表面太湿、锅不够热，或下锅后太早翻面。"},
+      {"chunk_type": "safety_note", "content": "鱼块菜需要提醒用户注意鱼刺，儿童和老人食用尤其要小心。"},
+      {"chunk_type": "beginner_tip", "content": "新手煎鱼块可以先裹薄薄一层淀粉，帮助定型并减少粘锅。"}
+    ],
+    "source_urls": [
+      "https://m.xiachufang.com/recipe/104102080/",
+      "https://jingyan.baidu.com/article/fec7a1e5f9da215091b4e74c.html"
+    ]
+  },
+  {
+    "id": 7,
+    "name": "咸蛋黄鸡翅",
+    "description": "咸香浓郁的鸡翅做法，重点是鸡翅煎熟煎脆，咸蛋黄小火炒到起沙。",
+    "difficulty": "medium",
+    "time_minutes": 35,
+    "beginner_friendly": false,
+    "cuisine": "家常菜",
+    "seasons": ["spring", "summer", "autumn", "winter"],
+    "ingredients": [
+      {"ingredient": "鸡翅中", "amount": "8个", "required": true},
+      {"ingredient": "咸蛋黄", "amount": "3-4个", "required": true},
+      {"ingredient": "料酒", "amount": "1勺", "required": true},
+      {"ingredient": "生抽", "amount": "1勺", "required": true},
+      {"ingredient": "淀粉", "amount": "适量", "required": true},
+      {"ingredient": "食用油", "amount": "适量", "required": true},
+      {"ingredient": "葱花", "amount": "少量", "required": false}
+    ],
+    "steps": [
+      {"order": 1, "content": "鸡翅洗净，两面划刀。", "beginner_tip": "划刀能帮助腌料进入鸡肉。", "risk_tip": "处理生鸡肉后清洗接触过的工具。"},
+      {"order": 2, "content": "加入料酒、生抽腌制鸡翅。", "beginner_tip": "腌制半小时以上更入味。", "risk_tip": null},
+      {"order": 3, "content": "咸蛋黄蒸熟或直接使用熟咸蛋黄，压碎备用。", "beginner_tip": "压得越碎，后面越容易炒出沙。", "risk_tip": null},
+      {"order": 4, "content": "鸡翅表面裹一层薄淀粉。", "beginner_tip": "薄薄一层即可，太厚会粉感重。", "risk_tip": null},
+      {"order": 5, "content": "中小火煎鸡翅，直到两面金黄并熟透。", "beginner_tip": "火太大容易外焦内生。", "risk_tip": "鸡翅必须完全熟透。"},
+      {"order": 6, "content": "另起锅少油，小火炒咸蛋黄到起沙起泡。", "beginner_tip": "咸蛋黄不能大火炒，容易焦苦。", "risk_tip": null},
+      {"order": 7, "content": "倒入鸡翅翻拌，让表面均匀裹上咸蛋黄。", "beginner_tip": "裹匀即可，不要久炒以免外皮变软。", "risk_tip": null},
+      {"order": 8, "content": "撒葱花后出锅。", "beginner_tip": "咸蛋黄本身咸，出锅前先尝味再决定是否补盐。", "risk_tip": null}
+    ],
+    "common_failures": ["鸡翅外焦内生", "咸蛋黄炒焦", "外皮回软", "整体过咸"],
+    "substitutions": {"咸蛋黄": "可用咸蛋黄酱，但要注意盐度。", "淀粉": "可用玉米淀粉或土豆淀粉。"},
+    "safety_notes": ["禽肉必须充分加热。", "咸蛋黄和酱料含盐高，少额外加盐。"],
+    "rag_chunks": [
+      {"chunk_type": "failure_reason", "content": "咸蛋黄鸡翅过咸通常是咸蛋黄本身盐分高，又额外加了盐或蚝油。"},
+      {"chunk_type": "beginner_tip", "content": "咸蛋黄要小火炒到起沙，再下鸡翅快速裹匀。"},
+      {"chunk_type": "safety_note", "content": "鸡翅煎到表面金黄不一定内部熟，火力要中小并保证时间足够。"}
+    ],
+    "source_urls": [
+      "https://lanfanapp.com/recipe/733",
+      "https://www.daydaycook.com/zh-Hans/recipe/salted-egg-yolk-chicken-wing"
+    ]
+  },
+  {
+    "id": 8,
+    "name": "虎皮尖椒酿肉",
+    "description": "尖椒填入肉馅后煎出虎皮纹再焖煮，是一道味道浓郁但操作略复杂的家常菜。",
+    "difficulty": "hard",
+    "time_minutes": 45,
+    "beginner_friendly": false,
+    "cuisine": "家常菜",
+    "seasons": ["spring", "summer", "autumn", "winter"],
+    "ingredients": [
+      {"ingredient": "尖椒", "amount": "6-8个", "required": true},
+      {"ingredient": "猪肉末", "amount": "250g", "required": true},
+      {"ingredient": "姜", "amount": "少量", "required": false},
+      {"ingredient": "生抽", "amount": "2勺", "required": true},
+      {"ingredient": "料酒", "amount": "1勺", "required": false},
+      {"ingredient": "香醋", "amount": "半勺", "required": false},
+      {"ingredient": "白糖", "amount": "少量", "required": false},
+      {"ingredient": "盐", "amount": "适量", "required": true}
+    ],
+    "steps": [
+      {"order": 1, "content": "尖椒洗净，切去蒂部，尽量保持完整筒状。", "beginner_tip": "尖椒不要切开，后面更容易装肉。", "risk_tip": "处理辣椒后不要揉眼睛。"},
+      {"order": 2, "content": "用筷子或小勺取出辣椒籽。", "beginner_tip": "籽取干净后辣度会降低一些。", "risk_tip": null},
+      {"order": 3, "content": "猪肉末加入姜末、生抽、盐和少量水。", "beginner_tip": "少量加水能让肉馅更嫩。", "risk_tip": "生肉馅接触过的容器要及时清洗。"},
+      {"order": 4, "content": "肉馅朝一个方向搅拌到发黏上劲。", "beginner_tip": "肉馅上劲后更容易成团，不易散。", "risk_tip": null},
+      {"order": 5, "content": "把肉馅填入尖椒中，尽量压实但不要撑破尖椒。", "beginner_tip": "用筷子一点点往里推，比直接塞更均匀。", "risk_tip": null},
+      {"order": 6, "content": "锅中少油，小火煎尖椒，直到表面出现虎皮纹。", "beginner_tip": "火太大尖椒会糊而肉馅不熟。", "risk_tip": null},
+      {"order": 7, "content": "加入由生抽、醋、糖和少量水调成的酱汁。", "beginner_tip": "酱汁提前调好，入锅时不会手忙脚乱。", "risk_tip": null},
+      {"order": 8, "content": "盖盖焖到肉馅熟透，再开盖收汁出锅。", "beginner_tip": "焖煮能保证肉馅熟透。", "risk_tip": "猪肉馅必须完全熟透。"}
+    ],
+    "common_failures": ["尖椒煎糊", "肉馅不熟", "肉馅脱落", "调味过咸"],
+    "substitutions": {"猪肉末": "可用鸡肉末，但口感更柴，需要适量加水搅拌。", "尖椒": "可用青椒，辣度更低。"},
+    "safety_notes": ["猪肉馅必须充分加热。", "处理辣椒后洗手，避免刺激眼睛。"],
+    "rag_chunks": [
+      {"chunk_type": "safety_note", "content": "虎皮尖椒酿肉的风险点是外层尖椒熟了但内部肉馅不熟，需要焖煮到肉馅完全成熟。"},
+      {"chunk_type": "failure_reason", "content": "肉馅容易散通常是没有搅拌上劲，或填入尖椒时压得太松。"},
+      {"chunk_type": "beginner_tip", "content": "新手做虎皮尖椒酿肉建议用中小火先煎虎皮，再加酱汁焖熟。"}
+    ],
+    "source_urls": [
+      "https://www.xiangha.com/caipu/83125897.html"
+    ]
+  },
+  {
+    "id": 9,
+    "name": "蚝油生菜",
+    "description": "清爽快手素菜，生菜短时间焯水后淋上蒜香蚝油汁。",
+    "difficulty": "easy",
+    "time_minutes": 12,
+    "beginner_friendly": true,
+    "cuisine": "家常菜",
+    "seasons": ["spring", "summer", "autumn", "winter"],
+    "ingredients": [
+      {"ingredient": "生菜", "amount": "1棵", "required": true},
+      {"ingredient": "蒜", "amount": "4瓣", "required": true},
+      {"ingredient": "蚝油", "amount": "1勺", "required": true},
+      {"ingredient": "生抽", "amount": "1勺", "required": false},
+      {"ingredient": "白糖", "amount": "少量", "required": false},
+      {"ingredient": "盐", "amount": "少量", "required": true},
+      {"ingredient": "食用油", "amount": "适量", "required": true}
+    ],
+    "steps": [
+      {"order": 1, "content": "生菜去掉老叶和根部，逐片洗净。", "beginner_tip": "生菜叶片间容易藏泥，要逐片冲洗。", "risk_tip": null},
+      {"order": 2, "content": "蒜切末，蚝油、生抽、少量水和糖先调成碗汁。", "beginner_tip": "提前调汁能避免蒜末炒好后再手忙脚乱。", "risk_tip": null},
+      {"order": 3, "content": "锅中烧水，加少量盐和油。", "beginner_tip": "盐和油能让焯出的生菜颜色更好。", "risk_tip": "焯菜时注意沸水烫伤。"},
+      {"order": 4, "content": "水开后快速焯生菜，变软后立刻捞出沥干摆盘。", "beginner_tip": "焯水时间约十几秒，变软即可捞出。", "risk_tip": null},
+      {"order": 5, "content": "锅中少油爆香蒜末。", "beginner_tip": "蒜末微黄前就进入下一步，避免发苦。", "risk_tip": null},
+      {"order": 6, "content": "倒入碗汁煮开，淋在生菜上。", "beginner_tip": "生菜要沥干，否则酱汁会被冲淡。", "risk_tip": null}
+    ],
+    "common_failures": ["生菜焯老发黄", "酱汁太咸", "生菜出水太多", "蒜末炒焦"],
+    "substitutions": {"生菜": "可用油麦菜或西生菜。", "蚝油": "可用生抽加少量糖替代，但鲜味会弱。"},
+    "safety_notes": ["焯水时注意沸水和蒸汽。", "生菜要充分清洗。"],
+    "rag_chunks": [
+      {"chunk_type": "beginner_tip", "content": "蚝油生菜焯水时间要短，水中加少量油和盐能帮助保持颜色。"},
+      {"chunk_type": "failure_reason", "content": "生菜发黄通常是焯水过久，或焯好后长时间闷在热锅里。"},
+      {"chunk_type": "substitution", "content": "没有蚝油时，可用生抽、少量糖和蒜末做简化酱汁。"}
+    ],
+    "source_urls": [
+      "https://cook.aiursoft.com/dishes/vegetable_dish/%E8%9A%9D%E6%B2%B9%E7%94%9F%E8%8F%9C/",
+      "https://jingyan.baidu.com/article/3ea5148916388e13e71bba16.html"
+    ]
+  },
+  {
+    "id": 10,
+    "name": "板栗鸡翅煲",
+    "description": "板栗和鸡翅同焖的砂锅菜，板栗软糯、鸡翅入味，适合秋冬。",
+    "difficulty": "medium",
+    "time_minutes": 45,
+    "beginner_friendly": true,
+    "cuisine": "家常菜",
+    "seasons": ["autumn", "winter"],
+    "ingredients": [
+      {"ingredient": "鸡翅中", "amount": "8个", "required": true},
+      {"ingredient": "板栗仁", "amount": "200g", "required": true},
+      {"ingredient": "姜", "amount": "几片", "required": false},
+      {"ingredient": "蒜", "amount": "几瓣", "required": false},
+      {"ingredient": "生抽", "amount": "2勺", "required": true},
+      {"ingredient": "老抽", "amount": "少量", "required": false},
+      {"ingredient": "冰糖", "amount": "少量", "required": false},
+      {"ingredient": "盐", "amount": "适量", "required": true}
+    ],
+    "steps": [
+      {"order": 1, "content": "鸡翅洗净切口或剪小段，姜蒜切好。", "beginner_tip": "鸡翅剪小段会更容易入味。", "risk_tip": "处理生鸡肉后清洁砧板。"},
+      {"order": 2, "content": "准备板栗仁，生板栗需要提前去壳去皮。", "beginner_tip": "熟板栗仁更省时间，生板栗要焖得更久。", "risk_tip": null},
+      {"order": 3, "content": "鸡翅冷水下锅焯水，捞出沥干。", "beginner_tip": "焯水更适合新手去腥。", "risk_tip": null},
+      {"order": 4, "content": "锅中少油，放入鸡翅煎到表面微黄。", "beginner_tip": "煎一下能增加香味，也让鸡皮更紧。", "risk_tip": null},
+      {"order": 5, "content": "加入姜蒜炒香，再放入板栗。", "beginner_tip": "板栗轻轻翻匀即可，避免碎掉。", "risk_tip": null},
+      {"order": 6, "content": "加入生抽、少量老抽和水，小火焖煮。", "beginner_tip": "水量没过一半食材即可，后面还要收汁。", "risk_tip": "鸡翅必须完全熟透。"},
+      {"order": 7, "content": "焖到鸡翅熟透、板栗软糯后调盐。", "beginner_tip": "先尝汤汁再加盐，避免过咸。", "risk_tip": null},
+      {"order": 8, "content": "最后收汁出锅。", "beginner_tip": "收汁时轻翻，避免板栗碎掉。", "risk_tip": null}
+    ],
+    "common_failures": ["板栗不软", "鸡翅不入味", "汤汁太稀", "板栗被翻碎"],
+    "substitutions": {"鸡翅中": "可用鸡腿块。", "板栗仁": "可用土豆块，但风味不同。"},
+    "safety_notes": ["鸡肉必须充分加热。", "使用砂锅时避免骤冷骤热导致开裂。"],
+    "rag_chunks": [
+      {"chunk_type": "beginner_tip", "content": "板栗鸡翅煲用熟板栗仁更适合新手，能缩短焖煮时间并降低失败率。"},
+      {"chunk_type": "failure_reason", "content": "板栗不软通常是生板栗焖煮时间不够，或水量太少导致提前收干。"},
+      {"chunk_type": "safety_note", "content": "鸡翅类菜肴需要确认靠骨处也完全熟透。"}
+    ],
+    "source_urls": [
+      "https://m.xiachufang.com/recipe/103419383/",
+      "https://www.xiachufang.com/recipe/106939130/"
+    ]
+  },
+  {
+    "id": 11,
+    "name": "清蒸鱼",
+    "description": "突出鱼鲜味的做法，重点是鱼要新鲜、蒸制时间准确、蒸汁要倒掉。",
+    "difficulty": "medium",
+    "time_minutes": 25,
+    "beginner_friendly": true,
+    "cuisine": "粤式家常",
+    "seasons": ["spring", "summer", "autumn", "winter"],
+    "ingredients": [
+      {"ingredient": "鲜鱼", "amount": "1条约600g", "required": true},
+      {"ingredient": "姜", "amount": "适量", "required": true},
+      {"ingredient": "葱", "amount": "适量", "required": true},
+      {"ingredient": "蒸鱼豉油", "amount": "适量", "required": true},
+      {"ingredient": "料酒", "amount": "少量", "required": false},
+      {"ingredient": "食用油", "amount": "适量", "required": true}
+    ],
+    "steps": [
+      {"order": 1, "content": "鱼处理干净，去掉腹内黑膜和血水。", "beginner_tip": "鱼腹黑膜和血水要清理干净，腥味会少。", "risk_tip": "处理鱼时注意鱼刺和刀具。"},
+      {"order": 2, "content": "鱼身两面划刀，盘底垫姜片，鱼身放葱姜。", "beginner_tip": "划刀能让厚处更容易熟。", "risk_tip": null},
+      {"order": 3, "content": "蒸锅先把水烧开，再把鱼放入锅中。", "beginner_tip": "水开后上锅能缩短蒸制时间，鱼肉更嫩。", "risk_tip": "蒸汽很烫，放盘时注意防烫。"},
+      {"order": 4, "content": "根据鱼大小大火蒸约8-12分钟。", "beginner_tip": "鱼眼变白凸起、鱼肉刚能离骨通常说明接近熟。", "risk_tip": "鱼必须蒸熟，但不要过度久蒸。"},
+      {"order": 5, "content": "取出后倒掉盘中蒸汁，去掉旧葱姜。", "beginner_tip": "蒸汁腥味重，建议倒掉。", "risk_tip": "取蒸盘时防止蒸汽烫伤。"},
+      {"order": 6, "content": "铺上新的葱姜丝，淋蒸鱼豉油。", "beginner_tip": "新葱姜香气更清爽。", "risk_tip": null},
+      {"order": 7, "content": "烧热油浇在葱姜丝上激香。", "beginner_tip": "热油量不用太多，能激香葱姜即可。", "risk_tip": "热油浇淋时远离面部和手。"}
+    ],
+    "common_failures": ["鱼蒸老", "腥味重", "蒸汁未倒导致味道浑浊", "热油溅出"],
+    "substitutions": {"蒸鱼豉油": "可用生抽加少量糖和热水调和。", "鲜鱼": "可用鲈鱼、鳜鱼或其他适合清蒸的鱼。"},
+    "safety_notes": ["鱼要充分蒸熟。", "食用时注意鱼刺。", "取蒸盘和浇热油时注意烫伤。"],
+    "rag_chunks": [
+      {"chunk_type": "failure_reason", "content": "清蒸鱼腥味重常见原因是鱼腹黑膜、血水未处理干净，或蒸出的汁水没有倒掉。"},
+      {"chunk_type": "beginner_tip", "content": "清蒸鱼要水开后再上锅，大火短时间蒸，出锅后换新葱姜并浇热油。"},
+      {"chunk_type": "safety_note", "content": "清蒸鱼食用时需要提醒鱼刺风险，尤其儿童和老人。"}
+    ],
+    "source_urls": [
+      "https://theculinarycodex.com/dish/chinese/cantonese-steamed-fish/print/"
+    ]
+  },
+  {
+    "id": 12,
+    "name": "白灼虾",
+    "description": "突出鲜虾原味的快手菜，关键是虾新鲜、灼煮时间短、蘸料简单。",
+    "difficulty": "easy",
+    "time_minutes": 15,
+    "beginner_friendly": true,
+    "cuisine": "粤式家常",
+    "seasons": ["spring", "summer", "autumn", "winter"],
+    "ingredients": [
+      {"ingredient": "鲜虾", "amount": "250g", "required": true},
+      {"ingredient": "姜", "amount": "几片", "required": false},
+      {"ingredient": "葱", "amount": "1根", "required": false},
+      {"ingredient": "料酒", "amount": "1勺", "required": false},
+      {"ingredient": "生抽", "amount": "适量", "required": false},
+      {"ingredient": "蒜", "amount": "少量", "required": false},
+      {"ingredient": "盐", "amount": "少量", "required": true}
+    ],
+    "steps": [
+      {"order": 1, "content": "鲜虾清洗，剪去虾须和尖刺。", "beginner_tip": "虾越新鲜，调味越简单越好吃。", "risk_tip": "虾壳和虾枪尖锐，处理时小心扎手。"},
+      {"order": 2, "content": "按需要挑去虾线，沥干备用。", "beginner_tip": "介意口感时建议去虾线。", "risk_tip": null},
+      {"order": 3, "content": "姜切片，葱打结或切段。", "beginner_tip": "葱姜料酒能帮助去腥。", "risk_tip": null},
+      {"order": 4, "content": "锅中烧水，加入姜、葱、料酒和少量盐。", "beginner_tip": "水要足够宽，虾下锅后受热更均匀。", "risk_tip": null},
+      {"order": 5, "content": "水开后下虾，煮到虾身变红弯曲并熟透后捞出。", "beginner_tip": "不要久煮，虾肉会变老。", "risk_tip": "海鲜必须煮熟后食用。"},
+      {"order": 6, "content": "用生抽、蒜末、少量热油或醋调蘸汁，蘸食。", "beginner_tip": "蘸料不要太重，避免盖住虾的鲜味。", "risk_tip": null}
+    ],
+    "common_failures": ["虾肉煮老", "腥味重", "蘸料过咸", "虾线未处理影响口感"],
+    "substitutions": {"鲜虾": "可用基围虾、罗氏虾或虾仁，时间需按大小调整。", "料酒": "可省略或用少量白酒。"},
+    "safety_notes": ["虾必须充分加热。", "对甲壳类过敏者不应食用。"],
+    "rag_chunks": [
+      {"chunk_type": "beginner_tip", "content": "白灼虾要水开后下锅，看到虾变红并熟透即可捞出，避免久煮变老。"},
+      {"chunk_type": "safety_note", "content": "白灼虾需要提醒甲壳类过敏风险，并确保虾完全熟透。"},
+      {"chunk_type": "failure_reason", "content": "白灼虾腥味重可能是虾不够新鲜，或没有使用葱姜料酒去腥。"}
+    ],
+    "source_urls": [
+      "https://www.xiachufang.com/recipe/106879409/",
+      "https://cook.aiursoft.com/dishes/aquatic/%E7%99%BD%E7%81%BC%E8%99%BE/%E7%99%BD%E7%81%BC%E8%99%BE/"
+    ]
+  },
+  {
+    "id": 13,
+    "name": "番茄牛腩炖土豆",
+    "description": "汤汁浓郁的炖菜，番茄出汁、牛腩软烂、土豆后放是关键。",
+    "difficulty": "hard",
+    "time_minutes": 100,
+    "beginner_friendly": false,
+    "cuisine": "家常菜",
+    "seasons": ["autumn", "winter"],
+    "ingredients": [
+      {"ingredient": "牛腩", "amount": "500g", "required": true},
+      {"ingredient": "番茄", "amount": "2-3个", "required": true},
+      {"ingredient": "土豆", "amount": "1-2个", "required": true},
+      {"ingredient": "洋葱", "amount": "半个", "required": false},
+      {"ingredient": "姜", "amount": "几片", "required": true},
+      {"ingredient": "八角", "amount": "1个", "required": false},
+      {"ingredient": "生抽", "amount": "2勺", "required": true},
+      {"ingredient": "盐", "amount": "适量", "required": true}
+    ],
+    "steps": [
+      {"order": 1, "content": "牛腩切成大小接近的块。", "beginner_tip": "块太小容易炖散，太大则炖软时间更长。", "risk_tip": "处理生牛肉后清洁刀具和砧板。"},
+      {"order": 2, "content": "牛腩冷水下锅，加入姜和料酒焯水，捞出洗净浮沫。", "beginner_tip": "冷水下锅更容易去血沫。", "risk_tip": null},
+      {"order": 3, "content": "番茄去皮切块，土豆切滚刀块，洋葱切块。", "beginner_tip": "番茄去皮后更容易炖成汤汁。", "risk_tip": null},
+      {"order": 4, "content": "锅中倒油，炒香洋葱和姜。", "beginner_tip": "洋葱炒软后汤底会更甜。", "risk_tip": null},
+      {"order": 5, "content": "放入番茄翻炒到明显出汁。", "beginner_tip": "番茄炒出汁后再炖，汤味更浓。", "risk_tip": null},
+      {"order": 6, "content": "加入牛腩、生抽和足量热水，煮开后转小火炖。", "beginner_tip": "牛腩要小火长时间炖，或用高压锅缩短时间。", "risk_tip": "使用高压锅时按说明操作。"},
+      {"order": 7, "content": "牛腩接近软烂后加入土豆。", "beginner_tip": "土豆不要太早放，否则容易炖化。", "risk_tip": null},
+      {"order": 8, "content": "继续炖到土豆变软，最后加盐调味。", "beginner_tip": "汤汁可以多留一些，适合拌饭拌面。", "risk_tip": "牛腩需炖至完全熟透。"}
+    ],
+    "common_failures": ["牛腩不软", "土豆炖碎", "番茄味不浓", "汤汁过稀"],
+    "substitutions": {"牛腩": "可用牛肋条，但炖煮时间仍较长。", "番茄": "可加少量番茄酱增强风味。"},
+    "safety_notes": ["牛肉要充分炖熟。", "使用高压锅时按说明操作，确认泄压后再开盖。"],
+    "rag_chunks": [
+      {"chunk_type": "failure_reason", "content": "番茄牛腩炖土豆中牛腩不软通常是炖煮时间不足，或水温变化导致肉质收缩。"},
+      {"chunk_type": "beginner_tip", "content": "土豆应在牛腩接近软烂后再放，避免提前炖化。"},
+      {"chunk_type": "safety_note", "content": "使用高压锅炖牛腩时，需要完全泄压后再开盖。"}
+    ],
+    "source_urls": [
+      "https://www.xiachufang.com/recipe/106591050/",
+      "https://www.dachu.co/zh-cn/recipe/381276"
+    ]
+  },
+  {
+    "id": 14,
+    "name": "清炒藕片",
+    "description": "爽脆清淡的家常素菜，藕片薄切、泡水防氧化、快炒保持脆感。",
+    "difficulty": "easy",
+    "time_minutes": 15,
+    "beginner_friendly": true,
+    "cuisine": "家常菜",
+    "seasons": ["summer", "autumn", "winter"],
+    "ingredients": [
+      {"ingredient": "莲藕", "amount": "1节", "required": true},
+      {"ingredient": "蒜", "amount": "2瓣", "required": false},
+      {"ingredient": "葱", "amount": "1根", "required": false},
+      {"ingredient": "白醋", "amount": "少量", "required": false},
+      {"ingredient": "盐", "amount": "适量", "required": true},
+      {"ingredient": "食用油", "amount": "适量", "required": true}
+    ],
+    "steps": [
+      {"order": 1, "content": "莲藕去皮，冲洗藕孔里的泥沙。", "beginner_tip": "莲藕孔洞中可能有泥，要仔细冲洗。", "risk_tip": null},
+      {"order": 2, "content": "莲藕切成薄片，放入清水中，可加少量白醋浸泡。", "beginner_tip": "薄片更容易快熟并保持脆感。", "risk_tip": "切圆片时注意藕容易滚动，先切平一侧更稳。"},
+      {"order": 3, "content": "蒜切末，葱切葱花，藕片捞出沥干。", "beginner_tip": "沥干后下锅能减少溅油。", "risk_tip": null},
+      {"order": 4, "content": "热锅倒油，爆香蒜末。", "beginner_tip": "蒜末不要炒焦，否则会发苦。", "risk_tip": null},
+      {"order": 5, "content": "下藕片大火快速翻炒。", "beginner_tip": "想要更稳，可以先焯水几十秒再炒。", "risk_tip": null},
+      {"order": 6, "content": "藕片断生后加盐，沿锅边淋少量白醋，撒葱花出锅。", "beginner_tip": "炒太久会失去脆感。", "risk_tip": null}
+    ],
+    "common_failures": ["藕片发黑", "口感不脆", "切片太厚不易熟", "蒜末炒焦"],
+    "substitutions": {"白醋": "可省略，或用少量米醋。", "葱": "可省略。"},
+    "safety_notes": ["切藕片时注意刀具安全。", "莲藕孔洞中可能有泥，要充分清洗。"],
+    "rag_chunks": [
+      {"chunk_type": "failure_reason", "content": "清炒藕片发黑可能是氧化、铁锅反应或炒制时间过长，切好后泡水加少量白醋可缓解。"},
+      {"chunk_type": "beginner_tip", "content": "清炒藕片要薄切、大火快炒，想稳定保持白净可先短时间焯水。"},
+      {"chunk_type": "safety_note", "content": "莲藕孔洞容易藏泥，切片后还需要再次冲洗。"}
+    ],
+    "source_urls": [
+      "https://m.xiachufang.com/recipe/106487809/",
+      "https://www.xiachufang.com/recipe/107640924/"
+    ]
+  },
+  {
+    "id": 15,
+    "name": "芥末罗氏虾",
+    "description": "蒜香和芥末风味明显的虾类菜，适合有一定基础后练习煎虾和调汁。",
+    "difficulty": "medium",
+    "time_minutes": 30,
+    "beginner_friendly": false,
+    "cuisine": "家常菜",
+    "seasons": ["spring", "summer", "autumn", "winter"],
+    "ingredients": [
+      {"ingredient": "罗氏虾", "amount": "500g", "required": true},
+      {"ingredient": "蒜", "amount": "5瓣", "required": true},
+      {"ingredient": "芥末酱", "amount": "适量", "required": true},
+      {"ingredient": "生抽", "amount": "2勺", "required": true},
+      {"ingredient": "蚝油", "amount": "1勺", "required": false},
+      {"ingredient": "白糖", "amount": "少量", "required": false},
+      {"ingredient": "黄油", "amount": "少量", "required": false},
+      {"ingredient": "淀粉", "amount": "少量", "required": false}
+    ],
+    "steps": [
+      {"order": 1, "content": "罗氏虾剪去虾须和尖刺。", "beginner_tip": "先剪尖刺，后面处理时不容易扎手。", "risk_tip": "虾壳尖锐，处理时小心扎手。"},
+      {"order": 2, "content": "给虾开背，去虾线，洗净后沥干。", "beginner_tip": "开背能帮助入味，也方便去虾线。", "risk_tip": null},
+      {"order": 3, "content": "蒜切末。", "beginner_tip": "蒜末多一点会更香。", "risk_tip": null},
+      {"order": 4, "content": "用生抽、蚝油、糖、少量芥末和水调成酱汁，可加少量淀粉。", "beginner_tip": "芥末先少放，出锅前可再补一点风味。", "risk_tip": null},
+      {"order": 5, "content": "锅中倒油，将虾煎到两面变色并出虾油。", "beginner_tip": "虾表面要沥干，煎出来更香。", "risk_tip": "热油煎虾会溅油，注意防烫。"},
+      {"order": 6, "content": "加入蒜末炒香。", "beginner_tip": "蒜香出来后就可以加酱汁，避免炒焦。", "risk_tip": null},
+      {"order": 7, "content": "加入酱汁和黄油，焖煮至虾熟透、汤汁浓稠。", "beginner_tip": "黄油融化拌匀即可，不需要长时间高温炒。", "risk_tip": "虾必须完全熟透；甲壳类过敏者不应食用。"},
+      {"order": 8, "content": "关火前按口味补少量芥末，翻匀出锅。", "beginner_tip": "芥末香气容易挥发，部分芥末后放更明显。", "risk_tip": null}
+    ],
+    "common_failures": ["芥末味太冲或太淡", "虾肉变老", "酱汁太稠糊锅", "虾线未处理"],
+    "substitutions": {"罗氏虾": "可用基围虾、黑虎虾或其他大虾。", "黄油": "可省略，改用普通食用油。"},
+    "safety_notes": ["虾必须充分加热。", "甲壳类过敏者不应食用。", "处理虾壳时注意扎手。"],
+    "rag_chunks": [
+      {"chunk_type": "beginner_tip", "content": "芥末罗氏虾的芥末可以分两次使用，部分进酱汁，少量出锅前加入以保留香气。"},
+      {"chunk_type": "failure_reason", "content": "虾肉变老通常是煎和焖的时间过长，虾变色熟透后应尽快收汁出锅。"},
+      {"chunk_type": "safety_note", "content": "罗氏虾属于甲壳类，需提示过敏风险，并确保完全熟透。"}
+    ],
+    "source_urls": [
+      "https://cook.aiursoft.com/dishes/meat_dish/%E8%8A%A5%E6%9C%AB%E7%BD%97%E6%B0%8F%E8%99%BE/%E8%8A%A5%E6%9C%AB%E7%BD%97%E6%B0%8F%E8%99%BE/",
+      "https://www.xiachufang.com/recipe/107595113/"
+    ]
+  }
+]

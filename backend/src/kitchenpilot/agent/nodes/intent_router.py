@@ -5,7 +5,9 @@ from kitchenpilot.services.user_memory_service import UserMemoryService
 
 
 class IntentRouter:
+    """Classify user requests and extract simple ingredient mentions."""
     def classify(self, query: str, ingredients: list[str] | None = None) -> IntentType:
+        """Return the most likely intent for a user query."""
         ingredients = ingredients or []
         if self._is_daily_recommendation(query):
             return IntentType.DAILY_RECOMMENDATION
@@ -16,6 +18,7 @@ class IntentRouter:
         return IntentType.UNKNOWN
 
     def extract_ingredients(self, query: str) -> list[str]:
+        """Find known ingredient names that appear in the user query."""
         known = {
             item.ingredient
             for recipe in RECIPES
@@ -26,16 +29,19 @@ class IntentRouter:
 
     @staticmethod
     def _is_daily_recommendation(query: str) -> bool:
+        """Check whether the query asks for a daily recommendation."""
         daily_terms = ["今日推荐", "今天推荐", "每日推荐", "给我推荐今天", "今天吃什么"]
         return any(term in query for term in daily_terms)
 
     @staticmethod
     def _is_ingredient_recommendation(query: str) -> bool:
+        """Check whether the query asks for ingredient-based recommendations."""
         ingredient_terms = ["我有", "家里有", "已有", "食材", "推荐一道", "能做什么"]
         return any(term in query for term in ingredient_terms)
 
     @staticmethod
     def _is_recipe_qa(query: str) -> bool:
+        """Check whether the query looks like a recipe or cooking question."""
         qa_terms = ["怎么", "如何", "为什么", "注意", "替代", "失败", "太甜", "做法"]
         recipe_names = [recipe.name for recipe in RECIPES]
         return any(term in query for term in qa_terms) or any(
@@ -48,10 +54,12 @@ user_memory_service = UserMemoryService()
 
 
 def _trace(state: AgentState, event: str) -> list[str]:
+    """Append one event to the agent execution trace."""
     return [*state.get("execution_trace", []), event]
 
 
 def parse_input_node(state: AgentState) -> AgentState:
+    """Parse raw user input and merge extracted ingredients into state."""
     query = state["query"]
     existing = state.get("user_ingredients", [])
     extracted = router.extract_ingredients(query)
@@ -64,6 +72,7 @@ def parse_input_node(state: AgentState) -> AgentState:
 
 
 def load_user_history_node(state: AgentState) -> AgentState:
+    """Load the user profile and cooking history into state."""
     profile = user_memory_service.get_user_profile(state.get("user_id", "demo_user"))
     return {
         **state,
@@ -73,6 +82,7 @@ def load_user_history_node(state: AgentState) -> AgentState:
 
 
 def route_intent_node(state: AgentState) -> AgentState:
+    """Classify the query intent and store it in state."""
     intent = router.classify(state["query"], state.get("user_ingredients", []))
     return {
         **state,
@@ -82,6 +92,7 @@ def route_intent_node(state: AgentState) -> AgentState:
 
 
 def route_after_intent(state: AgentState) -> str:
+    """Map the classified intent to the next graph node."""
     intent = state.get("intent", IntentType.UNKNOWN)
     if intent == IntentType.RECIPE_QA:
         return "recipe_qa"

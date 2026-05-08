@@ -8,16 +8,20 @@ from kitchenpilot.services.recipe_service import RecipeService
 
 
 class RAGResult(BaseModel):
+    """Container for a generated answer and its retrieved sources."""
     answer: str
     sources: list[SourceChunk] = Field(default_factory=list)
 
 
 class RAGService:
+    """Retrieve recipe chunks and generate mock RAG answers."""
     def __init__(self, recipe_service: RecipeService | None = None) -> None:
+        """Initialize this object with its required collaborators."""
         self.recipe_service = recipe_service or RecipeService()
         self._chunks = build_recipe_chunks(self.recipe_service.list_recipes())
 
     def retrieve(self, query: str, top_k: int = 4) -> list[SourceChunk]:
+        """Return source chunks relevant to a user query."""
         scored: list[SourceChunk] = []
         for chunk in self._chunks:
             score = self._score(query, chunk)
@@ -26,6 +30,7 @@ class RAGService:
         return sorted(scored, key=lambda item: item.score, reverse=True)[:top_k]
 
     def answer(self, query: str) -> RAGResult:
+        """Generate an answer from retrieved source chunks."""
         sources = self.retrieve(query)
         if not sources:
             return RAGResult(
@@ -42,6 +47,7 @@ class RAGService:
         return RAGResult(answer=answer, sources=sources)
 
     def _score(self, query: str, chunk: SourceChunk) -> float:
+        """Calculate a simple lexical relevance score for a chunk."""
         query_terms = self._terms(query)
         content = f"{chunk.recipe_name}{chunk.content}"
         content_terms = self._terms(content)
@@ -57,6 +63,7 @@ class RAGService:
 
     @staticmethod
     def _terms(text: str) -> set[str]:
+        """Split a query into simple search terms."""
         words = set(re.findall(r"[A-Za-z0-9]+", text.lower()))
         chinese_chars = {char for char in text if "\u4e00" <= char <= "\u9fff"}
         return words | chinese_chars

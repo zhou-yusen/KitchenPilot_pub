@@ -4,6 +4,7 @@ from kitchenpilot.schemas.enums import ChunkType, Difficulty
 
 
 class Ingredient(BaseModel):
+    """Public schema for an ingredient."""
     id: int
     name: str
     category: str = "other"
@@ -12,6 +13,7 @@ class Ingredient(BaseModel):
 
 
 class RecipeStep(BaseModel):
+    """Public schema for one ordered recipe step."""
     order: int
     content: str
     beginner_tip: str | None = None
@@ -19,12 +21,14 @@ class RecipeStep(BaseModel):
 
 
 class RecipeIngredient(BaseModel):
+    """Public schema for a recipe ingredient requirement."""
     ingredient: str
     amount: str = ""
     required: bool = True
 
 
 class Recipe(BaseModel):
+    """Public schema for a full recipe."""
     id: int
     name: str
     description: str
@@ -41,6 +45,7 @@ class Recipe(BaseModel):
 
 
 class SourceChunk(BaseModel):
+    """Public schema for one retrieved RAG source chunk."""
     recipe_id: int
     recipe_name: str
     chunk_type: ChunkType

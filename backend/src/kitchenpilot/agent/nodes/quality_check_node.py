@@ -9,6 +9,7 @@ safety_check_service = SafetyCheckService()
 
 
 def quality_check_node(state: AgentState) -> AgentState:
+    """Run safety and quality checks against the draft answer."""
     result = safety_check_service.check(
         intent=state.get("intent", IntentType.UNKNOWN),
         answer=state.get("draft_answer", ""),
@@ -27,6 +28,7 @@ def quality_check_node(state: AgentState) -> AgentState:
 
 
 def repair_answer_node(state: AgentState) -> AgentState:
+    """Append quality issues and safety warnings to the draft answer."""
     quality = state.get("quality_check_result") or QualityCheckResult(passed=True)
     additions: list[str] = []
     if quality.issues:
@@ -46,6 +48,7 @@ def repair_answer_node(state: AgentState) -> AgentState:
 
 
 def finalize_answer_node(state: AgentState) -> AgentState:
+    """Copy the current draft answer into the final answer field."""
     return {
         **state,
         "final_answer": state.get("draft_answer", ""),
@@ -54,6 +57,7 @@ def finalize_answer_node(state: AgentState) -> AgentState:
 
 
 def route_after_quality_check(state: AgentState) -> str:
+    """Choose whether to repair or finalize the answer."""
     quality = state.get("quality_check_result")
     if quality and quality.needs_repair:
         return "repair"

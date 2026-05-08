@@ -7,6 +7,7 @@ from kitchenpilot.db.base import Base
 
 
 class RecipeORM(Base):
+    """SQLAlchemy model for recipe metadata."""
     __tablename__ = "recipes"
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
@@ -23,6 +24,7 @@ class RecipeORM(Base):
 
 
 class IngredientORM(Base):
+    """SQLAlchemy model for reusable ingredient records."""
     __tablename__ = "ingredients"
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
@@ -33,6 +35,7 @@ class IngredientORM(Base):
 
 
 class RecipeIngredientORM(Base):
+    """SQLAlchemy model linking recipes to ingredients."""
     __tablename__ = "recipe_ingredients"
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
@@ -46,6 +49,7 @@ class RecipeIngredientORM(Base):
 
 
 class RecipeStepORM(Base):
+    """SQLAlchemy model for ordered recipe steps."""
     __tablename__ = "recipe_steps"
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
@@ -59,6 +63,7 @@ class RecipeStepORM(Base):
 
 
 class UserCookingHistoryORM(Base):
+    """SQLAlchemy model for user cooking history entries."""
     __tablename__ = "user_cooking_history"
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
@@ -70,6 +75,7 @@ class UserCookingHistoryORM(Base):
 
 
 class QALogORM(Base):
+    """SQLAlchemy model for question-answer logs."""
     __tablename__ = "qa_logs"
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True)

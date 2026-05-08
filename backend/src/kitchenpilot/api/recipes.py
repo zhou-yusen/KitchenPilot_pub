@@ -12,6 +12,7 @@ def get_recipe(
     recipe_id: int,
     service: RecipeService = Depends(get_recipe_service),
 ) -> RecipeResponse:
+    """Return one recipe by ID through the recipes API."""
     recipe = service.get_recipe(recipe_id)
     if recipe is None:
         raise HTTPException(status_code=404, detail="Recipe not found")

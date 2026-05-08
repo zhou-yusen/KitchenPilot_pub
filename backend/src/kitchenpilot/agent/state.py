@@ -11,6 +11,7 @@ __all__ = ["AgentState", "AgentStateModel"]
 
 
 class AgentStateModel(BaseModel):
+    """Validated agent state used at API and workflow boundaries."""
     user_id: str = "demo_user"
     query: str
     intent: IntentType = IntentType.UNKNOWN
@@ -25,6 +26,7 @@ class AgentStateModel(BaseModel):
 
 
 class AgentState(TypedDict, total=False):
+    """Mutable dictionary state passed between graph nodes."""
     user_id: str
     query: str
     intent: IntentType

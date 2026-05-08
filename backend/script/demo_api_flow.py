@@ -7,11 +7,13 @@ NO_PROXY_OPENER = request.build_opener(request.ProxyHandler({}))
 
 
 def get_json(url: str) -> dict:
+    """Send a GET request and parse the JSON response."""
     with NO_PROXY_OPENER.open(url, timeout=10) as response:
         return json.loads(response.read().decode("utf-8"))
 
 
 def post_json(url: str, payload: dict) -> dict:
+    """Send a POST request with JSON and parse the JSON response."""
     data = json.dumps(payload, ensure_ascii=False).encode("utf-8")
     req = request.Request(
         url,
@@ -24,11 +26,13 @@ def post_json(url: str, payload: dict) -> dict:
 
 
 def show(title: str, value: dict) -> None:
+    """Pretty-print one titled JSON payload."""
     print(f"\n===== {title} =====")
     print(json.dumps(value, ensure_ascii=False, indent=2))
 
 
 def main() -> None:
+    """Run this script from the command line."""
     parser = argparse.ArgumentParser(description="串联验证 KitchenPilot 后端核心接口。")
     parser.add_argument("--base-url", default="http://127.0.0.1:8000")
     parser.add_argument("--user-id", default="demo_user")

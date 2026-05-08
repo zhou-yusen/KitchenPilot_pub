@@ -7,6 +7,7 @@ rag_service = RAGService()
 
 
 def recipe_qa_node(state: AgentState) -> AgentState:
+    """Answer a recipe question by calling the RAG service."""
     result = rag_service.answer(state["query"])
     return {
         **state,

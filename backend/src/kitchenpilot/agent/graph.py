@@ -16,16 +16,20 @@ from kitchenpilot.agent.state import AgentState, AgentStateModel
 
 
 class KitchenPilotAgent:
+    """Build and execute the KitchenPilot LangGraph workflow."""
     def __init__(self) -> None:
+        """Initialize this object with its required collaborators."""
         self._graph = self._build_graph()
 
     def invoke(self, state: AgentState | AgentStateModel) -> AgentState:
+        """Run the agent workflow for one input state and return the final state."""
         initial = state.model_dump() if isinstance(state, AgentStateModel) else dict(state)
         if self._graph is None:
             return self._invoke_without_langgraph(initial)
         return self._graph.invoke(initial)
 
     def _build_graph(self):
+        """Create the LangGraph node and edge wiring for the agent workflow."""
         try:
             from langgraph.graph import END, StateGraph
         except ImportError:
@@ -70,6 +74,7 @@ class KitchenPilotAgent:
         return workflow.compile()
 
     def _invoke_without_langgraph(self, state: AgentState) -> AgentState:
+        """Run the agent workflow sequentially when LangGraph is unavailable."""
         state = parse_input_node(state)
         state = load_user_history_node(state)
         state = route_intent_node(state)

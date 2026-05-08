@@ -12,6 +12,7 @@ def recommend_by_ingredients(
     request: IngredientRecommendationRequest,
     service: RecommendationService = Depends(get_recommendation_service),
 ) -> RecommendationResponse:
+    """Score recipes against user-provided ingredients."""
     return RecommendationResponse(
         recommendations=service.recommend_by_ingredients(
             user_id=request.user_id,
@@ -25,5 +26,6 @@ def daily_recommend(
     user_id: str,
     service: RecommendationService = Depends(get_recommendation_service),
 ) -> RecommendationResponse:
+    """Build daily recommendations from stored user preferences."""
     return RecommendationResponse(recommendations=service.daily_recommend(user_id=user_id))
 

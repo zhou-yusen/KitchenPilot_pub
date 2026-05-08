@@ -14,6 +14,7 @@ def chat(
     request: ChatRequest,
     agent: KitchenPilotAgent = Depends(get_agent),
 ) -> ChatResponse:
+    """Run the chat API request through the KitchenPilot agent."""
     state = AgentStateModel(
         user_id=request.user_id,
         query=request.query,

@@ -5,6 +5,7 @@ from kitchenpilot.schemas.recommendation import RecommendationResult
 
 
 class SafetyCheckService:
+    """Apply deterministic safety and quality checks to answers."""
     dangerous_phrases = [
         "不用加热",
         "半生",
@@ -24,6 +25,7 @@ class SafetyCheckService:
         recommendations: list[RecommendationResult],
         user_ingredients: list[str],
     ) -> QualityCheckResult:
+        """Check an answer for missing evidence, weak recommendations, and safety risks."""
         issues: list[str] = []
         safety_warnings: list[str] = []
 

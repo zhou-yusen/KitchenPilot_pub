@@ -12,6 +12,7 @@ def create_history(
     request: HistoryCreateRequest,
     service: UserMemoryService = Depends(get_user_memory_service),
 ) -> dict[str, object]:
+    """Record a user cooking-history entry."""
     profile = service.add_history(
         user_id=request.user_id,
         recipe_id=request.recipe_id,

@@ -10,11 +10,13 @@ from kitchenpilot.core.config import get_settings
 
 @asynccontextmanager
 async def lifespan(app: FastAPI) -> AsyncIterator[None]:
+    """Run application startup and shutdown hooks."""
     print("API docs: http://127.0.0.1:8000/docs")
     yield
 
 
 def create_app() -> FastAPI:
+    """Create and configure the FastAPI application."""
     settings = get_settings()
     app = FastAPI(title=settings.app_name, lifespan=lifespan)
     app.add_middleware(
@@ -29,6 +31,7 @@ def create_app() -> FastAPI:
 
     @app.get("/health", tags=["health"])
     def health() -> dict[str, str]:
+        """Return a basic service health response."""
         return {"status": "ok", "app": settings.app_name}
 
     return app

@@ -2,6 +2,7 @@ from pydantic import BaseModel, Field
 
 
 class RecommendationResult(BaseModel):
+    """Public schema for one recipe recommendation."""
     recipe_id: int
     recipe_name: str
     score: float

@@ -46,3 +46,8 @@ coverage/
 *.swo
 Thumbs.db
 .DS_Store
+
+# my files
+backend/script/mytest.py
+DEVELOPMENT_LOG.md
+backend/script/output/

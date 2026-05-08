@@ -3,6 +3,7 @@ from kitchenpilot.schemas.recipe import Recipe, SourceChunk
 
 
 def build_recipe_chunks(recipes: list[Recipe]) -> list[SourceChunk]:
+    """Build searchable RAG chunks from recipe schemas."""
     chunks: list[SourceChunk] = []
     for recipe in recipes:
         chunks.append(

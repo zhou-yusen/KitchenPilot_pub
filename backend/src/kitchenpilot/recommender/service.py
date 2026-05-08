@@ -6,17 +6,20 @@ from kitchenpilot.services.user_memory_service import UserMemoryService
 
 
 class RecommendationService:
+    """Score recipes and produce recommendation results."""
     def __init__(
         self,
         recipe_service: RecipeService | None = None,
         user_memory_service: UserMemoryService | None = None,
     ) -> None:
+        """Initialize this object with its required collaborators."""
         self.recipe_service = recipe_service or RecipeService()
         self.user_memory_service = user_memory_service or UserMemoryService()
 
     def recommend_by_ingredients(
         self, user_id: str, ingredients: list[str], limit: int = 3
     ) -> list[RecommendationResult]:
+        """Score recipes against user-provided ingredients."""
         normalized = [item.strip() for item in ingredients if item.strip()]
         profile = self.user_memory_service.get_user_profile(user_id)
         scored = [
@@ -27,6 +30,7 @@ class RecommendationService:
         return sorted(scored, key=lambda item: item.score, reverse=True)[:limit]
 
     def daily_recommend(self, user_id: str, limit: int = 3) -> list[RecommendationResult]:
+        """Build daily recommendations from stored user preferences."""
         profile = self.user_memory_service.get_user_profile(user_id)
         liked = list(profile.get("liked_ingredients", []))
         return self.recommend_by_ingredients(user_id=user_id, ingredients=liked, limit=limit)
@@ -34,6 +38,7 @@ class RecommendationService:
     def _score_recipe(
         self, recipe: Recipe, user_ingredients: list[str], profile: dict[str, object]
     ) -> RecommendationResult:
+        """Calculate one recommendation score and explanation."""
         required = [item.ingredient for item in recipe.ingredients if item.required]
         matched = [item for item in required if item in user_ingredients]
         missing = [item for item in required if item not in user_ingredients]

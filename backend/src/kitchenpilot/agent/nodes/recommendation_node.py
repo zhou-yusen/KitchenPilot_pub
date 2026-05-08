@@ -7,6 +7,7 @@ recommendation_service = RecommendationService()
 
 
 def ingredient_recommendation_node(state: AgentState) -> AgentState:
+    """Generate recommendations from ingredients stored in state."""
     recommendations = recommendation_service.recommend_by_ingredients(
         user_id=state.get("user_id", "demo_user"),
         ingredients=state.get("user_ingredients", []),
@@ -21,6 +22,7 @@ def ingredient_recommendation_node(state: AgentState) -> AgentState:
 
 
 def daily_recommendation_node(state: AgentState) -> AgentState:
+    """Generate daily recommendations from the user profile."""
     recommendations = recommendation_service.daily_recommend(state.get("user_id", "demo_user"))
     answer = _format_recommendation_answer("结合你的历史偏好，今日推荐如下：", recommendations)
     return {
@@ -32,6 +34,7 @@ def daily_recommendation_node(state: AgentState) -> AgentState:
 
 
 def unknown_intent_node(state: AgentState) -> AgentState:
+    """Return a fallback response for an unclassified query."""
     answer = "我暂时无法判断你的具体需求。可以问具体菜谱做法，或输入已有食材让我推荐新手菜。"
     return {
         **state,
@@ -41,6 +44,7 @@ def unknown_intent_node(state: AgentState) -> AgentState:
 
 
 def _format_recommendation_answer(prefix: str, recommendations) -> str:
+    """Format recommendation results into user-facing text."""
     if not recommendations:
         return "暂时没有找到足够匹配的菜谱。可以补充更多食材，或降低难度、耗时要求。"
 

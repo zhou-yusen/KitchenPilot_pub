@@ -7,6 +7,7 @@ NO_PROXY_OPENER = request.build_opener(request.ProxyHandler({}))
 
 
 def post_json(url: str, payload: dict) -> dict:
+    """Send a POST request with JSON and parse the JSON response."""
     data = json.dumps(payload, ensure_ascii=False).encode("utf-8")
     req = request.Request(
         url,
@@ -19,6 +20,7 @@ def post_json(url: str, payload: dict) -> dict:
 
 
 def main() -> None:
+    """Run this script from the command line."""
     parser = argparse.ArgumentParser(description="调用 /api/chat 验证聊天接口。")
     parser.add_argument("--base-url", default="http://127.0.0.1:8000")
     parser.add_argument("--query", default="土豆丝怎么炒得脆？")
