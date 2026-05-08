@@ -38,11 +38,7 @@ class RecommendationService:
         matched = [item for item in required if item in user_ingredients]
         missing = [item for item in required if item not in user_ingredients]
 
-        if not required:
-            match_ratio = 0.0
-        else:
-            match_ratio = len(matched) / len(required)
-
+        match_ratio = len(matched) / len(required) if required else 0.0
         score = match_ratio * 60
         reasons: list[str] = []
 
@@ -91,4 +87,3 @@ class RecommendationService:
             time_minutes=recipe.time_minutes,
             beginner_friendly=recipe.beginner_friendly,
         )
-

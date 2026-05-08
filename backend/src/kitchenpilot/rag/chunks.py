@@ -10,9 +10,13 @@ def build_recipe_chunks(recipes: list[Recipe]) -> list[SourceChunk]:
                 recipe_id=recipe.id,
                 recipe_name=recipe.name,
                 chunk_type=ChunkType.PREP,
-                content=f"{recipe.name}的主要食材包括："
-                + "、".join(item.ingredient for item in recipe.ingredients),
-                metadata={"difficulty": recipe.difficulty, "beginner_friendly": recipe.beginner_friendly},
+                content=f"{recipe.name}的主要食材包括：" + "、".join(
+                    item.ingredient for item in recipe.ingredients
+                ),
+                metadata={
+                    "difficulty": recipe.difficulty,
+                    "beginner_friendly": recipe.beginner_friendly,
+                },
             )
         )
 
@@ -59,4 +63,3 @@ def build_recipe_chunks(recipes: list[Recipe]) -> list[SourceChunk]:
                 )
             )
     return chunks
-

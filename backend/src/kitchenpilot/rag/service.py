@@ -36,7 +36,7 @@ class RAGService:
         main_recipe = sources[0].recipe_name
         evidence = "；".join(chunk.content for chunk in sources[:3])
         answer = (
-            f"根据知识库中关于「{main_recipe}」的内容，建议如下：{evidence}。"
+            f"根据知识库中关于《{main_recipe}》的内容，建议如下：{evidence}。"
             "新手操作时优先控制火候、按步骤处理食材，并注意安全提示。"
         )
         return RAGResult(answer=answer, sources=sources)
@@ -60,4 +60,3 @@ class RAGService:
         words = set(re.findall(r"[A-Za-z0-9]+", text.lower()))
         chinese_chars = {char for char in text if "\u4e00" <= char <= "\u9fff"}
         return words | chinese_chars
-

@@ -4,6 +4,7 @@ from kitchenpilot.schemas.enums import IntentType
 
 
 def test_agent_runs_recipe_qa_flow() -> None:
+    """验证 Agent 能完整执行菜谱问答流程并返回来源和轨迹。"""
     agent = KitchenPilotAgent()
 
     result = agent.invoke(AgentStateModel(query="土豆丝怎么炒得脆？"))
@@ -15,6 +16,7 @@ def test_agent_runs_recipe_qa_flow() -> None:
 
 
 def test_agent_runs_ingredient_recommendation_flow() -> None:
+    """验证 Agent 能完整执行食材推荐流程并返回推荐结果。"""
     agent = KitchenPilotAgent()
 
     result = agent.invoke(
@@ -24,4 +26,3 @@ def test_agent_runs_ingredient_recommendation_flow() -> None:
     assert result["intent"] == IntentType.INGREDIENT_RECOMMENDATION
     assert result["recommendations"]
     assert "推荐" in result["final_answer"]
-

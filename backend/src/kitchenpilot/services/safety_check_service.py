@@ -5,7 +5,14 @@ from kitchenpilot.schemas.recommendation import RecommendationResult
 
 
 class SafetyCheckService:
-    dangerous_phrases = ["不用加热", "半生", "变质", "发霉", "生鸡肉直接吃", "不用洗手"]
+    dangerous_phrases = [
+        "不用加热",
+        "半生",
+        "变质",
+        "发霉",
+        "生鸡肉直接吃",
+        "不用洗手",
+    ]
     high_risk_terms = ["鸡翅", "鸡肉", "禽肉", "五花肉", "肉类", "海鲜"]
 
     def check(
@@ -41,4 +48,3 @@ class SafetyCheckService:
             safety_warnings=safety_warnings,
             needs_repair=not passed or bool(safety_warnings),
         )
-

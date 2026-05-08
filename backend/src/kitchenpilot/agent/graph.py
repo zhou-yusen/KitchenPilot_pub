@@ -12,7 +12,7 @@ from kitchenpilot.agent.nodes import (
     route_intent_node,
     unknown_intent_node,
 )
-from kitchenpilot.schemas.agent import AgentState, AgentStateModel
+from kitchenpilot.agent.state import AgentState, AgentStateModel
 
 
 class KitchenPilotAgent:
@@ -88,4 +88,3 @@ class KitchenPilotAgent:
         if route_after_quality_check(state) == "repair":
             state = repair_answer_node(state)
         return finalize_answer_node(state)
-

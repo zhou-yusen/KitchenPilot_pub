@@ -47,4 +47,3 @@ class SourceChunk(BaseModel):
     content: str
     score: float = 0.0
     metadata: dict[str, object] = Field(default_factory=dict)
-
