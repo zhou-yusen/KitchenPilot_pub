@@ -54,7 +54,6 @@ def print_terminal_summary(entries: list[dict[str, Any]]) -> None:
     """Print a compact terminal summary of recipe counts and per-recipe coverage."""
     step_counts = [len(entry["steps"]) for entry in entries]
     ingredient_counts = [len(entry["ingredients"]) for entry in entries]
-    chunk_counts = [len(entry.get("rag_chunks", [])) for entry in entries]
 
     print("KitchenPilot Recipe Dataset Preview")
     print("=" * 36)
@@ -65,7 +64,6 @@ def print_terminal_summary(entries: list[dict[str, Any]]) -> None:
         f"min={min(ingredient_counts)}, max={max(ingredient_counts)}, "
         f"avg={mean(ingredient_counts):.1f}"
     )
-    print(f"RAG chunks: total={sum(chunk_counts)}, avg={mean(chunk_counts):.1f}")
     print()
     print(f"{'ID':>2}  {'Recipe':<14} {'Diff':<6} {'Min':>3} {'Ing':>3} {'Step':>4} {'Risk':>4}")
     print("-" * 54)
@@ -180,7 +178,6 @@ def render_html(entries: list[dict[str, Any]]) -> str:
       <div class="metric">菜谱数：{len(entries)}</div>
       <div class="metric">步骤数：{min(step_counts)}-{max(step_counts)}，平均 {mean(step_counts):.1f}</div>
       <div class="metric">食材数：{min(ingredient_counts)}-{max(ingredient_counts)}，平均 {mean(ingredient_counts):.1f}</div>
-      <div class="metric">RAG chunks：{sum(len(entry.get("rag_chunks", [])) for entry in entries)}</div>
     </div>
   </header>
   <main>
@@ -192,7 +189,7 @@ def render_html(entries: list[dict[str, Any]]) -> str:
 
 
 def render_recipe_card(entry: dict[str, Any]) -> str:
-    """Render one recipe as an HTML card with ingredients, steps, chunks, and sources."""
+    """Render one recipe as an HTML card with ingredients, steps, and sources."""
     ingredients = ", ".join(
         f"{item['ingredient']} {item.get('amount', '')}".strip()
         for item in entry["ingredients"]
@@ -206,10 +203,6 @@ def render_recipe_card(entry: dict[str, Any]) -> str:
         for step in entry["steps"]
     )
     failures = "\n".join(f"<li>{escape(item)}</li>" for item in entry.get("common_failures", []))
-    chunks = "\n".join(
-        f"<li>{escape(chunk['chunk_type'])}: {escape(chunk['content'])}</li>"
-        for chunk in entry.get("rag_chunks", [])
-    )
     sources = "\n".join(
         f'<li><span class="source">{escape(source)}</span></li>'
         for source in entry.get("source_urls", [])
@@ -230,8 +223,6 @@ def render_recipe_card(entry: dict[str, Any]) -> str:
   <ol>{steps}</ol>
   <h3>常见失败点</h3>
   <ul>{failures}</ul>
-  <h3>RAG chunks</h3>
-  <ul>{chunks}</ul>
   <h3>来源</h3>
   <ul>{sources}</ul>
 </article>"""

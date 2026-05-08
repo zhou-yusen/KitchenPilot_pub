@@ -15,6 +15,10 @@ class AgentStateModel(BaseModel):
     user_id: str = "demo_user"
     query: str
     intent: IntentType = IntentType.UNKNOWN
+    intent_confidence: float = 0.0
+    intent_source: str = "unknown"
+    needs_clarification: bool = False
+    clarification_question: str = ""
     user_ingredients: list[str] = Field(default_factory=list)
     user_profile: dict[str, Any] = Field(default_factory=dict)
     retrieved_context: list[SourceChunk] = Field(default_factory=list)
@@ -30,6 +34,10 @@ class AgentState(TypedDict, total=False):
     user_id: str
     query: str
     intent: IntentType
+    intent_confidence: float
+    intent_source: str
+    needs_clarification: bool
+    clarification_question: str
     user_ingredients: list[str]
     user_profile: dict[str, Any]
     retrieved_context: list[SourceChunk]

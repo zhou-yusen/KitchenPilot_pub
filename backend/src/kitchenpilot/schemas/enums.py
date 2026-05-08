@@ -18,10 +18,10 @@ class Difficulty(StrEnum):
 
 class ChunkType(StrEnum):
     """Supported RAG source chunk categories."""
-    PREP = "prep"
+    OVERVIEW = "overview"
+    INGREDIENTS = "ingredients"
     STEP = "step"
-    BEGINNER_TIP = "beginner_tip"
-    FAILURE_REASON = "failure_reason"
+    FAILURE = "failure"
     SUBSTITUTION = "substitution"
-    SAFETY_NOTE = "safety_note"
+    SAFETY = "safety"
 

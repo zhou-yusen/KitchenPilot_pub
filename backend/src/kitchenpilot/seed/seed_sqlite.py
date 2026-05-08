@@ -1,21 +1,31 @@
 from sqlalchemy.orm import Session
 
-from kitchenpilot.db.models import IngredientORM, RecipeIngredientORM, RecipeORM, RecipeStepORM
+from kitchenpilot.db.models import (
+    IngredientORM,
+    RecipeFailureORM,
+    RecipeIngredientORM,
+    RecipeORM,
+    RecipeSafetyNoteORM,
+    RecipeSourceORM,
+    RecipeStepORM,
+    RecipeSubstitutionORM,
+)
 from kitchenpilot.db.session import SessionLocal, create_all
-from kitchenpilot.seed.recipe_dataset import load_recipes
+from kitchenpilot.seed.recipe_dataset import load_recipe_dataset_entries
+from kitchenpilot.schemas.recipe import Recipe
 
 
 def seed_sqlite() -> None:
     """Create SQLite tables and upsert the initial recipe dataset."""
     create_all()
-    recipes = load_recipes()
+    entries = load_recipe_dataset_entries()
     with SessionLocal() as session:
-        for recipe in recipes:
-            _upsert_recipe(session, recipe)
+        for entry in entries:
+            _upsert_recipe(session, Recipe.model_validate(entry), entry)
         session.commit()
 
 
-def _upsert_recipe(session: Session, recipe) -> None:
+def _upsert_recipe(session: Session, recipe: Recipe, entry: dict) -> None:
     """Insert or update one recipe plus its ingredient links and ordered steps."""
     recipe_orm = session.get(RecipeORM, recipe.id)
     if recipe_orm is None:
@@ -101,6 +111,51 @@ def _upsert_recipe(session: Session, recipe) -> None:
             exists.content = step.content
             exists.beginner_tip = step.beginner_tip or ""
             exists.risk_tip = step.risk_tip or ""
+
+    _replace_failures(session, recipe)
+    _replace_substitutions(session, recipe)
+    _replace_safety_notes(session, recipe)
+    _replace_sources(session, recipe.id, entry.get("source_urls", []))
+
+
+def _replace_failures(session: Session, recipe: Recipe) -> None:
+    """Replace stored common failure points for one recipe."""
+    session.query(RecipeFailureORM).filter(RecipeFailureORM.recipe_id == recipe.id).delete()
+    for index, content in enumerate(recipe.common_failures, start=1):
+        session.add(
+            RecipeFailureORM(recipe_id=recipe.id, failure_order=index, content=content)
+        )
+
+
+def _replace_substitutions(session: Session, recipe: Recipe) -> None:
+    """Replace stored ingredient substitution notes for one recipe."""
+    session.query(RecipeSubstitutionORM).filter(
+        RecipeSubstitutionORM.recipe_id == recipe.id
+    ).delete()
+    for ingredient_name, substitute_text in recipe.substitutions.items():
+        session.add(
+            RecipeSubstitutionORM(
+                recipe_id=recipe.id,
+                ingredient_name=ingredient_name,
+                substitute_text=substitute_text,
+            )
+        )
+
+
+def _replace_safety_notes(session: Session, recipe: Recipe) -> None:
+    """Replace stored safety notes for one recipe."""
+    session.query(RecipeSafetyNoteORM).filter(
+        RecipeSafetyNoteORM.recipe_id == recipe.id
+    ).delete()
+    for index, content in enumerate(recipe.safety_notes, start=1):
+        session.add(RecipeSafetyNoteORM(recipe_id=recipe.id, note_order=index, content=content))
+
+
+def _replace_sources(session: Session, recipe_id: int, source_urls: list[str]) -> None:
+    """Replace stored source URLs for one recipe."""
+    session.query(RecipeSourceORM).filter(RecipeSourceORM.recipe_id == recipe_id).delete()
+    for index, url in enumerate(source_urls, start=1):
+        session.add(RecipeSourceORM(recipe_id=recipe_id, source_order=index, url=url))
 
 
 if __name__ == "__main__":

@@ -2,32 +2,45 @@ import re
 
 from pydantic import BaseModel, Field
 
+from kitchenpilot.core.config import Settings, get_settings
+from kitchenpilot.core.llm import ChatMessage, ChatProvider, build_chat_provider
 from kitchenpilot.rag.chunks import build_recipe_chunks
+from kitchenpilot.rag.qdrant_store import QdrantRecipeStore
 from kitchenpilot.schemas.recipe import SourceChunk
 from kitchenpilot.services.recipe_service import RecipeService
 
 
 class RAGResult(BaseModel):
     """Container for a generated answer and its retrieved sources."""
+
     answer: str
     sources: list[SourceChunk] = Field(default_factory=list)
 
 
 class RAGService:
-    """Retrieve recipe chunks and generate mock RAG answers."""
-    def __init__(self, recipe_service: RecipeService | None = None) -> None:
-        """Initialize this object with its required collaborators."""
+    """Retrieve recipe chunks and answer recipe questions with optional LLM generation."""
+
+    def __init__(
+        self,
+        recipe_service: RecipeService | None = None,
+        chat_provider: ChatProvider | None = None,
+        qdrant_store: QdrantRecipeStore | None = None,
+        settings: Settings | None = None,
+    ) -> None:
+        """Initialize this object with recipe, chat, and retrieval collaborators."""
+        self.settings = settings or get_settings()
         self.recipe_service = recipe_service or RecipeService()
+        self.chat_provider = chat_provider or build_chat_provider(self.settings)
+        self.qdrant_store = qdrant_store
         self._chunks = build_recipe_chunks(self.recipe_service.list_recipes())
 
     def retrieve(self, query: str, top_k: int = 4) -> list[SourceChunk]:
         """Return source chunks relevant to a user query."""
-        scored: list[SourceChunk] = []
-        for chunk in self._chunks:
-            score = self._score(query, chunk)
-            if score > 0:
-                scored.append(chunk.model_copy(update={"score": score}))
-        return sorted(scored, key=lambda item: item.score, reverse=True)[:top_k]
+        if self.settings.rag_use_qdrant:
+            qdrant_results = self._retrieve_from_qdrant(query, top_k)
+            if qdrant_results:
+                return qdrant_results
+        return self._retrieve_locally(query, top_k)
 
     def answer(self, query: str) -> RAGResult:
         """Generate an answer from retrieved source chunks."""
@@ -38,13 +51,59 @@ class RAGService:
                 sources=[],
             )
 
+        llm_answer = self._answer_with_llm(query, sources)
+        if llm_answer:
+            return RAGResult(answer=llm_answer, sources=sources)
+
         main_recipe = sources[0].recipe_name
         evidence = "；".join(chunk.content for chunk in sources[:3])
         answer = (
-            f"根据知识库中关于《{main_recipe}》的内容，建议如下：{evidence}。"
+            f"根据知识库中关于“{main_recipe}”的内容，建议如下：{evidence}。"
             "新手操作时优先控制火候、按步骤处理食材，并注意安全提示。"
         )
         return RAGResult(answer=answer, sources=sources)
+
+    def _retrieve_from_qdrant(self, query: str, top_k: int) -> list[SourceChunk]:
+        """Retrieve chunks from Qdrant and return an empty list when unavailable."""
+        try:
+            store = self.qdrant_store or QdrantRecipeStore(settings=self.settings)
+            return store.search(query, top_k=top_k)
+        except Exception:
+            return []
+
+    def _retrieve_locally(self, query: str, top_k: int) -> list[SourceChunk]:
+        """Retrieve chunks using local lexical scoring as a fallback."""
+        scored: list[SourceChunk] = []
+        for chunk in self._chunks:
+            score = self._score(query, chunk)
+            if score > 0:
+                metadata = {**chunk.metadata, "retrieval_source": "local"}
+                scored.append(chunk.model_copy(update={"score": score, "metadata": metadata}))
+        return sorted(scored, key=lambda item: item.score, reverse=True)[:top_k]
+
+    def _answer_with_llm(self, query: str, sources: list[SourceChunk]) -> str:
+        """Ask the configured chat model to answer from retrieved recipe evidence."""
+        context = "\n".join(
+            f"[{index}] {source.recipe_name} / {source.chunk_type}: {source.content}"
+            for index, source in enumerate(sources, start=1)
+        )
+        messages = [
+            ChatMessage(
+                role="system",
+                content=(
+                    "你是 KitchenPilot 的做菜助手。只能根据给定资料回答，"
+                    "优先给新手可执行步骤，并提示关键风险。不要展开思考过程。"
+                ),
+            ),
+            ChatMessage(
+                role="user",
+                content=f"用户问题：{query}\n\n资料：\n{context}\n\n请用中文直接回答。",
+            ),
+        ]
+        try:
+            return self.chat_provider.chat(messages).content
+        except Exception:
+            return ""
 
     def _score(self, query: str, chunk: SourceChunk) -> float:
         """Calculate a simple lexical relevance score for a chunk."""
@@ -56,7 +115,7 @@ class RAGService:
 
         if chunk.recipe_name in query:
             score += 5
-        for keyword in ["脆", "替代", "失败", "太甜", "新手", "注意", "怎么做"]:
+        for keyword in ["脆", "替代", "失败", "太甜", "新手", "注意", "怎么做", "安全"]:
             if keyword in query and keyword in content:
                 score += 2
         return score

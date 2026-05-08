@@ -21,6 +21,10 @@ class RecipeORM(Base):
 
     ingredients: Mapped[list["RecipeIngredientORM"]] = relationship(back_populates="recipe")
     steps: Mapped[list["RecipeStepORM"]] = relationship(back_populates="recipe")
+    failures: Mapped[list["RecipeFailureORM"]] = relationship(back_populates="recipe")
+    substitutions: Mapped[list["RecipeSubstitutionORM"]] = relationship(back_populates="recipe")
+    safety_notes: Mapped[list["RecipeSafetyNoteORM"]] = relationship(back_populates="recipe")
+    sources: Mapped[list["RecipeSourceORM"]] = relationship(back_populates="recipe")
 
 
 class IngredientORM(Base):
@@ -60,6 +64,58 @@ class RecipeStepORM(Base):
     risk_tip: Mapped[str] = mapped_column(Text, default="")
 
     recipe: Mapped[RecipeORM] = relationship(back_populates="steps")
+
+
+class RecipeFailureORM(Base):
+    """SQLAlchemy model for common recipe failure points."""
+
+    __tablename__ = "recipe_failures"
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    recipe_id: Mapped[int] = mapped_column(ForeignKey("recipes.id"))
+    failure_order: Mapped[int] = mapped_column(Integer)
+    content: Mapped[str] = mapped_column(Text)
+
+    recipe: Mapped[RecipeORM] = relationship(back_populates="failures")
+
+
+class RecipeSubstitutionORM(Base):
+    """SQLAlchemy model for ingredient substitutions in a recipe."""
+
+    __tablename__ = "recipe_substitutions"
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    recipe_id: Mapped[int] = mapped_column(ForeignKey("recipes.id"))
+    ingredient_name: Mapped[str] = mapped_column(String(100))
+    substitute_text: Mapped[str] = mapped_column(Text)
+
+    recipe: Mapped[RecipeORM] = relationship(back_populates="substitutions")
+
+
+class RecipeSafetyNoteORM(Base):
+    """SQLAlchemy model for recipe-level safety notes."""
+
+    __tablename__ = "recipe_safety_notes"
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    recipe_id: Mapped[int] = mapped_column(ForeignKey("recipes.id"))
+    note_order: Mapped[int] = mapped_column(Integer)
+    content: Mapped[str] = mapped_column(Text)
+
+    recipe: Mapped[RecipeORM] = relationship(back_populates="safety_notes")
+
+
+class RecipeSourceORM(Base):
+    """SQLAlchemy model for source URLs used to prepare seed recipe data."""
+
+    __tablename__ = "recipe_sources"
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    recipe_id: Mapped[int] = mapped_column(ForeignKey("recipes.id"))
+    source_order: Mapped[int] = mapped_column(Integer)
+    url: Mapped[str] = mapped_column(Text)
+
+    recipe: Mapped[RecipeORM] = relationship(back_populates="sources")
 
 
 class UserCookingHistoryORM(Base):

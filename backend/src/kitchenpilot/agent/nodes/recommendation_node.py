@@ -34,12 +34,22 @@ def daily_recommendation_node(state: AgentState) -> AgentState:
 
 
 def unknown_intent_node(state: AgentState) -> AgentState:
-    """Return a fallback response for an unclassified query."""
-    answer = "我暂时无法判断你的具体需求。可以问具体菜谱做法，或输入已有食材让我推荐新手菜。"
+    """Return a clarification question for an unclassified query."""
+    answer = state.get("clarification_question", "")
+    if not answer:
+        answer = (
+            "我暂时无法判断你的具体需求。\n"
+            "你是想让我：\n"
+            "1. 根据已有食材推荐菜？\n"
+            "2. 按你的偏好推荐今天吃什么？\n"
+            "3. 回答某道菜的具体做法？"
+        )
     return {
         **state,
+        "needs_clarification": True,
+        "clarification_question": answer,
         "draft_answer": answer,
-        "execution_trace": _trace(state, "进入未知意图兜底节点"),
+        "execution_trace": _trace(state, "进入未知意图澄清节点"),
     }
 
 

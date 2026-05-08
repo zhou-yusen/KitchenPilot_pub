@@ -24,6 +24,10 @@ def chat(
     return ChatResponse(
         answer=result.get("final_answer", ""),
         intent=result.get("intent", IntentType.UNKNOWN),
+        intent_confidence=result.get("intent_confidence", 0.0),
+        intent_source=result.get("intent_source", "unknown"),
+        needs_clarification=result.get("needs_clarification", False),
+        clarification_question=result.get("clarification_question", ""),
         recommendations=result.get("recommendations", []),
         sources=result.get("retrieved_context", []),
         quality_check=result.get("quality_check_result"),

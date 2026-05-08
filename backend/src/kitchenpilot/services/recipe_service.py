@@ -62,8 +62,11 @@ class RecipeService:
         rows = (
             session.query(RecipeORM)
             .options(
+                selectinload(RecipeORM.failures),
                 selectinload(RecipeORM.ingredients),
+                selectinload(RecipeORM.safety_notes),
                 selectinload(RecipeORM.steps),
+                selectinload(RecipeORM.substitutions),
             )
             .order_by(RecipeORM.id)
             .all()
@@ -75,8 +78,11 @@ class RecipeService:
         row = (
             session.query(RecipeORM)
             .options(
+                selectinload(RecipeORM.failures),
                 selectinload(RecipeORM.ingredients),
+                selectinload(RecipeORM.safety_notes),
                 selectinload(RecipeORM.steps),
+                selectinload(RecipeORM.substitutions),
             )
             .filter(RecipeORM.id == recipe_id)
             .one_or_none()
@@ -88,8 +94,11 @@ class RecipeService:
         rows = (
             session.query(RecipeORM)
             .options(
+                selectinload(RecipeORM.failures),
                 selectinload(RecipeORM.ingredients),
+                selectinload(RecipeORM.safety_notes),
                 selectinload(RecipeORM.steps),
+                selectinload(RecipeORM.substitutions),
             )
             .order_by(RecipeORM.id)
             .all()
@@ -128,8 +137,16 @@ class RecipeService:
                     }
                     for step in sorted(row.steps, key=lambda step: step.step_order)
                 ],
-                "common_failures": [],
-                "substitutions": {},
-                "safety_notes": [],
+                "common_failures": [
+                    item.content for item in sorted(row.failures, key=lambda item: item.failure_order)
+                ],
+                "substitutions": {
+                    item.ingredient_name: item.substitute_text
+                    for item in sorted(row.substitutions, key=lambda item: item.id)
+                },
+                "safety_notes": [
+                    item.content
+                    for item in sorted(row.safety_notes, key=lambda item: item.note_order)
+                ],
             }
         )

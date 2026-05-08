@@ -17,6 +17,10 @@ class ChatResponse(BaseModel):
     """Response body returned by the chat endpoint."""
     answer: str
     intent: IntentType
+    intent_confidence: float = 0.0
+    intent_source: str = "unknown"
+    needs_clarification: bool = False
+    clarification_question: str = ""
     recommendations: list[RecommendationResult] = Field(default_factory=list)
     sources: list[SourceChunk] = Field(default_factory=list)
     quality_check: QualityCheckResult | None = None
