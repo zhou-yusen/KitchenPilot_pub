@@ -17,11 +17,11 @@ uv run uvicorn kitchenpilot.main:app --reload
 frontend/index.html
 ```
 
-也可以用前台静态服务打开。该方式会在终端显示访问链接，并且可以用 `Ctrl+C` 停止：
+也可以用 Python 前台静态服务打开。该方式会在终端显示访问链接，并且可以用 `Ctrl+C` 停止：
 
 ```powershell
 cd frontend
-.\start_frontend.ps1
+python start_frontend.py
 ```
 
 默认访问：
@@ -33,7 +33,7 @@ http://127.0.0.1:5173
 如果端口被占用：
 
 ```powershell
-.\start_frontend.ps1 -Port 5174
+python start_frontend.py --port 5174
 ```
 
 也可以直接使用 Python：
