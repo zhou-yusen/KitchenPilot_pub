@@ -62,7 +62,7 @@ frontend/index.html
 
 ```powershell
 cd frontend
-python -m http.server 5173
+.\start_frontend.ps1
 ```
 
 然后访问：
