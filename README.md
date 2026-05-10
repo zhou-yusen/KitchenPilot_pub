@@ -77,7 +77,7 @@ http://127.0.0.1:5173
 http://127.0.0.1:8000/health
 ```
 
-如果 Windows 下 `Ctrl+C` 无法停止后端，可以在 `backend` 目录执行：
+如果需要强制停止 8000 端口上的后端进程，可以在 `backend` 目录执行：
 
 ```powershell
 .\script\stop_backend.ps1

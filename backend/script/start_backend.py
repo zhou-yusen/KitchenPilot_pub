@@ -11,7 +11,7 @@ import uvicorn
 
 
 def main() -> None:
-    """Start the KitchenPilot API in the foreground with clean Ctrl+C shutdown."""
+    """Start the KitchenPilot API in the foreground with Esc shutdown."""
     parser = argparse.ArgumentParser(description="Start the KitchenPilot backend API.")
     parser.add_argument("--host", default="127.0.0.1")
     parser.add_argument("--port", type=int, default=8000)
@@ -26,7 +26,7 @@ def main() -> None:
     print(f"  API docs: {base_url}/docs", flush=True)
     print(f"  Health:   {base_url}/health", flush=True)
     print()
-    print("Press Esc to stop. Ctrl+C also works.", flush=True)
+    print("Press Esc to stop.", flush=True)
     print()
 
     config = uvicorn.Config(
@@ -39,19 +39,14 @@ def main() -> None:
     server = uvicorn.Server(config)
     thread = threading.Thread(target=server.run, daemon=True)
 
-    try:
-        thread.start()
-        while thread.is_alive():
-            if msvcrt.kbhit() and msvcrt.getch() == b"\x1b":
-                print("\nStopping KitchenPilot backend.", flush=True)
-                server.should_exit = True
-                break
-            time.sleep(0.1)
-    except KeyboardInterrupt:
-        print("\nStopping KitchenPilot backend.", flush=True)
-        server.should_exit = True
-    finally:
-        thread.join(timeout=5)
+    thread.start()
+    while thread.is_alive():
+        if msvcrt.kbhit() and msvcrt.getch() == b"\x1b":
+            print("\nStopping KitchenPilot backend.", flush=True)
+            server.should_exit = True
+            break
+        time.sleep(0.1)
+    thread.join(timeout=5)
 
 
 if __name__ == "__main__":
