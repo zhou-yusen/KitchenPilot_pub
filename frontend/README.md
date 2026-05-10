@@ -1,31 +1,45 @@
 # KitchenPilot 前端
 
-前端目前只是占位目录，尚未实现页面。
+这是一个零构建的轻量演示前端，用于快速展示 KitchenPilot 后端能力。
 
-后续可以根据展示需求选择合适方案，例如：
+## 使用方式
 
-- React
-- Vue
-- Streamlit
-- Gradio
-- 其他轻量前端方案
+先启动后端：
 
-## 前端边界
+```powershell
+cd backend
+uv run uvicorn kitchenpilot.main:app --reload
+```
 
-前端只通过 FastAPI 调用后端接口，不直接访问：
+然后打开：
 
-- SQLite
-- Qdrant
-- LangGraph
-- LLM 客户端
+```text
+frontend/index.html
+```
 
-## 计划展示能力
+也可以用静态文件服务打开：
 
-后续前端重点展示：
+```powershell
+cd frontend
+python -m http.server 5173
+```
 
-- 聊天问答
-- 食材推荐
-- 每日推荐
-- RAG 引用来源
-- Agent 执行过程
-- 质量检查结果
+访问：
+
+```text
+http://127.0.0.1:5173
+```
+
+## 当前能力
+
+- 调用 `POST /api/chat` 展示菜谱问答。
+- 展示 RAG sources 和 Agent execution trace。
+- 调用 `POST /api/recommend/ingredients` 展示食材推荐。
+- 调用 `GET /api/recommend/daily/{user_id}` 展示每日推荐。
+- 支持修改 Backend Base URL，默认 `http://127.0.0.1:8000`。
+
+## 边界
+
+- 前端只通过 FastAPI 调用后端接口。
+- 不直接访问 SQLite、Qdrant、LangGraph 或 LLM 客户端。
+- 当前是 demo 页面，不包含登录、路由、构建流程或复杂状态管理。

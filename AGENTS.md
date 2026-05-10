@@ -59,7 +59,10 @@ agent/
 ## Current Known Issues
 
 - Many Chinese strings are mojibake/garbled. Tests may still pass because test inputs contain the same garbled strings.
-- RAG, Qdrant, SQLite integration, and LLM calls are still mostly scaffold/mock-level.
+- SQLite `RecipeService`, Qdrant seed/search, embedding provider, RAG fallback, and basic retrieval rerank are implemented.
+- Real Qdrant seed/search has been smoke-tested with the fixed RAG demo questions, but RAG answer quality still needs prompt and fallback improvements.
+- Recommendation logic is still rule-based MVP and needs stronger personalization, scoring documentation, and broader tests.
+- README may lag behind `Plan.md` and should be updated before project handoff or demo.
 - Frontend is not implemented.
 
 ## Development Notes
@@ -67,4 +70,6 @@ agent/
 - Prefer small, scoped changes.
 - Keep imports compatible where possible; several tests still rely on public re-export paths.
 - Use `rg` for code search.
+- When reading Chinese text files in PowerShell, use `Get-Content <path> -Encoding UTF8` to avoid mojibake.
 - Run `uv run pytest` after backend behavior or import-structure changes.
+- For scoped lint verification, prefer `uv run ruff check <changed-files>` because the full repo currently has pre-existing Ruff issues.

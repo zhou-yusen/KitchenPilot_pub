@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>KitchenPilot Demo</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">KitchenPilot</p>
+          <h1>食谱 Agentic RAG 演示</h1>
+        </div>
+        <label class="base-url">
+          <span>Backend</span>
+          <input id="baseUrl" type="url" value="http://127.0.0.1:8000" />
+        </label>
+      </header>
+
+      <main class="workspace">
+        <section class="panel chat-panel" aria-labelledby="chatTitle">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Chat</p>
+              <h2 id="chatTitle">菜谱问答</h2>
+            </div>
+            <input id="userId" class="small-input" value="demo_user" aria-label="User ID" />
+          </div>
+
+          <div class="quick-prompts" aria-label="示例问题">
+            <button type="button" data-query="土豆丝怎么炒得脆？">土豆丝怎么炒得脆？</button>
+            <button type="button" data-query="没有蚝油怎么办？">没有蚝油怎么办？</button>
+            <button type="button" data-query="白灼虾怎么处理安全？">白灼虾怎么处理安全？</button>
+          </div>
+
+          <label class="field">
+            <span>问题</span>
+            <textarea id="chatQuery" rows="4">土豆丝怎么炒得脆？</textarea>
+          </label>
+
+          <label class="field">
+            <span>已有食材（可选）</span>
+            <input id="chatIngredients" value="土豆, 醋, 辣椒" />
+          </label>
+
+          <div class="actions">
+            <button id="sendChat" type="button" class="primary">发送问题</button>
+            <span id="chatStatus" class="status" role="status"></span>
+          </div>
+
+          <div id="answerBox" class="answer empty">等待提问。</div>
+        </section>
+
+        <section class="panel recommend-panel" aria-labelledby="recommendTitle">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Recommend</p>
+              <h2 id="recommendTitle">食材推荐</h2>
+            </div>
+          </div>
+
+          <label class="field">
+            <span>食材</span>
+            <input id="recommendIngredients" value="鸡蛋, 土豆" />
+          </label>
+
+          <div class="actions">
+            <button id="sendRecommend" type="button" class="primary">推荐菜谱</button>
+            <button id="sendDaily" type="button">每日推荐</button>
+            <span id="recommendStatus" class="status" role="status"></span>
+          </div>
+
+          <div id="recommendations" class="list empty">等待推荐。</div>
+        </section>
+
+        <section class="panel evidence-panel" aria-labelledby="sourceTitle">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Evidence</p>
+              <h2 id="sourceTitle">RAG 来源</h2>
+            </div>
+          </div>
+          <div id="sources" class="list empty">聊天后显示检索来源。</div>
+        </section>
+
+        <section class="panel trace-panel" aria-labelledby="traceTitle">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Agent</p>
+              <h2 id="traceTitle">执行轨迹</h2>
+            </div>
+          </div>
+          <ol id="trace" class="trace empty">
+            <li>聊天后显示 Agent 节点。</li>
+          </ol>
+        </section>
+      </main>
+    </div>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

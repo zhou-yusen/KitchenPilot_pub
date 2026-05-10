@@ -6,6 +6,7 @@ from kitchenpilot.core.config import Settings, get_settings
 from kitchenpilot.core.llm import ChatMessage, ChatProvider, build_chat_provider
 from kitchenpilot.rag.chunks import build_recipe_chunks
 from kitchenpilot.rag.qdrant_store import QdrantRecipeStore
+from kitchenpilot.schemas.enums import ChunkType
 from kitchenpilot.schemas.recipe import SourceChunk
 from kitchenpilot.services.recipe_service import RecipeService
 
@@ -39,8 +40,8 @@ class RAGService:
         if self.settings.rag_use_qdrant:
             qdrant_results = self._retrieve_from_qdrant(query, top_k)
             if qdrant_results:
-                return qdrant_results
-        return self._retrieve_locally(query, top_k)
+                return self._rerank(query, qdrant_results)[:top_k]
+        return self._rerank(query, self._retrieve_locally(query, top_k))[:top_k]
 
     def answer(self, query: str) -> RAGResult:
         """Generate an answer from retrieved source chunks."""
@@ -119,6 +120,37 @@ class RAGService:
             if keyword in query and keyword in content:
                 score += 2
         return score
+
+    def _rerank(self, query: str, chunks: list[SourceChunk]) -> list[SourceChunk]:
+        """Prefer chunk types that match common cooking question intents."""
+        preferred_types = self._preferred_chunk_types(query)
+        if not preferred_types:
+            return chunks
+
+        priority = {
+            chunk_type: len(preferred_types) - index
+            for index, chunk_type in enumerate(preferred_types)
+        }
+        return sorted(
+            chunks,
+            key=lambda chunk: (priority.get(chunk.chunk_type, 0), chunk.score),
+            reverse=True,
+        )
+
+    @staticmethod
+    def _preferred_chunk_types(query: str) -> list[ChunkType]:
+        """Infer preferred chunk types from simple Chinese cooking question cues."""
+        if any(keyword in query for keyword in ["没有", "替代", "代替", "换成", "可不可以不用"]):
+            return [ChunkType.SUBSTITUTION, ChunkType.INGREDIENTS, ChunkType.STEP]
+        if any(keyword in query for keyword in ["安全", "熟", "处理", "过敏", "生熟"]):
+            return [ChunkType.SAFETY, ChunkType.STEP, ChunkType.FAILURE]
+        failure_keywords = ["失败", "为什么", "腥味", "太甜", "太咸", "不脆", "粘锅", "糊"]
+        if any(keyword in query for keyword in failure_keywords):
+            return [ChunkType.FAILURE, ChunkType.STEP, ChunkType.SAFETY]
+        step_keywords = ["怎么做", "步骤", "火候", "多久", "怎么炒", "怎么煮"]
+        if any(keyword in query for keyword in step_keywords):
+            return [ChunkType.STEP, ChunkType.SAFETY, ChunkType.FAILURE]
+        return []
 
     @staticmethod
     def _terms(text: str) -> set[str]:

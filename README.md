@@ -1,29 +1,27 @@
 # KitchenPilot
 
-KitchenPilot 是一个面向厨房新手的个性化菜谱 Agentic RAG 助手。项目采用前后端分离的 monorepo 结构，当前以后端原型为主，先跑通 API、Agent 流程、菜谱问答、食材推荐和质量检查链路。
+KitchenPilot 是一个面向厨房新手的个性化菜谱 Agentic RAG 助手。项目采用前后端分离的 monorepo 结构，当前以后端 MVP 和轻量前端 demo 为主，先跑通 API、Agent 流程、菜谱问答、食材推荐、RAG 来源展示和质量检查链路。
 
 ## 当前状态
 
-项目目前处于 **后端 MVP 骨架 + mock 数据闭环阶段**。
+项目目前处于 **后端 MVP + 轻量前端 demo 阶段**。
 
 已经具备：
 
-- FastAPI 后端工程骨架
+- FastAPI 后端工程
 - LangGraph Agent 主流程
-- mock 菜谱数据
-- mock RAG 问答服务
+- SQLite 菜谱数据读取，数据库不可用时 fallback mock 数据
+- Qdrant RAG seed/search 和本地关键词 fallback
 - 食材推荐与每日推荐接口
 - 简单安全检查与质量检查
-- SQLite / Qdrant 工程化预留
+- 轻量静态前端 demo
 - 后端单元测试和集成测试
-- 前端占位目录
 
 尚未完成：
 
-- 真实 SQLite 数据源接入主链路
-- 真实 Qdrant 向量检索
-- 真实 LLM 回答生成
-- 前端页面实现
+- RAG 回答质量深度优化
+- 推荐个性化增强
+- 正式前端工程化
 - 中文乱码修复
 
 ## 项目结构
@@ -50,6 +48,27 @@ uv run uvicorn kitchenpilot.main:app --reload
 
 ```text
 http://127.0.0.1:8000/docs
+```
+
+## 前端快速启动
+
+后端运行后，直接打开：
+
+```text
+frontend/index.html
+```
+
+也可以启动静态文件服务：
+
+```powershell
+cd frontend
+python -m http.server 5173
+```
+
+然后访问：
+
+```text
+http://127.0.0.1:5173
 ```
 
 健康检查：

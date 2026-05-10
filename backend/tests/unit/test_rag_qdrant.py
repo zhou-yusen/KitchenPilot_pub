@@ -1,5 +1,7 @@
 from kitchenpilot.core.config import Settings
 from kitchenpilot.rag.service import RAGService
+from kitchenpilot.schemas.enums import ChunkType
+from kitchenpilot.schemas.recipe import SourceChunk
 
 
 class _FailingQdrantStore:
@@ -47,3 +49,67 @@ def test_rag_retrieve_returns_qdrant_chunks_when_available() -> None:
 
     assert results == [qdrant_chunk]
     assert results[0].metadata["retrieval_source"] == "qdrant"
+
+
+def test_rag_retrieve_reranks_qdrant_chunks_by_question_intent() -> None:
+    """Verify intent cues prefer matching chunk types over raw Qdrant order."""
+    chunks = [
+        _chunk(ChunkType.STEP, score=0.95),
+        _chunk(ChunkType.SAFETY, score=0.70),
+        _chunk(ChunkType.FAILURE, score=0.90),
+    ]
+
+    class _WorkingQdrantStore:
+        """Store that returns intentionally unsorted semantic chunks."""
+
+        def search(self, query: str, top_k: int):
+            """Return the prepared chunks."""
+            return chunks
+
+    service = RAGService(
+        qdrant_store=_WorkingQdrantStore(),
+        settings=Settings(_env_file=None, rag_use_qdrant=True, llm_provider="mock"),
+    )
+
+    results = service.retrieve("白灼虾怎么处理安全？", top_k=3)
+
+    assert results[0].chunk_type == ChunkType.SAFETY
+    assert results[1].chunk_type == ChunkType.STEP
+
+
+def test_rag_retrieve_prefers_substitution_for_missing_ingredient_questions() -> None:
+    """Verify missing-ingredient questions prefer substitution chunks."""
+    chunks = [
+        _chunk(ChunkType.STEP, score=0.95),
+        _chunk(ChunkType.INGREDIENTS, score=0.80),
+        _chunk(ChunkType.SUBSTITUTION, score=0.65),
+    ]
+
+    class _WorkingQdrantStore:
+        """Store that returns intentionally unsorted semantic chunks."""
+
+        def search(self, query: str, top_k: int):
+            """Return the prepared chunks."""
+            return chunks
+
+    service = RAGService(
+        qdrant_store=_WorkingQdrantStore(),
+        settings=Settings(_env_file=None, rag_use_qdrant=True, llm_provider="mock"),
+    )
+
+    results = service.retrieve("没有蚝油怎么办？", top_k=3)
+
+    assert results[0].chunk_type == ChunkType.SUBSTITUTION
+    assert results[1].chunk_type == ChunkType.INGREDIENTS
+
+
+def _chunk(chunk_type: ChunkType, *, score: float) -> SourceChunk:
+    """Build a minimal source chunk for rerank tests."""
+    return SourceChunk(
+        recipe_id=1,
+        recipe_name="测试菜",
+        chunk_type=chunk_type,
+        content=f"测试内容：{chunk_type}",
+        score=score,
+        metadata={"retrieval_source": "qdrant"},
+    )
