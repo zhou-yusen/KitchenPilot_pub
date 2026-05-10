@@ -43,7 +43,11 @@ class RAGService:
                 return self._rerank(query, qdrant_results)[:top_k]
         return self._rerank(query, self._retrieve_locally(query, top_k))[:top_k]
 
-    def answer(self, query: str) -> RAGResult:
+    def answer(
+        self,
+        query: str,
+        conversation_turns: list[dict[str, object]] | None = None,
+    ) -> RAGResult:
         """Generate an answer from retrieved source chunks."""
         sources = self.retrieve(query)
         if not sources:
@@ -52,7 +56,7 @@ class RAGService:
                 sources=[],
             )
 
-        llm_answer = self._answer_with_llm(query, sources)
+        llm_answer = self._answer_with_llm(query, sources, conversation_turns or [])
         if llm_answer:
             return RAGResult(answer=llm_answer, sources=sources)
 
@@ -82,29 +86,58 @@ class RAGService:
                 scored.append(chunk.model_copy(update={"score": score, "metadata": metadata}))
         return sorted(scored, key=lambda item: item.score, reverse=True)[:top_k]
 
-    def _answer_with_llm(self, query: str, sources: list[SourceChunk]) -> str:
+    def _answer_with_llm(
+        self,
+        query: str,
+        sources: list[SourceChunk],
+        conversation_turns: list[dict[str, object]],
+    ) -> str:
         """Ask the configured chat model to answer from retrieved recipe evidence."""
         context = "\n".join(
             f"[{index}] {source.recipe_name} / {source.chunk_type}: {source.content}"
             for index, source in enumerate(sources, start=1)
         )
+        recent_context = self._format_conversation_context(conversation_turns)
         messages = [
             ChatMessage(
                 role="system",
                 content=(
-                    "你是 KitchenPilot 的做菜助手。只能根据给定资料回答，"
-                    "优先给新手可执行步骤，并提示关键风险。不要展开思考过程。"
+                    "你是 KitchenPilot，一个面向厨房新手的做菜助手。"
+                    "只能根据给定资料和必要的最近对话上下文回答，不要编造精确用量。"
+                    "优先输出可执行步骤、用量、火候和安全风险。"
+                    "默认用朴素中文和编号列表，少用 Markdown 符号，不要使用加粗符号。"
+                    "如果用户要求只要步骤、少解释或少符号，必须遵守。"
+                    "不要展开思考过程。"
                 ),
             ),
             ChatMessage(
                 role="user",
-                content=f"用户问题：{query}\n\n资料：\n{context}\n\n请用中文直接回答。",
+                content=(
+                    f"用户问题：{query}\n\n"
+                    f"最近对话：\n{recent_context or '无'}\n\n"
+                    f"资料：\n{context}\n\n请用中文直接回答。"
+                ),
             ),
         ]
         try:
             return self.chat_provider.chat(messages).content
         except Exception:
             return ""
+
+    @staticmethod
+    def _format_conversation_context(conversation_turns: list[dict[str, object]]) -> str:
+        """Compress recent turns for prompt context."""
+        lines: list[str] = []
+        for turn in conversation_turns[-4:]:
+            query = str(turn.get("query") or "").strip()
+            active_recipe = str(turn.get("active_recipe") or "").strip()
+            intent = str(turn.get("intent") or "").strip()
+            if query:
+                lines.append(
+                    f"- intent={intent}, active_recipe={active_recipe or '无'}, "
+                    f"query={query}"
+                )
+        return "\n".join(lines)
 
     def _score(self, query: str, chunk: SourceChunk) -> float:
         """Calculate a simple lexical relevance score for a chunk."""

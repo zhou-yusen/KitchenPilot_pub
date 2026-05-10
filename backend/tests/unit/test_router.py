@@ -1,8 +1,16 @@
 from kitchenpilot.agent.nodes.intent_router import IntentClassification
 from kitchenpilot.agent.router import IntentRouter
 from kitchenpilot.core.llm import ChatMessage, ChatResult
-from kitchenpilot.schemas.enums import IntentType
-from kitchenpilot.services.mock_data import RECIPES
+from kitchenpilot.schemas.enums import IntentType, RecommendationType
+from kitchenpilot.seed.recipe_dataset import load_recipes
+
+
+class _RecipeService:
+    """Fake recipe source used to verify router can use service-provided recipes."""
+
+    def list_recipes(self):
+        """Return seed recipes."""
+        return load_recipes()
 
 
 class _IntentProvider:
@@ -18,7 +26,7 @@ class _IntentProvider:
         self.chat_calls += 1
         return ChatResult(
             content=(
-                '{"intent":"daily_recommendation","confidence":0.77,'
+                '{"intent":"recommendation","recommendation_type":"daily","confidence":0.77,'
                 '"ingredients":[],"needs_clarification":false}'
             )
         )
@@ -46,7 +54,7 @@ def test_router_detects_ingredient_recommendation() -> None:
 
     intent = router.classify("我有鸡蛋、番茄和土豆，推荐一道简单菜。")
 
-    assert intent == IntentType.INGREDIENT_RECOMMENDATION
+    assert intent == IntentType.RECOMMENDATION
 
 
 def test_router_detects_recipe_qa() -> None:
@@ -58,14 +66,44 @@ def test_router_detects_recipe_qa() -> None:
     assert intent == IntentType.RECIPE_QA
 
 
+def test_router_treats_learning_named_recipe_as_recipe_qa() -> None:
+    """Verify SQLite-sourced recipe names route learning requests to recipe QA."""
+    router = IntentRouter(provider=_IntentProvider(), recipe_service=_RecipeService())
+
+    result = router.classify_with_confidence("我想学咸蛋黄鸡翅")
+
+    assert result.intent == IntentType.RECIPE_QA
+    assert result.source == "rule"
+
+
+def test_router_does_not_recommend_from_short_condiment_question() -> None:
+    """Verify short condiment questions are clarified instead of treated as ingredients."""
+    router = IntentRouter(provider=_IntentProvider(), recipe_service=_RecipeService())
+
+    result = router.classify_with_confidence("用不用下盐？")
+
+    assert result.intent == IntentType.FALLBACK
+    assert result.needs_clarification
+    assert "哪道菜" in result.clarification_question
+
+
 def test_router_extracts_known_ingredients() -> None:
     """Verify the router extracts ingredients that exist in the local dataset."""
-    router = IntentRouter(provider=_IntentProvider())
-    ingredient = RECIPES[0].ingredients[0].ingredient
+    router = IntentRouter(provider=_IntentProvider(), recipe_service=_RecipeService())
+    ingredient = load_recipes()[0].ingredients[0].ingredient
 
     ingredients = router.extract_ingredients(f"我有{ingredient}")
 
     assert ingredient in ingredients
+
+
+def test_router_extracts_short_ingredient_alias() -> None:
+    """Verify short forms like 鸡翅 can match seed ingredient 鸡翅中."""
+    router = IntentRouter(provider=_IntentProvider(), recipe_service=_RecipeService())
+
+    ingredients = router.extract_ingredients("我有鸡翅，推荐一道菜")
+
+    assert "鸡翅" in ingredients
 
 
 def test_router_uses_embedding_confidence_for_non_rule_query() -> None:
@@ -75,9 +113,21 @@ def test_router_uses_embedding_confidence_for_non_rule_query() -> None:
     result = router.classify_with_confidence("想按我的偏好安排一顿饭")
 
     assert isinstance(result, IntentClassification)
-    assert result.intent == IntentType.DAILY_RECOMMENDATION
+    assert result.intent == IntentType.RECOMMENDATION
+    assert result.recommendation_type == RecommendationType.DAILY
     assert result.confidence >= 0.80
-    assert result.source == "embedding"
+    assert result.source in {"rule", "embedding"}
+
+
+def test_router_treats_generic_recommendation_as_daily() -> None:
+    """Verify generic recommendation requests use persona-based daily mode."""
+    router = IntentRouter(provider=_IntentProvider())
+
+    result = router.classify_with_confidence("推荐一道菜")
+
+    assert result.intent == IntentType.RECOMMENDATION
+    assert result.recommendation_type == RecommendationType.DAILY
+    assert result.source == "rule"
 
 
 def test_router_falls_back_to_llm_when_confidence_is_low() -> None:
@@ -87,7 +137,8 @@ def test_router_falls_back_to_llm_when_confidence_is_low() -> None:
 
     result = router.classify_with_confidence("清淡一点别太麻烦")
 
-    assert result.intent == IntentType.DAILY_RECOMMENDATION
+    assert result.intent == IntentType.RECOMMENDATION
+    assert result.recommendation_type == RecommendationType.DAILY
     assert result.source == "llm"
     assert provider.chat_calls == 1
 
@@ -99,6 +150,6 @@ def test_router_keeps_vague_non_cooking_query_as_unknown() -> None:
 
     result = router.classify_with_confidence("随便帮我想想")
 
-    assert result.intent == IntentType.UNKNOWN
+    assert result.intent == IntentType.FALLBACK
     assert result.needs_clarification
     assert "根据已有食材推荐菜" in result.clarification_question

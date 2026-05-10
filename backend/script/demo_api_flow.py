@@ -50,13 +50,23 @@ def main() -> None:
         ),
     )
     show(
-        "食材推荐",
+        "统一推荐接口：食材推荐",
         post_json(
-            f"{args.base_url}/api/recommend/ingredients",
-            {"user_id": args.user_id, "ingredients": ["鸡蛋", "番茄", "土豆"]},
+            f"{args.base_url}/api/recommend",
+            {
+                "user_id": args.user_id,
+                "recommendation_type": "ingredients",
+                "ingredients": ["鸡蛋", "番茄", "土豆"],
+            },
         ),
     )
-    show("每日推荐", get_json(f"{args.base_url}/api/recommend/daily/{args.user_id}"))
+    show(
+        "统一推荐接口：每日推荐",
+        post_json(
+            f"{args.base_url}/api/recommend",
+            {"user_id": args.user_id, "recommendation_type": "daily"},
+        ),
+    )
 
 
 if __name__ == "__main__":

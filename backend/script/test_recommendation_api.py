@@ -21,15 +21,20 @@ def post_json(url: str, payload: dict) -> dict:
 
 def main() -> None:
     """Run this script from the command line."""
-    parser = argparse.ArgumentParser(description="调用 /api/recommend/ingredients 验证食材推荐接口。")
+    parser = argparse.ArgumentParser(description="调用 /api/recommend 验证统一推荐接口。")
     parser.add_argument("--base-url", default="http://127.0.0.1:8000")
     parser.add_argument("--user-id", default="demo_user")
+    parser.add_argument("--recommendation-type", default="ingredients", choices=["ingredients", "daily"])
     parser.add_argument("--ingredients", nargs="+", default=["鸡蛋", "番茄", "土豆"])
     args = parser.parse_args()
 
     response = post_json(
-        f"{args.base_url}/api/recommend/ingredients",
-        {"user_id": args.user_id, "ingredients": args.ingredients},
+        f"{args.base_url}/api/recommend",
+        {
+            "user_id": args.user_id,
+            "recommendation_type": args.recommendation_type,
+            "ingredients": args.ingredients,
+        },
     )
     print(json.dumps(response, ensure_ascii=False, indent=2))
 

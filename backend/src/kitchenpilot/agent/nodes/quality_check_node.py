@@ -4,14 +4,13 @@ from kitchenpilot.schemas.enums import IntentType
 from kitchenpilot.schemas.quality import QualityCheckResult
 from kitchenpilot.services.safety_check_service import SafetyCheckService
 
-
 safety_check_service = SafetyCheckService()
 
 
 def quality_check_node(state: AgentState) -> AgentState:
     """Run safety and quality checks against the draft answer."""
     result = safety_check_service.check(
-        intent=state.get("intent", IntentType.UNKNOWN),
+        intent=state.get("intent", IntentType.FALLBACK),
         answer=state.get("draft_answer", ""),
         sources=state.get("retrieved_context", []),
         recommendations=state.get("recommendations", []),

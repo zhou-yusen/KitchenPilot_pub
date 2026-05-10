@@ -1,35 +1,37 @@
 # KitchenPilot
 
-KitchenPilot 是一个面向厨房新手的个性化菜谱 Agentic RAG 助手。项目采用前后端分离的 monorepo 结构，当前以后端 MVP 和轻量前端 demo 为主，先跑通 API、Agent 流程、菜谱问答、食材推荐、RAG 来源展示和质量检查链路。
+KitchenPilot 是一个面向厨房新手的个性化菜谱 Agentic RAG 助手。项目采用 FastAPI + LangGraph + SQLite + Qdrant 的后端架构，并提供零构建前端调试台，用于验证自然语言路由、菜谱问答、RAG 来源追踪、个性化推荐和多轮 session memory。
 
 ## 当前状态
 
-项目目前处于 **后端 MVP + 轻量前端 demo 阶段**。
+项目目前已达到 **简历项目 MVP** 阶段。
 
 已经具备：
 
-- FastAPI 后端工程
-- LangGraph Agent 主流程
-- SQLite 菜谱数据读取，数据库不可用时 fallback mock 数据
-- Qdrant RAG seed/search 和本地关键词 fallback
-- 食材推荐与每日推荐接口
-- 简单安全检查与质量检查
-- 轻量静态前端 demo
+- FastAPI 后端接口：chat、recommend、recipes、history、health
+- Router-based LangGraph workflow：`recipe_qa / recommendation / fallback`
+- SQLite/seed 菜谱数据读取，数据库异常时回落到 seed JSON
+- Qdrant RAG seed/search，本地关键词检索 fallback，按问题类型轻量 rerank
+- Session memory：支持 `session_id`、`active_recipe`、`rewritten_query` 和追问消解
+- 统一推荐接口：`recommendation_type = ingredients / daily`
+- 三类 persona 推荐：完全新手、入门用户、技艺高超的老手
+- 质量检查、安全提醒和答案修复节点
+- 零构建前端调试台：单聊天入口、session 管理、sources/trace/raw JSON 可视化
 - 后端单元测试和集成测试
 
 尚未完成：
 
 - RAG 回答质量深度优化
-- 推荐个性化增强
+- 从真实长期行为学习用户画像
 - 正式前端工程化
-- 中文乱码修复
+- 部署、登录、权限和持久化 session
 
 ## 项目结构
 
 ```text
 KitchenPilot/
 ├── backend/              # FastAPI、Agent、RAG、推荐、数据库层
-├── frontend/             # 前端占位目录
+├── frontend/             # 单聊天入口调试前端
 ├── docs/                 # 项目规划和架构文档
 ├── docker-compose.yml
 ├── Plan.md
@@ -95,8 +97,7 @@ uv run uvicorn kitchenpilot.main:app --reload
 
 - `GET /health`
 - `POST /api/chat`
-- `POST /api/recommend/ingredients`
-- `GET /api/recommend/daily/{user_id}`
+- `POST /api/recommend`
 - `GET /api/recipes/{recipe_id}`
 - `POST /api/history`
 
@@ -112,4 +113,6 @@ uv run pytest
 - [项目规划](docs/PROJECT_PLANNING.md)
 - [技术架构](docs/TECHNICAL_ARCHITECTURE.md)
 - [简历项目说明](docs/RESUME_PROJECT.md)
+- [演示指南](docs/DEMO_GUIDE.md)
+- [工程问题复盘](docs/ENGINEERING_NOTES.md)
 - [实现计划](Plan.md)

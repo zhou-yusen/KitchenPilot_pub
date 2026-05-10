@@ -4,7 +4,7 @@ from sqlalchemy.orm import Session, selectinload
 from kitchenpilot.db.models import RecipeORM
 from kitchenpilot.db.session import SessionLocal
 from kitchenpilot.schemas.recipe import Recipe
-from kitchenpilot.services.mock_data import RECIPES
+from kitchenpilot.seed.recipe_dataset import load_recipes
 
 
 class RecipeService:
@@ -15,23 +15,27 @@ class RecipeService:
         self._db = db
 
     def list_recipes(self) -> list[Recipe]:
-        """Return all recipes, preferring SQLite rows over bundled mock recipes."""
+        """Return all recipes, preferring SQLite rows over the seed dataset."""
         recipes = self._run_with_session(self._list_recipes_from_db)
-        return recipes or RECIPES
+        if recipes and self._is_valid_recipe_dataset(recipes):
+            return recipes
+        return self._seed_recipes()
 
     def get_recipe(self, recipe_id: int) -> Recipe | None:
-        """Return a single recipe by ID from SQLite, then fallback mock data."""
-        recipe = self._run_with_session(lambda session: self._get_recipe_from_db(session, recipe_id))
+        """Return a single recipe by ID from SQLite, then the seed dataset."""
+        recipe = self._run_with_session(
+            lambda session: self._get_recipe_from_db(session, recipe_id)
+        )
         if recipe is not None:
             return recipe
-        return next((recipe for recipe in RECIPES if recipe.id == recipe_id), None)
+        return next((recipe for recipe in self._seed_recipes() if recipe.id == recipe_id), None)
 
     def find_by_name(self, query: str) -> Recipe | None:
         """Find the first recipe whose name appears in a free-form query string."""
         recipe = self._run_with_session(lambda session: self._find_by_name_from_db(session, query))
         if recipe is not None:
             return recipe
-        return next((recipe for recipe in RECIPES if recipe.name in query), None)
+        return next((recipe for recipe in self._seed_recipes() if recipe.name in query), None)
 
     def find_by_ingredients(self, ingredients: list[str]) -> list[Recipe]:
         """Return recipes that share at least one ingredient with the provided ingredient list."""
@@ -56,6 +60,19 @@ class RecipeService:
                 return operation(session)
         except SQLAlchemyError:
             return None
+
+    def _seed_recipes(self) -> list[Recipe]:
+        """Load the seed recipe dataset as the non-database fallback."""
+        try:
+            return load_recipes()
+        except (OSError, ValueError):
+            return []
+
+    @staticmethod
+    def _is_valid_recipe_dataset(recipes: list[Recipe]) -> bool:
+        """Reject known-bad mojibake SQLite data and fall back to seed JSON."""
+        names = {recipe.name for recipe in recipes}
+        return bool(names & {"番茄炒蛋", "酸辣土豆丝", "可乐鸡翅", "咸蛋黄鸡翅"})
 
     def _list_recipes_from_db(self, session: Session) -> list[Recipe]:
         """Load every recipe from SQLite with ingredients and steps eagerly loaded."""
@@ -138,7 +155,8 @@ class RecipeService:
                     for step in sorted(row.steps, key=lambda step: step.step_order)
                 ],
                 "common_failures": [
-                    item.content for item in sorted(row.failures, key=lambda item: item.failure_order)
+                    item.content
+                    for item in sorted(row.failures, key=lambda item: item.failure_order)
                 ],
                 "substitutions": {
                     item.ingredient_name: item.substitute_text

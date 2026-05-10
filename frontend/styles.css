@@ -28,6 +28,7 @@ body {
 
 button,
 input,
+select,
 textarea {
   font: inherit;
 }
@@ -62,6 +63,7 @@ button.primary:hover {
 }
 
 input,
+select,
 textarea {
   width: 100%;
   border: 1px solid var(--line);
@@ -121,11 +123,21 @@ textarea {
   font-size: 13px;
 }
 
-.workspace {
+.workspace,
+.debug-layout {
   display: grid;
   grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
   gap: 18px;
   align-items: start;
+}
+
+.debug-layout {
+  grid-template-columns: minmax(0, 0.95fr) minmax(360px, 1.05fr);
+}
+
+.debug-stack {
+  display: grid;
+  gap: 18px;
 }
 
 .panel {
@@ -150,6 +162,109 @@ textarea {
 
 .small-input {
   width: 150px;
+}
+
+.persona-select {
+  display: grid;
+  gap: 6px;
+  width: 180px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.persona-select span {
+  font-weight: 650;
+}
+
+.session-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--panel-soft);
+  padding: 12px;
+  margin-bottom: 12px;
+}
+
+.session-id {
+  margin: 0;
+  color: var(--muted);
+  font-family: Consolas, "Cascadia Mono", monospace;
+  font-size: 12px;
+  overflow-wrap: anywhere;
+}
+
+.session-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.session-item {
+  display: inline-flex;
+  align-items: center;
+  max-width: 230px;
+  min-height: 38px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: #fff;
+  overflow: hidden;
+}
+
+.session-item.active {
+  border-color: var(--accent);
+  background: #e7f0ec;
+}
+
+.session-open {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 36px;
+  min-width: 0;
+  border: 0;
+  background: transparent;
+  padding: 8px 9px 8px 12px;
+}
+
+.session-open:hover {
+  border-color: transparent;
+}
+
+.session-open span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.session-open small {
+  color: var(--muted);
+  font-family: Consolas, "Cascadia Mono", monospace;
+}
+
+.session-delete {
+  display: inline-grid;
+  place-items: center;
+  width: 30px;
+  min-width: 30px;
+  min-height: 36px;
+  border: 0;
+  border-left: 1px solid var(--line);
+  border-radius: 0;
+  background: rgba(164, 63, 63, 0.08);
+  color: var(--danger);
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1;
+  padding: 0;
+}
+
+.session-delete:hover {
+  background: #f4dddd;
+  color: var(--danger);
 }
 
 .field {
@@ -191,7 +306,9 @@ textarea {
 
 .answer,
 .list,
-.trace {
+.trace,
+.messages,
+.raw-json {
   border: 1px solid var(--line);
   border-radius: 6px;
   background: var(--panel-soft);
@@ -202,6 +319,53 @@ textarea {
   min-height: 160px;
   white-space: pre-wrap;
   overflow-wrap: anywhere;
+}
+
+.messages {
+  display: grid;
+  align-content: start;
+  gap: 12px;
+  min-height: 360px;
+  max-height: 56vh;
+  overflow: auto;
+}
+
+.message {
+  display: grid;
+  gap: 6px;
+  max-width: 88%;
+}
+
+.message.user {
+  justify-self: end;
+}
+
+.message.agent {
+  justify-self: start;
+}
+
+.message-role {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.message.user .message-role {
+  text-align: right;
+}
+
+.message-body {
+  border-radius: 8px;
+  background: #fff;
+  border: 1px solid var(--line);
+  padding: 10px 12px;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.message.user .message-body {
+  background: #e7f0ec;
+  border-color: #c8ddd3;
 }
 
 .meta-row {
@@ -263,6 +427,14 @@ textarea {
   overflow-wrap: anywhere;
 }
 
+.raw-json {
+  max-height: 360px;
+  overflow: auto;
+  font-family: Consolas, "Cascadia Mono", monospace;
+  font-size: 12px;
+  white-space: pre-wrap;
+}
+
 .empty {
   color: var(--muted);
 }
@@ -277,7 +449,8 @@ textarea {
     flex-direction: column;
   }
 
-  .workspace {
+  .workspace,
+  .debug-layout {
     grid-template-columns: 1fr;
   }
 
@@ -292,5 +465,10 @@ textarea {
 
   .small-input {
     width: 100%;
+  }
+
+  .session-bar {
+    align-items: stretch;
+    flex-direction: column;
   }
 }

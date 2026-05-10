@@ -2,20 +2,20 @@
 
 ## 当前状态
 
-KitchenPilot 已经从后端骨架推进到 **后端 MVP + 轻量前端 demo 阶段**。项目不再只是纯 mock，真实 Qdrant seed/search 和 embedding 调用已完成初步验证，当前重点是快速形成可展示闭环。
+KitchenPilot 已经推进到 **简历项目 MVP 阶段**。当前闭环包含 FastAPI API、Router-based LangGraph workflow、SQLite/seed 菜谱数据、Qdrant RAG、本地 fallback、session memory、统一推荐接口、三类 persona 推荐和零构建前端调试台。
 
 已经完成：
 
 - FastAPI 后端工程和主要 API 已具备，包括 chat、recipe、recommendation、history 等基础接口。
-- LangGraph Agent 主流程已接入，包含输入解析、用户历史加载、意图路由、菜谱问答、食材推荐、每日推荐、质量检查、答案修复和最终回答。
-- SQLite 初始菜谱数据、JSON loader、SQLite seed 和 `RecipeService` 数据库读取已接入；数据库不可用时仍可 fallback 到 mock 数据。
+- LangGraph Agent 主流程已接入，包含输入解析、session memory、用户画像加载、意图路由、菜谱问答、统一推荐、质量检查、答案修复和最终回答。
+- SQLite 初始菜谱数据、JSON loader、SQLite seed 和 `RecipeService` 数据库读取已接入；数据库异常或坏数据时回落到 seed JSON。
 - LLM chat provider 与 embedding provider 已拆分，支持 Ollama 与 OpenAI-compatible API 的配置切换。
-- 意图识别已支持规则、embedding 相似度和低置信度 LLM fallback；unknown 意图会返回澄清问题。
+- 意图识别已支持规则、embedding 相似度和低置信度 LLM fallback；无法判断时返回 `fallback` 澄清问题。
 - 菜谱已按 `overview / ingredients / step / failure / substitution / safety` 六类生成语义 chunk。
 - Qdrant seed、chunk payload upsert、Qdrant search 和本地关键词 fallback 已有最小实现。
 - RAG 服务已具备基本流程：优先 Qdrant 检索，失败时降级本地检索；检索结果会按问题意图轻量 rerank；LLM 失败时返回基于 source 的模板化回答。
-- 推荐服务已有基础评分逻辑，考虑食材匹配、新手友好、难度、耗时和近期重复。
-- 轻量静态前端已实现，可调用聊天、食材推荐和每日推荐接口，并展示 RAG sources 与 Agent trace。
+- 推荐服务已有规则评分逻辑，考虑食材匹配、新手友好、难度、耗时、近期重复和 persona 权重。
+- 轻量静态前端已实现，以单聊天窗口作为主入口，并展示 session、intent、recommendation_type、active_recipe、rewritten_query、recommendations、RAG sources 与 Agent trace。
 - `demo_qdrant_rag.py`、`preview_recipe_chunks.py` 和相关单元/集成测试已覆盖当前关键路径。
 
 ## 当前风险与缺口
@@ -23,21 +23,20 @@ KitchenPilot 已经从后端骨架推进到 **后端 MVP + 轻量前端 demo 阶
 - 真实 Qdrant + embedding seed/search 已初步跑通，但还需要更多问题集验证稳定性。
 - 固定样例的 top-k chunk 类型已基本符合预期，但仍需要扩大样例覆盖。
 - RAG answer prompt 仍偏基础，source 引用、防幻觉和回答结构还需要增强。
-- 推荐服务仍是规则 MVP，个性化较浅，评分公式还需要文档化和补充测试。
-- README 与当前 `Plan.md` 状态不完全一致，README 仍偏向“mock 阶段”描述。
+- 推荐服务仍是规则 MVP，不是生产级个性化推荐系统。
+- 用户画像是三类预设 persona，尚未从真实长期行为学习。
 - 项目中仍有中文乱码/编码风险，需要后续统一排查和修复。
 
 ## 下一阶段目标
 
-下一阶段主线是 **收口可演示项目**。真实 Qdrant 检索已初步可用，轻量前端已可调用核心接口，后续优先补齐启动文档、演示流程和最小验收。
+下一阶段主线是 **巩固简历项目展示**。核心 MVP 已可演示，后续优先做文档、演示路径、代码整理和小范围质量增强。
 
 目标顺序：
 
-1. 用轻量前端完成聊天、推荐、sources、trace 的浏览器验收。
-2. 修正 README 和前端说明，确保新环境能按步骤启动。
-3. 保持后端 API schema 稳定，后续优化只扩展不破坏当前 demo。
-4. 保留 Qdrant、embedding 或 LLM 不可用时的本地 fallback。
-5. 将 RAG prompt、推荐个性化和正式前端工程化放入后续 backlog。
+1. 保持后端 API schema 稳定，后续优化只扩展不破坏当前 demo。
+2. 按 `docs/DEMO_GUIDE.md` 固定演示路径。
+3. 保留 Qdrant、embedding 或 LLM 不可用时的本地 fallback。
+4. 将 RAG prompt、真实长期用户画像和正式前端工程化放入后续 backlog。
 
 ## 里程碑
 
@@ -76,27 +75,30 @@ KitchenPilot 已经从后端骨架推进到 **后端 MVP + 轻量前端 demo 阶
 - `鸡翅为什么有腥味？` 命中失败原因或处理技巧。
 - `白灼虾怎么处理安全？` 优先命中 `safety` chunk。
 
-### 里程碑 3：轻量前端 demo（基础完成）
+### 里程碑 3：统一推荐 intent 与轻量前端调试台（基础完成）
 
 任务：
 
-- 使用原生 HTML/CSS/JS 实现零构建 demo 页面。
-- 调用 `POST /api/chat`、`POST /api/recommend/ingredients` 和 `GET /api/recommend/daily/{user_id}`。
-- 展示回答、意图、质量检查简要状态、RAG sources、Agent execution trace 和推荐结果。
+- 顶层 intent 统一为 `recipe_qa / recommendation / fallback`。
+- 推荐子类型通过 `recommendation_type` 区分 `ingredients / daily`，后续可扩展。
+- 使用原生 HTML/CSS/JS 实现零构建调试页面。
+- 前端只调用 `POST /api/chat` 作为主入口。
+- 展示回答、intent、recommendation_type、quality check、RAG sources、Agent execution trace、推荐结果和 raw JSON。
 - API 失败时显示可读错误。
 
 验收标准：
 
 - 后端运行时，前端聊天能显示 answer、sources 和 trace。
-- 输入 `鸡蛋, 土豆` 能显示推荐结果。
+- 输入 `我有鸡蛋和土豆，推荐一道菜` 能显示 recommendation / ingredients 和推荐结果。
+- 输入 `今天吃什么？` 能显示 recommendation / daily 和推荐结果。
 - 页面长中文能换行，桌面宽度下无明显重叠。
 
-### 里程碑 4：文档与演示收口
+### 里程碑 4：文档与演示收口（基础完成）
 
 任务：
 
-- 更新 README 和前端 README，使其反映当前真实能力，避免继续描述为纯 mock 阶段。
-- 补充演示流程：启动后端、打开前端、运行 pytest、可选 seed Qdrant。
+- 更新 README、backend README 和前端 README，使其反映当前 MVP 能力。
+- 补充 `docs/DEMO_GUIDE.md`：启动后端、打开前端、演示问题、预期结果、回归命令。
 - 整理项目说明，突出 FastAPI、LangGraph、SQLite、Qdrant、LLM、Embedding、RAG 和轻量前端展示的分工。
 
 验收标准：
@@ -122,13 +124,14 @@ KitchenPilot 已经从后端骨架推进到 **后端 MVP + 轻量前端 demo 阶
 
 ## 最近下一步
 
-当前最近下一步是完成轻量前端验收：
+当前最近下一步是固定 git 版本并做演示验收：
 
 1. 启动后端。
 2. 打开 `frontend/index.html` 或 `http://127.0.0.1:5173`。
 3. 用固定问题测试聊天、sources 和 trace。
-4. 输入 `鸡蛋, 土豆` 测试食材推荐。
-5. 运行 `uv run pytest` 完成后端回归。
+4. 输入 `我有鸡翅，推荐一道菜` 测试食材推荐。
+5. 切换新手/老手画像，输入 `推荐一道菜` 测试 persona 推荐差异。
+6. 运行 `uv run pytest` 完成后端回归。
 
 固定验收问题：
 

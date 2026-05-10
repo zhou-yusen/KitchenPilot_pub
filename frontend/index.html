@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>KitchenPilot Demo</title>
+    <title>KitchenPilot Debug Console</title>
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
@@ -11,7 +11,7 @@
       <header class="topbar">
         <div>
           <p class="eyebrow">KitchenPilot</p>
-          <h1>食谱 Agentic RAG 演示</h1>
+          <h1>KitchenPilot 调试聊天窗口</h1>
         </div>
         <label class="base-url">
           <span>Backend</span>
@@ -19,83 +19,125 @@
         </label>
       </header>
 
-      <main class="workspace">
-        <section class="panel chat-panel" aria-labelledby="chatTitle">
+      <main class="debug-layout">
+        <section class="panel chat-console" aria-labelledby="chatTitle">
           <div class="section-head">
             <div>
-              <p class="eyebrow">Chat</p>
-              <h2 id="chatTitle">菜谱问答</h2>
+              <p class="eyebrow">Unified Entry</p>
+              <h2 id="chatTitle">总聊天入口</h2>
             </div>
-            <input id="userId" class="small-input" value="demo_user" aria-label="User ID" />
+            <label class="persona-select">
+              <span>用户画像</span>
+              <select id="userId" aria-label="User profile">
+                <option value="novice_user">完全新手</option>
+                <option value="beginner_user" selected>入门用户</option>
+                <option value="expert_user">技艺高超的老手</option>
+              </select>
+            </label>
           </div>
+
+          <div class="session-bar" aria-label="对话管理">
+            <div>
+              <p class="eyebrow">Session</p>
+              <p id="activeSessionId" class="session-id">未创建</p>
+            </div>
+            <button id="newSession" type="button">新开对话</button>
+          </div>
+
+          <div id="sessionList" class="session-list" aria-label="Session 列表"></div>
 
           <div class="quick-prompts" aria-label="示例问题">
-            <button type="button" data-query="土豆丝怎么炒得脆？">土豆丝怎么炒得脆？</button>
-            <button type="button" data-query="没有蚝油怎么办？">没有蚝油怎么办？</button>
-            <button type="button" data-query="白灼虾怎么处理安全？">白灼虾怎么处理安全？</button>
+            <button type="button" data-query="咸蛋黄鸡翅怎么做？只告诉我步骤就好，不要太多的符号">追问测试 1</button>
+            <button type="button" data-query="料酒和生抽要下多少？还需要别的调料吗？">追问测试 2</button>
+            <button type="button" data-query="土豆丝怎么炒得脆？">菜谱问答</button>
+            <button type="button" data-query="我有鸡蛋和土豆，推荐一道菜">食材推荐</button>
+            <button type="button" data-query="今天吃什么？">每日推荐</button>
+            <button type="button" data-query="帮我想想">Fallback</button>
+          </div>
+
+          <div id="messages" class="messages empty">
+            <p>输入自然语言问题，KitchenPilot 会自动判断 intent、recommendation_type 和追问上下文。</p>
           </div>
 
           <label class="field">
-            <span>问题</span>
-            <textarea id="chatQuery" rows="4">土豆丝怎么炒得脆？</textarea>
+            <span>输入</span>
+            <textarea id="chatQuery" rows="3">我有鸡蛋和土豆，推荐一道菜</textarea>
           </label>
 
           <label class="field">
-            <span>已有食材（可选）</span>
-            <input id="chatIngredients" value="土豆, 醋, 辣椒" />
+            <span>显式食材（可选，通常留空，让 Router 从文本提取）</span>
+            <input id="chatIngredients" placeholder="例如：鸡蛋, 土豆" />
           </label>
 
           <div class="actions">
-            <button id="sendChat" type="button" class="primary">发送问题</button>
+            <button id="sendChat" type="button" class="primary">发送到 /api/chat</button>
             <span id="chatStatus" class="status" role="status"></span>
           </div>
-
-          <div id="answerBox" class="answer empty">等待提问。</div>
         </section>
 
-        <section class="panel recommend-panel" aria-labelledby="recommendTitle">
-          <div class="section-head">
-            <div>
-              <p class="eyebrow">Recommend</p>
-              <h2 id="recommendTitle">食材推荐</h2>
+        <aside class="debug-stack">
+          <section class="panel" aria-labelledby="routerTitle">
+            <div class="section-head">
+              <div>
+                <p class="eyebrow">Router</p>
+                <h2 id="routerTitle">路由结果</h2>
+              </div>
             </div>
-          </div>
+            <div id="routerInfo" class="list empty">等待请求。</div>
+          </section>
 
-          <label class="field">
-            <span>食材</span>
-            <input id="recommendIngredients" value="鸡蛋, 土豆" />
-          </label>
-
-          <div class="actions">
-            <button id="sendRecommend" type="button" class="primary">推荐菜谱</button>
-            <button id="sendDaily" type="button">每日推荐</button>
-            <span id="recommendStatus" class="status" role="status"></span>
-          </div>
-
-          <div id="recommendations" class="list empty">等待推荐。</div>
-        </section>
-
-        <section class="panel evidence-panel" aria-labelledby="sourceTitle">
-          <div class="section-head">
-            <div>
-              <p class="eyebrow">Evidence</p>
-              <h2 id="sourceTitle">RAG 来源</h2>
+          <section class="panel" aria-labelledby="resultTitle">
+            <div class="section-head">
+              <div>
+                <p class="eyebrow">Result</p>
+                <h2 id="resultTitle">推荐结果</h2>
+              </div>
             </div>
-          </div>
-          <div id="sources" class="list empty">聊天后显示检索来源。</div>
-        </section>
+            <div id="recommendations" class="list empty">recommendation intent 后显示。</div>
+          </section>
 
-        <section class="panel trace-panel" aria-labelledby="traceTitle">
-          <div class="section-head">
-            <div>
-              <p class="eyebrow">Agent</p>
-              <h2 id="traceTitle">执行轨迹</h2>
+          <section class="panel" aria-labelledby="traceTitle">
+            <div class="section-head">
+              <div>
+                <p class="eyebrow">Process</p>
+                <h2 id="traceTitle">执行过程</h2>
+              </div>
             </div>
-          </div>
-          <ol id="trace" class="trace empty">
-            <li>聊天后显示 Agent 节点。</li>
-          </ol>
-        </section>
+            <ol id="trace" class="trace empty">
+              <li>等待执行。</li>
+            </ol>
+          </section>
+
+          <section class="panel" aria-labelledby="sourceTitle">
+            <div class="section-head">
+              <div>
+                <p class="eyebrow">Evidence</p>
+                <h2 id="sourceTitle">RAG 来源</h2>
+              </div>
+            </div>
+            <div id="sources" class="list empty">recipe_qa intent 后显示。</div>
+          </section>
+
+          <section class="panel" aria-labelledby="qualityTitle">
+            <div class="section-head">
+              <div>
+                <p class="eyebrow">Quality</p>
+                <h2 id="qualityTitle">质量检查</h2>
+              </div>
+            </div>
+            <div id="quality" class="list empty">等待检查结果。</div>
+          </section>
+
+          <section class="panel" aria-labelledby="rawTitle">
+            <div class="section-head">
+              <div>
+                <p class="eyebrow">Raw</p>
+                <h2 id="rawTitle">原始 JSON</h2>
+              </div>
+            </div>
+            <pre id="rawJson" class="raw-json empty">{}</pre>
+          </section>
+        </aside>
       </main>
     </div>
 

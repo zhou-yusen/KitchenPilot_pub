@@ -1,6 +1,6 @@
 # KitchenPilot 前端
 
-这是一个零构建的轻量演示前端，用于快速展示 KitchenPilot 后端能力。
+这是一个零构建的轻量调试前端，用于通过单聊天入口测试 KitchenPilot 后端能力。
 
 ## 使用方式
 
@@ -8,7 +8,7 @@
 
 ```powershell
 cd backend
-uv run uvicorn kitchenpilot.main:app --reload
+uv run python script/start_backend.py
 ```
 
 然后打开：
@@ -51,10 +51,12 @@ http://127.0.0.1:5173
 
 ## 当前能力
 
-- 调用 `POST /api/chat` 展示菜谱问答。
-- 展示 RAG sources 和 Agent execution trace。
-- 调用 `POST /api/recommend/ingredients` 展示食材推荐。
-- 调用 `GET /api/recommend/daily/{user_id}` 展示每日推荐。
+- 调用 `POST /api/chat` 作为唯一主入口。
+- 使用 localStorage 保存 session 和 messages，支持新开对话、切换对话和删除对话。
+- 支持三类用户画像选择：完全新手、入门用户、技艺高超的老手。
+- 输入框支持 Enter 发送、Shift+Enter 换行，发送成功后清空。
+- 展示 `intent`、`recommendation_type`、`active_recipe`、`rewritten_query`、recommendations、RAG sources 和 KitchenPilot trace。
+- 展示 quality check 和 raw JSON，方便调试 Router/session memory 流程。
 - 支持修改 Backend Base URL，默认 `http://127.0.0.1:8000`。
 
 ## 边界

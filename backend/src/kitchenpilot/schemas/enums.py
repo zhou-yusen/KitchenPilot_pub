@@ -4,9 +4,14 @@ from enum import StrEnum
 class IntentType(StrEnum):
     """Supported high-level user intent values."""
     RECIPE_QA = "recipe_qa"
-    INGREDIENT_RECOMMENDATION = "ingredient_recommendation"
-    DAILY_RECOMMENDATION = "daily_recommendation"
-    UNKNOWN = "unknown"
+    RECOMMENDATION = "recommendation"
+    FALLBACK = "fallback"
+
+
+class RecommendationType(StrEnum):
+    """Supported recommendation subtypes."""
+    INGREDIENTS = "ingredients"
+    DAILY = "daily"
 
 
 class Difficulty(StrEnum):

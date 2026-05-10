@@ -1,4 +1,4 @@
-from kitchenpilot.schemas.enums import Difficulty
+from kitchenpilot.schemas.enums import Difficulty, RecommendationType
 from kitchenpilot.schemas.recipe import Recipe
 from kitchenpilot.schemas.recommendation import RecommendationResult
 from kitchenpilot.services.recipe_service import RecipeService
@@ -16,53 +16,103 @@ class RecommendationService:
         self.recipe_service = recipe_service or RecipeService()
         self.user_memory_service = user_memory_service or UserMemoryService()
 
-    def recommend_by_ingredients(
-        self, user_id: str, ingredients: list[str], limit: int = 3
+    def recommend(
+        self,
+        *,
+        user_id: str,
+        recommendation_type: RecommendationType,
+        ingredients: list[str] | None = None,
+        constraints: dict[str, object] | None = None,
+        limit: int = 3,
     ) -> list[RecommendationResult]:
-        """Score recipes against user-provided ingredients."""
-        normalized = [item.strip() for item in ingredients if item.strip()]
+        """Score recipes through the unified recommendation entrypoint."""
+        constraints = constraints or {}
+        normalized = [item.strip() for item in (ingredients or []) if item.strip()]
         profile = self.user_memory_service.get_user_profile(user_id)
+        if recommendation_type == RecommendationType.DAILY:
+            normalized = list(profile.get("liked_ingredients", []))
+        max_time = constraints.get("max_time")
+        if isinstance(max_time, (int, float)):
+            profile = {**profile, "max_time_minutes": int(max_time)}
         scored = [
-            self._score_recipe(recipe, normalized, profile)
+            self._score_recipe(recipe, normalized, profile, recommendation_type)
             for recipe in self.recipe_service.list_recipes()
         ]
+        if recommendation_type == RecommendationType.INGREDIENTS and normalized:
+            scored = [item for item in scored if item.matched_ingredients]
         scored = [item for item in scored if item.score > 0]
         return sorted(scored, key=lambda item: item.score, reverse=True)[:limit]
 
-    def daily_recommend(self, user_id: str, limit: int = 3) -> list[RecommendationResult]:
-        """Build daily recommendations from stored user preferences."""
-        profile = self.user_memory_service.get_user_profile(user_id)
-        liked = list(profile.get("liked_ingredients", []))
-        return self.recommend_by_ingredients(user_id=user_id, ingredients=liked, limit=limit)
-
     def _score_recipe(
-        self, recipe: Recipe, user_ingredients: list[str], profile: dict[str, object]
+        self,
+        recipe: Recipe,
+        user_ingredients: list[str],
+        profile: dict[str, object],
+        recommendation_type: RecommendationType,
     ) -> RecommendationResult:
         """Calculate one recommendation score and explanation."""
         required = [item.ingredient for item in recipe.ingredients if item.required]
-        matched = [item for item in required if item in user_ingredients]
-        missing = [item for item in required if item not in user_ingredients]
+        matched = [
+            item
+            for item in required
+            if any(self._ingredient_matches(item, user_item) for user_item in user_ingredients)
+        ]
+        missing = [
+            item
+            for item in required
+            if not any(self._ingredient_matches(item, user_item) for user_item in user_ingredients)
+        ]
 
         match_ratio = len(matched) / len(required) if required else 0.0
         score = match_ratio * 60
         reasons: list[str] = []
 
         if matched:
-            reasons.append(f"已有食材匹配：{'、'.join(matched)}")
+            if recommendation_type == RecommendationType.DAILY:
+                reasons.append(f"偏好匹配：{'、'.join(matched)}")
+            else:
+                reasons.append(f"已有食材匹配：{'、'.join(matched)}")
         if missing:
-            reasons.append(f"还缺少：{'、'.join(missing)}")
+            if recommendation_type == RecommendationType.DAILY:
+                reasons.append(f"需要准备：{'、'.join(missing)}")
+            else:
+                reasons.append(f"还缺少：{'、'.join(missing)}")
 
+        skill_level = str(profile.get("skill_level", "beginner"))
         if recipe.beginner_friendly:
-            score += 15
-            reasons.append("适合新手")
+            if skill_level == "expert":
+                score += 2
+                reasons.append("做法简单，可作为快手菜")
+            else:
+                score += 15
+                reasons.append("适合新手")
         else:
-            score -= 20
-            reasons.append("步骤偏复杂，新手需要谨慎")
+            if skill_level == "expert":
+                score += 12
+                reasons.append("有一定操作空间，适合老手")
+            elif skill_level == "novice":
+                score -= 28
+                reasons.append("步骤偏复杂，完全新手需要谨慎")
+            else:
+                score -= 20
+                reasons.append("步骤偏复杂，新手需要谨慎")
 
         if recipe.difficulty == Difficulty.EASY:
-            score += 10
+            score += 14 if skill_level == "novice" else 10
+            if skill_level == "novice":
+                reasons.append("难度低，适合从零开始")
+        elif recipe.difficulty == Difficulty.MEDIUM:
+            if skill_level == "expert":
+                score += 8
+                reasons.append("中等难度，适合练习火候和调味")
         elif recipe.difficulty == Difficulty.HARD:
-            score -= 15
+            if skill_level == "expert":
+                score += 18
+                reasons.append("难度较高，适合进阶操作")
+            elif skill_level == "novice":
+                score -= 28
+            else:
+                score -= 15
 
         max_time = int(profile.get("max_time_minutes", 30))
         if recipe.time_minutes <= max_time:
@@ -81,6 +131,11 @@ class RecommendationService:
         if "复杂肉菜" in disliked_styles and recipe.difficulty == Difficulty.HARD:
             score -= 20
 
+        preferred_difficulties = profile.get("preferred_difficulties", [])
+        if recipe.difficulty in preferred_difficulties:
+            score += 10
+            reasons.append(f"符合 {skill_level} 用户的难度偏好")
+
         return RecommendationResult(
             recipe_id=recipe.id,
             recipe_name=recipe.name,
@@ -91,4 +146,19 @@ class RecommendationService:
             difficulty=recipe.difficulty,
             time_minutes=recipe.time_minutes,
             beginner_friendly=recipe.beginner_friendly,
+        )
+
+    @staticmethod
+    def _ingredient_matches(recipe_ingredient: str, user_ingredient: str) -> bool:
+        """Match exact ingredients and common short forms like 鸡翅 -> 鸡翅中."""
+        recipe_value = recipe_ingredient.strip()
+        user_value = user_ingredient.strip()
+        return bool(
+            recipe_value
+            and user_value
+            and (
+                recipe_value == user_value
+                or recipe_value in user_value
+                or user_value in recipe_value
+            )
         )

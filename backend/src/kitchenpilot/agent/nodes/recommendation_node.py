@@ -1,59 +1,68 @@
 from kitchenpilot.agent.nodes.intent_router import _trace
 from kitchenpilot.agent.state import AgentState
 from kitchenpilot.recommender.service import RecommendationService
-
+from kitchenpilot.schemas.enums import RecommendationType
 
 recommendation_service = RecommendationService()
 
 
-def ingredient_recommendation_node(state: AgentState) -> AgentState:
-    """Generate recommendations from ingredients stored in state."""
-    recommendations = recommendation_service.recommend_by_ingredients(
+def recommendation_node(state: AgentState) -> AgentState:
+    """Generate recommendations from the unified recommendation state."""
+    recommendation_type = state.get("recommendation_type") or RecommendationType.INGREDIENTS
+    recommendations = recommendation_service.recommend(
         user_id=state.get("user_id", "demo_user"),
+        recommendation_type=recommendation_type,
         ingredients=state.get("user_ingredients", []),
     )
-    answer = _format_recommendation_answer("根据你已有的食材，推荐如下：", recommendations)
+    answer = _format_recommendation_answer(
+        _recommendation_prefix(recommendation_type),
+        recommendations,
+        recommendation_type,
+    )
     return {
         **state,
+        "recommendation_type": recommendation_type,
         "recommendations": recommendations,
         "draft_answer": answer,
-        "execution_trace": _trace(state, f"执行食材推荐，生成 {len(recommendations)} 个候选"),
+        "execution_trace": _trace(
+            state,
+            f"执行推荐：{recommendation_type}，生成 {len(recommendations)} 个候选",
+        ),
     }
 
 
-def daily_recommendation_node(state: AgentState) -> AgentState:
-    """Generate daily recommendations from the user profile."""
-    recommendations = recommendation_service.daily_recommend(state.get("user_id", "demo_user"))
-    answer = _format_recommendation_answer("结合你的历史偏好，今日推荐如下：", recommendations)
-    return {
-        **state,
-        "recommendations": recommendations,
-        "draft_answer": answer,
-        "execution_trace": _trace(state, f"执行每日推荐，生成 {len(recommendations)} 个候选"),
-    }
-
-
-def unknown_intent_node(state: AgentState) -> AgentState:
+def fallback_node(state: AgentState) -> AgentState:
     """Return a clarification question for an unclassified query."""
     answer = state.get("clarification_question", "")
     if not answer:
         answer = (
             "我暂时无法判断你的具体需求。\n"
-            "你是想让我：\n"
-            "1. 根据已有食材推荐菜？\n"
-            "2. 按你的偏好推荐今天吃什么？\n"
-            "3. 回答某道菜的具体做法？"
+            "你可以这样问：\n"
+            "1. 我有鸡蛋和土豆，推荐一道菜。\n"
+            "2. 今天吃什么？\n"
+            "3. 土豆丝怎么炒得脆？"
         )
     return {
         **state,
         "needs_clarification": True,
         "clarification_question": answer,
         "draft_answer": answer,
-        "execution_trace": _trace(state, "进入未知意图澄清节点"),
+        "execution_trace": _trace(state, "进入 fallback 澄清节点"),
     }
 
 
-def _format_recommendation_answer(prefix: str, recommendations) -> str:
+def _recommendation_prefix(recommendation_type: RecommendationType) -> str:
+    """Return the user-facing prefix for a recommendation subtype."""
+    if recommendation_type == RecommendationType.DAILY:
+        return "结合你的历史偏好，今日推荐如下："
+    return "根据你已有的食材，推荐如下："
+
+
+def _format_recommendation_answer(
+    prefix: str,
+    recommendations,
+    recommendation_type: RecommendationType,
+) -> str:
     """Format recommendation results into user-facing text."""
     if not recommendations:
         return "暂时没有找到足够匹配的菜谱。可以补充更多食材，或降低难度、耗时要求。"
@@ -62,15 +71,19 @@ def _format_recommendation_answer(prefix: str, recommendations) -> str:
     for index, item in enumerate(recommendations, start=1):
         reasons = "；".join(item.reasons)
         missing = "、".join(item.missing_ingredients) if item.missing_ingredients else "无"
+        missing_label = (
+            "需准备食材"
+            if recommendation_type == RecommendationType.DAILY
+            else "缺少食材"
+        )
         lines.append(
             f"{index}. {item.recipe_name}：难度 {item.difficulty}，约 {item.time_minutes} 分钟。"
-            f"缺少食材：{missing}。推荐理由：{reasons}。"
+            f"{missing_label}：{missing}。推荐理由：{reasons}。"
         )
     return "\n".join(lines)
 
 
 __all__ = [
-    "daily_recommendation_node",
-    "ingredient_recommendation_node",
-    "unknown_intent_node",
+    "fallback_node",
+    "recommendation_node",
 ]

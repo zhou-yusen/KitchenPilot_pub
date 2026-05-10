@@ -2,30 +2,23 @@ from fastapi import APIRouter, Depends
 
 from kitchenpilot.api.dependencies import get_recommendation_service
 from kitchenpilot.recommender.service import RecommendationService
-from kitchenpilot.schemas.api import IngredientRecommendationRequest, RecommendationResponse
+from kitchenpilot.schemas.api import RecommendationRequest, RecommendationResponse
 
 router = APIRouter(prefix="/recommend", tags=["recommendations"])
+RECOMMENDATION_SERVICE_DEPENDENCY = Depends(get_recommendation_service)
 
 
-@router.post("/ingredients", response_model=RecommendationResponse)
-def recommend_by_ingredients(
-    request: IngredientRecommendationRequest,
-    service: RecommendationService = Depends(get_recommendation_service),
+@router.post("", response_model=RecommendationResponse)
+def recommend(
+    request: RecommendationRequest,
+    service: RecommendationService = RECOMMENDATION_SERVICE_DEPENDENCY,
 ) -> RecommendationResponse:
-    """Score recipes against user-provided ingredients."""
+    """Generate recommendations through the unified recommendation API."""
     return RecommendationResponse(
-        recommendations=service.recommend_by_ingredients(
+        recommendations=service.recommend(
             user_id=request.user_id,
+            recommendation_type=request.recommendation_type,
             ingredients=request.ingredients,
+            constraints=request.constraints,
         )
     )
-
-
-@router.get("/daily/{user_id}", response_model=RecommendationResponse)
-def daily_recommend(
-    user_id: str,
-    service: RecommendationService = Depends(get_recommendation_service),
-) -> RecommendationResponse:
-    """Build daily recommendations from stored user preferences."""
-    return RecommendationResponse(recommendations=service.daily_recommend(user_id=user_id))
-

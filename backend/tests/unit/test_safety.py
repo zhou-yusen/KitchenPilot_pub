@@ -23,7 +23,7 @@ def test_dangerous_phrase_is_rejected() -> None:
     service = SafetyCheckService()
 
     result = service.check(
-        intent=IntentType.UNKNOWN,
+        intent=IntentType.FALLBACK,
         answer="生鸡肉直接吃也可以。",
         sources=[],
         recommendations=[],

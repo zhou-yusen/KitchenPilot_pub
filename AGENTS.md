@@ -10,7 +10,7 @@
 
 - Monorepo-style project with backend-first implementation.
 - `backend/` contains the Python FastAPI service.
-- `frontend/` is currently a placeholder only.
+- `frontend/` contains a zero-build debugging UI with one chat entrypoint.
 - `docs/` contains planning and architecture notes.
 
 ## Backend
@@ -28,7 +28,7 @@ uv run pytest
 
 ```powershell
 cd backend
-uv run uvicorn kitchenpilot.main:app --reload
+uv run python script/start_backend.py
 ```
 
 ## Agent Layout
@@ -61,9 +61,9 @@ agent/
 - Many Chinese strings are mojibake/garbled. Tests may still pass because test inputs contain the same garbled strings.
 - SQLite `RecipeService`, Qdrant seed/search, embedding provider, RAG fallback, and basic retrieval rerank are implemented.
 - Real Qdrant seed/search has been smoke-tested with the fixed RAG demo questions, but RAG answer quality still needs prompt and fallback improvements.
+- Recommendation uses a unified `recommendation` intent with `recommendation_type` for `ingredients` and `daily`.
 - Recommendation logic is still rule-based MVP and needs stronger personalization, scoring documentation, and broader tests.
-- README may lag behind `Plan.md` and should be updated before project handoff or demo.
-- Frontend is not implemented.
+- Frontend is a debugging UI, not a polished product UI.
 
 ## Development Notes
 
