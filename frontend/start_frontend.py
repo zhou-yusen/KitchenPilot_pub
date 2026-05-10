@@ -6,6 +6,13 @@ from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 
 
+class FrontendServer(ThreadingHTTPServer):
+    """HTTP server tuned for clean Ctrl+C shutdown on Windows terminals."""
+
+    allow_reuse_address = True
+    daemon_threads = True
+
+
 def main() -> None:
     """Run the zero-build KitchenPilot frontend with a visible local URL."""
     parser = argparse.ArgumentParser(description="Start the KitchenPilot frontend demo.")
@@ -15,7 +22,8 @@ def main() -> None:
 
     frontend_dir = Path(__file__).resolve().parent
     handler = partial(SimpleHTTPRequestHandler, directory=str(frontend_dir))
-    server = ThreadingHTTPServer((args.host, args.port), handler)
+    server = FrontendServer((args.host, args.port), handler)
+    server.timeout = 0.5
     url = f"http://{args.host}:{args.port}"
 
     print("KitchenPilot frontend running:", flush=True)
@@ -25,7 +33,8 @@ def main() -> None:
     print(flush=True)
 
     try:
-        server.serve_forever()
+        while True:
+            server.handle_request()
     except KeyboardInterrupt:
         print("\nStopping KitchenPilot frontend.", flush=True)
     finally:
