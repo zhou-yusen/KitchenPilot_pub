@@ -28,8 +28,10 @@ def test_daily_recommend_uses_user_preferences() -> None:
 
     assert results
     assert any("适合新手" in reason for reason in results[0].reasons)
-    assert any("偏好匹配" in reason for reason in results[0].reasons)
+    assert any("偏好食材" in reason for reason in results[0].reasons)
     assert not any("已有食材匹配" in reason for reason in results[0].reasons)
+    assert results[0].matched_ingredients == []
+    assert results[0].missing_ingredients
 
 
 def test_daily_recommend_respects_expert_profile() -> None:

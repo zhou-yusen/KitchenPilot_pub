@@ -293,7 +293,8 @@ function renderRecommendations(recommendations, recommendationType = "ingredient
       const matched = item.matched_ingredients?.join("、") || "无";
       const missing = item.missing_ingredients?.join("、") || "无";
       const reasons = item.reasons?.join("；") || "无";
-      const matchedLabel = recommendationType === "daily" ? "偏好" : "匹配";
+      const matchedLabel = recommendationType === "daily" ? "难度偏好" : "匹配";
+      const matchedText = recommendationType === "daily" ? item.difficulty : matched;
       const missingLabel = recommendationType === "daily" ? "需准备" : "缺少";
       return `
         <article class="item">
@@ -301,7 +302,7 @@ function renderRecommendations(recommendations, recommendationType = "ingredient
           <p>${tag(item.difficulty)} ${tag(`${item.time_minutes} 分钟`)} ${
             item.beginner_friendly ? tag("新手友好") : tag("需谨慎", true)
           }</p>
-          <p>${matchedLabel}：${escapeText(matched)}</p>
+          <p>${matchedLabel}：${escapeText(matchedText)}</p>
           <p>${missingLabel}：${escapeText(missing)}</p>
           <p>理由：${escapeText(reasons)}</p>
         </article>

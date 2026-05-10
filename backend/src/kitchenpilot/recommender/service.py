@@ -29,13 +29,21 @@ class RecommendationService:
         constraints = constraints or {}
         normalized = [item.strip() for item in (ingredients or []) if item.strip()]
         profile = self.user_memory_service.get_user_profile(user_id)
+        preference_ingredients: list[str] = []
         if recommendation_type == RecommendationType.DAILY:
-            normalized = list(profile.get("liked_ingredients", []))
+            preference_ingredients = list(profile.get("liked_ingredients", []))
+            normalized = []
         max_time = constraints.get("max_time")
         if isinstance(max_time, (int, float)):
             profile = {**profile, "max_time_minutes": int(max_time)}
         scored = [
-            self._score_recipe(recipe, normalized, profile, recommendation_type)
+            self._score_recipe(
+                recipe,
+                normalized,
+                profile,
+                recommendation_type,
+                preference_ingredients,
+            )
             for recipe in self.recipe_service.list_recipes()
         ]
         if recommendation_type == RecommendationType.INGREDIENTS and normalized:
@@ -49,8 +57,10 @@ class RecommendationService:
         user_ingredients: list[str],
         profile: dict[str, object],
         recommendation_type: RecommendationType,
+        preference_ingredients: list[str] | None = None,
     ) -> RecommendationResult:
         """Calculate one recommendation score and explanation."""
+        preference_ingredients = preference_ingredients or []
         required = [item.ingredient for item in recipe.ingredients if item.required]
         matched = [
             item
@@ -62,16 +72,26 @@ class RecommendationService:
             for item in required
             if not any(self._ingredient_matches(item, user_item) for user_item in user_ingredients)
         ]
+        preference_matched = [
+            item
+            for item in required
+            if any(
+                self._ingredient_matches(item, preferred)
+                for preferred in preference_ingredients
+            )
+        ]
 
-        match_ratio = len(matched) / len(required) if required else 0.0
+        scoring_matches = (
+            preference_matched if recommendation_type == RecommendationType.DAILY else matched
+        )
+        match_ratio = len(scoring_matches) / len(required) if required else 0.0
         score = match_ratio * 60
         reasons: list[str] = []
 
         if matched:
-            if recommendation_type == RecommendationType.DAILY:
-                reasons.append(f"偏好匹配：{'、'.join(matched)}")
-            else:
-                reasons.append(f"已有食材匹配：{'、'.join(matched)}")
+            reasons.append(f"已有食材匹配：{'、'.join(matched)}")
+        if preference_matched:
+            reasons.append(f"偏好食材：{'、'.join(preference_matched)}")
         if missing:
             if recommendation_type == RecommendationType.DAILY:
                 reasons.append(f"需要准备：{'、'.join(missing)}")
