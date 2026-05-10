@@ -41,7 +41,7 @@ KitchenPilot/
 ```powershell
 cd backend
 uv sync
-uv run uvicorn kitchenpilot.main:app --reload
+uv run python script/start_backend.py
 ```
 
 启动后打开接口文档：
@@ -81,6 +81,12 @@ http://127.0.0.1:8000/health
 
 ```powershell
 .\script\stop_backend.ps1
+```
+
+开发时如果需要自动重载，也可以使用：
+
+```powershell
+uv run uvicorn kitchenpilot.main:app --reload
 ```
 
 ## 主要接口
