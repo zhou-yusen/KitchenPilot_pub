@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import argparse
+import msvcrt
 from functools import partial
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
@@ -29,12 +30,15 @@ def main() -> None:
     print("KitchenPilot frontend running:", flush=True)
     print(f"  {url}", flush=True)
     print(flush=True)
-    print("Press Ctrl+C to stop.", flush=True)
+    print("Press Esc to stop. Ctrl+C also works.", flush=True)
     print(flush=True)
 
     try:
         while True:
             server.handle_request()
+            if msvcrt.kbhit() and msvcrt.getch() == b"\x1b":
+                print("\nStopping KitchenPilot frontend.", flush=True)
+                break
     except KeyboardInterrupt:
         print("\nStopping KitchenPilot frontend.", flush=True)
     finally:

@@ -83,6 +83,8 @@ http://127.0.0.1:8000/health
 .\script\stop_backend.ps1
 ```
 
+推荐使用 `script/start_backend.py` 启动后端；该脚本支持在终端按 `Esc` 停止服务。
+
 开发时如果需要自动重载，也可以使用：
 
 ```powershell

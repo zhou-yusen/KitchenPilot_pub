@@ -17,7 +17,7 @@ uv run uvicorn kitchenpilot.main:app --reload
 frontend/index.html
 ```
 
-也可以用 Python 前台静态服务打开。该方式会在终端显示访问链接，并且可以用 `Ctrl+C` 停止：
+也可以用 Python 前台静态服务打开。该方式会在终端显示访问链接，并且可以用 `Esc` 停止：
 
 ```powershell
 cd frontend

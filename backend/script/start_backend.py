@@ -1,7 +1,10 @@
 from __future__ import annotations
 
 import argparse
+import msvcrt
 import sys
+import threading
+import time
 from pathlib import Path
 
 import uvicorn
@@ -23,19 +26,32 @@ def main() -> None:
     print(f"  API docs: {base_url}/docs", flush=True)
     print(f"  Health:   {base_url}/health", flush=True)
     print()
-    print("Press Ctrl+C to stop.", flush=True)
+    print("Press Esc to stop. Ctrl+C also works.", flush=True)
     print()
 
+    config = uvicorn.Config(
+        "kitchenpilot.main:app",
+        host=args.host,
+        port=args.port,
+        reload=False,
+        log_level="info",
+    )
+    server = uvicorn.Server(config)
+    thread = threading.Thread(target=server.run, daemon=True)
+
     try:
-        uvicorn.run(
-            "kitchenpilot.main:app",
-            host=args.host,
-            port=args.port,
-            reload=False,
-            log_level="info",
-        )
+        thread.start()
+        while thread.is_alive():
+            if msvcrt.kbhit() and msvcrt.getch() == b"\x1b":
+                print("\nStopping KitchenPilot backend.", flush=True)
+                server.should_exit = True
+                break
+            time.sleep(0.1)
     except KeyboardInterrupt:
         print("\nStopping KitchenPilot backend.", flush=True)
+        server.should_exit = True
+    finally:
+        thread.join(timeout=5)
 
 
 if __name__ == "__main__":
