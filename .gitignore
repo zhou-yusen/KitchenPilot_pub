@@ -51,3 +51,4 @@ Thumbs.db
 backend/script/mytest.py
 DEVELOPMENT_LOG.md
 backend/script/output/
+backend/evals/results/
