@@ -1,30 +1,29 @@
 # KitchenPilot
 
-KitchenPilot 是一个面向厨房新手的个性化菜谱 Agentic RAG 助手。项目采用 FastAPI + LangGraph + SQLite + Qdrant 的后端架构，并提供零构建前端调试台，用于验证自然语言路由、菜谱问答、RAG 来源追踪、个性化推荐和多轮 session memory。
+KitchenPilot 是一个面向厨房新手的个性化菜谱 Agentic RAG 助手。项目采用 FastAPI + LangGraph + SQLite + Qdrant 构建后端能力，支持自然语言意图路由、菜谱问答、RAG 来源追踪、食材推荐、每日推荐和多轮 session memory。
 
-## 当前状态
+## 核心能力
 
-项目目前已达到 **简历项目 MVP** 阶段。
-
-已经具备：
-
-- FastAPI 后端接口：chat、recommend、recipes、history、health
-- Router-based LangGraph workflow：`recipe_qa / recommendation / fallback`
+- FastAPI 后端接口：chat、recommendations、recipes、history、health
+- Router-based LangGraph workflow：支持 `recipe_qa / recommendation / fallback`
 - SQLite/seed 菜谱数据读取，数据库异常时回落到 seed JSON
 - Qdrant RAG seed/search，本地关键词检索 fallback，按问题类型轻量 rerank
-- Session memory：支持 `session_id`、`active_recipe`、`rewritten_query` 和追问消解
+- Session memory：支持 `session_id`、`active_recipe`、`rewritten_query` 和多轮追问消解
 - 统一推荐接口：`recommendation_type = ingredients / daily`
-- 三类 persona 推荐：完全新手、入门用户、技艺高超的老手
+- 三类 persona 推荐：完全新手、入门用户、熟练用户
 - 质量检查、安全提醒和答案修复节点
-- 零构建前端调试台：单聊天入口、session 管理、sources/trace/raw JSON 可视化
-- 后端单元测试和集成测试
+- 零构建前端调试台：单聊天入口、session 管理、sources、trace、raw JSON 可视化
+- 后端单元测试、集成测试和 RAG 评估数据集
 
-尚未完成：
+## 技术栈
 
-- RAG 回答质量深度优化
-- 从真实长期行为学习用户画像
-- 正式前端工程化
-- 部署、登录、权限和持久化 session
+- Python / FastAPI
+- LangGraph
+- SQLite / SQLAlchemy
+- Qdrant
+- Pydantic
+- Ollama 或 OpenAI-compatible LLM / Embedding provider
+- 原生 HTML/CSS/JavaScript 调试前端
 
 ## 项目结构
 
@@ -32,9 +31,8 @@ KitchenPilot 是一个面向厨房新手的个性化菜谱 Agentic RAG 助手。
 KitchenPilot/
 ├── backend/              # FastAPI、Agent、RAG、推荐、数据库层
 ├── frontend/             # 单聊天入口调试前端
-├── docs/                 # 项目规划和架构文档
+├── docs/                 # 技术文档
 ├── docker-compose.yml
-├── Plan.md
 └── README.md
 ```
 
@@ -110,9 +108,6 @@ uv run pytest
 
 ## 文档
 
-- [项目规划](docs/PROJECT_PLANNING.md)
 - [技术架构](docs/TECHNICAL_ARCHITECTURE.md)
-- [简历项目说明](docs/RESUME_PROJECT.md)
-- [演示指南](docs/DEMO_GUIDE.md)
-- [工程问题复盘](docs/ENGINEERING_NOTES.md)
-- [实现计划](Plan.md)
+- [RAG 技术细节](docs/RAG_TECHNICAL_DETAILS.md)
+- [意图识别技术细节](docs/INTENT_ROUTER_TECHNICAL_DETAILS.md)
