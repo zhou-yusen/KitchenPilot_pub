@@ -1,150 +1,3866 @@
-{"id": "rag_001_01", "query": "新手做番茄炒蛋有什么关键技巧？", "category": "beginner_tip", "recipe_id": 1, "expected_recipes": ["番茄炒蛋"], "expected_chunk_types": ["beginner_tip"], "must_include": ["番茄选成熟偏", "容易炒出汁。", "匀即可，不需", "很多泡。鸡蛋"], "risk_keywords": ["热油"], "source_urls": ["https://lanfanapp.com/recipe/2039/", "https://m.xiachufang.com/recipe/107620836/"], "evidence_text": "番茄选成熟偏软的更容易炒出汁。蛋液打匀即可，不需要打出很多泡。鸡蛋不要炒到完全干硬，后面还会回锅。"}
-{"id": "rag_001_02", "query": "番茄炒蛋为什么会鸡蛋变老？", "category": "failure_reason", "recipe_id": 1, "expected_recipes": ["番茄炒蛋"], "expected_chunk_types": ["failure_reason"], "must_include": ["鸡蛋变老通常", "常是第一次炒", "炒蛋时间过长", "长，或回锅后"], "risk_keywords": ["热油"], "source_urls": ["https://lanfanapp.com/recipe/2039/", "https://m.xiachufang.com/recipe/107620836/"], "evidence_text": "鸡蛋变老通常是第一次炒蛋时间过长，或回锅后继续久炒。"}
-{"id": "rag_001_03", "query": "做番茄炒蛋没有糖怎么办？", "category": "substitution", "recipe_id": 1, "expected_recipes": ["番茄炒蛋"], "expected_chunk_types": ["substitution"], "must_include": ["不想放糖时，", "，可以选更成", "成熟的番茄，", "，或加少量番"], "risk_keywords": ["热油"], "source_urls": ["https://lanfanapp.com/recipe/2039/", "https://m.xiachufang.com/recipe/107620836/"], "evidence_text": "不想放糖时，可以选更成熟的番茄，或加少量番茄酱提升风味。"}
-{"id": "rag_002_01", "query": "新手做可乐鸡翅有什么关键技巧？", "category": "beginner_tip", "recipe_id": 2, "expected_recipes": ["可乐鸡翅"], "expected_chunk_types": ["beginner_tip"], "must_include": ["划刀能帮助入", "要切太深。焯", "低腥味，也让", "易判断熟度。"], "risk_keywords": [], "source_urls": ["https://lanfanapp.com/recipe/281", "https://www.xiachufang.com/recipe/1000229/"], "evidence_text": "划刀能帮助入味，但不要切太深。焯水可以降低腥味，也让新手更容易判断熟度。表面越干，后面煎的时候越不容易溅油。"}
-{"id": "rag_002_02", "query": "可乐鸡翅为什么会糊锅？", "category": "failure_reason", "recipe_id": 2, "expected_recipes": ["可乐鸡翅"], "expected_chunk_types": ["failure_reason"], "must_include": ["可乐鸡翅糊锅", "发生在收汁后", "，因为可乐含", "，汤汁浓稠后"], "risk_keywords": [], "source_urls": ["https://lanfanapp.com/recipe/281", "https://www.xiachufang.com/recipe/1000229/"], "evidence_text": "可乐鸡翅糊锅多发生在收汁后期，因为可乐含糖，汤汁浓稠后需要持续翻动并及时关火。"}
-{"id": "rag_002_03", "query": "做可乐鸡翅没有生抽怎么办？", "category": "substitution", "recipe_id": 2, "expected_recipes": ["可乐鸡翅"], "expected_chunk_types": ["substitution"], "must_include": ["没有生抽时可", "抽时可用普通", "用普通酱油替", "酱油替代，用"], "risk_keywords": [], "source_urls": ["https://lanfanapp.com/recipe/281", "https://www.xiachufang.com/recipe/1000229/"], "evidence_text": "没有生抽时可用普通酱油替代，用量减半。"}
-{"id": "rag_003_01", "query": "新手做蛋炒饭有什么关键技巧？", "category": "beginner_tip", "recipe_id": 3, "expected_recipes": ["蛋炒饭"], "expected_chunk_types": ["beginner_tip"], "must_include": ["冷藏过的米饭", "炒散。配菜尽", "，熟得快也更", "匀。想要蛋香"], "risk_keywords": ["热油"], "source_urls": ["https://www.xiachufang.com/recipe/100122781/", "https://www.xiachufang.com/recipe/104499671/"], "evidence_text": "冷藏过的米饭更容易炒散。配菜尽量切小，熟得快也更容易拌匀。想要蛋香明显，可以先炒蛋再炒饭。"}
-{"id": "rag_003_02", "query": "蛋炒饭为什么会发粘？", "category": "failure_reason", "recipe_id": 3, "expected_recipes": ["蛋炒饭"], "expected_chunk_types": ["failure_reason"], "must_include": ["蛋炒饭发粘通", "通常是米饭水", "水分过高，或", "或酱油等液体"], "risk_keywords": ["热油"], "source_urls": ["https://www.xiachufang.com/recipe/100122781/", "https://www.xiachufang.com/recipe/104499671/"], "evidence_text": "蛋炒饭发粘通常是米饭水分过高，或酱油等液体调料加入过多。"}
-{"id": "rag_003_03", "query": "做蛋炒饭有什么安全注意事项？", "category": "safety_note", "recipe_id": 3, "expected_recipes": ["蛋炒饭"], "expected_chunk_types": ["safety_note"], "must_include": ["剩米饭不应长", "应长时间室温", "室温放置，炒", "，炒饭时需要"], "risk_keywords": ["热油"], "source_urls": ["https://www.xiachufang.com/recipe/100122781/", "https://www.xiachufang.com/recipe/104499671/"], "evidence_text": "剩米饭不应长时间室温放置，炒饭时需要充分加热。"}
-{"id": "rag_004_01", "query": "新手做热汤面有什么关键技巧？", "category": "beginner_tip", "recipe_id": 4, "expected_recipes": ["热汤面"], "expected_chunk_types": ["beginner_tip"], "must_include": ["青菜提前洗好", "就不会手忙脚", "先少放盐，面", "再调整。面条"], "risk_keywords": [], "source_urls": ["https://www.xiachufang.com/recipe/104405703/", "https://www.xiachufang.com/recipe/106038234/"], "evidence_text": "青菜提前洗好，煮面时就不会手忙脚乱。汤底先少放盐，面汤冲开后再调整。面条下锅后用筷子拨散，避免粘连。"}
-{"id": "rag_004_02", "query": "热汤面为什么会变坨？", "category": "failure_reason", "recipe_id": 4, "expected_recipes": ["热汤面"], "expected_chunk_types": ["failure_reason"], "must_include": ["热汤面变坨通", "通常是面煮太", "太久或煮好后", "后放置太久，"], "risk_keywords": [], "source_urls": ["https://www.xiachufang.com/recipe/104405703/", "https://www.xiachufang.com/recipe/106038234/"], "evidence_text": "热汤面变坨通常是面煮太久或煮好后放置太久，应现煮现吃。"}
-{"id": "rag_004_03", "query": "做热汤面没有青菜怎么办？", "category": "substitution", "recipe_id": 4, "expected_recipes": ["热汤面"], "expected_chunk_types": ["substitution"], "must_include": ["没有青菜时，", "，可以用葱花", "花、紫菜、番", "番茄片或煎蛋"], "risk_keywords": [], "source_urls": ["https://www.xiachufang.com/recipe/104405703/", "https://www.xiachufang.com/recipe/106038234/"], "evidence_text": "没有青菜时，可以用葱花、紫菜、番茄片或煎蛋补充风味。"}
-{"id": "rag_005_01", "query": "新手做酸辣土豆丝有什么关键技巧？", "category": "beginner_tip", "recipe_id": 5, "expected_recipes": ["酸辣土豆丝"], "expected_chunk_types": ["beginner_tip"], "must_include": ["粗细均匀比切", "很细更重要。", "掉表面淀粉是", "持爽脆的关键"], "risk_keywords": [], "source_urls": ["https://www.xiachufang.com/recipe/37746/", "https://www.xiachufang.com/search/?keyword=酸辣土豆丝"], "evidence_text": "粗细均匀比切得很细更重要。冲掉表面淀粉是保持爽脆的关键。不吃辣可以去掉干辣椒。"}
-{"id": "rag_005_02", "query": "酸辣土豆丝为什么会发粘？", "category": "failure_reason", "recipe_id": 5, "expected_recipes": ["酸辣土豆丝"], "expected_chunk_types": ["failure_reason"], "must_include": ["酸辣土豆丝发", "粘通常是土豆", "丝没有充分冲", "洗淀粉，或火"], "risk_keywords": [], "source_urls": ["https://www.xiachufang.com/recipe/37746/", "https://www.xiachufang.com/search/?keyword=酸辣土豆丝"], "evidence_text": "酸辣土豆丝发粘通常是土豆丝没有充分冲洗淀粉，或火太小、炒制时间太久。"}
-{"id": "rag_005_03", "query": "做酸辣土豆丝没有白醋怎么办？", "category": "substitution", "recipe_id": 5, "expected_recipes": ["酸辣土豆丝"], "expected_chunk_types": ["substitution"], "must_include": ["没有白醋时可", "可以用米醋或", "或陈醋，颜色", "色和香气会略"], "risk_keywords": [], "source_urls": ["https://www.xiachufang.com/recipe/37746/", "https://www.xiachufang.com/search/?keyword=酸辣土豆丝"], "evidence_text": "没有白醋时可以用米醋或陈醋，颜色和香气会略有不同。"}
-{"id": "rag_006_01", "query": "新手做红烧鱼块有什么关键技巧？", "category": "beginner_tip", "recipe_id": 6, "expected_recipes": ["红烧鱼块"], "expected_chunk_types": ["beginner_tip"], "must_include": ["鱼块大小尽量", "，熟成更均匀", "制十几分钟可", "助去腥。擦干"], "risk_keywords": ["鱼刺"], "source_urls": ["https://www.xiachufang.com/recipe/104102080/", "https://www.xiachufang.com/recipe/106492378/"], "evidence_text": "鱼块大小尽量接近，熟成更均匀。腌制十几分钟可以帮助去腥。擦干水分能减少粘锅和溅油。"}
-{"id": "rag_006_02", "query": "红烧鱼块为什么会煎碎？", "category": "failure_reason", "recipe_id": 6, "expected_recipes": ["红烧鱼块"], "expected_chunk_types": ["failure_reason"], "must_include": ["红烧鱼块煎碎", "通常是鱼块表", "面太湿、锅不", "够热，或下锅"], "risk_keywords": ["鱼刺"], "source_urls": ["https://www.xiachufang.com/recipe/104102080/", "https://www.xiachufang.com/recipe/106492378/"], "evidence_text": "红烧鱼块煎碎通常是鱼块表面太湿、锅不够热，或下锅后太早翻面。"}
-{"id": "rag_006_03", "query": "做红烧鱼块没有料酒怎么办？", "category": "substitution", "recipe_id": 6, "expected_recipes": ["红烧鱼块"], "expected_chunk_types": ["substitution"], "must_include": ["没有料酒时可", "酒时可用少量", "用少量白酒或", "白酒或黄酒替"], "risk_keywords": ["鱼刺"], "source_urls": ["https://www.xiachufang.com/recipe/104102080/", "https://www.xiachufang.com/recipe/106492378/"], "evidence_text": "没有料酒时可用少量白酒或黄酒替代。"}
-{"id": "rag_007_01", "query": "新手做咸蛋黄鸡翅有什么关键技巧？", "category": "beginner_tip", "recipe_id": 7, "expected_recipes": ["咸蛋黄鸡翅"], "expected_chunk_types": ["beginner_tip"], "must_include": ["划刀能帮助腌", "进入鸡肉。腌", "半小时以上更", "味。压得越碎"], "risk_keywords": [], "source_urls": ["https://lanfanapp.com/recipe/733", "https://www.daydaycook.com/zh-Hans/recipe/salted-egg-yolk-chicken-wing"], "evidence_text": "划刀能帮助腌料进入鸡肉。腌制半小时以上更入味。压得越碎，后面越容易炒出沙。"}
-{"id": "rag_007_02", "query": "咸蛋黄鸡翅为什么会过咸？", "category": "failure_reason", "recipe_id": 7, "expected_recipes": ["咸蛋黄鸡翅"], "expected_chunk_types": ["failure_reason"], "must_include": ["咸蛋黄鸡翅过", "过咸通常是咸", "咸蛋黄本身盐", "盐分高，又额"], "risk_keywords": [], "source_urls": ["https://lanfanapp.com/recipe/733", "https://www.daydaycook.com/zh-Hans/recipe/salted-egg-yolk-chicken-wing"], "evidence_text": "咸蛋黄鸡翅过咸通常是咸蛋黄本身盐分高，又额外加了盐或蚝油。"}
-{"id": "rag_007_03", "query": "做咸蛋黄鸡翅没有料酒怎么办？", "category": "substitution", "recipe_id": 7, "expected_recipes": ["咸蛋黄鸡翅"], "expected_chunk_types": ["substitution"], "must_include": ["没有料酒时可", "酒时可用少量", "用少量白酒或", "白酒或黄酒替"], "risk_keywords": [], "source_urls": ["https://lanfanapp.com/recipe/733", "https://www.daydaycook.com/zh-Hans/recipe/salted-egg-yolk-chicken-wing"], "evidence_text": "没有料酒时可用少量白酒或黄酒替代。"}
-{"id": "rag_008_01", "query": "新手做虎皮尖椒酿肉有什么关键技巧？", "category": "beginner_tip", "recipe_id": 8, "expected_recipes": ["虎皮尖椒酿肉"], "expected_chunk_types": ["beginner_tip"], "must_include": ["尖椒不要切开", "后面更容易装", "。籽取干净后", "度会降低一些"], "risk_keywords": [], "source_urls": ["https://www.xiachufang.com/recipe/104475437/", "https://www.xiangha.com/caipu/83125897.html"], "evidence_text": "尖椒不要切开，后面更容易装肉。籽取干净后辣度会降低一些。少量加水能让肉馅更嫩。"}
-{"id": "rag_008_02", "query": "虎皮尖椒酿肉为什么会肉馅容易散？", "category": "failure_reason", "recipe_id": 8, "expected_recipes": ["虎皮尖椒酿肉"], "expected_chunk_types": ["failure_reason"], "must_include": ["肉馅容易散通", "通常是没有搅", "搅拌上劲，或", "或填入尖椒时"], "risk_keywords": [], "source_urls": ["https://www.xiachufang.com/recipe/104475437/", "https://www.xiangha.com/caipu/83125897.html"], "evidence_text": "肉馅容易散通常是没有搅拌上劲，或填入尖椒时压得太松。"}
-{"id": "rag_008_03", "query": "做虎皮尖椒酿肉没有生抽怎么办？", "category": "substitution", "recipe_id": 8, "expected_recipes": ["虎皮尖椒酿肉"], "expected_chunk_types": ["substitution"], "must_include": ["没有生抽时可", "抽时可用普通", "用普通酱油替", "酱油替代，用"], "risk_keywords": [], "source_urls": ["https://www.xiachufang.com/recipe/104475437/", "https://www.xiangha.com/caipu/83125897.html"], "evidence_text": "没有生抽时可用普通酱油替代，用量减半。"}
-{"id": "rag_009_01", "query": "新手做蚝油生菜有什么关键技巧？", "category": "beginner_tip", "recipe_id": 9, "expected_recipes": ["蚝油生菜"], "expected_chunk_types": ["beginner_tip"], "must_include": ["生菜叶片间容", "，要逐片冲洗", "调汁能避免蒜", "后再手忙脚乱"], "risk_keywords": [], "source_urls": ["https://www.xiachufang.com/recipe/100370658/", "https://www.xiachufang.com/recipe/107168319/"], "evidence_text": "生菜叶片间容易藏泥，要逐片冲洗。提前调汁能避免蒜末炒好后再手忙脚乱。盐和油能让焯出的生菜颜色更好。"}
-{"id": "rag_009_02", "query": "蚝油生菜为什么会生菜发黄？", "category": "failure_reason", "recipe_id": 9, "expected_recipes": ["蚝油生菜"], "expected_chunk_types": ["failure_reason"], "must_include": ["生菜发黄通常", "常是焯水过久", "久，或焯好后", "后长时间闷在"], "risk_keywords": [], "source_urls": ["https://www.xiachufang.com/recipe/100370658/", "https://www.xiachufang.com/recipe/107168319/"], "evidence_text": "生菜发黄通常是焯水过久，或焯好后长时间闷在热锅里。"}
-{"id": "rag_009_03", "query": "做蚝油生菜没有蚝油怎么办？", "category": "substitution", "recipe_id": 9, "expected_recipes": ["蚝油生菜"], "expected_chunk_types": ["substitution"], "must_include": ["没有蚝油时，", "时，可用生抽", "生抽、少量糖", "量糖和蒜末做"], "risk_keywords": [], "source_urls": ["https://www.xiachufang.com/recipe/100370658/", "https://www.xiachufang.com/recipe/107168319/"], "evidence_text": "没有蚝油时，可用生抽、少量糖和蒜末做简化酱汁。"}
-{"id": "rag_010_01", "query": "新手做板栗鸡翅煲有什么关键技巧？", "category": "beginner_tip", "recipe_id": 10, "expected_recipes": ["板栗鸡翅煲"], "expected_chunk_types": ["beginner_tip"], "must_include": ["鸡翅剪小段会", "易入味。熟板", "更省时间，生", "要焖得更久。"], "risk_keywords": [], "source_urls": ["https://m.xiachufang.com/recipe/103419383/", "https://www.xiachufang.com/recipe/106939130/"], "evidence_text": "鸡翅剪小段会更容易入味。熟板栗仁更省时间，生板栗要焖得更久。焯水更适合新手去腥。"}
-{"id": "rag_010_02", "query": "板栗鸡翅煲为什么会板栗不软？", "category": "failure_reason", "recipe_id": 10, "expected_recipes": ["板栗鸡翅煲"], "expected_chunk_types": ["failure_reason"], "must_include": ["板栗不软通常", "常是生板栗焖", "焖煮时间不够", "够，或水量太"], "risk_keywords": [], "source_urls": ["https://m.xiachufang.com/recipe/103419383/", "https://www.xiachufang.com/recipe/106939130/"], "evidence_text": "板栗不软通常是生板栗焖煮时间不够，或水量太少导致提前收干。"}
-{"id": "rag_010_03", "query": "做板栗鸡翅煲没有生抽怎么办？", "category": "substitution", "recipe_id": 10, "expected_recipes": ["板栗鸡翅煲"], "expected_chunk_types": ["substitution"], "must_include": ["没有生抽时可", "抽时可用普通", "用普通酱油替", "酱油替代，用"], "risk_keywords": [], "source_urls": ["https://m.xiachufang.com/recipe/103419383/", "https://www.xiachufang.com/recipe/106939130/"], "evidence_text": "没有生抽时可用普通酱油替代，用量减半。"}
-{"id": "rag_011_01", "query": "新手做清蒸鱼有什么关键技巧？", "category": "beginner_tip", "recipe_id": 11, "expected_recipes": ["清蒸鱼"], "expected_chunk_types": ["beginner_tip"], "must_include": ["鱼腹黑膜和血", "理干净，腥味", "划刀能让厚处", "熟。水开后上"], "risk_keywords": ["鱼刺"], "source_urls": ["https://www.xiachufang.com/recipe/100597425/", "https://www.xiachufang.com/recipe/104350421/"], "evidence_text": "鱼腹黑膜和血水要清理干净，腥味会少。划刀能让厚处更容易熟。水开后上锅能缩短蒸制时间，鱼肉更嫩。"}
-{"id": "rag_011_02", "query": "清蒸鱼为什么会腥味重？", "category": "failure_reason", "recipe_id": 11, "expected_recipes": ["清蒸鱼"], "expected_chunk_types": ["failure_reason"], "must_include": ["清蒸鱼腥味重", "见原因是鱼腹", "膜、血水未处", "干净，或蒸出"], "risk_keywords": ["鱼刺"], "source_urls": ["https://www.xiachufang.com/recipe/100597425/", "https://www.xiachufang.com/recipe/104350421/"], "evidence_text": "清蒸鱼腥味重常见原因是鱼腹黑膜、血水未处理干净，或蒸出的汁水没有倒掉。"}
-{"id": "rag_011_03", "query": "做清蒸鱼没有料酒怎么办？", "category": "substitution", "recipe_id": 11, "expected_recipes": ["清蒸鱼"], "expected_chunk_types": ["substitution"], "must_include": ["没有料酒时可", "酒时可用少量", "用少量白酒或", "白酒或黄酒替"], "risk_keywords": ["鱼刺"], "source_urls": ["https://www.xiachufang.com/recipe/100597425/", "https://www.xiachufang.com/recipe/104350421/"], "evidence_text": "没有料酒时可用少量白酒或黄酒替代。"}
-{"id": "rag_012_01", "query": "新手做白灼虾有什么关键技巧？", "category": "beginner_tip", "recipe_id": 12, "expected_recipes": ["白灼虾"], "expected_chunk_types": ["beginner_tip"], "must_include": ["虾越新鲜，调", "越简单越好吃", "介意口感时建", "去虾线。葱姜"], "risk_keywords": [], "source_urls": ["https://www.xiachufang.com/recipe/106879409/", "https://www.xiachufang.com/recipe/100547457/"], "evidence_text": "虾越新鲜，调味越简单越好吃。介意口感时建议去虾线。葱姜料酒能帮助去腥。"}
-{"id": "rag_012_02", "query": "白灼虾为什么会腥味重可能是虾不够新鲜？", "category": "failure_reason", "recipe_id": 12, "expected_recipes": ["白灼虾"], "expected_chunk_types": ["failure_reason"], "must_include": ["白灼虾腥味重", "重可能是虾不", "不够新鲜，或", "或没有使用葱"], "risk_keywords": [], "source_urls": ["https://www.xiachufang.com/recipe/106879409/", "https://www.xiachufang.com/recipe/100547457/"], "evidence_text": "白灼虾腥味重可能是虾不够新鲜，或没有使用葱姜料酒去腥。"}
-{"id": "rag_012_03", "query": "做白灼虾没有料酒怎么办？", "category": "substitution", "recipe_id": 12, "expected_recipes": ["白灼虾"], "expected_chunk_types": ["substitution"], "must_include": ["没有料酒时可", "酒时可用少量", "用少量白酒或", "白酒或黄酒替"], "risk_keywords": [], "source_urls": ["https://www.xiachufang.com/recipe/106879409/", "https://www.xiachufang.com/recipe/100547457/"], "evidence_text": "没有料酒时可用少量白酒或黄酒替代。"}
-{"id": "rag_013_01", "query": "新手做番茄牛腩炖土豆有什么关键技巧？", "category": "beginner_tip", "recipe_id": 13, "expected_recipes": ["番茄牛腩炖土豆"], "expected_chunk_types": ["beginner_tip"], "must_include": ["块太小容易炖", "太大则炖软时", "长。冷水下锅", "易去血沫。番"], "risk_keywords": ["高压锅"], "source_urls": ["https://www.xiachufang.com/recipe/106591050/", "https://www.dachu.co/zh-cn/recipe/381276"], "evidence_text": "块太小容易炖散，太大则炖软时间更长。冷水下锅更容易去血沫。番茄去皮后更容易炖成汤汁。"}
-{"id": "rag_013_02", "query": "番茄牛腩炖土豆为什么会中牛腩不软？", "category": "failure_reason", "recipe_id": 13, "expected_recipes": ["番茄牛腩炖土豆"], "expected_chunk_types": ["failure_reason"], "must_include": ["番茄牛腩炖土", "豆中牛腩不软", "通常是炖煮时", "间不足，或水"], "risk_keywords": ["高压锅"], "source_urls": ["https://www.xiachufang.com/recipe/106591050/", "https://www.dachu.co/zh-cn/recipe/381276"], "evidence_text": "番茄牛腩炖土豆中牛腩不软通常是炖煮时间不足，或水温变化导致肉质收缩。"}
-{"id": "rag_013_03", "query": "做番茄牛腩炖土豆没有生抽怎么办？", "category": "substitution", "recipe_id": 13, "expected_recipes": ["番茄牛腩炖土豆"], "expected_chunk_types": ["substitution"], "must_include": ["没有生抽时可", "抽时可用普通", "用普通酱油替", "酱油替代，用"], "risk_keywords": ["高压锅"], "source_urls": ["https://www.xiachufang.com/recipe/106591050/", "https://www.dachu.co/zh-cn/recipe/381276"], "evidence_text": "没有生抽时可用普通酱油替代，用量减半。"}
-{"id": "rag_014_01", "query": "新手做清炒藕片有什么关键技巧？", "category": "beginner_tip", "recipe_id": 14, "expected_recipes": ["清炒藕片"], "expected_chunk_types": ["beginner_tip"], "must_include": ["莲藕孔洞中可", "泥，要仔细冲", "薄片更容易快", "保持脆感。沥"], "risk_keywords": ["热油"], "source_urls": ["https://m.xiachufang.com/recipe/106487809/", "https://www.xiachufang.com/recipe/107640924/"], "evidence_text": "莲藕孔洞中可能有泥，要仔细冲洗。薄片更容易快熟并保持脆感。沥干后下锅能减少溅油。"}
-{"id": "rag_014_02", "query": "清炒藕片为什么会发黑可能是氧化、铁锅反应或炒制时间过长？", "category": "failure_reason", "recipe_id": 14, "expected_recipes": ["清炒藕片"], "expected_chunk_types": ["failure_reason"], "must_include": ["清炒藕片发黑", "能是氧化、铁", "反应或炒制时", "过长，切好后"], "risk_keywords": ["热油"], "source_urls": ["https://m.xiachufang.com/recipe/106487809/", "https://www.xiachufang.com/recipe/107640924/"], "evidence_text": "清炒藕片发黑可能是氧化、铁锅反应或炒制时间过长，切好后泡水加少量白醋可缓解。"}
-{"id": "rag_014_03", "query": "做清炒藕片有什么安全注意事项？", "category": "safety_note", "recipe_id": 14, "expected_recipes": ["清炒藕片"], "expected_chunk_types": ["safety_note"], "must_include": ["莲藕孔洞容易", "容易藏泥，切", "，切片后还需", "还需要再次冲"], "risk_keywords": ["热油"], "source_urls": ["https://m.xiachufang.com/recipe/106487809/", "https://www.xiachufang.com/recipe/107640924/"], "evidence_text": "莲藕孔洞容易藏泥，切片后还需要再次冲洗。"}
-{"id": "rag_015_01", "query": "新手做芥末罗氏虾有什么关键技巧？", "category": "beginner_tip", "recipe_id": 15, "expected_recipes": ["芥末罗氏虾"], "expected_chunk_types": ["beginner_tip"], "must_include": ["先剪尖刺，后", "理时不容易扎", "开背能帮助入", "也方便去虾线"], "risk_keywords": ["甲壳类"], "source_urls": ["https://www.xiachufang.com/recipe/107595113/", "https://www.xiachufang.com/recipe/106772658/"], "evidence_text": "先剪尖刺，后面处理时不容易扎手。开背能帮助入味，也方便去虾线。蒜末多一点会更香。"}
-{"id": "rag_015_02", "query": "芥末罗氏虾为什么会虾肉变老？", "category": "failure_reason", "recipe_id": 15, "expected_recipes": ["芥末罗氏虾"], "expected_chunk_types": ["failure_reason"], "must_include": ["虾肉变老通常", "是煎和焖的时", "间过长，虾变", "色熟透后应尽"], "risk_keywords": ["甲壳类"], "source_urls": ["https://www.xiachufang.com/recipe/107595113/", "https://www.xiachufang.com/recipe/106772658/"], "evidence_text": "虾肉变老通常是煎和焖的时间过长，虾变色熟透后应尽快收汁出锅。"}
-{"id": "rag_015_03", "query": "做芥末罗氏虾没有生抽怎么办？", "category": "substitution", "recipe_id": 15, "expected_recipes": ["芥末罗氏虾"], "expected_chunk_types": ["substitution"], "must_include": ["没有生抽时可", "抽时可用普通", "用普通酱油替", "酱油替代，用"], "risk_keywords": ["甲壳类"], "source_urls": ["https://www.xiachufang.com/recipe/107595113/", "https://www.xiachufang.com/recipe/106772658/"], "evidence_text": "没有生抽时可用普通酱油替代，用量减半。"}
-{"id": "rag_016_01", "query": "新手做青椒肉丝有什么关键技巧？", "category": "beginner_tip", "recipe_id": 16, "expected_recipes": ["青椒肉丝"], "expected_chunk_types": ["beginner_tip"], "must_include": ["肉丝先腌制能", "，淀粉不要太", "青椒粗细尽量", "，受热更均匀"], "risk_keywords": [], "source_urls": ["https://www.xiachufang.com/recipe/100410790/", "https://www.xiachufang.com/recipe/104447058/"], "evidence_text": "肉丝先腌制能更嫩，淀粉不要太多。青椒粗细尽量接近，受热更均匀。肉丝刚变色即可，不要炒老。"}
-{"id": "rag_016_02", "query": "青椒肉丝为什么会肉丝发柴？", "category": "failure_reason", "recipe_id": 16, "expected_recipes": ["青椒肉丝"], "expected_chunk_types": ["failure_reason"], "must_include": ["肉丝发柴通常", "常是切得太粗", "粗、腌制不足", "足，或第一次"], "risk_keywords": [], "source_urls": ["https://www.xiachufang.com/recipe/100410790/", "https://www.xiachufang.com/recipe/104447058/"], "evidence_text": "肉丝发柴通常是切得太粗、腌制不足，或第一次滑炒时间过长。"}
-{"id": "rag_016_03", "query": "做青椒肉丝没有里脊肉怎么办？", "category": "substitution", "recipe_id": 16, "expected_recipes": ["青椒肉丝"], "expected_chunk_types": ["substitution"], "must_include": ["没有里脊肉时", "时可以用梅花", "花肉或鸡胸肉", "肉代替，但鸡"], "risk_keywords": [], "source_urls": ["https://www.xiachufang.com/recipe/100410790/", "https://www.xiachufang.com/recipe/104447058/"], "evidence_text": "没有里脊肉时可以用梅花肉或鸡胸肉代替，但鸡胸肉更容易炒老。"}
-{"id": "rag_017_01", "query": "新手做麻婆豆腐有什么关键技巧？", "category": "beginner_tip", "recipe_id": 17, "expected_recipes": ["麻婆豆腐"], "expected_chunk_types": ["beginner_tip"], "must_include": ["焯水能去豆腥", "能让豆腐更不", "肉末不要太多", "会抢豆腐的主"], "risk_keywords": [], "source_urls": ["https://www.xiachufang.com/recipe/100524990/", "https://www.xiachufang.com/recipe/100555604/"], "evidence_text": "焯水能去豆腥味，也能让豆腐更不易碎。肉末不要太多，否则会抢豆腐的主味。炒到肉末变色出香即可。"}
-{"id": "rag_017_02", "query": "麻婆豆腐为什么会不入味？", "category": "failure_reason", "recipe_id": 17, "expected_recipes": ["麻婆豆腐"], "expected_chunk_types": ["failure_reason"], "must_include": ["麻婆豆腐不入", "味常见原因是", "豆腐没有烧煮", "入味，或最后"], "risk_keywords": [], "source_urls": ["https://www.xiachufang.com/recipe/100524990/", "https://www.xiachufang.com/recipe/100555604/"], "evidence_text": "麻婆豆腐不入味常见原因是豆腐没有烧煮入味，或最后没有勾薄芡挂汁。"}
-{"id": "rag_017_03", "query": "做麻婆豆腐没有豆瓣酱怎么办？", "category": "substitution", "recipe_id": 17, "expected_recipes": ["麻婆豆腐"], "expected_chunk_types": ["substitution"], "must_include": ["没有豆瓣酱时", "可用辣椒粉、", "花椒和少量酱", "油替代，但风"], "risk_keywords": [], "source_urls": ["https://www.xiachufang.com/recipe/100524990/", "https://www.xiachufang.com/recipe/100555604/"], "evidence_text": "没有豆瓣酱时可用辣椒粉、花椒和少量酱油替代，但风味会明显不同。"}
-{"id": "rag_018_01", "query": "新手做鱼香肉丝有什么关键技巧？", "category": "beginner_tip", "recipe_id": 18, "expected_recipes": ["鱼香肉丝"], "expected_chunk_types": ["beginner_tip"], "must_include": ["肉丝腌制后更", "配菜切得接近", "粗细，成菜更", "。先调碗汁可"], "risk_keywords": [], "source_urls": ["https://www.xiachufang.com/recipe/100490758/", "https://www.xiachufang.com/recipe/107387589/"], "evidence_text": "肉丝腌制后更嫩。配菜切得接近肉丝粗细，成菜更均匀。先调碗汁可以减少下锅后的误差。"}
-{"id": "rag_018_02", "query": "鱼香肉丝为什么会味道散？", "category": "failure_reason", "recipe_id": 18, "expected_recipes": ["鱼香肉丝"], "expected_chunk_types": ["failure_reason"], "must_include": ["鱼香肉丝味道", "散通常是碗汁", "比例不稳定，", "或酱汁没有收"], "risk_keywords": [], "source_urls": ["https://www.xiachufang.com/recipe/100490758/", "https://www.xiachufang.com/recipe/107387589/"], "evidence_text": "鱼香肉丝味道散通常是碗汁比例不稳定，或酱汁没有收至挂在肉丝上。"}
-{"id": "rag_018_03", "query": "做鱼香肉丝没有泡椒怎么办？", "category": "substitution", "recipe_id": 18, "expected_recipes": ["鱼香肉丝"], "expected_chunk_types": ["substitution"], "must_include": ["没有泡椒时可", "可用豆瓣酱和", "和少量醋糖替", "替代，香气会"], "risk_keywords": [], "source_urls": ["https://www.xiachufang.com/recipe/100490758/", "https://www.xiachufang.com/recipe/107387589/"], "evidence_text": "没有泡椒时可用豆瓣酱和少量醋糖替代，香气会略不同。"}
-{"id": "rag_019_01", "query": "新手做宫保鸡丁有什么关键技巧？", "category": "beginner_tip", "recipe_id": 19, "expected_recipes": ["宫保鸡丁"], "expected_chunk_types": ["beginner_tip"], "must_include": ["鸡腿肉更嫩，", "鸡胸肉要注意", "火候。酸甜味", "先在碗汁中调"], "risk_keywords": [], "source_urls": ["https://www.xiachufang.com/recipe/100577624/", "https://www.xiachufang.com/recipe/106618149/"], "evidence_text": "鸡腿肉更嫩，鸡胸肉要注意火候。酸甜味先在碗汁中调好。熟花生米更方便。"}
-{"id": "rag_019_02", "query": "宫保鸡丁为什么会鸡丁发柴多是腌制不足或滑炒时间过长？", "category": "failure_reason", "recipe_id": 19, "expected_recipes": ["宫保鸡丁"], "expected_chunk_types": ["failure_reason"], "must_include": ["鸡丁发柴多是", "是腌制不足或", "或滑炒时间过", "过长，鸡胸肉"], "risk_keywords": [], "source_urls": ["https://www.xiachufang.com/recipe/100577624/", "https://www.xiachufang.com/recipe/106618149/"], "evidence_text": "鸡丁发柴多是腌制不足或滑炒时间过长，鸡胸肉尤其明显。"}
-{"id": "rag_019_03", "query": "做宫保鸡丁没有花生怎么办？", "category": "substitution", "recipe_id": 19, "expected_recipes": ["宫保鸡丁"], "expected_chunk_types": ["substitution"], "must_include": ["没有花生可以", "以用腰果替代", "代，也可以不", "不放，但口感"], "risk_keywords": [], "source_urls": ["https://www.xiachufang.com/recipe/100577624/", "https://www.xiachufang.com/recipe/106618149/"], "evidence_text": "没有花生可以用腰果替代，也可以不放，但口感层次会少一些。"}
-{"id": "rag_020_01", "query": "新手做红烧肉有什么关键技巧？", "category": "beginner_tip", "recipe_id": 20, "expected_recipes": ["红烧肉"], "expected_chunk_types": ["beginner_tip"], "must_include": ["焯水能去血沫", "杂味。煸出部", "油脂能降低油", "感。糖色不要"], "risk_keywords": ["生肉"], "source_urls": ["https://www.xiachufang.com/recipe/100669888/", "https://lanfanapp.com/recipe/214"], "evidence_text": "焯水能去血沫和杂味。煸出部分油脂能降低油腻感。糖色不要炒到发黑，否则会苦。"}
-{"id": "rag_020_02", "query": "红烧肉为什么会发苦？", "category": "failure_reason", "recipe_id": 20, "expected_recipes": ["红烧肉"], "expected_chunk_types": ["failure_reason"], "must_include": ["红烧肉发苦通", "苦通常是糖色", "糖色炒过头，", "头，或收汁阶"], "risk_keywords": ["生肉"], "source_urls": ["https://www.xiachufang.com/recipe/100669888/", "https://lanfanapp.com/recipe/214"], "evidence_text": "红烧肉发苦通常是糖色炒过头，或收汁阶段糊锅。"}
-{"id": "rag_020_03", "query": "做红烧肉没有生抽怎么办？", "category": "substitution", "recipe_id": 20, "expected_recipes": ["红烧肉"], "expected_chunk_types": ["substitution"], "must_include": ["没有生抽时可", "抽时可用普通", "用普通酱油替", "酱油替代，用"], "risk_keywords": ["生肉"], "source_urls": ["https://www.xiachufang.com/recipe/100669888/", "https://lanfanapp.com/recipe/214"], "evidence_text": "没有生抽时可用普通酱油替代，用量减半。"}
-{"id": "rag_021_01", "query": "新手做蒜蓉西兰花有什么关键技巧？", "category": "beginner_tip", "recipe_id": 21, "expected_recipes": ["蒜蓉西兰花"], "expected_chunk_types": ["beginner_tip"], "must_include": ["小朵大小接近", "，熟得更均匀", "。蒜末越细越", "容易出香。这"], "risk_keywords": [], "source_urls": ["https://www.xiachufang.com/search/?keyword=蒜蓉西兰花", "https://www.xiachufang.com/search/?keyword=蒜蓉西兰花"], "evidence_text": "小朵大小接近，熟得更均匀。蒜末越细越容易出香。这能帮助保持颜色。"}
-{"id": "rag_021_02", "query": "蒜蓉西兰花为什么会西兰花发黄？", "category": "failure_reason", "recipe_id": 21, "expected_recipes": ["蒜蓉西兰花"], "expected_chunk_types": ["failure_reason"], "must_include": ["西兰花发黄通", "发黄通常是焯", "常是焯水或炒", "水或炒制时间"], "risk_keywords": [], "source_urls": ["https://www.xiachufang.com/search/?keyword=蒜蓉西兰花", "https://www.xiachufang.com/search/?keyword=蒜蓉西兰花"], "evidence_text": "西兰花发黄通常是焯水或炒制时间过长。"}
-{"id": "rag_021_03", "query": "做蒜蓉西兰花没有蚝油怎么办？", "category": "substitution", "recipe_id": 21, "expected_recipes": ["蒜蓉西兰花"], "expected_chunk_types": ["substitution"], "must_include": ["没有蚝油时可", "油时可以只用", "以只用生抽、", "生抽、盐和蒜"], "risk_keywords": [], "source_urls": ["https://www.xiachufang.com/search/?keyword=蒜蓉西兰花", "https://www.xiachufang.com/search/?keyword=蒜蓉西兰花"], "evidence_text": "没有蚝油时可以只用生抽、盐和蒜末调味。"}
-{"id": "rag_022_01", "query": "新手做香菇青菜有什么关键技巧？", "category": "beginner_tip", "recipe_id": 22, "expected_recipes": ["香菇青菜"], "expected_chunk_types": ["beginner_tip"], "must_include": ["青菜根部容易", "易藏泥，要仔", "仔细洗。提前", "前调汁更稳。"], "risk_keywords": [], "source_urls": ["https://www.xiachufang.com/search/?keyword=香菇青菜", "https://www.xiachufang.com/search/?keyword=香菇青菜"], "evidence_text": "青菜根部容易藏泥，要仔细洗。提前调汁更稳。焯到变色即可。"}
-{"id": "rag_022_02", "query": "香菇青菜为什么会青菜出水多？", "category": "failure_reason", "recipe_id": 22, "expected_recipes": ["香菇青菜"], "expected_chunk_types": ["failure_reason"], "must_include": ["青菜出水多通", "多通常是焯水", "焯水后未沥干", "沥干，或回锅"], "risk_keywords": [], "source_urls": ["https://www.xiachufang.com/search/?keyword=香菇青菜", "https://www.xiachufang.com/search/?keyword=香菇青菜"], "evidence_text": "青菜出水多通常是焯水后未沥干，或回锅炒太久。"}
-{"id": "rag_022_03", "query": "做香菇青菜没有蚝油怎么办？", "category": "substitution", "recipe_id": 22, "expected_recipes": ["香菇青菜"], "expected_chunk_types": ["substitution"], "must_include": ["没有蚝油时可", "时可用生抽加", "抽加少量糖替", "糖替代，鲜味"], "risk_keywords": [], "source_urls": ["https://www.xiachufang.com/search/?keyword=香菇青菜", "https://www.xiachufang.com/search/?keyword=香菇青菜"], "evidence_text": "没有蚝油时可用生抽加少量糖替代，鲜味会弱一些。"}
-{"id": "rag_023_01", "query": "新手做地三鲜有什么关键技巧？", "category": "beginner_tip", "recipe_id": 23, "expected_recipes": ["地三鲜"], "expected_chunk_types": ["beginner_tip"], "must_include": ["大小接近，成", "熟更均匀。能", "减少吸油并帮", "助成型。新手"], "risk_keywords": [], "source_urls": ["https://www.xiachufang.com/search/?keyword=地三鲜", "https://www.xiachufang.com/search/?keyword=地三鲜"], "evidence_text": "大小接近，成熟更均匀。能减少吸油并帮助成型。新手可以少油慢煎。"}
-{"id": "rag_023_02", "query": "地三鲜为什么会太油？", "category": "failure_reason", "recipe_id": 23, "expected_recipes": ["地三鲜"], "expected_chunk_types": ["failure_reason"], "must_include": ["地三鲜太油通", "油通常是茄子", "茄子直接下油", "下油锅且没有"], "risk_keywords": [], "source_urls": ["https://www.xiachufang.com/search/?keyword=地三鲜", "https://www.xiachufang.com/search/?keyword=地三鲜"], "evidence_text": "地三鲜太油通常是茄子直接下油锅且没有控油。"}
-{"id": "rag_023_03", "query": "做地三鲜没有蚝油怎么办？", "category": "substitution", "recipe_id": 23, "expected_recipes": ["地三鲜"], "expected_chunk_types": ["substitution"], "must_include": ["没有蚝油时可", "时可用生抽、", "抽、少量糖和", "糖和淀粉水做"], "risk_keywords": [], "source_urls": ["https://www.xiachufang.com/search/?keyword=地三鲜", "https://www.xiachufang.com/search/?keyword=地三鲜"], "evidence_text": "没有蚝油时可用生抽、少量糖和淀粉水做简化酱汁。"}
-{"id": "rag_024_01", "query": "新手做干煸豆角有什么关键技巧？", "category": "beginner_tip", "recipe_id": 24, "expected_recipes": ["干煸豆角"], "expected_chunk_types": ["beginner_tip"], "must_include": ["豆角筋要去掉", "，口感更好。", "辣椒按口味调", "整。火不要太"], "risk_keywords": ["热油", "未熟豆角"], "source_urls": ["https://www.xiachufang.com/search/?keyword=干煸豆角", "https://www.xiachufang.com/search/?keyword=干煸豆角"], "evidence_text": "豆角筋要去掉，口感更好。辣椒按口味调整。火不要太大，避免外糊内生。"}
-{"id": "rag_024_02", "query": "干煸豆角为什么会外焦内生？", "category": "failure_reason", "recipe_id": 24, "expected_recipes": ["干煸豆角"], "expected_chunk_types": ["failure_reason"], "must_include": ["外焦内生通常", "常是火太大或", "或豆角段太粗", "粗，导致表面"], "risk_keywords": ["热油", "未熟豆角"], "source_urls": ["https://www.xiachufang.com/search/?keyword=干煸豆角", "https://www.xiachufang.com/search/?keyword=干煸豆角"], "evidence_text": "外焦内生通常是火太大或豆角段太粗，导致表面焦了内部还没熟。"}
-{"id": "rag_024_03", "query": "做干煸豆角没有干辣椒怎么办？", "category": "substitution", "recipe_id": 24, "expected_recipes": ["干煸豆角"], "expected_chunk_types": ["substitution"], "must_include": ["没有干辣椒时", "辣椒时可以只", "可以只用蒜片", "用蒜片和少量"], "risk_keywords": ["热油", "未熟豆角"], "source_urls": ["https://www.xiachufang.com/search/?keyword=干煸豆角", "https://www.xiachufang.com/search/?keyword=干煸豆角"], "evidence_text": "没有干辣椒时可以只用蒜片和少量醋调味。"}
-{"id": "rag_025_01", "query": "新手做糖醋排骨有什么关键技巧？", "category": "beginner_tip", "recipe_id": 25, "expected_recipes": ["糖醋排骨"], "expected_chunk_types": ["beginner_tip"], "must_include": ["焯水后洗净浮", "净浮沫。煎过", "煎过后香味更", "味更足。糖不"], "risk_keywords": ["生肉"], "source_urls": ["https://www.xiachufang.com/search/?keyword=糖醋排骨", "https://www.xiachufang.com/search/?keyword=糖醋排骨"], "evidence_text": "焯水后洗净浮沫。煎过后香味更足。糖不要炒焦。"}
-{"id": "rag_025_02", "query": "糖醋排骨做失败了怎么办？", "category": "failure_reason", "recipe_id": 25, "expected_recipes": ["糖醋排骨"], "expected_chunk_types": ["failure_reason"], "must_include": ["糖醋排骨发苦", "发苦多半是糖", "是糖炒焦或收", "或收汁阶段糊"], "risk_keywords": ["生肉"], "source_urls": ["https://www.xiachufang.com/search/?keyword=糖醋排骨", "https://www.xiachufang.com/search/?keyword=糖醋排骨"], "evidence_text": "糖醋排骨发苦多半是糖炒焦或收汁阶段糊锅。"}
-{"id": "rag_025_03", "query": "做糖醋排骨没有料酒怎么办？", "category": "substitution", "recipe_id": 25, "expected_recipes": ["糖醋排骨"], "expected_chunk_types": ["substitution"], "must_include": ["没有料酒时可", "酒时可用少量", "用少量白酒或", "白酒或黄酒替"], "risk_keywords": ["生肉"], "source_urls": ["https://www.xiachufang.com/search/?keyword=糖醋排骨", "https://www.xiachufang.com/search/?keyword=糖醋排骨"], "evidence_text": "没有料酒时可用少量白酒或黄酒替代。"}
-{"id": "rag_026_01", "query": "新手做回锅肉有什么关键技巧？", "category": "beginner_tip", "recipe_id": 26, "expected_recipes": ["回锅肉"], "expected_chunk_types": ["beginner_tip"], "must_include": ["先煮后炒是回", "锅肉的关键。", "放凉更容易切", "薄。蒜白更耐"], "risk_keywords": ["生肉"], "source_urls": ["https://www.xiachufang.com/search/?keyword=回锅肉", "https://www.xiachufang.com/search/?keyword=回锅肉"], "evidence_text": "先煮后炒是回锅肉的关键。放凉更容易切薄。蒜白更耐炒，蒜叶后放。"}
-{"id": "rag_026_02", "query": "回锅肉为什么会油腻？", "category": "failure_reason", "recipe_id": 26, "expected_recipes": ["回锅肉"], "expected_chunk_types": ["failure_reason"], "must_include": ["回锅肉油腻通", "腻通常是肉片", "肉片没煸出油", "出油，或切得"], "risk_keywords": ["生肉"], "source_urls": ["https://www.xiachufang.com/search/?keyword=回锅肉", "https://www.xiachufang.com/search/?keyword=回锅肉"], "evidence_text": "回锅肉油腻通常是肉片没煸出油，或切得太厚。"}
-{"id": "rag_026_03", "query": "做回锅肉没有蒜苗怎么办？", "category": "substitution", "recipe_id": 26, "expected_recipes": ["回锅肉"], "expected_chunk_types": ["substitution"], "must_include": ["没有蒜苗时可", "苗时可以用青", "以用青椒、洋", "椒、洋葱或青"], "risk_keywords": ["生肉"], "source_urls": ["https://www.xiachufang.com/search/?keyword=回锅肉", "https://www.xiachufang.com/search/?keyword=回锅肉"], "evidence_text": "没有蒜苗时可以用青椒、洋葱或青蒜替代。"}
-{"id": "rag_027_01", "query": "新手做西红柿鸡蛋面有什么关键技巧？", "category": "beginner_tip", "recipe_id": 27, "expected_recipes": ["西红柿鸡蛋面"], "expected_chunk_types": ["beginner_tip"], "must_include": ["成熟番茄更容", "容易出汤。鸡", "鸡蛋不要炒老", "老。可用锅铲"], "risk_keywords": [], "source_urls": ["https://www.xiachufang.com/search/?keyword=西红柿鸡蛋面", "https://www.xiachufang.com/search/?keyword=西红柿鸡蛋面"], "evidence_text": "成熟番茄更容易出汤。鸡蛋不要炒老。可用锅铲轻压番茄。"}
-{"id": "rag_027_02", "query": "西红柿鸡蛋面为什么会番茄味淡？", "category": "failure_reason", "recipe_id": 27, "expected_recipes": ["西红柿鸡蛋面"], "expected_chunk_types": ["failure_reason"], "must_include": ["番茄味淡通常", "通常是番茄没", "茄没有炒软出", "软出汁，或用"], "risk_keywords": [], "source_urls": ["https://www.xiachufang.com/search/?keyword=西红柿鸡蛋面", "https://www.xiachufang.com/search/?keyword=西红柿鸡蛋面"], "evidence_text": "番茄味淡通常是番茄没有炒软出汁，或用水过多。"}
-{"id": "rag_027_03", "query": "做西红柿鸡蛋面没有新鲜番茄怎么办？", "category": "substitution", "recipe_id": 27, "expected_recipes": ["西红柿鸡蛋面"], "expected_chunk_types": ["substitution"], "must_include": ["没有新鲜番茄", "番茄时可少量", "少量加入番茄", "番茄酱增强汤"], "risk_keywords": [], "source_urls": ["https://www.xiachufang.com/search/?keyword=西红柿鸡蛋面", "https://www.xiachufang.com/search/?keyword=西红柿鸡蛋面"], "evidence_text": "没有新鲜番茄时可少量加入番茄酱增强汤味。"}
-{"id": "rag_028_01", "query": "新手做清炖排骨汤有什么关键技巧？", "category": "beginner_tip", "recipe_id": 28, "expected_recipes": ["清炖排骨汤"], "expected_chunk_types": ["beginner_tip"], "must_include": ["冷水下锅更容", "易去血沫。洗", "掉浮沫汤更清", "。水一次加足"], "risk_keywords": ["生肉"], "source_urls": ["https://www.xiachufang.com/search/?keyword=清炖排骨汤", "https://www.xiachufang.com/search/?keyword=清炖排骨汤"], "evidence_text": "冷水下锅更容易去血沫。洗掉浮沫汤更清。水一次加足，避免中途频繁加水。"}
-{"id": "rag_028_02", "query": "清炖排骨汤为什么会汤浑浊？", "category": "failure_reason", "recipe_id": 28, "expected_recipes": ["清炖排骨汤"], "expected_chunk_types": ["failure_reason"], "must_include": ["汤浑浊常见原", "见原因是大火", "大火翻滚太久", "太久或浮沫没"], "risk_keywords": ["生肉"], "source_urls": ["https://www.xiachufang.com/search/?keyword=清炖排骨汤", "https://www.xiachufang.com/search/?keyword=清炖排骨汤"], "evidence_text": "汤浑浊常见原因是大火翻滚太久或浮沫没有及时处理。"}
-{"id": "rag_028_03", "query": "做清炖排骨汤没有料酒怎么办？", "category": "substitution", "recipe_id": 28, "expected_recipes": ["清炖排骨汤"], "expected_chunk_types": ["substitution"], "must_include": ["没有料酒时可", "酒时可用少量", "用少量白酒或", "白酒或黄酒替"], "risk_keywords": ["生肉"], "source_urls": ["https://www.xiachufang.com/search/?keyword=清炖排骨汤", "https://www.xiachufang.com/search/?keyword=清炖排骨汤"], "evidence_text": "没有料酒时可用少量白酒或黄酒替代。"}
-{"id": "rag_029_01", "query": "新手做紫菜蛋花汤有什么关键技巧？", "category": "beginner_tip", "recipe_id": 29, "expected_recipes": ["紫菜蛋花汤"], "expected_chunk_types": ["beginner_tip"], "must_include": ["蛋液打散即可", "。虾皮有咸味", "，盐要少放。", "紫菜很快变软"], "risk_keywords": [], "source_urls": ["https://www.xiachufang.com/search/?keyword=紫菜蛋花汤", "https://www.xiachufang.com/search/?keyword=紫菜蛋花汤"], "evidence_text": "蛋液打散即可。虾皮有咸味，盐要少放。紫菜很快变软，不需久煮。"}
-{"id": "rag_029_02", "query": "紫菜蛋花汤为什么会蛋花成大块？", "category": "failure_reason", "recipe_id": 29, "expected_recipes": ["紫菜蛋花汤"], "expected_chunk_types": ["failure_reason"], "must_include": ["蛋花成大块通", "大块通常是火", "常是火太大或", "太大或蛋液一"], "risk_keywords": [], "source_urls": ["https://www.xiachufang.com/search/?keyword=紫菜蛋花汤", "https://www.xiachufang.com/search/?keyword=紫菜蛋花汤"], "evidence_text": "蛋花成大块通常是火太大或蛋液一次倒入。"}
-{"id": "rag_029_03", "query": "做紫菜蛋花汤没有虾皮怎么办？", "category": "substitution", "recipe_id": 29, "expected_recipes": ["紫菜蛋花汤"], "expected_chunk_types": ["substitution"], "must_include": ["没有虾皮时可", "可以只用紫菜", "菜、鸡蛋和葱", "葱花，也可以"], "risk_keywords": [], "source_urls": ["https://www.xiachufang.com/search/?keyword=紫菜蛋花汤", "https://www.xiachufang.com/search/?keyword=紫菜蛋花汤"], "evidence_text": "没有虾皮时可以只用紫菜、鸡蛋和葱花，也可以加少量鸡精。"}
-{"id": "rag_030_01", "query": "新手做凉拌黄瓜有什么关键技巧？", "category": "beginner_tip", "recipe_id": 30, "expected_recipes": ["凉拌黄瓜"], "expected_chunk_types": ["beginner_tip"], "must_include": ["外皮口感好，", "接受的话可保", "。拍裂能让调", "汁更容易进入"], "risk_keywords": [], "source_urls": ["https://www.xiachufang.com/search/?keyword=凉拌黄瓜", "https://www.xiachufang.com/search/?keyword=凉拌黄瓜"], "evidence_text": "外皮口感好，能接受的话可保留。拍裂能让调味汁更容易进入。蒜末越细越容易出味。"}
-{"id": "rag_030_02", "query": "凉拌黄瓜为什么会黄瓜出水多？", "category": "failure_reason", "recipe_id": 30, "expected_recipes": ["凉拌黄瓜"], "expected_chunk_types": ["failure_reason"], "must_include": ["黄瓜出水多通", "水多通常是盐", "常是盐放太早", "放太早或静置"], "risk_keywords": [], "source_urls": ["https://www.xiachufang.com/search/?keyword=凉拌黄瓜", "https://www.xiachufang.com/search/?keyword=凉拌黄瓜"], "evidence_text": "黄瓜出水多通常是盐放太早或静置太久。"}
-{"id": "rag_030_03", "query": "做凉拌黄瓜没有生抽怎么办？", "category": "substitution", "recipe_id": 30, "expected_recipes": ["凉拌黄瓜"], "expected_chunk_types": ["substitution"], "must_include": ["没有生抽时可", "抽时可用普通", "用普通酱油替", "酱油替代，用"], "risk_keywords": [], "source_urls": ["https://www.xiachufang.com/search/?keyword=凉拌黄瓜", "https://www.xiachufang.com/search/?keyword=凉拌黄瓜"], "evidence_text": "没有生抽时可用普通酱油替代，用量减半。"}
-{"id": "rag_031_01", "query": "新手做蒜蓉粉丝娃娃菜有什么关键技巧？", "category": "beginner_tip", "recipe_id": 31, "expected_recipes": ["蒜蓉粉丝娃娃菜"], "expected_chunk_types": ["beginner_tip"], "must_include": ["剪短后更方便", "夹取。根部不", "要完全切散，", "摆盘更好看。"], "risk_keywords": [], "source_urls": ["https://www.xiachufang.com/search/?keyword=蒜蓉粉丝娃娃菜", "https://www.xiachufang.com/search/?keyword=蒜蓉粉丝娃娃菜"], "evidence_text": "剪短后更方便夹取。根部不要完全切散，摆盘更好看。小火慢炒，避免发苦。"}
-{"id": "rag_031_02", "query": "蒜蓉粉丝娃娃菜为什么会蒜蓉发苦？", "category": "failure_reason", "recipe_id": 31, "expected_recipes": ["蒜蓉粉丝娃娃菜"], "expected_chunk_types": ["failure_reason"], "must_include": ["蒜蓉发苦通常", "苦通常是火太", "是火太大或炒", "大或炒得过久"], "risk_keywords": [], "source_urls": ["https://www.xiachufang.com/search/?keyword=蒜蓉粉丝娃娃菜", "https://www.xiachufang.com/search/?keyword=蒜蓉粉丝娃娃菜"], "evidence_text": "蒜蓉发苦通常是火太大或炒得过久。"}
-{"id": "rag_031_03", "query": "做蒜蓉粉丝娃娃菜没有娃娃菜怎么办？", "category": "substitution", "recipe_id": 31, "expected_recipes": ["蒜蓉粉丝娃娃菜"], "expected_chunk_types": ["substitution"], "must_include": ["没有娃娃菜时", "菜时可用大白", "大白菜心或金", "或金针菇搭配"], "risk_keywords": [], "source_urls": ["https://www.xiachufang.com/search/?keyword=蒜蓉粉丝娃娃菜", "https://www.xiachufang.com/search/?keyword=蒜蓉粉丝娃娃菜"], "evidence_text": "没有娃娃菜时可用大白菜心或金针菇搭配粉丝。"}
-{"id": "rag_032_01", "query": "新手做土豆炖牛肉有什么关键技巧？", "category": "beginner_tip", "recipe_id": 32, "expected_recipes": ["土豆炖牛肉"], "expected_chunk_types": ["beginner_tip"], "must_include": ["焯水能去血沫", "沫。土豆切好", "好可泡水防氧", "氧化。香料少"], "risk_keywords": [], "source_urls": ["https://www.xiachufang.com/search/?keyword=土豆炖牛肉", "https://www.xiachufang.com/search/?keyword=土豆炖牛肉"], "evidence_text": "焯水能去血沫。土豆切好可泡水防氧化。香料少量即可。"}
-{"id": "rag_032_02", "query": "土豆炖牛肉为什么会牛肉不软？", "category": "failure_reason", "recipe_id": 32, "expected_recipes": ["土豆炖牛肉"], "expected_chunk_types": ["failure_reason"], "must_include": ["牛肉不软通常", "常是炖煮时间", "间不足，或中", "中途加冷水导"], "risk_keywords": [], "source_urls": ["https://www.xiachufang.com/search/?keyword=土豆炖牛肉", "https://www.xiachufang.com/search/?keyword=土豆炖牛肉"], "evidence_text": "牛肉不软通常是炖煮时间不足，或中途加冷水导致肉质收紧。"}
-{"id": "rag_032_03", "query": "做土豆炖牛肉没有生抽怎么办？", "category": "substitution", "recipe_id": 32, "expected_recipes": ["土豆炖牛肉"], "expected_chunk_types": ["substitution"], "must_include": ["没有生抽时可", "抽时可用普通", "用普通酱油替", "酱油替代，用"], "risk_keywords": [], "source_urls": ["https://www.xiachufang.com/search/?keyword=土豆炖牛肉", "https://www.xiachufang.com/search/?keyword=土豆炖牛肉"], "evidence_text": "没有生抽时可用普通酱油替代，用量减半。"}
-{"id": "rag_033_01", "query": "新手做尖椒炒鸡蛋有什么关键技巧？", "category": "beginner_tip", "recipe_id": 33, "expected_recipes": ["尖椒炒鸡蛋"], "expected_chunk_types": ["beginner_tip"], "must_include": ["怕辣可以去籽", "去籽。盐少量", "少量即可。保", "。保持大块不"], "risk_keywords": ["热油"], "source_urls": ["https://www.xiachufang.com/search/?keyword=尖椒炒鸡蛋", "https://www.xiachufang.com/search/?keyword=尖椒炒鸡蛋"], "evidence_text": "怕辣可以去籽。盐少量即可。保持大块不要炒太碎。"}
-{"id": "rag_033_02", "query": "尖椒炒鸡蛋为什么会鸡蛋变老？", "category": "failure_reason", "recipe_id": 33, "expected_recipes": ["尖椒炒鸡蛋"], "expected_chunk_types": ["failure_reason"], "must_include": ["鸡蛋变老通常", "通常是第一次", "一次炒太久或", "久或回锅后继"], "risk_keywords": ["热油"], "source_urls": ["https://www.xiachufang.com/search/?keyword=尖椒炒鸡蛋", "https://www.xiachufang.com/search/?keyword=尖椒炒鸡蛋"], "evidence_text": "鸡蛋变老通常是第一次炒太久或回锅后继续久炒。"}
-{"id": "rag_033_03", "query": "做尖椒炒鸡蛋没有替代方案怎么办？", "category": "substitution", "recipe_id": 33, "expected_recipes": ["尖椒炒鸡蛋"], "expected_chunk_types": ["substitution"], "must_include": ["尖椒可以换成", "可以换成青椒", "换成青椒，辣", "青椒，辣度更"], "risk_keywords": ["热油"], "source_urls": ["https://www.xiachufang.com/search/?keyword=尖椒炒鸡蛋", "https://www.xiachufang.com/search/?keyword=尖椒炒鸡蛋"], "evidence_text": "尖椒可以换成青椒，辣度更低。"}
-{"id": "rag_034_01", "query": "新手做醋溜白菜有什么关键技巧？", "category": "beginner_tip", "recipe_id": 34, "expected_recipes": ["醋溜白菜"], "expected_chunk_types": ["beginner_tip"], "must_include": ["帮和叶分开，", "成熟时间不同", "。不吃辣可以", "不放干辣椒。"], "risk_keywords": [], "source_urls": ["https://www.xiachufang.com/search/?keyword=醋溜白菜", "https://www.xiachufang.com/search/?keyword=醋溜白菜"], "evidence_text": "帮和叶分开，成熟时间不同。不吃辣可以不放干辣椒。辣椒别炒糊。"}
-{"id": "rag_034_02", "query": "醋溜白菜为什么会白菜出水多？", "category": "failure_reason", "recipe_id": 34, "expected_recipes": ["醋溜白菜"], "expected_chunk_types": ["failure_reason"], "must_include": ["白菜出水多通", "多通常是火力", "火力不足或炒", "或炒制时间过"], "risk_keywords": [], "source_urls": ["https://www.xiachufang.com/search/?keyword=醋溜白菜", "https://www.xiachufang.com/search/?keyword=醋溜白菜"], "evidence_text": "白菜出水多通常是火力不足或炒制时间过长。"}
-{"id": "rag_034_03", "query": "做醋溜白菜没有陈醋怎么办？", "category": "substitution", "recipe_id": 34, "expected_recipes": ["醋溜白菜"], "expected_chunk_types": ["substitution"], "must_include": ["没有陈醋时可", "时可用米醋或", "醋或白醋，酸", "，酸香会有区"], "risk_keywords": [], "source_urls": ["https://www.xiachufang.com/search/?keyword=醋溜白菜", "https://www.xiachufang.com/search/?keyword=醋溜白菜"], "evidence_text": "没有陈醋时可用米醋或白醋，酸香会有区别。"}
-{"id": "rag_035_01", "query": "新手做手撕包菜有什么关键技巧？", "category": "beginner_tip", "recipe_id": 35, "expected_recipes": ["手撕包菜"], "expected_chunk_types": ["beginner_tip"], "must_include": ["手撕边缘不规", "则，更容易挂", "汁。水分太多", "会变成煮菜。"], "risk_keywords": [], "source_urls": ["https://www.xiachufang.com/search/?keyword=手撕包菜", "https://www.xiachufang.com/search/?keyword=手撕包菜"], "evidence_text": "手撕边缘不规则，更容易挂汁。水分太多会变成煮菜。辣椒按口味调整。"}
-{"id": "rag_035_02", "query": "手撕包菜为什么会包菜出水多？", "category": "failure_reason", "recipe_id": 35, "expected_recipes": ["手撕包菜"], "expected_chunk_types": ["failure_reason"], "must_include": ["包菜出水多通", "水多通常是洗", "常是洗后没沥", "后没沥干或火"], "risk_keywords": [], "source_urls": ["https://www.xiachufang.com/search/?keyword=手撕包菜", "https://www.xiachufang.com/search/?keyword=手撕包菜"], "evidence_text": "包菜出水多通常是洗后没沥干或火太小。"}
-{"id": "rag_035_03", "query": "做手撕包菜没有干辣椒怎么办？", "category": "substitution", "recipe_id": 35, "expected_recipes": ["手撕包菜"], "expected_chunk_types": ["substitution"], "must_include": ["没有干辣椒时", "辣椒时可以只", "可以只用蒜片", "用蒜片和少量"], "risk_keywords": [], "source_urls": ["https://www.xiachufang.com/search/?keyword=手撕包菜", "https://www.xiachufang.com/search/?keyword=手撕包菜"], "evidence_text": "没有干辣椒时可以只用蒜片和少量醋调味。"}
-{"id": "rag_036_01", "query": "新手做洋葱炒牛肉有什么关键技巧？", "category": "beginner_tip", "recipe_id": 36, "expected_recipes": ["洋葱炒牛肉"], "expected_chunk_types": ["beginner_tip"], "must_include": ["逆纹切能减少", "少嚼劲。洋葱", "葱不要切太细", "细。牛肉不要"], "risk_keywords": ["生肉", "热油"], "source_urls": ["https://www.xiachufang.com/search/?keyword=洋葱炒牛肉", "https://www.xiachufang.com/search/?keyword=洋葱炒牛肉"], "evidence_text": "逆纹切能减少嚼劲。洋葱不要切太细。牛肉不要炒到全熟干硬。"}
-{"id": "rag_036_02", "query": "洋葱炒牛肉为什么会牛肉发柴？", "category": "failure_reason", "recipe_id": 36, "expected_recipes": ["洋葱炒牛肉"], "expected_chunk_types": ["failure_reason"], "must_include": ["牛肉发柴通常", "通常是顺纹切", "纹切、腌制不", "制不足或回锅"], "risk_keywords": ["生肉", "热油"], "source_urls": ["https://www.xiachufang.com/search/?keyword=洋葱炒牛肉", "https://www.xiachufang.com/search/?keyword=洋葱炒牛肉"], "evidence_text": "牛肉发柴通常是顺纹切、腌制不足或回锅炒太久。"}
-{"id": "rag_036_03", "query": "做洋葱炒牛肉没有蚝油怎么办？", "category": "substitution", "recipe_id": 36, "expected_recipes": ["洋葱炒牛肉"], "expected_chunk_types": ["substitution"], "must_include": ["没有蚝油时可", "时可用生抽、", "抽、少量糖和", "糖和黑胡椒调"], "risk_keywords": ["生肉", "热油"], "source_urls": ["https://www.xiachufang.com/search/?keyword=洋葱炒牛肉", "https://www.xiachufang.com/search/?keyword=洋葱炒牛肉"], "evidence_text": "没有蚝油时可用生抽、少量糖和黑胡椒调味。"}
-{"id": "rag_037_01", "query": "新手做木须肉有什么关键技巧？", "category": "beginner_tip", "recipe_id": 37, "expected_recipes": ["木须肉"], "expected_chunk_types": ["beginner_tip"], "must_include": ["薄片更容易熟", "易熟。木耳根", "耳根部硬块要", "块要去掉。鸡"], "risk_keywords": [], "source_urls": ["https://www.xiachufang.com/search/?keyword=木须肉", "https://www.xiachufang.com/search/?keyword=木须肉"], "evidence_text": "薄片更容易熟。木耳根部硬块要去掉。鸡蛋不要炒老。"}
-{"id": "rag_037_02", "query": "木须肉为什么会木耳爆锅？", "category": "failure_reason", "recipe_id": 37, "expected_recipes": ["木须肉"], "expected_chunk_types": ["failure_reason"], "must_include": ["木耳爆锅常见", "锅常见原因是", "原因是泡发后", "泡发后表面水"], "risk_keywords": [], "source_urls": ["https://www.xiachufang.com/search/?keyword=木须肉", "https://www.xiachufang.com/search/?keyword=木须肉"], "evidence_text": "木耳爆锅常见原因是泡发后表面水分太多。"}
-{"id": "rag_037_03", "query": "做木须肉没有黄瓜怎么办？", "category": "substitution", "recipe_id": 37, "expected_recipes": ["木须肉"], "expected_chunk_types": ["substitution"], "must_include": ["没有黄瓜可以", "瓜可以用青椒", "用青椒或莴笋", "或莴笋片替代"], "risk_keywords": [], "source_urls": ["https://www.xiachufang.com/search/?keyword=木须肉", "https://www.xiachufang.com/search/?keyword=木须肉"], "evidence_text": "没有黄瓜可以用青椒或莴笋片替代。"}
-{"id": "rag_038_01", "query": "新手做青椒土豆片有什么关键技巧？", "category": "beginner_tip", "recipe_id": 38, "expected_recipes": ["青椒土豆片"], "expected_chunk_types": ["beginner_tip"], "must_include": ["冲洗后更不容", "易粘锅。青椒", "不需要切太小", "。下锅前越干"], "risk_keywords": [], "source_urls": ["https://www.xiachufang.com/search/?keyword=青椒土豆片", "https://www.xiachufang.com/search/?keyword=青椒土豆片"], "evidence_text": "冲洗后更不容易粘锅。青椒不需要切太小。下锅前越干越不容易溅油。"}
-{"id": "rag_038_02", "query": "青椒土豆片为什么会土豆片粘锅？", "category": "failure_reason", "recipe_id": 38, "expected_recipes": ["青椒土豆片"], "expected_chunk_types": ["failure_reason"], "must_include": ["土豆片粘锅常", "锅常见原因是", "因是淀粉未冲", "未冲洗或锅温"], "risk_keywords": [], "source_urls": ["https://www.xiachufang.com/search/?keyword=青椒土豆片", "https://www.xiachufang.com/search/?keyword=青椒土豆片"], "evidence_text": "土豆片粘锅常见原因是淀粉未冲洗或锅温不稳定。"}
-{"id": "rag_038_03", "query": "做青椒土豆片没有替代方案怎么办？", "category": "substitution", "recipe_id": 38, "expected_recipes": ["青椒土豆片"], "expected_chunk_types": ["substitution"], "must_include": ["青椒可换成尖", "换成尖椒、洋", "椒、洋葱或胡", "葱或胡萝卜片"], "risk_keywords": [], "source_urls": ["https://www.xiachufang.com/search/?keyword=青椒土豆片", "https://www.xiachufang.com/search/?keyword=青椒土豆片"], "evidence_text": "青椒可换成尖椒、洋葱或胡萝卜片。"}
-{"id": "rag_039_01", "query": "新手做肉末茄子有什么关键技巧？", "category": "beginner_tip", "recipe_id": 39, "expected_recipes": ["肉末茄子"], "expected_chunk_types": ["beginner_tip"], "must_include": ["这样能减少吸", "吸油。蒜末多", "多一点更香。", "。也可以蒸软"], "risk_keywords": [], "source_urls": ["https://www.xiachufang.com/search/?keyword=肉末茄子", "https://www.xiachufang.com/search/?keyword=肉末茄子"], "evidence_text": "这样能减少吸油。蒜末多一点更香。也可以蒸软后再炒，更省油。"}
-{"id": "rag_039_02", "query": "肉末茄子为什么会茄子不入味？", "category": "failure_reason", "recipe_id": 39, "expected_recipes": ["肉末茄子"], "expected_chunk_types": ["failure_reason"], "must_include": ["茄子不入味通", "味通常是没有", "没有烧一会让", "会让酱汁进入"], "risk_keywords": [], "source_urls": ["https://www.xiachufang.com/search/?keyword=肉末茄子", "https://www.xiachufang.com/search/?keyword=肉末茄子"], "evidence_text": "茄子不入味通常是没有烧一会让酱汁进入茄子。"}
-{"id": "rag_039_03", "query": "做肉末茄子没有替代方案怎么办？", "category": "substitution", "recipe_id": 39, "expected_recipes": ["肉末茄子"], "expected_chunk_types": ["substitution"], "must_include": ["不吃辣可以去", "以去掉豆瓣酱", "瓣酱，改用生", "用生抽、蚝油"], "risk_keywords": [], "source_urls": ["https://www.xiachufang.com/search/?keyword=肉末茄子", "https://www.xiachufang.com/search/?keyword=肉末茄子"], "evidence_text": "不吃辣可以去掉豆瓣酱，改用生抽、蚝油和蒜末。"}
-{"id": "rag_040_01", "query": "新手做黄瓜炒鸡蛋有什么关键技巧？", "category": "beginner_tip", "recipe_id": 40, "expected_recipes": ["黄瓜炒鸡蛋"], "expected_chunk_types": ["beginner_tip"], "must_include": ["黄瓜片不要太", "太薄，否则容", "容易出水。蛋", "蛋液打匀即可"], "risk_keywords": ["热油"], "source_urls": ["https://www.xiachufang.com/search/?keyword=黄瓜炒鸡蛋", "https://www.xiachufang.com/search/?keyword=黄瓜炒鸡蛋"], "evidence_text": "黄瓜片不要太薄，否则容易出水。蛋液打匀即可。鸡蛋保持大块。"}
-{"id": "rag_040_02", "query": "黄瓜炒鸡蛋为什么会黄瓜出水多？", "category": "failure_reason", "recipe_id": 40, "expected_recipes": ["黄瓜炒鸡蛋"], "expected_chunk_types": ["failure_reason"], "must_include": ["黄瓜出水多通", "水多通常是切", "常是切太薄或", "太薄或炒太久"], "risk_keywords": ["热油"], "source_urls": ["https://www.xiachufang.com/search/?keyword=黄瓜炒鸡蛋", "https://www.xiachufang.com/search/?keyword=黄瓜炒鸡蛋"], "evidence_text": "黄瓜出水多通常是切太薄或炒太久。"}
-{"id": "rag_040_03", "query": "做黄瓜炒鸡蛋没有替代方案怎么办？", "category": "substitution", "recipe_id": 40, "expected_recipes": ["黄瓜炒鸡蛋"], "expected_chunk_types": ["substitution"], "must_include": ["可加入少量火", "少量火腿片或", "腿片或木耳增", "木耳增加口感"], "risk_keywords": ["热油"], "source_urls": ["https://www.xiachufang.com/search/?keyword=黄瓜炒鸡蛋", "https://www.xiachufang.com/search/?keyword=黄瓜炒鸡蛋"], "evidence_text": "可加入少量火腿片或木耳增加口感。"}
-{"id": "rag_041_01", "query": "新手做冬瓜排骨汤有什么关键技巧？", "category": "beginner_tip", "recipe_id": 41, "expected_recipes": ["冬瓜排骨汤"], "expected_chunk_types": ["beginner_tip"], "must_include": ["焯水后汤更清", "清。冬瓜块不", "不要太薄，容", "容易炖化。水"], "risk_keywords": ["生肉"], "source_urls": ["https://www.xiachufang.com/search/?keyword=冬瓜排骨汤", "https://www.xiachufang.com/search/?keyword=冬瓜排骨汤"], "evidence_text": "焯水后汤更清。冬瓜块不要太薄，容易炖化。水一次加足。"}
-{"id": "rag_041_02", "query": "冬瓜排骨汤为什么会冬瓜炖化？", "category": "failure_reason", "recipe_id": 41, "expected_recipes": ["冬瓜排骨汤"], "expected_chunk_types": ["failure_reason"], "must_include": ["冬瓜炖化通常", "化通常是切太", "是切太薄或下", "薄或下锅太早"], "risk_keywords": ["生肉"], "source_urls": ["https://www.xiachufang.com/search/?keyword=冬瓜排骨汤", "https://www.xiachufang.com/search/?keyword=冬瓜排骨汤"], "evidence_text": "冬瓜炖化通常是切太薄或下锅太早。"}
-{"id": "rag_041_03", "query": "做冬瓜排骨汤没有料酒怎么办？", "category": "substitution", "recipe_id": 41, "expected_recipes": ["冬瓜排骨汤"], "expected_chunk_types": ["substitution"], "must_include": ["没有料酒时可", "酒时可用少量", "用少量白酒或", "白酒或黄酒替"], "risk_keywords": ["生肉"], "source_urls": ["https://www.xiachufang.com/search/?keyword=冬瓜排骨汤", "https://www.xiachufang.com/search/?keyword=冬瓜排骨汤"], "evidence_text": "没有料酒时可用少量白酒或黄酒替代。"}
-{"id": "rag_042_01", "query": "新手做葱油拌面有什么关键技巧？", "category": "beginner_tip", "recipe_id": 42, "expected_recipes": ["葱油拌面"], "expected_chunk_types": ["beginner_tip"], "must_include": ["葱段沥干水分", "熬油更安全。", "抽只负责上色", "不要太多。小"], "risk_keywords": [], "source_urls": ["https://www.xiachufang.com/search/?keyword=葱油拌面", "https://www.xiachufang.com/search/?keyword=葱油拌面"], "evidence_text": "葱段沥干水分，熬油更安全。老抽只负责上色，不要太多。小火熬到葱变焦香但不发黑。"}
-{"id": "rag_042_02", "query": "葱油拌面为什么会葱油发苦多是葱段被炸黑？", "category": "failure_reason", "recipe_id": 42, "expected_recipes": ["葱油拌面"], "expected_chunk_types": ["failure_reason"], "must_include": ["葱油发苦多是", "是葱段被炸黑", "黑，或酱汁入", "入锅后继续高"], "risk_keywords": [], "source_urls": ["https://www.xiachufang.com/search/?keyword=葱油拌面", "https://www.xiachufang.com/search/?keyword=葱油拌面"], "evidence_text": "葱油发苦多是葱段被炸黑，或酱汁入锅后继续高温久煮。"}
-{"id": "rag_042_03", "query": "做葱油拌面没有生抽怎么办？", "category": "substitution", "recipe_id": 42, "expected_recipes": ["葱油拌面"], "expected_chunk_types": ["substitution"], "must_include": ["没有生抽时可", "抽时可用普通", "用普通酱油替", "酱油替代，用"], "risk_keywords": [], "source_urls": ["https://www.xiachufang.com/search/?keyword=葱油拌面", "https://www.xiachufang.com/search/?keyword=葱油拌面"], "evidence_text": "没有生抽时可用普通酱油替代，用量减半。"}
-{"id": "rag_043_01", "query": "新手做蒜苔炒肉有什么关键技巧？", "category": "beginner_tip", "recipe_id": 43, "expected_recipes": ["蒜苔炒肉"], "expected_chunk_types": ["beginner_tip"], "must_include": ["薄切更容易嫩", "易嫩。蒜苔老", "苔老的根部要", "部要去掉。别"], "risk_keywords": ["生肉", "热油"], "source_urls": ["https://www.xiachufang.com/search/?keyword=蒜苔炒肉", "https://www.xiachufang.com/search/?keyword=蒜苔炒肉"], "evidence_text": "薄切更容易嫩。蒜苔老的根部要去掉。别炒老。"}
-{"id": "rag_043_02", "query": "蒜苔炒肉为什么会蒜苔夹生？", "category": "failure_reason", "recipe_id": 43, "expected_recipes": ["蒜苔炒肉"], "expected_chunk_types": ["failure_reason"], "must_include": ["蒜苔夹生通常", "生通常是火候", "是火候不足或", "不足或切段过"], "risk_keywords": ["生肉", "热油"], "source_urls": ["https://www.xiachufang.com/search/?keyword=蒜苔炒肉", "https://www.xiachufang.com/search/?keyword=蒜苔炒肉"], "evidence_text": "蒜苔夹生通常是火候不足或切段过长。"}
-{"id": "rag_043_03", "query": "做蒜苔炒肉没有替代方案怎么办？", "category": "substitution", "recipe_id": 43, "expected_recipes": ["蒜苔炒肉"], "expected_chunk_types": ["substitution"], "must_include": ["猪肉可换成牛", "换成牛肉、鸡", "肉、鸡胸肉或", "胸肉或腊肉。"], "risk_keywords": ["生肉", "热油"], "source_urls": ["https://www.xiachufang.com/search/?keyword=蒜苔炒肉", "https://www.xiachufang.com/search/?keyword=蒜苔炒肉"], "evidence_text": "猪肉可换成牛肉、鸡胸肉或腊肉。"}
-{"id": "rag_044_01", "query": "新手做家常豆腐有什么关键技巧？", "category": "beginner_tip", "recipe_id": 44, "expected_recipes": ["家常豆腐"], "expected_chunk_types": ["beginner_tip"], "must_include": ["北豆腐更适合", "合煎。木耳泡", "泡发后沥干。", "。豆腐下锅后"], "risk_keywords": [], "source_urls": ["https://www.xiachufang.com/search/?keyword=家常豆腐", "https://www.xiachufang.com/search/?keyword=家常豆腐"], "evidence_text": "北豆腐更适合煎。木耳泡发后沥干。豆腐下锅后先别急着翻。"}
-{"id": "rag_044_02", "query": "家常豆腐为什么会豆腐煎碎？", "category": "failure_reason", "recipe_id": 44, "expected_recipes": ["家常豆腐"], "expected_chunk_types": ["failure_reason"], "must_include": ["豆腐煎碎通常", "常是锅不够热", "热、豆腐表面", "面太湿，或翻"], "risk_keywords": [], "source_urls": ["https://www.xiachufang.com/search/?keyword=家常豆腐", "https://www.xiachufang.com/search/?keyword=家常豆腐"], "evidence_text": "豆腐煎碎通常是锅不够热、豆腐表面太湿，或翻动太早。"}
-{"id": "rag_044_03", "query": "做家常豆腐没有豆瓣酱怎么办？", "category": "substitution", "recipe_id": 44, "expected_recipes": ["家常豆腐"], "expected_chunk_types": ["substitution"], "must_include": ["不吃辣可以不", "以不放豆瓣酱", "瓣酱，改用生", "用生抽、蚝油"], "risk_keywords": [], "source_urls": ["https://www.xiachufang.com/search/?keyword=家常豆腐", "https://www.xiachufang.com/search/?keyword=家常豆腐"], "evidence_text": "不吃辣可以不放豆瓣酱，改用生抽、蚝油和蒜末。"}
-{"id": "rag_045_01", "query": "新手做油焖大虾有什么关键技巧？", "category": "beginner_tip", "recipe_id": 45, "expected_recipes": ["油焖大虾"], "expected_chunk_types": ["beginner_tip"], "must_include": ["处理干净口感", "感更好。姜蒜", "蒜能去腥增香", "香。虾表面沥"], "risk_keywords": [], "source_urls": ["https://www.xiachufang.com/search/?keyword=油焖大虾", "https://www.xiachufang.com/search/?keyword=油焖大虾"], "evidence_text": "处理干净口感更好。姜蒜能去腥增香。虾表面沥干更香。"}
-{"id": "rag_045_02", "query": "油焖大虾为什么会虾肉变老？", "category": "failure_reason", "recipe_id": 45, "expected_recipes": ["油焖大虾"], "expected_chunk_types": ["failure_reason"], "must_include": ["虾肉变老通常", "老通常是焖煮", "是焖煮或收汁", "或收汁时间过"], "risk_keywords": [], "source_urls": ["https://www.xiachufang.com/search/?keyword=油焖大虾", "https://www.xiachufang.com/search/?keyword=油焖大虾"], "evidence_text": "虾肉变老通常是焖煮或收汁时间过长。"}
-{"id": "rag_045_03", "query": "做油焖大虾没有生抽怎么办？", "category": "substitution", "recipe_id": 45, "expected_recipes": ["油焖大虾"], "expected_chunk_types": ["substitution"], "must_include": ["没有生抽时可", "抽时可用普通", "用普通酱油替", "酱油替代，用"], "risk_keywords": [], "source_urls": ["https://www.xiachufang.com/search/?keyword=油焖大虾", "https://www.xiachufang.com/search/?keyword=油焖大虾"], "evidence_text": "没有生抽时可用普通酱油替代，用量减半。"}
-{"id": "rag_046_01", "query": "新手做蒜香鸡腿有什么关键技巧？", "category": "beginner_tip", "recipe_id": 46, "expected_recipes": ["蒜香鸡腿"], "expected_chunk_types": ["beginner_tip"], "must_include": ["划刀能帮助入", "入味和成熟。", "。腌制时间越", "越长越入味。"], "risk_keywords": [], "source_urls": ["https://www.xiachufang.com/search/?keyword=蒜香鸡腿", "https://www.xiachufang.com/search/?keyword=蒜香鸡腿"], "evidence_text": "划刀能帮助入味和成熟。腌制时间越长越入味。鸡皮先煎更香。"}
-{"id": "rag_046_02", "query": "蒜香鸡腿为什么会外焦内生？", "category": "failure_reason", "recipe_id": 46, "expected_recipes": ["蒜香鸡腿"], "expected_chunk_types": ["failure_reason"], "must_include": ["外焦内生通常", "通常是火太大", "太大，鸡腿厚", "腿厚处还没熟"], "risk_keywords": [], "source_urls": ["https://www.xiachufang.com/search/?keyword=蒜香鸡腿", "https://www.xiachufang.com/search/?keyword=蒜香鸡腿"], "evidence_text": "外焦内生通常是火太大，鸡腿厚处还没熟表面已焦。"}
-{"id": "rag_046_03", "query": "做蒜香鸡腿没有生抽怎么办？", "category": "substitution", "recipe_id": 46, "expected_recipes": ["蒜香鸡腿"], "expected_chunk_types": ["substitution"], "must_include": ["没有生抽时可", "抽时可用普通", "用普通酱油替", "酱油替代，用"], "risk_keywords": [], "source_urls": ["https://www.xiachufang.com/search/?keyword=蒜香鸡腿", "https://www.xiachufang.com/search/?keyword=蒜香鸡腿"], "evidence_text": "没有生抽时可用普通酱油替代，用量减半。"}
-{"id": "rag_047_01", "query": "新手做白菜炖豆腐有什么关键技巧？", "category": "beginner_tip", "recipe_id": 47, "expected_recipes": ["白菜炖豆腐"], "expected_chunk_types": ["beginner_tip"], "must_include": ["菜帮更耐炖。", "炖。北豆腐更", "腐更不容易碎", "易碎。葱姜少"], "risk_keywords": [], "source_urls": ["https://www.xiachufang.com/search/?keyword=白菜炖豆腐", "https://www.xiachufang.com/search/?keyword=白菜炖豆腐"], "evidence_text": "菜帮更耐炖。北豆腐更不容易碎。葱姜少量即可。"}
-{"id": "rag_047_02", "query": "白菜炖豆腐为什么会豆腐碎？", "category": "failure_reason", "recipe_id": 47, "expected_recipes": ["白菜炖豆腐"], "expected_chunk_types": ["failure_reason"], "must_include": ["豆腐碎通常是", "通常是用嫩豆", "用嫩豆腐且翻", "腐且翻动过大"], "risk_keywords": [], "source_urls": ["https://www.xiachufang.com/search/?keyword=白菜炖豆腐", "https://www.xiachufang.com/search/?keyword=白菜炖豆腐"], "evidence_text": "豆腐碎通常是用嫩豆腐且翻动过大。"}
-{"id": "rag_047_03", "query": "做白菜炖豆腐没有替代方案怎么办？", "category": "substitution", "recipe_id": 47, "expected_recipes": ["白菜炖豆腐"], "expected_chunk_types": ["substitution"], "must_include": ["可以加入粉条", "入粉条、虾皮", "、虾皮或肉丸", "或肉丸增加风"], "risk_keywords": [], "source_urls": ["https://www.xiachufang.com/search/?keyword=白菜炖豆腐", "https://www.xiachufang.com/search/?keyword=白菜炖豆腐"], "evidence_text": "可以加入粉条、虾皮或肉丸增加风味。"}
-{"id": "rag_048_01", "query": "新手做干锅花菜有什么关键技巧？", "category": "beginner_tip", "recipe_id": 48, "expected_recipes": ["干锅花菜"], "expected_chunk_types": ["beginner_tip"], "must_include": ["小朵更容易入", "味。五花肉薄", "一点更容易煸", "出油。焯后要"], "risk_keywords": [], "source_urls": ["https://www.xiachufang.com/search/?keyword=干锅花菜", "https://www.xiachufang.com/search/?keyword=干锅花菜"], "evidence_text": "小朵更容易入味。五花肉薄一点更容易煸出油。焯后要沥干，否则炒不香。"}
-{"id": "rag_048_02", "query": "干锅花菜为什么会花菜出水不香？", "category": "failure_reason", "recipe_id": 48, "expected_recipes": ["干锅花菜"], "expected_chunk_types": ["failure_reason"], "must_include": ["花菜出水不香", "不香通常是焯", "是焯水后没沥", "没沥干或火力"], "risk_keywords": [], "source_urls": ["https://www.xiachufang.com/search/?keyword=干锅花菜", "https://www.xiachufang.com/search/?keyword=干锅花菜"], "evidence_text": "花菜出水不香通常是焯水后没沥干或火力不足。"}
-{"id": "rag_048_03", "query": "做干锅花菜没有替代方案怎么办？", "category": "substitution", "recipe_id": 48, "expected_recipes": ["干锅花菜"], "expected_chunk_types": ["substitution"], "must_include": ["不吃辣可以去", "以去掉干辣椒", "辣椒，改用蒜", "用蒜片和蚝油"], "risk_keywords": [], "source_urls": ["https://www.xiachufang.com/search/?keyword=干锅花菜", "https://www.xiachufang.com/search/?keyword=干锅花菜"], "evidence_text": "不吃辣可以去掉干辣椒，改用蒜片和蚝油调味。"}
-{"id": "rag_049_01", "query": "新手做腐竹炒肉有什么关键技巧？", "category": "beginner_tip", "recipe_id": 49, "expected_recipes": ["腐竹炒肉"], "expected_chunk_types": ["beginner_tip"], "must_include": ["不要用开水猛", "泡，容易外烂", "内硬。肉片薄", "一点更嫩。木"], "risk_keywords": ["热油"], "source_urls": ["https://www.xiachufang.com/search/?keyword=腐竹炒肉", "https://www.xiachufang.com/search/?keyword=腐竹炒肉"], "evidence_text": "不要用开水猛泡，容易外烂内硬。肉片薄一点更嫩。木耳沥干水分。"}
-{"id": "rag_049_02", "query": "腐竹炒肉为什么会腐竹外烂内硬？", "category": "failure_reason", "recipe_id": 49, "expected_recipes": ["腐竹炒肉"], "expected_chunk_types": ["failure_reason"], "must_include": ["腐竹外烂内硬", "内硬通常是水", "是水温过高或", "高或浸泡时间"], "risk_keywords": ["热油"], "source_urls": ["https://www.xiachufang.com/search/?keyword=腐竹炒肉", "https://www.xiachufang.com/search/?keyword=腐竹炒肉"], "evidence_text": "腐竹外烂内硬通常是水温过高或浸泡时间不足。"}
-{"id": "rag_049_03", "query": "做腐竹炒肉没有替代方案怎么办？", "category": "substitution", "recipe_id": 49, "expected_recipes": ["腐竹炒肉"], "expected_chunk_types": ["substitution"], "must_include": ["猪肉可以换成", "换成鸡肉、牛", "、牛肉或只搭", "只搭配木耳青"], "risk_keywords": ["热油"], "source_urls": ["https://www.xiachufang.com/search/?keyword=腐竹炒肉", "https://www.xiachufang.com/search/?keyword=腐竹炒肉"], "evidence_text": "猪肉可以换成鸡肉、牛肉或只搭配木耳青椒做素炒。"}
-{"id": "rag_050_01", "query": "新手做菠菜鸡蛋汤有什么关键技巧？", "category": "beginner_tip", "recipe_id": 50, "expected_recipes": ["菠菜鸡蛋汤"], "expected_chunk_types": ["beginner_tip"], "must_include": ["根部泥沙要洗", "洗净。焯水能", "能减少涩味。", "。菠菜不需要"], "risk_keywords": [], "source_urls": ["https://www.xiachufang.com/search/?keyword=菠菜鸡蛋汤", "https://www.xiachufang.com/search/?keyword=菠菜鸡蛋汤"], "evidence_text": "根部泥沙要洗净。焯水能减少涩味。菠菜不需要切太碎。"}
-{"id": "rag_050_02", "query": "菠菜鸡蛋汤为什么会蛋花成块？", "category": "failure_reason", "recipe_id": 50, "expected_recipes": ["菠菜鸡蛋汤"], "expected_chunk_types": ["failure_reason"], "must_include": ["蛋花成块通常", "通常是汤滚得", "滚得太猛或蛋", "或蛋液一次倒"], "risk_keywords": [], "source_urls": ["https://www.xiachufang.com/search/?keyword=菠菜鸡蛋汤", "https://www.xiachufang.com/search/?keyword=菠菜鸡蛋汤"], "evidence_text": "蛋花成块通常是汤滚得太猛或蛋液一次倒入。"}
-{"id": "rag_050_03", "query": "做菠菜鸡蛋汤没有替代方案怎么办？", "category": "substitution", "recipe_id": 50, "expected_recipes": ["菠菜鸡蛋汤"], "expected_chunk_types": ["substitution"], "must_include": ["菠菜可换成小", "换成小白菜、", "白菜、油麦菜", "油麦菜或紫菜"], "risk_keywords": [], "source_urls": ["https://www.xiachufang.com/search/?keyword=菠菜鸡蛋汤", "https://www.xiachufang.com/search/?keyword=菠菜鸡蛋汤"], "evidence_text": "菠菜可换成小白菜、油麦菜或紫菜。"}
+{
+  "id": "rag_001_01",
+  "query": "新手做番茄炒蛋有什么关键技巧？",
+  "category": "beginner_tip",
+  "recipe_id": 1,
+  "expected_recipes": [
+    "番茄炒蛋"
+  ],
+  "expected_chunk_types": [
+    "beginner_tip"
+  ],
+  "must_include": [
+    "番茄选成熟偏",
+    "容易炒出汁。",
+    "匀即可，不需",
+    "很多泡。鸡蛋"
+  ],
+  "risk_keywords": [
+    "热油"
+  ],
+  "source_urls": [
+    "https://lanfanapp.com/recipe/2039/",
+    "https://m.xiachufang.com/recipe/107620836/"
+  ],
+  "evidence_text": "番茄选成熟偏软的更容易炒出汁。蛋液打匀即可，不需要打出很多泡。鸡蛋不要炒到完全干硬，后面还会回锅。"
+}
+
+{
+  "id": "rag_001_02",
+  "query": "番茄炒蛋为什么会鸡蛋变老？",
+  "category": "failure_reason",
+  "recipe_id": 1,
+  "expected_recipes": [
+    "番茄炒蛋"
+  ],
+  "expected_chunk_types": [
+    "failure_reason"
+  ],
+  "must_include": [
+    "鸡蛋变老通常",
+    "常是第一次炒",
+    "炒蛋时间过长",
+    "长，或回锅后"
+  ],
+  "risk_keywords": [
+    "热油"
+  ],
+  "source_urls": [
+    "https://lanfanapp.com/recipe/2039/",
+    "https://m.xiachufang.com/recipe/107620836/"
+  ],
+  "evidence_text": "鸡蛋变老通常是第一次炒蛋时间过长，或回锅后继续久炒。"
+}
+
+{
+  "id": "rag_001_03",
+  "query": "做番茄炒蛋没有糖怎么办？",
+  "category": "substitution",
+  "recipe_id": 1,
+  "expected_recipes": [
+    "番茄炒蛋"
+  ],
+  "expected_chunk_types": [
+    "substitution"
+  ],
+  "must_include": [
+    "不想放糖时，",
+    "，可以选更成",
+    "成熟的番茄，",
+    "，或加少量番"
+  ],
+  "risk_keywords": [
+    "热油"
+  ],
+  "source_urls": [
+    "https://lanfanapp.com/recipe/2039/",
+    "https://m.xiachufang.com/recipe/107620836/"
+  ],
+  "evidence_text": "不想放糖时，可以选更成熟的番茄，或加少量番茄酱提升风味。"
+}
+
+{
+  "id": "rag_002_01",
+  "query": "新手做可乐鸡翅有什么关键技巧？",
+  "category": "beginner_tip",
+  "recipe_id": 2,
+  "expected_recipes": [
+    "可乐鸡翅"
+  ],
+  "expected_chunk_types": [
+    "beginner_tip"
+  ],
+  "must_include": [
+    "划刀能帮助入",
+    "要切太深。焯",
+    "低腥味，也让",
+    "易判断熟度。"
+  ],
+  "risk_keywords": [],
+  "source_urls": [
+    "https://lanfanapp.com/recipe/281",
+    "https://www.xiachufang.com/recipe/1000229/"
+  ],
+  "evidence_text": "划刀能帮助入味，但不要切太深。焯水可以降低腥味，也让新手更容易判断熟度。表面越干，后面煎的时候越不容易溅油。"
+}
+
+{
+  "id": "rag_002_02",
+  "query": "可乐鸡翅为什么会糊锅？",
+  "category": "failure_reason",
+  "recipe_id": 2,
+  "expected_recipes": [
+    "可乐鸡翅"
+  ],
+  "expected_chunk_types": [
+    "failure_reason"
+  ],
+  "must_include": [
+    "可乐鸡翅糊锅",
+    "发生在收汁后",
+    "，因为可乐含",
+    "，汤汁浓稠后"
+  ],
+  "risk_keywords": [],
+  "source_urls": [
+    "https://lanfanapp.com/recipe/281",
+    "https://www.xiachufang.com/recipe/1000229/"
+  ],
+  "evidence_text": "可乐鸡翅糊锅多发生在收汁后期，因为可乐含糖，汤汁浓稠后需要持续翻动并及时关火。"
+}
+
+{
+  "id": "rag_002_03",
+  "query": "做可乐鸡翅没有生抽怎么办？",
+  "category": "substitution",
+  "recipe_id": 2,
+  "expected_recipes": [
+    "可乐鸡翅"
+  ],
+  "expected_chunk_types": [
+    "substitution"
+  ],
+  "must_include": [
+    "没有生抽时可",
+    "抽时可用普通",
+    "用普通酱油替",
+    "酱油替代，用"
+  ],
+  "risk_keywords": [],
+  "source_urls": [
+    "https://lanfanapp.com/recipe/281",
+    "https://www.xiachufang.com/recipe/1000229/"
+  ],
+  "evidence_text": "没有生抽时可用普通酱油替代，用量减半。"
+}
+
+{
+  "id": "rag_003_01",
+  "query": "新手做蛋炒饭有什么关键技巧？",
+  "category": "beginner_tip",
+  "recipe_id": 3,
+  "expected_recipes": [
+    "蛋炒饭"
+  ],
+  "expected_chunk_types": [
+    "beginner_tip"
+  ],
+  "must_include": [
+    "冷藏过的米饭",
+    "炒散。配菜尽",
+    "，熟得快也更",
+    "匀。想要蛋香"
+  ],
+  "risk_keywords": [
+    "热油"
+  ],
+  "source_urls": [
+    "https://www.xiachufang.com/recipe/100122781/",
+    "https://www.xiachufang.com/recipe/104499671/"
+  ],
+  "evidence_text": "冷藏过的米饭更容易炒散。配菜尽量切小，熟得快也更容易拌匀。想要蛋香明显，可以先炒蛋再炒饭。"
+}
+
+{
+  "id": "rag_003_02",
+  "query": "蛋炒饭为什么会发粘？",
+  "category": "failure_reason",
+  "recipe_id": 3,
+  "expected_recipes": [
+    "蛋炒饭"
+  ],
+  "expected_chunk_types": [
+    "failure_reason"
+  ],
+  "must_include": [
+    "蛋炒饭发粘通",
+    "通常是米饭水",
+    "水分过高，或",
+    "或酱油等液体"
+  ],
+  "risk_keywords": [
+    "热油"
+  ],
+  "source_urls": [
+    "https://www.xiachufang.com/recipe/100122781/",
+    "https://www.xiachufang.com/recipe/104499671/"
+  ],
+  "evidence_text": "蛋炒饭发粘通常是米饭水分过高，或酱油等液体调料加入过多。"
+}
+
+{
+  "id": "rag_003_03",
+  "query": "做蛋炒饭有什么安全注意事项？",
+  "category": "safety_note",
+  "recipe_id": 3,
+  "expected_recipes": [
+    "蛋炒饭"
+  ],
+  "expected_chunk_types": [
+    "safety_note"
+  ],
+  "must_include": [
+    "剩米饭不应长",
+    "应长时间室温",
+    "室温放置，炒",
+    "，炒饭时需要"
+  ],
+  "risk_keywords": [
+    "热油"
+  ],
+  "source_urls": [
+    "https://www.xiachufang.com/recipe/100122781/",
+    "https://www.xiachufang.com/recipe/104499671/"
+  ],
+  "evidence_text": "剩米饭不应长时间室温放置，炒饭时需要充分加热。"
+}
+
+{
+  "id": "rag_004_01",
+  "query": "新手做热汤面有什么关键技巧？",
+  "category": "beginner_tip",
+  "recipe_id": 4,
+  "expected_recipes": [
+    "热汤面"
+  ],
+  "expected_chunk_types": [
+    "beginner_tip"
+  ],
+  "must_include": [
+    "青菜提前洗好",
+    "就不会手忙脚",
+    "先少放盐，面",
+    "再调整。面条"
+  ],
+  "risk_keywords": [],
+  "source_urls": [
+    "https://www.xiachufang.com/recipe/104405703/",
+    "https://www.xiachufang.com/recipe/106038234/"
+  ],
+  "evidence_text": "青菜提前洗好，煮面时就不会手忙脚乱。汤底先少放盐，面汤冲开后再调整。面条下锅后用筷子拨散，避免粘连。"
+}
+
+{
+  "id": "rag_004_02",
+  "query": "热汤面为什么会变坨？",
+  "category": "failure_reason",
+  "recipe_id": 4,
+  "expected_recipes": [
+    "热汤面"
+  ],
+  "expected_chunk_types": [
+    "failure_reason"
+  ],
+  "must_include": [
+    "热汤面变坨通",
+    "通常是面煮太",
+    "太久或煮好后",
+    "后放置太久，"
+  ],
+  "risk_keywords": [],
+  "source_urls": [
+    "https://www.xiachufang.com/recipe/104405703/",
+    "https://www.xiachufang.com/recipe/106038234/"
+  ],
+  "evidence_text": "热汤面变坨通常是面煮太久或煮好后放置太久，应现煮现吃。"
+}
+
+{
+  "id": "rag_004_03",
+  "query": "做热汤面没有青菜怎么办？",
+  "category": "substitution",
+  "recipe_id": 4,
+  "expected_recipes": [
+    "热汤面"
+  ],
+  "expected_chunk_types": [
+    "substitution"
+  ],
+  "must_include": [
+    "没有青菜时，",
+    "，可以用葱花",
+    "花、紫菜、番",
+    "番茄片或煎蛋"
+  ],
+  "risk_keywords": [],
+  "source_urls": [
+    "https://www.xiachufang.com/recipe/104405703/",
+    "https://www.xiachufang.com/recipe/106038234/"
+  ],
+  "evidence_text": "没有青菜时，可以用葱花、紫菜、番茄片或煎蛋补充风味。"
+}
+
+{
+  "id": "rag_005_01",
+  "query": "新手做酸辣土豆丝有什么关键技巧？",
+  "category": "beginner_tip",
+  "recipe_id": 5,
+  "expected_recipes": [
+    "酸辣土豆丝"
+  ],
+  "expected_chunk_types": [
+    "beginner_tip"
+  ],
+  "must_include": [
+    "粗细均匀比切",
+    "很细更重要。",
+    "掉表面淀粉是",
+    "持爽脆的关键"
+  ],
+  "risk_keywords": [],
+  "source_urls": [
+    "https://www.xiachufang.com/recipe/37746/",
+    "https://www.xiachufang.com/search/?keyword=酸辣土豆丝"
+  ],
+  "evidence_text": "粗细均匀比切得很细更重要。冲掉表面淀粉是保持爽脆的关键。不吃辣可以去掉干辣椒。"
+}
+
+{
+  "id": "rag_005_02",
+  "query": "酸辣土豆丝为什么会发粘？",
+  "category": "failure_reason",
+  "recipe_id": 5,
+  "expected_recipes": [
+    "酸辣土豆丝"
+  ],
+  "expected_chunk_types": [
+    "failure_reason"
+  ],
+  "must_include": [
+    "酸辣土豆丝发",
+    "粘通常是土豆",
+    "丝没有充分冲",
+    "洗淀粉，或火"
+  ],
+  "risk_keywords": [],
+  "source_urls": [
+    "https://www.xiachufang.com/recipe/37746/",
+    "https://www.xiachufang.com/search/?keyword=酸辣土豆丝"
+  ],
+  "evidence_text": "酸辣土豆丝发粘通常是土豆丝没有充分冲洗淀粉，或火太小、炒制时间太久。"
+}
+
+{
+  "id": "rag_005_03",
+  "query": "做酸辣土豆丝没有白醋怎么办？",
+  "category": "substitution",
+  "recipe_id": 5,
+  "expected_recipes": [
+    "酸辣土豆丝"
+  ],
+  "expected_chunk_types": [
+    "substitution"
+  ],
+  "must_include": [
+    "没有白醋时可",
+    "可以用米醋或",
+    "或陈醋，颜色",
+    "色和香气会略"
+  ],
+  "risk_keywords": [],
+  "source_urls": [
+    "https://www.xiachufang.com/recipe/37746/",
+    "https://www.xiachufang.com/search/?keyword=酸辣土豆丝"
+  ],
+  "evidence_text": "没有白醋时可以用米醋或陈醋，颜色和香气会略有不同。"
+}
+
+{
+  "id": "rag_006_01",
+  "query": "新手做红烧鱼块有什么关键技巧？",
+  "category": "beginner_tip",
+  "recipe_id": 6,
+  "expected_recipes": [
+    "红烧鱼块"
+  ],
+  "expected_chunk_types": [
+    "beginner_tip"
+  ],
+  "must_include": [
+    "鱼块大小尽量",
+    "，熟成更均匀",
+    "制十几分钟可",
+    "助去腥。擦干"
+  ],
+  "risk_keywords": [
+    "鱼刺"
+  ],
+  "source_urls": [
+    "https://www.xiachufang.com/recipe/104102080/",
+    "https://www.xiachufang.com/recipe/106492378/"
+  ],
+  "evidence_text": "鱼块大小尽量接近，熟成更均匀。腌制十几分钟可以帮助去腥。擦干水分能减少粘锅和溅油。"
+}
+
+{
+  "id": "rag_006_02",
+  "query": "红烧鱼块为什么会煎碎？",
+  "category": "failure_reason",
+  "recipe_id": 6,
+  "expected_recipes": [
+    "红烧鱼块"
+  ],
+  "expected_chunk_types": [
+    "failure_reason"
+  ],
+  "must_include": [
+    "红烧鱼块煎碎",
+    "通常是鱼块表",
+    "面太湿、锅不",
+    "够热，或下锅"
+  ],
+  "risk_keywords": [
+    "鱼刺"
+  ],
+  "source_urls": [
+    "https://www.xiachufang.com/recipe/104102080/",
+    "https://www.xiachufang.com/recipe/106492378/"
+  ],
+  "evidence_text": "红烧鱼块煎碎通常是鱼块表面太湿、锅不够热，或下锅后太早翻面。"
+}
+
+{
+  "id": "rag_006_03",
+  "query": "做红烧鱼块没有料酒怎么办？",
+  "category": "substitution",
+  "recipe_id": 6,
+  "expected_recipes": [
+    "红烧鱼块"
+  ],
+  "expected_chunk_types": [
+    "substitution"
+  ],
+  "must_include": [
+    "没有料酒时可",
+    "酒时可用少量",
+    "用少量白酒或",
+    "白酒或黄酒替"
+  ],
+  "risk_keywords": [
+    "鱼刺"
+  ],
+  "source_urls": [
+    "https://www.xiachufang.com/recipe/104102080/",
+    "https://www.xiachufang.com/recipe/106492378/"
+  ],
+  "evidence_text": "没有料酒时可用少量白酒或黄酒替代。"
+}
+
+{
+  "id": "rag_007_01",
+  "query": "新手做咸蛋黄鸡翅有什么关键技巧？",
+  "category": "beginner_tip",
+  "recipe_id": 7,
+  "expected_recipes": [
+    "咸蛋黄鸡翅"
+  ],
+  "expected_chunk_types": [
+    "beginner_tip"
+  ],
+  "must_include": [
+    "划刀能帮助腌",
+    "进入鸡肉。腌",
+    "半小时以上更",
+    "味。压得越碎"
+  ],
+  "risk_keywords": [],
+  "source_urls": [
+    "https://lanfanapp.com/recipe/733",
+    "https://www.daydaycook.com/zh-Hans/recipe/salted-egg-yolk-chicken-wing"
+  ],
+  "evidence_text": "划刀能帮助腌料进入鸡肉。腌制半小时以上更入味。压得越碎，后面越容易炒出沙。"
+}
+
+{
+  "id": "rag_007_02",
+  "query": "咸蛋黄鸡翅为什么会过咸？",
+  "category": "failure_reason",
+  "recipe_id": 7,
+  "expected_recipes": [
+    "咸蛋黄鸡翅"
+  ],
+  "expected_chunk_types": [
+    "failure_reason"
+  ],
+  "must_include": [
+    "咸蛋黄鸡翅过",
+    "过咸通常是咸",
+    "咸蛋黄本身盐",
+    "盐分高，又额"
+  ],
+  "risk_keywords": [],
+  "source_urls": [
+    "https://lanfanapp.com/recipe/733",
+    "https://www.daydaycook.com/zh-Hans/recipe/salted-egg-yolk-chicken-wing"
+  ],
+  "evidence_text": "咸蛋黄鸡翅过咸通常是咸蛋黄本身盐分高，又额外加了盐或蚝油。"
+}
+
+{
+  "id": "rag_007_03",
+  "query": "做咸蛋黄鸡翅没有料酒怎么办？",
+  "category": "substitution",
+  "recipe_id": 7,
+  "expected_recipes": [
+    "咸蛋黄鸡翅"
+  ],
+  "expected_chunk_types": [
+    "substitution"
+  ],
+  "must_include": [
+    "没有料酒时可",
+    "酒时可用少量",
+    "用少量白酒或",
+    "白酒或黄酒替"
+  ],
+  "risk_keywords": [],
+  "source_urls": [
+    "https://lanfanapp.com/recipe/733",
+    "https://www.daydaycook.com/zh-Hans/recipe/salted-egg-yolk-chicken-wing"
+  ],
+  "evidence_text": "没有料酒时可用少量白酒或黄酒替代。"
+}
+
+{
+  "id": "rag_008_01",
+  "query": "新手做虎皮尖椒酿肉有什么关键技巧？",
+  "category": "beginner_tip",
+  "recipe_id": 8,
+  "expected_recipes": [
+    "虎皮尖椒酿肉"
+  ],
+  "expected_chunk_types": [
+    "beginner_tip"
+  ],
+  "must_include": [
+    "尖椒不要切开",
+    "后面更容易装",
+    "。籽取干净后",
+    "度会降低一些"
+  ],
+  "risk_keywords": [],
+  "source_urls": [
+    "https://www.xiachufang.com/recipe/104475437/",
+    "https://www.xiangha.com/caipu/83125897.html"
+  ],
+  "evidence_text": "尖椒不要切开，后面更容易装肉。籽取干净后辣度会降低一些。少量加水能让肉馅更嫩。"
+}
+
+{
+  "id": "rag_008_02",
+  "query": "虎皮尖椒酿肉为什么会肉馅容易散？",
+  "category": "failure_reason",
+  "recipe_id": 8,
+  "expected_recipes": [
+    "虎皮尖椒酿肉"
+  ],
+  "expected_chunk_types": [
+    "failure_reason"
+  ],
+  "must_include": [
+    "肉馅容易散通",
+    "通常是没有搅",
+    "搅拌上劲，或",
+    "或填入尖椒时"
+  ],
+  "risk_keywords": [],
+  "source_urls": [
+    "https://www.xiachufang.com/recipe/104475437/",
+    "https://www.xiangha.com/caipu/83125897.html"
+  ],
+  "evidence_text": "肉馅容易散通常是没有搅拌上劲，或填入尖椒时压得太松。"
+}
+
+{
+  "id": "rag_008_03",
+  "query": "做虎皮尖椒酿肉没有生抽怎么办？",
+  "category": "substitution",
+  "recipe_id": 8,
+  "expected_recipes": [
+    "虎皮尖椒酿肉"
+  ],
+  "expected_chunk_types": [
+    "substitution"
+  ],
+  "must_include": [
+    "没有生抽时可",
+    "抽时可用普通",
+    "用普通酱油替",
+    "酱油替代，用"
+  ],
+  "risk_keywords": [],
+  "source_urls": [
+    "https://www.xiachufang.com/recipe/104475437/",
+    "https://www.xiangha.com/caipu/83125897.html"
+  ],
+  "evidence_text": "没有生抽时可用普通酱油替代，用量减半。"
+}
+
+{
+  "id": "rag_009_01",
+  "query": "新手做蚝油生菜有什么关键技巧？",
+  "category": "beginner_tip",
+  "recipe_id": 9,
+  "expected_recipes": [
+    "蚝油生菜"
+  ],
+  "expected_chunk_types": [
+    "beginner_tip"
+  ],
+  "must_include": [
+    "生菜叶片间容",
+    "，要逐片冲洗",
+    "调汁能避免蒜",
+    "后再手忙脚乱"
+  ],
+  "risk_keywords": [],
+  "source_urls": [
+    "https://www.xiachufang.com/recipe/100370658/",
+    "https://www.xiachufang.com/recipe/107168319/"
+  ],
+  "evidence_text": "生菜叶片间容易藏泥，要逐片冲洗。提前调汁能避免蒜末炒好后再手忙脚乱。盐和油能让焯出的生菜颜色更好。"
+}
+
+{
+  "id": "rag_009_02",
+  "query": "蚝油生菜为什么会生菜发黄？",
+  "category": "failure_reason",
+  "recipe_id": 9,
+  "expected_recipes": [
+    "蚝油生菜"
+  ],
+  "expected_chunk_types": [
+    "failure_reason"
+  ],
+  "must_include": [
+    "生菜发黄通常",
+    "常是焯水过久",
+    "久，或焯好后",
+    "后长时间闷在"
+  ],
+  "risk_keywords": [],
+  "source_urls": [
+    "https://www.xiachufang.com/recipe/100370658/",
+    "https://www.xiachufang.com/recipe/107168319/"
+  ],
+  "evidence_text": "生菜发黄通常是焯水过久，或焯好后长时间闷在热锅里。"
+}
+
+{
+  "id": "rag_009_03",
+  "query": "做蚝油生菜没有蚝油怎么办？",
+  "category": "substitution",
+  "recipe_id": 9,
+  "expected_recipes": [
+    "蚝油生菜"
+  ],
+  "expected_chunk_types": [
+    "substitution"
+  ],
+  "must_include": [
+    "没有蚝油时，",
+    "时，可用生抽",
+    "生抽、少量糖",
+    "量糖和蒜末做"
+  ],
+  "risk_keywords": [],
+  "source_urls": [
+    "https://www.xiachufang.com/recipe/100370658/",
+    "https://www.xiachufang.com/recipe/107168319/"
+  ],
+  "evidence_text": "没有蚝油时，可用生抽、少量糖和蒜末做简化酱汁。"
+}
+
+{
+  "id": "rag_010_01",
+  "query": "新手做板栗鸡翅煲有什么关键技巧？",
+  "category": "beginner_tip",
+  "recipe_id": 10,
+  "expected_recipes": [
+    "板栗鸡翅煲"
+  ],
+  "expected_chunk_types": [
+    "beginner_tip"
+  ],
+  "must_include": [
+    "鸡翅剪小段会",
+    "易入味。熟板",
+    "更省时间，生",
+    "要焖得更久。"
+  ],
+  "risk_keywords": [],
+  "source_urls": [
+    "https://m.xiachufang.com/recipe/103419383/",
+    "https://www.xiachufang.com/recipe/106939130/"
+  ],
+  "evidence_text": "鸡翅剪小段会更容易入味。熟板栗仁更省时间，生板栗要焖得更久。焯水更适合新手去腥。"
+}
+
+{
+  "id": "rag_010_02",
+  "query": "板栗鸡翅煲为什么会板栗不软？",
+  "category": "failure_reason",
+  "recipe_id": 10,
+  "expected_recipes": [
+    "板栗鸡翅煲"
+  ],
+  "expected_chunk_types": [
+    "failure_reason"
+  ],
+  "must_include": [
+    "板栗不软通常",
+    "常是生板栗焖",
+    "焖煮时间不够",
+    "够，或水量太"
+  ],
+  "risk_keywords": [],
+  "source_urls": [
+    "https://m.xiachufang.com/recipe/103419383/",
+    "https://www.xiachufang.com/recipe/106939130/"
+  ],
+  "evidence_text": "板栗不软通常是生板栗焖煮时间不够，或水量太少导致提前收干。"
+}
+
+{
+  "id": "rag_010_03",
+  "query": "做板栗鸡翅煲没有生抽怎么办？",
+  "category": "substitution",
+  "recipe_id": 10,
+  "expected_recipes": [
+    "板栗鸡翅煲"
+  ],
+  "expected_chunk_types": [
+    "substitution"
+  ],
+  "must_include": [
+    "没有生抽时可",
+    "抽时可用普通",
+    "用普通酱油替",
+    "酱油替代，用"
+  ],
+  "risk_keywords": [],
+  "source_urls": [
+    "https://m.xiachufang.com/recipe/103419383/",
+    "https://www.xiachufang.com/recipe/106939130/"
+  ],
+  "evidence_text": "没有生抽时可用普通酱油替代，用量减半。"
+}
+
+{
+  "id": "rag_011_01",
+  "query": "新手做清蒸鱼有什么关键技巧？",
+  "category": "beginner_tip",
+  "recipe_id": 11,
+  "expected_recipes": [
+    "清蒸鱼"
+  ],
+  "expected_chunk_types": [
+    "beginner_tip"
+  ],
+  "must_include": [
+    "鱼腹黑膜和血",
+    "理干净，腥味",
+    "划刀能让厚处",
+    "熟。水开后上"
+  ],
+  "risk_keywords": [
+    "鱼刺"
+  ],
+  "source_urls": [
+    "https://www.xiachufang.com/recipe/100597425/",
+    "https://www.xiachufang.com/recipe/104350421/"
+  ],
+  "evidence_text": "鱼腹黑膜和血水要清理干净，腥味会少。划刀能让厚处更容易熟。水开后上锅能缩短蒸制时间，鱼肉更嫩。"
+}
+
+{
+  "id": "rag_011_02",
+  "query": "清蒸鱼为什么会腥味重？",
+  "category": "failure_reason",
+  "recipe_id": 11,
+  "expected_recipes": [
+    "清蒸鱼"
+  ],
+  "expected_chunk_types": [
+    "failure_reason"
+  ],
+  "must_include": [
+    "清蒸鱼腥味重",
+    "见原因是鱼腹",
+    "膜、血水未处",
+    "干净，或蒸出"
+  ],
+  "risk_keywords": [
+    "鱼刺"
+  ],
+  "source_urls": [
+    "https://www.xiachufang.com/recipe/100597425/",
+    "https://www.xiachufang.com/recipe/104350421/"
+  ],
+  "evidence_text": "清蒸鱼腥味重常见原因是鱼腹黑膜、血水未处理干净，或蒸出的汁水没有倒掉。"
+}
+
+{
+  "id": "rag_011_03",
+  "query": "做清蒸鱼没有料酒怎么办？",
+  "category": "substitution",
+  "recipe_id": 11,
+  "expected_recipes": [
+    "清蒸鱼"
+  ],
+  "expected_chunk_types": [
+    "substitution"
+  ],
+  "must_include": [
+    "没有料酒时可",
+    "酒时可用少量",
+    "用少量白酒或",
+    "白酒或黄酒替"
+  ],
+  "risk_keywords": [
+    "鱼刺"
+  ],
+  "source_urls": [
+    "https://www.xiachufang.com/recipe/100597425/",
+    "https://www.xiachufang.com/recipe/104350421/"
+  ],
+  "evidence_text": "没有料酒时可用少量白酒或黄酒替代。"
+}
+
+{
+  "id": "rag_012_01",
+  "query": "新手做白灼虾有什么关键技巧？",
+  "category": "beginner_tip",
+  "recipe_id": 12,
+  "expected_recipes": [
+    "白灼虾"
+  ],
+  "expected_chunk_types": [
+    "beginner_tip"
+  ],
+  "must_include": [
+    "虾越新鲜，调",
+    "越简单越好吃",
+    "介意口感时建",
+    "去虾线。葱姜"
+  ],
+  "risk_keywords": [],
+  "source_urls": [
+    "https://www.xiachufang.com/recipe/106879409/",
+    "https://www.xiachufang.com/recipe/100547457/"
+  ],
+  "evidence_text": "虾越新鲜，调味越简单越好吃。介意口感时建议去虾线。葱姜料酒能帮助去腥。"
+}
+
+{
+  "id": "rag_012_02",
+  "query": "白灼虾为什么会腥味重可能是虾不够新鲜？",
+  "category": "failure_reason",
+  "recipe_id": 12,
+  "expected_recipes": [
+    "白灼虾"
+  ],
+  "expected_chunk_types": [
+    "failure_reason"
+  ],
+  "must_include": [
+    "白灼虾腥味重",
+    "重可能是虾不",
+    "不够新鲜，或",
+    "或没有使用葱"
+  ],
+  "risk_keywords": [],
+  "source_urls": [
+    "https://www.xiachufang.com/recipe/106879409/",
+    "https://www.xiachufang.com/recipe/100547457/"
+  ],
+  "evidence_text": "白灼虾腥味重可能是虾不够新鲜，或没有使用葱姜料酒去腥。"
+}
+
+{
+  "id": "rag_012_03",
+  "query": "做白灼虾没有料酒怎么办？",
+  "category": "substitution",
+  "recipe_id": 12,
+  "expected_recipes": [
+    "白灼虾"
+  ],
+  "expected_chunk_types": [
+    "substitution"
+  ],
+  "must_include": [
+    "没有料酒时可",
+    "酒时可用少量",
+    "用少量白酒或",
+    "白酒或黄酒替"
+  ],
+  "risk_keywords": [],
+  "source_urls": [
+    "https://www.xiachufang.com/recipe/106879409/",
+    "https://www.xiachufang.com/recipe/100547457/"
+  ],
+  "evidence_text": "没有料酒时可用少量白酒或黄酒替代。"
+}
+
+{
+  "id": "rag_013_01",
+  "query": "新手做番茄牛腩炖土豆有什么关键技巧？",
+  "category": "beginner_tip",
+  "recipe_id": 13,
+  "expected_recipes": [
+    "番茄牛腩炖土豆"
+  ],
+  "expected_chunk_types": [
+    "beginner_tip"
+  ],
+  "must_include": [
+    "块太小容易炖",
+    "太大则炖软时",
+    "长。冷水下锅",
+    "易去血沫。番"
+  ],
+  "risk_keywords": [
+    "高压锅"
+  ],
+  "source_urls": [
+    "https://www.xiachufang.com/recipe/106591050/",
+    "https://www.dachu.co/zh-cn/recipe/381276"
+  ],
+  "evidence_text": "块太小容易炖散，太大则炖软时间更长。冷水下锅更容易去血沫。番茄去皮后更容易炖成汤汁。"
+}
+
+{
+  "id": "rag_013_02",
+  "query": "番茄牛腩炖土豆为什么会中牛腩不软？",
+  "category": "failure_reason",
+  "recipe_id": 13,
+  "expected_recipes": [
+    "番茄牛腩炖土豆"
+  ],
+  "expected_chunk_types": [
+    "failure_reason"
+  ],
+  "must_include": [
+    "番茄牛腩炖土",
+    "豆中牛腩不软",
+    "通常是炖煮时",
+    "间不足，或水"
+  ],
+  "risk_keywords": [
+    "高压锅"
+  ],
+  "source_urls": [
+    "https://www.xiachufang.com/recipe/106591050/",
+    "https://www.dachu.co/zh-cn/recipe/381276"
+  ],
+  "evidence_text": "番茄牛腩炖土豆中牛腩不软通常是炖煮时间不足，或水温变化导致肉质收缩。"
+}
+
+{
+  "id": "rag_013_03",
+  "query": "做番茄牛腩炖土豆没有生抽怎么办？",
+  "category": "substitution",
+  "recipe_id": 13,
+  "expected_recipes": [
+    "番茄牛腩炖土豆"
+  ],
+  "expected_chunk_types": [
+    "substitution"
+  ],
+  "must_include": [
+    "没有生抽时可",
+    "抽时可用普通",
+    "用普通酱油替",
+    "酱油替代，用"
+  ],
+  "risk_keywords": [
+    "高压锅"
+  ],
+  "source_urls": [
+    "https://www.xiachufang.com/recipe/106591050/",
+    "https://www.dachu.co/zh-cn/recipe/381276"
+  ],
+  "evidence_text": "没有生抽时可用普通酱油替代，用量减半。"
+}
+
+{
+  "id": "rag_014_01",
+  "query": "新手做清炒藕片有什么关键技巧？",
+  "category": "beginner_tip",
+  "recipe_id": 14,
+  "expected_recipes": [
+    "清炒藕片"
+  ],
+  "expected_chunk_types": [
+    "beginner_tip"
+  ],
+  "must_include": [
+    "莲藕孔洞中可",
+    "泥，要仔细冲",
+    "薄片更容易快",
+    "保持脆感。沥"
+  ],
+  "risk_keywords": [
+    "热油"
+  ],
+  "source_urls": [
+    "https://m.xiachufang.com/recipe/106487809/",
+    "https://www.xiachufang.com/recipe/107640924/"
+  ],
+  "evidence_text": "莲藕孔洞中可能有泥，要仔细冲洗。薄片更容易快熟并保持脆感。沥干后下锅能减少溅油。"
+}
+
+{
+  "id": "rag_014_02",
+  "query": "清炒藕片为什么会发黑可能是氧化、铁锅反应或炒制时间过长？",
+  "category": "failure_reason",
+  "recipe_id": 14,
+  "expected_recipes": [
+    "清炒藕片"
+  ],
+  "expected_chunk_types": [
+    "failure_reason"
+  ],
+  "must_include": [
+    "清炒藕片发黑",
+    "能是氧化、铁",
+    "反应或炒制时",
+    "过长，切好后"
+  ],
+  "risk_keywords": [
+    "热油"
+  ],
+  "source_urls": [
+    "https://m.xiachufang.com/recipe/106487809/",
+    "https://www.xiachufang.com/recipe/107640924/"
+  ],
+  "evidence_text": "清炒藕片发黑可能是氧化、铁锅反应或炒制时间过长，切好后泡水加少量白醋可缓解。"
+}
+
+{
+  "id": "rag_014_03",
+  "query": "做清炒藕片有什么安全注意事项？",
+  "category": "safety_note",
+  "recipe_id": 14,
+  "expected_recipes": [
+    "清炒藕片"
+  ],
+  "expected_chunk_types": [
+    "safety_note"
+  ],
+  "must_include": [
+    "莲藕孔洞容易",
+    "容易藏泥，切",
+    "，切片后还需",
+    "还需要再次冲"
+  ],
+  "risk_keywords": [
+    "热油"
+  ],
+  "source_urls": [
+    "https://m.xiachufang.com/recipe/106487809/",
+    "https://www.xiachufang.com/recipe/107640924/"
+  ],
+  "evidence_text": "莲藕孔洞容易藏泥，切片后还需要再次冲洗。"
+}
+
+{
+  "id": "rag_015_01",
+  "query": "新手做芥末罗氏虾有什么关键技巧？",
+  "category": "beginner_tip",
+  "recipe_id": 15,
+  "expected_recipes": [
+    "芥末罗氏虾"
+  ],
+  "expected_chunk_types": [
+    "beginner_tip"
+  ],
+  "must_include": [
+    "先剪尖刺，后",
+    "理时不容易扎",
+    "开背能帮助入",
+    "也方便去虾线"
+  ],
+  "risk_keywords": [
+    "甲壳类"
+  ],
+  "source_urls": [
+    "https://www.xiachufang.com/recipe/107595113/",
+    "https://www.xiachufang.com/recipe/106772658/"
+  ],
+  "evidence_text": "先剪尖刺，后面处理时不容易扎手。开背能帮助入味，也方便去虾线。蒜末多一点会更香。"
+}
+
+{
+  "id": "rag_015_02",
+  "query": "芥末罗氏虾为什么会虾肉变老？",
+  "category": "failure_reason",
+  "recipe_id": 15,
+  "expected_recipes": [
+    "芥末罗氏虾"
+  ],
+  "expected_chunk_types": [
+    "failure_reason"
+  ],
+  "must_include": [
+    "虾肉变老通常",
+    "是煎和焖的时",
+    "间过长，虾变",
+    "色熟透后应尽"
+  ],
+  "risk_keywords": [
+    "甲壳类"
+  ],
+  "source_urls": [
+    "https://www.xiachufang.com/recipe/107595113/",
+    "https://www.xiachufang.com/recipe/106772658/"
+  ],
+  "evidence_text": "虾肉变老通常是煎和焖的时间过长，虾变色熟透后应尽快收汁出锅。"
+}
+
+{
+  "id": "rag_015_03",
+  "query": "做芥末罗氏虾没有生抽怎么办？",
+  "category": "substitution",
+  "recipe_id": 15,
+  "expected_recipes": [
+    "芥末罗氏虾"
+  ],
+  "expected_chunk_types": [
+    "substitution"
+  ],
+  "must_include": [
+    "没有生抽时可",
+    "抽时可用普通",
+    "用普通酱油替",
+    "酱油替代，用"
+  ],
+  "risk_keywords": [
+    "甲壳类"
+  ],
+  "source_urls": [
+    "https://www.xiachufang.com/recipe/107595113/",
+    "https://www.xiachufang.com/recipe/106772658/"
+  ],
+  "evidence_text": "没有生抽时可用普通酱油替代，用量减半。"
+}
+
+{
+  "id": "rag_016_01",
+  "query": "新手做青椒肉丝有什么关键技巧？",
+  "category": "beginner_tip",
+  "recipe_id": 16,
+  "expected_recipes": [
+    "青椒肉丝"
+  ],
+  "expected_chunk_types": [
+    "beginner_tip"
+  ],
+  "must_include": [
+    "肉丝先腌制能",
+    "，淀粉不要太",
+    "青椒粗细尽量",
+    "，受热更均匀"
+  ],
+  "risk_keywords": [],
+  "source_urls": [
+    "https://www.xiachufang.com/recipe/100410790/",
+    "https://www.xiachufang.com/recipe/104447058/"
+  ],
+  "evidence_text": "肉丝先腌制能更嫩，淀粉不要太多。青椒粗细尽量接近，受热更均匀。肉丝刚变色即可，不要炒老。"
+}
+
+{
+  "id": "rag_016_02",
+  "query": "青椒肉丝为什么会肉丝发柴？",
+  "category": "failure_reason",
+  "recipe_id": 16,
+  "expected_recipes": [
+    "青椒肉丝"
+  ],
+  "expected_chunk_types": [
+    "failure_reason"
+  ],
+  "must_include": [
+    "肉丝发柴通常",
+    "常是切得太粗",
+    "粗、腌制不足",
+    "足，或第一次"
+  ],
+  "risk_keywords": [],
+  "source_urls": [
+    "https://www.xiachufang.com/recipe/100410790/",
+    "https://www.xiachufang.com/recipe/104447058/"
+  ],
+  "evidence_text": "肉丝发柴通常是切得太粗、腌制不足，或第一次滑炒时间过长。"
+}
+
+{
+  "id": "rag_016_03",
+  "query": "做青椒肉丝没有里脊肉怎么办？",
+  "category": "substitution",
+  "recipe_id": 16,
+  "expected_recipes": [
+    "青椒肉丝"
+  ],
+  "expected_chunk_types": [
+    "substitution"
+  ],
+  "must_include": [
+    "没有里脊肉时",
+    "时可以用梅花",
+    "花肉或鸡胸肉",
+    "肉代替，但鸡"
+  ],
+  "risk_keywords": [],
+  "source_urls": [
+    "https://www.xiachufang.com/recipe/100410790/",
+    "https://www.xiachufang.com/recipe/104447058/"
+  ],
+  "evidence_text": "没有里脊肉时可以用梅花肉或鸡胸肉代替，但鸡胸肉更容易炒老。"
+}
+
+{
+  "id": "rag_017_01",
+  "query": "新手做麻婆豆腐有什么关键技巧？",
+  "category": "beginner_tip",
+  "recipe_id": 17,
+  "expected_recipes": [
+    "麻婆豆腐"
+  ],
+  "expected_chunk_types": [
+    "beginner_tip"
+  ],
+  "must_include": [
+    "焯水能去豆腥",
+    "能让豆腐更不",
+    "肉末不要太多",
+    "会抢豆腐的主"
+  ],
+  "risk_keywords": [],
+  "source_urls": [
+    "https://www.xiachufang.com/recipe/100524990/",
+    "https://www.xiachufang.com/recipe/100555604/"
+  ],
+  "evidence_text": "焯水能去豆腥味，也能让豆腐更不易碎。肉末不要太多，否则会抢豆腐的主味。炒到肉末变色出香即可。"
+}
+
+{
+  "id": "rag_017_02",
+  "query": "麻婆豆腐为什么会不入味？",
+  "category": "failure_reason",
+  "recipe_id": 17,
+  "expected_recipes": [
+    "麻婆豆腐"
+  ],
+  "expected_chunk_types": [
+    "failure_reason"
+  ],
+  "must_include": [
+    "麻婆豆腐不入",
+    "味常见原因是",
+    "豆腐没有烧煮",
+    "入味，或最后"
+  ],
+  "risk_keywords": [],
+  "source_urls": [
+    "https://www.xiachufang.com/recipe/100524990/",
+    "https://www.xiachufang.com/recipe/100555604/"
+  ],
+  "evidence_text": "麻婆豆腐不入味常见原因是豆腐没有烧煮入味，或最后没有勾薄芡挂汁。"
+}
+
+{
+  "id": "rag_017_03",
+  "query": "做麻婆豆腐没有豆瓣酱怎么办？",
+  "category": "substitution",
+  "recipe_id": 17,
+  "expected_recipes": [
+    "麻婆豆腐"
+  ],
+  "expected_chunk_types": [
+    "substitution"
+  ],
+  "must_include": [
+    "没有豆瓣酱时",
+    "可用辣椒粉、",
+    "花椒和少量酱",
+    "油替代，但风"
+  ],
+  "risk_keywords": [],
+  "source_urls": [
+    "https://www.xiachufang.com/recipe/100524990/",
+    "https://www.xiachufang.com/recipe/100555604/"
+  ],
+  "evidence_text": "没有豆瓣酱时可用辣椒粉、花椒和少量酱油替代，但风味会明显不同。"
+}
+
+{
+  "id": "rag_018_01",
+  "query": "新手做鱼香肉丝有什么关键技巧？",
+  "category": "beginner_tip",
+  "recipe_id": 18,
+  "expected_recipes": [
+    "鱼香肉丝"
+  ],
+  "expected_chunk_types": [
+    "beginner_tip"
+  ],
+  "must_include": [
+    "肉丝腌制后更",
+    "配菜切得接近",
+    "粗细，成菜更",
+    "。先调碗汁可"
+  ],
+  "risk_keywords": [],
+  "source_urls": [
+    "https://www.xiachufang.com/recipe/100490758/",
+    "https://www.xiachufang.com/recipe/107387589/"
+  ],
+  "evidence_text": "肉丝腌制后更嫩。配菜切得接近肉丝粗细，成菜更均匀。先调碗汁可以减少下锅后的误差。"
+}
+
+{
+  "id": "rag_018_02",
+  "query": "鱼香肉丝为什么会味道散？",
+  "category": "failure_reason",
+  "recipe_id": 18,
+  "expected_recipes": [
+    "鱼香肉丝"
+  ],
+  "expected_chunk_types": [
+    "failure_reason"
+  ],
+  "must_include": [
+    "鱼香肉丝味道",
+    "散通常是碗汁",
+    "比例不稳定，",
+    "或酱汁没有收"
+  ],
+  "risk_keywords": [],
+  "source_urls": [
+    "https://www.xiachufang.com/recipe/100490758/",
+    "https://www.xiachufang.com/recipe/107387589/"
+  ],
+  "evidence_text": "鱼香肉丝味道散通常是碗汁比例不稳定，或酱汁没有收至挂在肉丝上。"
+}
+
+{
+  "id": "rag_018_03",
+  "query": "做鱼香肉丝没有泡椒怎么办？",
+  "category": "substitution",
+  "recipe_id": 18,
+  "expected_recipes": [
+    "鱼香肉丝"
+  ],
+  "expected_chunk_types": [
+    "substitution"
+  ],
+  "must_include": [
+    "没有泡椒时可",
+    "可用豆瓣酱和",
+    "和少量醋糖替",
+    "替代，香气会"
+  ],
+  "risk_keywords": [],
+  "source_urls": [
+    "https://www.xiachufang.com/recipe/100490758/",
+    "https://www.xiachufang.com/recipe/107387589/"
+  ],
+  "evidence_text": "没有泡椒时可用豆瓣酱和少量醋糖替代，香气会略不同。"
+}
+
+{
+  "id": "rag_019_01",
+  "query": "新手做宫保鸡丁有什么关键技巧？",
+  "category": "beginner_tip",
+  "recipe_id": 19,
+  "expected_recipes": [
+    "宫保鸡丁"
+  ],
+  "expected_chunk_types": [
+    "beginner_tip"
+  ],
+  "must_include": [
+    "鸡腿肉更嫩，",
+    "鸡胸肉要注意",
+    "火候。酸甜味",
+    "先在碗汁中调"
+  ],
+  "risk_keywords": [],
+  "source_urls": [
+    "https://www.xiachufang.com/recipe/100577624/",
+    "https://www.xiachufang.com/recipe/106618149/"
+  ],
+  "evidence_text": "鸡腿肉更嫩，鸡胸肉要注意火候。酸甜味先在碗汁中调好。熟花生米更方便。"
+}
+
+{
+  "id": "rag_019_02",
+  "query": "宫保鸡丁为什么会鸡丁发柴多是腌制不足或滑炒时间过长？",
+  "category": "failure_reason",
+  "recipe_id": 19,
+  "expected_recipes": [
+    "宫保鸡丁"
+  ],
+  "expected_chunk_types": [
+    "failure_reason"
+  ],
+  "must_include": [
+    "鸡丁发柴多是",
+    "是腌制不足或",
+    "或滑炒时间过",
+    "过长，鸡胸肉"
+  ],
+  "risk_keywords": [],
+  "source_urls": [
+    "https://www.xiachufang.com/recipe/100577624/",
+    "https://www.xiachufang.com/recipe/106618149/"
+  ],
+  "evidence_text": "鸡丁发柴多是腌制不足或滑炒时间过长，鸡胸肉尤其明显。"
+}
+
+{
+  "id": "rag_019_03",
+  "query": "做宫保鸡丁没有花生怎么办？",
+  "category": "substitution",
+  "recipe_id": 19,
+  "expected_recipes": [
+    "宫保鸡丁"
+  ],
+  "expected_chunk_types": [
+    "substitution"
+  ],
+  "must_include": [
+    "没有花生可以",
+    "以用腰果替代",
+    "代，也可以不",
+    "不放，但口感"
+  ],
+  "risk_keywords": [],
+  "source_urls": [
+    "https://www.xiachufang.com/recipe/100577624/",
+    "https://www.xiachufang.com/recipe/106618149/"
+  ],
+  "evidence_text": "没有花生可以用腰果替代，也可以不放，但口感层次会少一些。"
+}
+
+{
+  "id": "rag_020_01",
+  "query": "新手做红烧肉有什么关键技巧？",
+  "category": "beginner_tip",
+  "recipe_id": 20,
+  "expected_recipes": [
+    "红烧肉"
+  ],
+  "expected_chunk_types": [
+    "beginner_tip"
+  ],
+  "must_include": [
+    "焯水能去血沫",
+    "杂味。煸出部",
+    "油脂能降低油",
+    "感。糖色不要"
+  ],
+  "risk_keywords": [
+    "生肉"
+  ],
+  "source_urls": [
+    "https://www.xiachufang.com/recipe/100669888/",
+    "https://lanfanapp.com/recipe/214"
+  ],
+  "evidence_text": "焯水能去血沫和杂味。煸出部分油脂能降低油腻感。糖色不要炒到发黑，否则会苦。"
+}
+
+{
+  "id": "rag_020_02",
+  "query": "红烧肉为什么会发苦？",
+  "category": "failure_reason",
+  "recipe_id": 20,
+  "expected_recipes": [
+    "红烧肉"
+  ],
+  "expected_chunk_types": [
+    "failure_reason"
+  ],
+  "must_include": [
+    "红烧肉发苦通",
+    "苦通常是糖色",
+    "糖色炒过头，",
+    "头，或收汁阶"
+  ],
+  "risk_keywords": [
+    "生肉"
+  ],
+  "source_urls": [
+    "https://www.xiachufang.com/recipe/100669888/",
+    "https://lanfanapp.com/recipe/214"
+  ],
+  "evidence_text": "红烧肉发苦通常是糖色炒过头，或收汁阶段糊锅。"
+}
+
+{
+  "id": "rag_020_03",
+  "query": "做红烧肉没有生抽怎么办？",
+  "category": "substitution",
+  "recipe_id": 20,
+  "expected_recipes": [
+    "红烧肉"
+  ],
+  "expected_chunk_types": [
+    "substitution"
+  ],
+  "must_include": [
+    "没有生抽时可",
+    "抽时可用普通",
+    "用普通酱油替",
+    "酱油替代，用"
+  ],
+  "risk_keywords": [
+    "生肉"
+  ],
+  "source_urls": [
+    "https://www.xiachufang.com/recipe/100669888/",
+    "https://lanfanapp.com/recipe/214"
+  ],
+  "evidence_text": "没有生抽时可用普通酱油替代，用量减半。"
+}
+
+{
+  "id": "rag_021_01",
+  "query": "新手做蒜蓉西兰花有什么关键技巧？",
+  "category": "beginner_tip",
+  "recipe_id": 21,
+  "expected_recipes": [
+    "蒜蓉西兰花"
+  ],
+  "expected_chunk_types": [
+    "beginner_tip"
+  ],
+  "must_include": [
+    "小朵大小接近",
+    "，熟得更均匀",
+    "。蒜末越细越",
+    "容易出香。这"
+  ],
+  "risk_keywords": [],
+  "source_urls": [
+    "https://www.xiachufang.com/search/?keyword=蒜蓉西兰花",
+    "https://www.xiachufang.com/search/?keyword=蒜蓉西兰花"
+  ],
+  "evidence_text": "小朵大小接近，熟得更均匀。蒜末越细越容易出香。这能帮助保持颜色。"
+}
+
+{
+  "id": "rag_021_02",
+  "query": "蒜蓉西兰花为什么会西兰花发黄？",
+  "category": "failure_reason",
+  "recipe_id": 21,
+  "expected_recipes": [
+    "蒜蓉西兰花"
+  ],
+  "expected_chunk_types": [
+    "failure_reason"
+  ],
+  "must_include": [
+    "西兰花发黄通",
+    "发黄通常是焯",
+    "常是焯水或炒",
+    "水或炒制时间"
+  ],
+  "risk_keywords": [],
+  "source_urls": [
+    "https://www.xiachufang.com/search/?keyword=蒜蓉西兰花",
+    "https://www.xiachufang.com/search/?keyword=蒜蓉西兰花"
+  ],
+  "evidence_text": "西兰花发黄通常是焯水或炒制时间过长。"
+}
+
+{
+  "id": "rag_021_03",
+  "query": "做蒜蓉西兰花没有蚝油怎么办？",
+  "category": "substitution",
+  "recipe_id": 21,
+  "expected_recipes": [
+    "蒜蓉西兰花"
+  ],
+  "expected_chunk_types": [
+    "substitution"
+  ],
+  "must_include": [
+    "没有蚝油时可",
+    "油时可以只用",
+    "以只用生抽、",
+    "生抽、盐和蒜"
+  ],
+  "risk_keywords": [],
+  "source_urls": [
+    "https://www.xiachufang.com/search/?keyword=蒜蓉西兰花",
+    "https://www.xiachufang.com/search/?keyword=蒜蓉西兰花"
+  ],
+  "evidence_text": "没有蚝油时可以只用生抽、盐和蒜末调味。"
+}
+
+{
+  "id": "rag_022_01",
+  "query": "新手做香菇青菜有什么关键技巧？",
+  "category": "beginner_tip",
+  "recipe_id": 22,
+  "expected_recipes": [
+    "香菇青菜"
+  ],
+  "expected_chunk_types": [
+    "beginner_tip"
+  ],
+  "must_include": [
+    "青菜根部容易",
+    "易藏泥，要仔",
+    "仔细洗。提前",
+    "前调汁更稳。"
+  ],
+  "risk_keywords": [],
+  "source_urls": [
+    "https://www.xiachufang.com/search/?keyword=香菇青菜",
+    "https://www.xiachufang.com/search/?keyword=香菇青菜"
+  ],
+  "evidence_text": "青菜根部容易藏泥，要仔细洗。提前调汁更稳。焯到变色即可。"
+}
+
+{
+  "id": "rag_022_02",
+  "query": "香菇青菜为什么会青菜出水多？",
+  "category": "failure_reason",
+  "recipe_id": 22,
+  "expected_recipes": [
+    "香菇青菜"
+  ],
+  "expected_chunk_types": [
+    "failure_reason"
+  ],
+  "must_include": [
+    "青菜出水多通",
+    "多通常是焯水",
+    "焯水后未沥干",
+    "沥干，或回锅"
+  ],
+  "risk_keywords": [],
+  "source_urls": [
+    "https://www.xiachufang.com/search/?keyword=香菇青菜",
+    "https://www.xiachufang.com/search/?keyword=香菇青菜"
+  ],
+  "evidence_text": "青菜出水多通常是焯水后未沥干，或回锅炒太久。"
+}
+
+{
+  "id": "rag_022_03",
+  "query": "做香菇青菜没有蚝油怎么办？",
+  "category": "substitution",
+  "recipe_id": 22,
+  "expected_recipes": [
+    "香菇青菜"
+  ],
+  "expected_chunk_types": [
+    "substitution"
+  ],
+  "must_include": [
+    "没有蚝油时可",
+    "时可用生抽加",
+    "抽加少量糖替",
+    "糖替代，鲜味"
+  ],
+  "risk_keywords": [],
+  "source_urls": [
+    "https://www.xiachufang.com/search/?keyword=香菇青菜",
+    "https://www.xiachufang.com/search/?keyword=香菇青菜"
+  ],
+  "evidence_text": "没有蚝油时可用生抽加少量糖替代，鲜味会弱一些。"
+}
+
+{
+  "id": "rag_023_01",
+  "query": "新手做地三鲜有什么关键技巧？",
+  "category": "beginner_tip",
+  "recipe_id": 23,
+  "expected_recipes": [
+    "地三鲜"
+  ],
+  "expected_chunk_types": [
+    "beginner_tip"
+  ],
+  "must_include": [
+    "大小接近，成",
+    "熟更均匀。能",
+    "减少吸油并帮",
+    "助成型。新手"
+  ],
+  "risk_keywords": [],
+  "source_urls": [
+    "https://www.xiachufang.com/search/?keyword=地三鲜",
+    "https://www.xiachufang.com/search/?keyword=地三鲜"
+  ],
+  "evidence_text": "大小接近，成熟更均匀。能减少吸油并帮助成型。新手可以少油慢煎。"
+}
+
+{
+  "id": "rag_023_02",
+  "query": "地三鲜为什么会太油？",
+  "category": "failure_reason",
+  "recipe_id": 23,
+  "expected_recipes": [
+    "地三鲜"
+  ],
+  "expected_chunk_types": [
+    "failure_reason"
+  ],
+  "must_include": [
+    "地三鲜太油通",
+    "油通常是茄子",
+    "茄子直接下油",
+    "下油锅且没有"
+  ],
+  "risk_keywords": [],
+  "source_urls": [
+    "https://www.xiachufang.com/search/?keyword=地三鲜",
+    "https://www.xiachufang.com/search/?keyword=地三鲜"
+  ],
+  "evidence_text": "地三鲜太油通常是茄子直接下油锅且没有控油。"
+}
+
+{
+  "id": "rag_023_03",
+  "query": "做地三鲜没有蚝油怎么办？",
+  "category": "substitution",
+  "recipe_id": 23,
+  "expected_recipes": [
+    "地三鲜"
+  ],
+  "expected_chunk_types": [
+    "substitution"
+  ],
+  "must_include": [
+    "没有蚝油时可",
+    "时可用生抽、",
+    "抽、少量糖和",
+    "糖和淀粉水做"
+  ],
+  "risk_keywords": [],
+  "source_urls": [
+    "https://www.xiachufang.com/search/?keyword=地三鲜",
+    "https://www.xiachufang.com/search/?keyword=地三鲜"
+  ],
+  "evidence_text": "没有蚝油时可用生抽、少量糖和淀粉水做简化酱汁。"
+}
+
+{
+  "id": "rag_024_01",
+  "query": "新手做干煸豆角有什么关键技巧？",
+  "category": "beginner_tip",
+  "recipe_id": 24,
+  "expected_recipes": [
+    "干煸豆角"
+  ],
+  "expected_chunk_types": [
+    "beginner_tip"
+  ],
+  "must_include": [
+    "豆角筋要去掉",
+    "，口感更好。",
+    "辣椒按口味调",
+    "整。火不要太"
+  ],
+  "risk_keywords": [
+    "热油",
+    "未熟豆角"
+  ],
+  "source_urls": [
+    "https://www.xiachufang.com/search/?keyword=干煸豆角",
+    "https://www.xiachufang.com/search/?keyword=干煸豆角"
+  ],
+  "evidence_text": "豆角筋要去掉，口感更好。辣椒按口味调整。火不要太大，避免外糊内生。"
+}
+
+{
+  "id": "rag_024_02",
+  "query": "干煸豆角为什么会外焦内生？",
+  "category": "failure_reason",
+  "recipe_id": 24,
+  "expected_recipes": [
+    "干煸豆角"
+  ],
+  "expected_chunk_types": [
+    "failure_reason"
+  ],
+  "must_include": [
+    "外焦内生通常",
+    "常是火太大或",
+    "或豆角段太粗",
+    "粗，导致表面"
+  ],
+  "risk_keywords": [
+    "热油",
+    "未熟豆角"
+  ],
+  "source_urls": [
+    "https://www.xiachufang.com/search/?keyword=干煸豆角",
+    "https://www.xiachufang.com/search/?keyword=干煸豆角"
+  ],
+  "evidence_text": "外焦内生通常是火太大或豆角段太粗，导致表面焦了内部还没熟。"
+}
+
+{
+  "id": "rag_024_03",
+  "query": "做干煸豆角没有干辣椒怎么办？",
+  "category": "substitution",
+  "recipe_id": 24,
+  "expected_recipes": [
+    "干煸豆角"
+  ],
+  "expected_chunk_types": [
+    "substitution"
+  ],
+  "must_include": [
+    "没有干辣椒时",
+    "辣椒时可以只",
+    "可以只用蒜片",
+    "用蒜片和少量"
+  ],
+  "risk_keywords": [
+    "热油",
+    "未熟豆角"
+  ],
+  "source_urls": [
+    "https://www.xiachufang.com/search/?keyword=干煸豆角",
+    "https://www.xiachufang.com/search/?keyword=干煸豆角"
+  ],
+  "evidence_text": "没有干辣椒时可以只用蒜片和少量醋调味。"
+}
+
+{
+  "id": "rag_025_01",
+  "query": "新手做糖醋排骨有什么关键技巧？",
+  "category": "beginner_tip",
+  "recipe_id": 25,
+  "expected_recipes": [
+    "糖醋排骨"
+  ],
+  "expected_chunk_types": [
+    "beginner_tip"
+  ],
+  "must_include": [
+    "焯水后洗净浮",
+    "净浮沫。煎过",
+    "煎过后香味更",
+    "味更足。糖不"
+  ],
+  "risk_keywords": [
+    "生肉"
+  ],
+  "source_urls": [
+    "https://www.xiachufang.com/search/?keyword=糖醋排骨",
+    "https://www.xiachufang.com/search/?keyword=糖醋排骨"
+  ],
+  "evidence_text": "焯水后洗净浮沫。煎过后香味更足。糖不要炒焦。"
+}
+
+{
+  "id": "rag_025_02",
+  "query": "糖醋排骨做失败了怎么办？",
+  "category": "failure_reason",
+  "recipe_id": 25,
+  "expected_recipes": [
+    "糖醋排骨"
+  ],
+  "expected_chunk_types": [
+    "failure_reason"
+  ],
+  "must_include": [
+    "糖醋排骨发苦",
+    "发苦多半是糖",
+    "是糖炒焦或收",
+    "或收汁阶段糊"
+  ],
+  "risk_keywords": [
+    "生肉"
+  ],
+  "source_urls": [
+    "https://www.xiachufang.com/search/?keyword=糖醋排骨",
+    "https://www.xiachufang.com/search/?keyword=糖醋排骨"
+  ],
+  "evidence_text": "糖醋排骨发苦多半是糖炒焦或收汁阶段糊锅。"
+}
+
+{
+  "id": "rag_025_03",
+  "query": "做糖醋排骨没有料酒怎么办？",
+  "category": "substitution",
+  "recipe_id": 25,
+  "expected_recipes": [
+    "糖醋排骨"
+  ],
+  "expected_chunk_types": [
+    "substitution"
+  ],
+  "must_include": [
+    "没有料酒时可",
+    "酒时可用少量",
+    "用少量白酒或",
+    "白酒或黄酒替"
+  ],
+  "risk_keywords": [
+    "生肉"
+  ],
+  "source_urls": [
+    "https://www.xiachufang.com/search/?keyword=糖醋排骨",
+    "https://www.xiachufang.com/search/?keyword=糖醋排骨"
+  ],
+  "evidence_text": "没有料酒时可用少量白酒或黄酒替代。"
+}
+
+{
+  "id": "rag_026_01",
+  "query": "新手做回锅肉有什么关键技巧？",
+  "category": "beginner_tip",
+  "recipe_id": 26,
+  "expected_recipes": [
+    "回锅肉"
+  ],
+  "expected_chunk_types": [
+    "beginner_tip"
+  ],
+  "must_include": [
+    "先煮后炒是回",
+    "锅肉的关键。",
+    "放凉更容易切",
+    "薄。蒜白更耐"
+  ],
+  "risk_keywords": [
+    "生肉"
+  ],
+  "source_urls": [
+    "https://www.xiachufang.com/search/?keyword=回锅肉",
+    "https://www.xiachufang.com/search/?keyword=回锅肉"
+  ],
+  "evidence_text": "先煮后炒是回锅肉的关键。放凉更容易切薄。蒜白更耐炒，蒜叶后放。"
+}
+
+{
+  "id": "rag_026_02",
+  "query": "回锅肉为什么会油腻？",
+  "category": "failure_reason",
+  "recipe_id": 26,
+  "expected_recipes": [
+    "回锅肉"
+  ],
+  "expected_chunk_types": [
+    "failure_reason"
+  ],
+  "must_include": [
+    "回锅肉油腻通",
+    "腻通常是肉片",
+    "肉片没煸出油",
+    "出油，或切得"
+  ],
+  "risk_keywords": [
+    "生肉"
+  ],
+  "source_urls": [
+    "https://www.xiachufang.com/search/?keyword=回锅肉",
+    "https://www.xiachufang.com/search/?keyword=回锅肉"
+  ],
+  "evidence_text": "回锅肉油腻通常是肉片没煸出油，或切得太厚。"
+}
+
+{
+  "id": "rag_026_03",
+  "query": "做回锅肉没有蒜苗怎么办？",
+  "category": "substitution",
+  "recipe_id": 26,
+  "expected_recipes": [
+    "回锅肉"
+  ],
+  "expected_chunk_types": [
+    "substitution"
+  ],
+  "must_include": [
+    "没有蒜苗时可",
+    "苗时可以用青",
+    "以用青椒、洋",
+    "椒、洋葱或青"
+  ],
+  "risk_keywords": [
+    "生肉"
+  ],
+  "source_urls": [
+    "https://www.xiachufang.com/search/?keyword=回锅肉",
+    "https://www.xiachufang.com/search/?keyword=回锅肉"
+  ],
+  "evidence_text": "没有蒜苗时可以用青椒、洋葱或青蒜替代。"
+}
+
+{
+  "id": "rag_027_01",
+  "query": "新手做西红柿鸡蛋面有什么关键技巧？",
+  "category": "beginner_tip",
+  "recipe_id": 27,
+  "expected_recipes": [
+    "西红柿鸡蛋面"
+  ],
+  "expected_chunk_types": [
+    "beginner_tip"
+  ],
+  "must_include": [
+    "成熟番茄更容",
+    "容易出汤。鸡",
+    "鸡蛋不要炒老",
+    "老。可用锅铲"
+  ],
+  "risk_keywords": [],
+  "source_urls": [
+    "https://www.xiachufang.com/search/?keyword=西红柿鸡蛋面",
+    "https://www.xiachufang.com/search/?keyword=西红柿鸡蛋面"
+  ],
+  "evidence_text": "成熟番茄更容易出汤。鸡蛋不要炒老。可用锅铲轻压番茄。"
+}
+
+{
+  "id": "rag_027_02",
+  "query": "西红柿鸡蛋面为什么会番茄味淡？",
+  "category": "failure_reason",
+  "recipe_id": 27,
+  "expected_recipes": [
+    "西红柿鸡蛋面"
+  ],
+  "expected_chunk_types": [
+    "failure_reason"
+  ],
+  "must_include": [
+    "番茄味淡通常",
+    "通常是番茄没",
+    "茄没有炒软出",
+    "软出汁，或用"
+  ],
+  "risk_keywords": [],
+  "source_urls": [
+    "https://www.xiachufang.com/search/?keyword=西红柿鸡蛋面",
+    "https://www.xiachufang.com/search/?keyword=西红柿鸡蛋面"
+  ],
+  "evidence_text": "番茄味淡通常是番茄没有炒软出汁，或用水过多。"
+}
+
+{
+  "id": "rag_027_03",
+  "query": "做西红柿鸡蛋面没有新鲜番茄怎么办？",
+  "category": "substitution",
+  "recipe_id": 27,
+  "expected_recipes": [
+    "西红柿鸡蛋面"
+  ],
+  "expected_chunk_types": [
+    "substitution"
+  ],
+  "must_include": [
+    "没有新鲜番茄",
+    "番茄时可少量",
+    "少量加入番茄",
+    "番茄酱增强汤"
+  ],
+  "risk_keywords": [],
+  "source_urls": [
+    "https://www.xiachufang.com/search/?keyword=西红柿鸡蛋面",
+    "https://www.xiachufang.com/search/?keyword=西红柿鸡蛋面"
+  ],
+  "evidence_text": "没有新鲜番茄时可少量加入番茄酱增强汤味。"
+}
+
+{
+  "id": "rag_028_01",
+  "query": "新手做清炖排骨汤有什么关键技巧？",
+  "category": "beginner_tip",
+  "recipe_id": 28,
+  "expected_recipes": [
+    "清炖排骨汤"
+  ],
+  "expected_chunk_types": [
+    "beginner_tip"
+  ],
+  "must_include": [
+    "冷水下锅更容",
+    "易去血沫。洗",
+    "掉浮沫汤更清",
+    "。水一次加足"
+  ],
+  "risk_keywords": [
+    "生肉"
+  ],
+  "source_urls": [
+    "https://www.xiachufang.com/search/?keyword=清炖排骨汤",
+    "https://www.xiachufang.com/search/?keyword=清炖排骨汤"
+  ],
+  "evidence_text": "冷水下锅更容易去血沫。洗掉浮沫汤更清。水一次加足，避免中途频繁加水。"
+}
+
+{
+  "id": "rag_028_02",
+  "query": "清炖排骨汤为什么会汤浑浊？",
+  "category": "failure_reason",
+  "recipe_id": 28,
+  "expected_recipes": [
+    "清炖排骨汤"
+  ],
+  "expected_chunk_types": [
+    "failure_reason"
+  ],
+  "must_include": [
+    "汤浑浊常见原",
+    "见原因是大火",
+    "大火翻滚太久",
+    "太久或浮沫没"
+  ],
+  "risk_keywords": [
+    "生肉"
+  ],
+  "source_urls": [
+    "https://www.xiachufang.com/search/?keyword=清炖排骨汤",
+    "https://www.xiachufang.com/search/?keyword=清炖排骨汤"
+  ],
+  "evidence_text": "汤浑浊常见原因是大火翻滚太久或浮沫没有及时处理。"
+}
+
+{
+  "id": "rag_028_03",
+  "query": "做清炖排骨汤没有料酒怎么办？",
+  "category": "substitution",
+  "recipe_id": 28,
+  "expected_recipes": [
+    "清炖排骨汤"
+  ],
+  "expected_chunk_types": [
+    "substitution"
+  ],
+  "must_include": [
+    "没有料酒时可",
+    "酒时可用少量",
+    "用少量白酒或",
+    "白酒或黄酒替"
+  ],
+  "risk_keywords": [
+    "生肉"
+  ],
+  "source_urls": [
+    "https://www.xiachufang.com/search/?keyword=清炖排骨汤",
+    "https://www.xiachufang.com/search/?keyword=清炖排骨汤"
+  ],
+  "evidence_text": "没有料酒时可用少量白酒或黄酒替代。"
+}
+
+{
+  "id": "rag_029_01",
+  "query": "新手做紫菜蛋花汤有什么关键技巧？",
+  "category": "beginner_tip",
+  "recipe_id": 29,
+  "expected_recipes": [
+    "紫菜蛋花汤"
+  ],
+  "expected_chunk_types": [
+    "beginner_tip"
+  ],
+  "must_include": [
+    "蛋液打散即可",
+    "。虾皮有咸味",
+    "，盐要少放。",
+    "紫菜很快变软"
+  ],
+  "risk_keywords": [],
+  "source_urls": [
+    "https://www.xiachufang.com/search/?keyword=紫菜蛋花汤",
+    "https://www.xiachufang.com/search/?keyword=紫菜蛋花汤"
+  ],
+  "evidence_text": "蛋液打散即可。虾皮有咸味，盐要少放。紫菜很快变软，不需久煮。"
+}
+
+{
+  "id": "rag_029_02",
+  "query": "紫菜蛋花汤为什么会蛋花成大块？",
+  "category": "failure_reason",
+  "recipe_id": 29,
+  "expected_recipes": [
+    "紫菜蛋花汤"
+  ],
+  "expected_chunk_types": [
+    "failure_reason"
+  ],
+  "must_include": [
+    "蛋花成大块通",
+    "大块通常是火",
+    "常是火太大或",
+    "太大或蛋液一"
+  ],
+  "risk_keywords": [],
+  "source_urls": [
+    "https://www.xiachufang.com/search/?keyword=紫菜蛋花汤",
+    "https://www.xiachufang.com/search/?keyword=紫菜蛋花汤"
+  ],
+  "evidence_text": "蛋花成大块通常是火太大或蛋液一次倒入。"
+}
+
+{
+  "id": "rag_029_03",
+  "query": "做紫菜蛋花汤没有虾皮怎么办？",
+  "category": "substitution",
+  "recipe_id": 29,
+  "expected_recipes": [
+    "紫菜蛋花汤"
+  ],
+  "expected_chunk_types": [
+    "substitution"
+  ],
+  "must_include": [
+    "没有虾皮时可",
+    "可以只用紫菜",
+    "菜、鸡蛋和葱",
+    "葱花，也可以"
+  ],
+  "risk_keywords": [],
+  "source_urls": [
+    "https://www.xiachufang.com/search/?keyword=紫菜蛋花汤",
+    "https://www.xiachufang.com/search/?keyword=紫菜蛋花汤"
+  ],
+  "evidence_text": "没有虾皮时可以只用紫菜、鸡蛋和葱花，也可以加少量鸡精。"
+}
+
+{
+  "id": "rag_030_01",
+  "query": "新手做凉拌黄瓜有什么关键技巧？",
+  "category": "beginner_tip",
+  "recipe_id": 30,
+  "expected_recipes": [
+    "凉拌黄瓜"
+  ],
+  "expected_chunk_types": [
+    "beginner_tip"
+  ],
+  "must_include": [
+    "外皮口感好，",
+    "接受的话可保",
+    "。拍裂能让调",
+    "汁更容易进入"
+  ],
+  "risk_keywords": [],
+  "source_urls": [
+    "https://www.xiachufang.com/search/?keyword=凉拌黄瓜",
+    "https://www.xiachufang.com/search/?keyword=凉拌黄瓜"
+  ],
+  "evidence_text": "外皮口感好，能接受的话可保留。拍裂能让调味汁更容易进入。蒜末越细越容易出味。"
+}
+
+{
+  "id": "rag_030_02",
+  "query": "凉拌黄瓜为什么会黄瓜出水多？",
+  "category": "failure_reason",
+  "recipe_id": 30,
+  "expected_recipes": [
+    "凉拌黄瓜"
+  ],
+  "expected_chunk_types": [
+    "failure_reason"
+  ],
+  "must_include": [
+    "黄瓜出水多通",
+    "水多通常是盐",
+    "常是盐放太早",
+    "放太早或静置"
+  ],
+  "risk_keywords": [],
+  "source_urls": [
+    "https://www.xiachufang.com/search/?keyword=凉拌黄瓜",
+    "https://www.xiachufang.com/search/?keyword=凉拌黄瓜"
+  ],
+  "evidence_text": "黄瓜出水多通常是盐放太早或静置太久。"
+}
+
+{
+  "id": "rag_030_03",
+  "query": "做凉拌黄瓜没有生抽怎么办？",
+  "category": "substitution",
+  "recipe_id": 30,
+  "expected_recipes": [
+    "凉拌黄瓜"
+  ],
+  "expected_chunk_types": [
+    "substitution"
+  ],
+  "must_include": [
+    "没有生抽时可",
+    "抽时可用普通",
+    "用普通酱油替",
+    "酱油替代，用"
+  ],
+  "risk_keywords": [],
+  "source_urls": [
+    "https://www.xiachufang.com/search/?keyword=凉拌黄瓜",
+    "https://www.xiachufang.com/search/?keyword=凉拌黄瓜"
+  ],
+  "evidence_text": "没有生抽时可用普通酱油替代，用量减半。"
+}
+
+{
+  "id": "rag_031_01",
+  "query": "新手做蒜蓉粉丝娃娃菜有什么关键技巧？",
+  "category": "beginner_tip",
+  "recipe_id": 31,
+  "expected_recipes": [
+    "蒜蓉粉丝娃娃菜"
+  ],
+  "expected_chunk_types": [
+    "beginner_tip"
+  ],
+  "must_include": [
+    "剪短后更方便",
+    "夹取。根部不",
+    "要完全切散，",
+    "摆盘更好看。"
+  ],
+  "risk_keywords": [],
+  "source_urls": [
+    "https://www.xiachufang.com/search/?keyword=蒜蓉粉丝娃娃菜",
+    "https://www.xiachufang.com/search/?keyword=蒜蓉粉丝娃娃菜"
+  ],
+  "evidence_text": "剪短后更方便夹取。根部不要完全切散，摆盘更好看。小火慢炒，避免发苦。"
+}
+
+{
+  "id": "rag_031_02",
+  "query": "蒜蓉粉丝娃娃菜为什么会蒜蓉发苦？",
+  "category": "failure_reason",
+  "recipe_id": 31,
+  "expected_recipes": [
+    "蒜蓉粉丝娃娃菜"
+  ],
+  "expected_chunk_types": [
+    "failure_reason"
+  ],
+  "must_include": [
+    "蒜蓉发苦通常",
+    "苦通常是火太",
+    "是火太大或炒",
+    "大或炒得过久"
+  ],
+  "risk_keywords": [],
+  "source_urls": [
+    "https://www.xiachufang.com/search/?keyword=蒜蓉粉丝娃娃菜",
+    "https://www.xiachufang.com/search/?keyword=蒜蓉粉丝娃娃菜"
+  ],
+  "evidence_text": "蒜蓉发苦通常是火太大或炒得过久。"
+}
+
+{
+  "id": "rag_031_03",
+  "query": "做蒜蓉粉丝娃娃菜没有娃娃菜怎么办？",
+  "category": "substitution",
+  "recipe_id": 31,
+  "expected_recipes": [
+    "蒜蓉粉丝娃娃菜"
+  ],
+  "expected_chunk_types": [
+    "substitution"
+  ],
+  "must_include": [
+    "没有娃娃菜时",
+    "菜时可用大白",
+    "大白菜心或金",
+    "或金针菇搭配"
+  ],
+  "risk_keywords": [],
+  "source_urls": [
+    "https://www.xiachufang.com/search/?keyword=蒜蓉粉丝娃娃菜",
+    "https://www.xiachufang.com/search/?keyword=蒜蓉粉丝娃娃菜"
+  ],
+  "evidence_text": "没有娃娃菜时可用大白菜心或金针菇搭配粉丝。"
+}
+
+{
+  "id": "rag_032_01",
+  "query": "新手做土豆炖牛肉有什么关键技巧？",
+  "category": "beginner_tip",
+  "recipe_id": 32,
+  "expected_recipes": [
+    "土豆炖牛肉"
+  ],
+  "expected_chunk_types": [
+    "beginner_tip"
+  ],
+  "must_include": [
+    "焯水能去血沫",
+    "沫。土豆切好",
+    "好可泡水防氧",
+    "氧化。香料少"
+  ],
+  "risk_keywords": [],
+  "source_urls": [
+    "https://www.xiachufang.com/search/?keyword=土豆炖牛肉",
+    "https://www.xiachufang.com/search/?keyword=土豆炖牛肉"
+  ],
+  "evidence_text": "焯水能去血沫。土豆切好可泡水防氧化。香料少量即可。"
+}
+
+{
+  "id": "rag_032_02",
+  "query": "土豆炖牛肉为什么会牛肉不软？",
+  "category": "failure_reason",
+  "recipe_id": 32,
+  "expected_recipes": [
+    "土豆炖牛肉"
+  ],
+  "expected_chunk_types": [
+    "failure_reason"
+  ],
+  "must_include": [
+    "牛肉不软通常",
+    "常是炖煮时间",
+    "间不足，或中",
+    "中途加冷水导"
+  ],
+  "risk_keywords": [],
+  "source_urls": [
+    "https://www.xiachufang.com/search/?keyword=土豆炖牛肉",
+    "https://www.xiachufang.com/search/?keyword=土豆炖牛肉"
+  ],
+  "evidence_text": "牛肉不软通常是炖煮时间不足，或中途加冷水导致肉质收紧。"
+}
+
+{
+  "id": "rag_032_03",
+  "query": "做土豆炖牛肉没有生抽怎么办？",
+  "category": "substitution",
+  "recipe_id": 32,
+  "expected_recipes": [
+    "土豆炖牛肉"
+  ],
+  "expected_chunk_types": [
+    "substitution"
+  ],
+  "must_include": [
+    "没有生抽时可",
+    "抽时可用普通",
+    "用普通酱油替",
+    "酱油替代，用"
+  ],
+  "risk_keywords": [],
+  "source_urls": [
+    "https://www.xiachufang.com/search/?keyword=土豆炖牛肉",
+    "https://www.xiachufang.com/search/?keyword=土豆炖牛肉"
+  ],
+  "evidence_text": "没有生抽时可用普通酱油替代，用量减半。"
+}
+
+{
+  "id": "rag_033_01",
+  "query": "新手做尖椒炒鸡蛋有什么关键技巧？",
+  "category": "beginner_tip",
+  "recipe_id": 33,
+  "expected_recipes": [
+    "尖椒炒鸡蛋"
+  ],
+  "expected_chunk_types": [
+    "beginner_tip"
+  ],
+  "must_include": [
+    "怕辣可以去籽",
+    "去籽。盐少量",
+    "少量即可。保",
+    "。保持大块不"
+  ],
+  "risk_keywords": [
+    "热油"
+  ],
+  "source_urls": [
+    "https://www.xiachufang.com/search/?keyword=尖椒炒鸡蛋",
+    "https://www.xiachufang.com/search/?keyword=尖椒炒鸡蛋"
+  ],
+  "evidence_text": "怕辣可以去籽。盐少量即可。保持大块不要炒太碎。"
+}
+
+{
+  "id": "rag_033_02",
+  "query": "尖椒炒鸡蛋为什么会鸡蛋变老？",
+  "category": "failure_reason",
+  "recipe_id": 33,
+  "expected_recipes": [
+    "尖椒炒鸡蛋"
+  ],
+  "expected_chunk_types": [
+    "failure_reason"
+  ],
+  "must_include": [
+    "鸡蛋变老通常",
+    "通常是第一次",
+    "一次炒太久或",
+    "久或回锅后继"
+  ],
+  "risk_keywords": [
+    "热油"
+  ],
+  "source_urls": [
+    "https://www.xiachufang.com/search/?keyword=尖椒炒鸡蛋",
+    "https://www.xiachufang.com/search/?keyword=尖椒炒鸡蛋"
+  ],
+  "evidence_text": "鸡蛋变老通常是第一次炒太久或回锅后继续久炒。"
+}
+
+{
+  "id": "rag_033_03",
+  "query": "做尖椒炒鸡蛋没有替代方案怎么办？",
+  "category": "substitution",
+  "recipe_id": 33,
+  "expected_recipes": [
+    "尖椒炒鸡蛋"
+  ],
+  "expected_chunk_types": [
+    "substitution"
+  ],
+  "must_include": [
+    "尖椒可以换成",
+    "可以换成青椒",
+    "换成青椒，辣",
+    "青椒，辣度更"
+  ],
+  "risk_keywords": [
+    "热油"
+  ],
+  "source_urls": [
+    "https://www.xiachufang.com/search/?keyword=尖椒炒鸡蛋",
+    "https://www.xiachufang.com/search/?keyword=尖椒炒鸡蛋"
+  ],
+  "evidence_text": "尖椒可以换成青椒，辣度更低。"
+}
+
+{
+  "id": "rag_034_01",
+  "query": "新手做醋溜白菜有什么关键技巧？",
+  "category": "beginner_tip",
+  "recipe_id": 34,
+  "expected_recipes": [
+    "醋溜白菜"
+  ],
+  "expected_chunk_types": [
+    "beginner_tip"
+  ],
+  "must_include": [
+    "帮和叶分开，",
+    "成熟时间不同",
+    "。不吃辣可以",
+    "不放干辣椒。"
+  ],
+  "risk_keywords": [],
+  "source_urls": [
+    "https://www.xiachufang.com/search/?keyword=醋溜白菜",
+    "https://www.xiachufang.com/search/?keyword=醋溜白菜"
+  ],
+  "evidence_text": "帮和叶分开，成熟时间不同。不吃辣可以不放干辣椒。辣椒别炒糊。"
+}
+
+{
+  "id": "rag_034_02",
+  "query": "醋溜白菜为什么会白菜出水多？",
+  "category": "failure_reason",
+  "recipe_id": 34,
+  "expected_recipes": [
+    "醋溜白菜"
+  ],
+  "expected_chunk_types": [
+    "failure_reason"
+  ],
+  "must_include": [
+    "白菜出水多通",
+    "多通常是火力",
+    "火力不足或炒",
+    "或炒制时间过"
+  ],
+  "risk_keywords": [],
+  "source_urls": [
+    "https://www.xiachufang.com/search/?keyword=醋溜白菜",
+    "https://www.xiachufang.com/search/?keyword=醋溜白菜"
+  ],
+  "evidence_text": "白菜出水多通常是火力不足或炒制时间过长。"
+}
+
+{
+  "id": "rag_034_03",
+  "query": "做醋溜白菜没有陈醋怎么办？",
+  "category": "substitution",
+  "recipe_id": 34,
+  "expected_recipes": [
+    "醋溜白菜"
+  ],
+  "expected_chunk_types": [
+    "substitution"
+  ],
+  "must_include": [
+    "没有陈醋时可",
+    "时可用米醋或",
+    "醋或白醋，酸",
+    "，酸香会有区"
+  ],
+  "risk_keywords": [],
+  "source_urls": [
+    "https://www.xiachufang.com/search/?keyword=醋溜白菜",
+    "https://www.xiachufang.com/search/?keyword=醋溜白菜"
+  ],
+  "evidence_text": "没有陈醋时可用米醋或白醋，酸香会有区别。"
+}
+
+{
+  "id": "rag_035_01",
+  "query": "新手做手撕包菜有什么关键技巧？",
+  "category": "beginner_tip",
+  "recipe_id": 35,
+  "expected_recipes": [
+    "手撕包菜"
+  ],
+  "expected_chunk_types": [
+    "beginner_tip"
+  ],
+  "must_include": [
+    "手撕边缘不规",
+    "则，更容易挂",
+    "汁。水分太多",
+    "会变成煮菜。"
+  ],
+  "risk_keywords": [],
+  "source_urls": [
+    "https://www.xiachufang.com/search/?keyword=手撕包菜",
+    "https://www.xiachufang.com/search/?keyword=手撕包菜"
+  ],
+  "evidence_text": "手撕边缘不规则，更容易挂汁。水分太多会变成煮菜。辣椒按口味调整。"
+}
+
+{
+  "id": "rag_035_02",
+  "query": "手撕包菜为什么会包菜出水多？",
+  "category": "failure_reason",
+  "recipe_id": 35,
+  "expected_recipes": [
+    "手撕包菜"
+  ],
+  "expected_chunk_types": [
+    "failure_reason"
+  ],
+  "must_include": [
+    "包菜出水多通",
+    "水多通常是洗",
+    "常是洗后没沥",
+    "后没沥干或火"
+  ],
+  "risk_keywords": [],
+  "source_urls": [
+    "https://www.xiachufang.com/search/?keyword=手撕包菜",
+    "https://www.xiachufang.com/search/?keyword=手撕包菜"
+  ],
+  "evidence_text": "包菜出水多通常是洗后没沥干或火太小。"
+}
+
+{
+  "id": "rag_035_03",
+  "query": "做手撕包菜没有干辣椒怎么办？",
+  "category": "substitution",
+  "recipe_id": 35,
+  "expected_recipes": [
+    "手撕包菜"
+  ],
+  "expected_chunk_types": [
+    "substitution"
+  ],
+  "must_include": [
+    "没有干辣椒时",
+    "辣椒时可以只",
+    "可以只用蒜片",
+    "用蒜片和少量"
+  ],
+  "risk_keywords": [],
+  "source_urls": [
+    "https://www.xiachufang.com/search/?keyword=手撕包菜",
+    "https://www.xiachufang.com/search/?keyword=手撕包菜"
+  ],
+  "evidence_text": "没有干辣椒时可以只用蒜片和少量醋调味。"
+}
+
+{
+  "id": "rag_036_01",
+  "query": "新手做洋葱炒牛肉有什么关键技巧？",
+  "category": "beginner_tip",
+  "recipe_id": 36,
+  "expected_recipes": [
+    "洋葱炒牛肉"
+  ],
+  "expected_chunk_types": [
+    "beginner_tip"
+  ],
+  "must_include": [
+    "逆纹切能减少",
+    "少嚼劲。洋葱",
+    "葱不要切太细",
+    "细。牛肉不要"
+  ],
+  "risk_keywords": [
+    "生肉",
+    "热油"
+  ],
+  "source_urls": [
+    "https://www.xiachufang.com/search/?keyword=洋葱炒牛肉",
+    "https://www.xiachufang.com/search/?keyword=洋葱炒牛肉"
+  ],
+  "evidence_text": "逆纹切能减少嚼劲。洋葱不要切太细。牛肉不要炒到全熟干硬。"
+}
+
+{
+  "id": "rag_036_02",
+  "query": "洋葱炒牛肉为什么会牛肉发柴？",
+  "category": "failure_reason",
+  "recipe_id": 36,
+  "expected_recipes": [
+    "洋葱炒牛肉"
+  ],
+  "expected_chunk_types": [
+    "failure_reason"
+  ],
+  "must_include": [
+    "牛肉发柴通常",
+    "通常是顺纹切",
+    "纹切、腌制不",
+    "制不足或回锅"
+  ],
+  "risk_keywords": [
+    "生肉",
+    "热油"
+  ],
+  "source_urls": [
+    "https://www.xiachufang.com/search/?keyword=洋葱炒牛肉",
+    "https://www.xiachufang.com/search/?keyword=洋葱炒牛肉"
+  ],
+  "evidence_text": "牛肉发柴通常是顺纹切、腌制不足或回锅炒太久。"
+}
+
+{
+  "id": "rag_036_03",
+  "query": "做洋葱炒牛肉没有蚝油怎么办？",
+  "category": "substitution",
+  "recipe_id": 36,
+  "expected_recipes": [
+    "洋葱炒牛肉"
+  ],
+  "expected_chunk_types": [
+    "substitution"
+  ],
+  "must_include": [
+    "没有蚝油时可",
+    "时可用生抽、",
+    "抽、少量糖和",
+    "糖和黑胡椒调"
+  ],
+  "risk_keywords": [
+    "生肉",
+    "热油"
+  ],
+  "source_urls": [
+    "https://www.xiachufang.com/search/?keyword=洋葱炒牛肉",
+    "https://www.xiachufang.com/search/?keyword=洋葱炒牛肉"
+  ],
+  "evidence_text": "没有蚝油时可用生抽、少量糖和黑胡椒调味。"
+}
+
+{
+  "id": "rag_037_01",
+  "query": "新手做木须肉有什么关键技巧？",
+  "category": "beginner_tip",
+  "recipe_id": 37,
+  "expected_recipes": [
+    "木须肉"
+  ],
+  "expected_chunk_types": [
+    "beginner_tip"
+  ],
+  "must_include": [
+    "薄片更容易熟",
+    "易熟。木耳根",
+    "耳根部硬块要",
+    "块要去掉。鸡"
+  ],
+  "risk_keywords": [],
+  "source_urls": [
+    "https://www.xiachufang.com/search/?keyword=木须肉",
+    "https://www.xiachufang.com/search/?keyword=木须肉"
+  ],
+  "evidence_text": "薄片更容易熟。木耳根部硬块要去掉。鸡蛋不要炒老。"
+}
+
+{
+  "id": "rag_037_02",
+  "query": "木须肉为什么会木耳爆锅？",
+  "category": "failure_reason",
+  "recipe_id": 37,
+  "expected_recipes": [
+    "木须肉"
+  ],
+  "expected_chunk_types": [
+    "failure_reason"
+  ],
+  "must_include": [
+    "木耳爆锅常见",
+    "锅常见原因是",
+    "原因是泡发后",
+    "泡发后表面水"
+  ],
+  "risk_keywords": [],
+  "source_urls": [
+    "https://www.xiachufang.com/search/?keyword=木须肉",
+    "https://www.xiachufang.com/search/?keyword=木须肉"
+  ],
+  "evidence_text": "木耳爆锅常见原因是泡发后表面水分太多。"
+}
+
+{
+  "id": "rag_037_03",
+  "query": "做木须肉没有黄瓜怎么办？",
+  "category": "substitution",
+  "recipe_id": 37,
+  "expected_recipes": [
+    "木须肉"
+  ],
+  "expected_chunk_types": [
+    "substitution"
+  ],
+  "must_include": [
+    "没有黄瓜可以",
+    "瓜可以用青椒",
+    "用青椒或莴笋",
+    "或莴笋片替代"
+  ],
+  "risk_keywords": [],
+  "source_urls": [
+    "https://www.xiachufang.com/search/?keyword=木须肉",
+    "https://www.xiachufang.com/search/?keyword=木须肉"
+  ],
+  "evidence_text": "没有黄瓜可以用青椒或莴笋片替代。"
+}
+
+{
+  "id": "rag_038_01",
+  "query": "新手做青椒土豆片有什么关键技巧？",
+  "category": "beginner_tip",
+  "recipe_id": 38,
+  "expected_recipes": [
+    "青椒土豆片"
+  ],
+  "expected_chunk_types": [
+    "beginner_tip"
+  ],
+  "must_include": [
+    "冲洗后更不容",
+    "易粘锅。青椒",
+    "不需要切太小",
+    "。下锅前越干"
+  ],
+  "risk_keywords": [],
+  "source_urls": [
+    "https://www.xiachufang.com/search/?keyword=青椒土豆片",
+    "https://www.xiachufang.com/search/?keyword=青椒土豆片"
+  ],
+  "evidence_text": "冲洗后更不容易粘锅。青椒不需要切太小。下锅前越干越不容易溅油。"
+}
+
+{
+  "id": "rag_038_02",
+  "query": "青椒土豆片为什么会土豆片粘锅？",
+  "category": "failure_reason",
+  "recipe_id": 38,
+  "expected_recipes": [
+    "青椒土豆片"
+  ],
+  "expected_chunk_types": [
+    "failure_reason"
+  ],
+  "must_include": [
+    "土豆片粘锅常",
+    "锅常见原因是",
+    "因是淀粉未冲",
+    "未冲洗或锅温"
+  ],
+  "risk_keywords": [],
+  "source_urls": [
+    "https://www.xiachufang.com/search/?keyword=青椒土豆片",
+    "https://www.xiachufang.com/search/?keyword=青椒土豆片"
+  ],
+  "evidence_text": "土豆片粘锅常见原因是淀粉未冲洗或锅温不稳定。"
+}
+
+{
+  "id": "rag_038_03",
+  "query": "做青椒土豆片没有替代方案怎么办？",
+  "category": "substitution",
+  "recipe_id": 38,
+  "expected_recipes": [
+    "青椒土豆片"
+  ],
+  "expected_chunk_types": [
+    "substitution"
+  ],
+  "must_include": [
+    "青椒可换成尖",
+    "换成尖椒、洋",
+    "椒、洋葱或胡",
+    "葱或胡萝卜片"
+  ],
+  "risk_keywords": [],
+  "source_urls": [
+    "https://www.xiachufang.com/search/?keyword=青椒土豆片",
+    "https://www.xiachufang.com/search/?keyword=青椒土豆片"
+  ],
+  "evidence_text": "青椒可换成尖椒、洋葱或胡萝卜片。"
+}
+
+{
+  "id": "rag_039_01",
+  "query": "新手做肉末茄子有什么关键技巧？",
+  "category": "beginner_tip",
+  "recipe_id": 39,
+  "expected_recipes": [
+    "肉末茄子"
+  ],
+  "expected_chunk_types": [
+    "beginner_tip"
+  ],
+  "must_include": [
+    "这样能减少吸",
+    "吸油。蒜末多",
+    "多一点更香。",
+    "。也可以蒸软"
+  ],
+  "risk_keywords": [],
+  "source_urls": [
+    "https://www.xiachufang.com/search/?keyword=肉末茄子",
+    "https://www.xiachufang.com/search/?keyword=肉末茄子"
+  ],
+  "evidence_text": "这样能减少吸油。蒜末多一点更香。也可以蒸软后再炒，更省油。"
+}
+
+{
+  "id": "rag_039_02",
+  "query": "肉末茄子为什么会茄子不入味？",
+  "category": "failure_reason",
+  "recipe_id": 39,
+  "expected_recipes": [
+    "肉末茄子"
+  ],
+  "expected_chunk_types": [
+    "failure_reason"
+  ],
+  "must_include": [
+    "茄子不入味通",
+    "味通常是没有",
+    "没有烧一会让",
+    "会让酱汁进入"
+  ],
+  "risk_keywords": [],
+  "source_urls": [
+    "https://www.xiachufang.com/search/?keyword=肉末茄子",
+    "https://www.xiachufang.com/search/?keyword=肉末茄子"
+  ],
+  "evidence_text": "茄子不入味通常是没有烧一会让酱汁进入茄子。"
+}
+
+{
+  "id": "rag_039_03",
+  "query": "做肉末茄子没有替代方案怎么办？",
+  "category": "substitution",
+  "recipe_id": 39,
+  "expected_recipes": [
+    "肉末茄子"
+  ],
+  "expected_chunk_types": [
+    "substitution"
+  ],
+  "must_include": [
+    "不吃辣可以去",
+    "以去掉豆瓣酱",
+    "瓣酱，改用生",
+    "用生抽、蚝油"
+  ],
+  "risk_keywords": [],
+  "source_urls": [
+    "https://www.xiachufang.com/search/?keyword=肉末茄子",
+    "https://www.xiachufang.com/search/?keyword=肉末茄子"
+  ],
+  "evidence_text": "不吃辣可以去掉豆瓣酱，改用生抽、蚝油和蒜末。"
+}
+
+{
+  "id": "rag_040_01",
+  "query": "新手做黄瓜炒鸡蛋有什么关键技巧？",
+  "category": "beginner_tip",
+  "recipe_id": 40,
+  "expected_recipes": [
+    "黄瓜炒鸡蛋"
+  ],
+  "expected_chunk_types": [
+    "beginner_tip"
+  ],
+  "must_include": [
+    "黄瓜片不要太",
+    "太薄，否则容",
+    "容易出水。蛋",
+    "蛋液打匀即可"
+  ],
+  "risk_keywords": [
+    "热油"
+  ],
+  "source_urls": [
+    "https://www.xiachufang.com/search/?keyword=黄瓜炒鸡蛋",
+    "https://www.xiachufang.com/search/?keyword=黄瓜炒鸡蛋"
+  ],
+  "evidence_text": "黄瓜片不要太薄，否则容易出水。蛋液打匀即可。鸡蛋保持大块。"
+}
+
+{
+  "id": "rag_040_02",
+  "query": "黄瓜炒鸡蛋为什么会黄瓜出水多？",
+  "category": "failure_reason",
+  "recipe_id": 40,
+  "expected_recipes": [
+    "黄瓜炒鸡蛋"
+  ],
+  "expected_chunk_types": [
+    "failure_reason"
+  ],
+  "must_include": [
+    "黄瓜出水多通",
+    "水多通常是切",
+    "常是切太薄或",
+    "太薄或炒太久"
+  ],
+  "risk_keywords": [
+    "热油"
+  ],
+  "source_urls": [
+    "https://www.xiachufang.com/search/?keyword=黄瓜炒鸡蛋",
+    "https://www.xiachufang.com/search/?keyword=黄瓜炒鸡蛋"
+  ],
+  "evidence_text": "黄瓜出水多通常是切太薄或炒太久。"
+}
+
+{
+  "id": "rag_040_03",
+  "query": "做黄瓜炒鸡蛋没有替代方案怎么办？",
+  "category": "substitution",
+  "recipe_id": 40,
+  "expected_recipes": [
+    "黄瓜炒鸡蛋"
+  ],
+  "expected_chunk_types": [
+    "substitution"
+  ],
+  "must_include": [
+    "可加入少量火",
+    "少量火腿片或",
+    "腿片或木耳增",
+    "木耳增加口感"
+  ],
+  "risk_keywords": [
+    "热油"
+  ],
+  "source_urls": [
+    "https://www.xiachufang.com/search/?keyword=黄瓜炒鸡蛋",
+    "https://www.xiachufang.com/search/?keyword=黄瓜炒鸡蛋"
+  ],
+  "evidence_text": "可加入少量火腿片或木耳增加口感。"
+}
+
+{
+  "id": "rag_041_01",
+  "query": "新手做冬瓜排骨汤有什么关键技巧？",
+  "category": "beginner_tip",
+  "recipe_id": 41,
+  "expected_recipes": [
+    "冬瓜排骨汤"
+  ],
+  "expected_chunk_types": [
+    "beginner_tip"
+  ],
+  "must_include": [
+    "焯水后汤更清",
+    "清。冬瓜块不",
+    "不要太薄，容",
+    "容易炖化。水"
+  ],
+  "risk_keywords": [
+    "生肉"
+  ],
+  "source_urls": [
+    "https://www.xiachufang.com/search/?keyword=冬瓜排骨汤",
+    "https://www.xiachufang.com/search/?keyword=冬瓜排骨汤"
+  ],
+  "evidence_text": "焯水后汤更清。冬瓜块不要太薄，容易炖化。水一次加足。"
+}
+
+{
+  "id": "rag_041_02",
+  "query": "冬瓜排骨汤为什么会冬瓜炖化？",
+  "category": "failure_reason",
+  "recipe_id": 41,
+  "expected_recipes": [
+    "冬瓜排骨汤"
+  ],
+  "expected_chunk_types": [
+    "failure_reason"
+  ],
+  "must_include": [
+    "冬瓜炖化通常",
+    "化通常是切太",
+    "是切太薄或下",
+    "薄或下锅太早"
+  ],
+  "risk_keywords": [
+    "生肉"
+  ],
+  "source_urls": [
+    "https://www.xiachufang.com/search/?keyword=冬瓜排骨汤",
+    "https://www.xiachufang.com/search/?keyword=冬瓜排骨汤"
+  ],
+  "evidence_text": "冬瓜炖化通常是切太薄或下锅太早。"
+}
+
+{
+  "id": "rag_041_03",
+  "query": "做冬瓜排骨汤没有料酒怎么办？",
+  "category": "substitution",
+  "recipe_id": 41,
+  "expected_recipes": [
+    "冬瓜排骨汤"
+  ],
+  "expected_chunk_types": [
+    "substitution"
+  ],
+  "must_include": [
+    "没有料酒时可",
+    "酒时可用少量",
+    "用少量白酒或",
+    "白酒或黄酒替"
+  ],
+  "risk_keywords": [
+    "生肉"
+  ],
+  "source_urls": [
+    "https://www.xiachufang.com/search/?keyword=冬瓜排骨汤",
+    "https://www.xiachufang.com/search/?keyword=冬瓜排骨汤"
+  ],
+  "evidence_text": "没有料酒时可用少量白酒或黄酒替代。"
+}
+
+{
+  "id": "rag_042_01",
+  "query": "新手做葱油拌面有什么关键技巧？",
+  "category": "beginner_tip",
+  "recipe_id": 42,
+  "expected_recipes": [
+    "葱油拌面"
+  ],
+  "expected_chunk_types": [
+    "beginner_tip"
+  ],
+  "must_include": [
+    "葱段沥干水分",
+    "熬油更安全。",
+    "抽只负责上色",
+    "不要太多。小"
+  ],
+  "risk_keywords": [],
+  "source_urls": [
+    "https://www.xiachufang.com/search/?keyword=葱油拌面",
+    "https://www.xiachufang.com/search/?keyword=葱油拌面"
+  ],
+  "evidence_text": "葱段沥干水分，熬油更安全。老抽只负责上色，不要太多。小火熬到葱变焦香但不发黑。"
+}
+
+{
+  "id": "rag_042_02",
+  "query": "葱油拌面为什么会葱油发苦多是葱段被炸黑？",
+  "category": "failure_reason",
+  "recipe_id": 42,
+  "expected_recipes": [
+    "葱油拌面"
+  ],
+  "expected_chunk_types": [
+    "failure_reason"
+  ],
+  "must_include": [
+    "葱油发苦多是",
+    "是葱段被炸黑",
+    "黑，或酱汁入",
+    "入锅后继续高"
+  ],
+  "risk_keywords": [],
+  "source_urls": [
+    "https://www.xiachufang.com/search/?keyword=葱油拌面",
+    "https://www.xiachufang.com/search/?keyword=葱油拌面"
+  ],
+  "evidence_text": "葱油发苦多是葱段被炸黑，或酱汁入锅后继续高温久煮。"
+}
+
+{
+  "id": "rag_042_03",
+  "query": "做葱油拌面没有生抽怎么办？",
+  "category": "substitution",
+  "recipe_id": 42,
+  "expected_recipes": [
+    "葱油拌面"
+  ],
+  "expected_chunk_types": [
+    "substitution"
+  ],
+  "must_include": [
+    "没有生抽时可",
+    "抽时可用普通",
+    "用普通酱油替",
+    "酱油替代，用"
+  ],
+  "risk_keywords": [],
+  "source_urls": [
+    "https://www.xiachufang.com/search/?keyword=葱油拌面",
+    "https://www.xiachufang.com/search/?keyword=葱油拌面"
+  ],
+  "evidence_text": "没有生抽时可用普通酱油替代，用量减半。"
+}
+
+{
+  "id": "rag_043_01",
+  "query": "新手做蒜苔炒肉有什么关键技巧？",
+  "category": "beginner_tip",
+  "recipe_id": 43,
+  "expected_recipes": [
+    "蒜苔炒肉"
+  ],
+  "expected_chunk_types": [
+    "beginner_tip"
+  ],
+  "must_include": [
+    "薄切更容易嫩",
+    "易嫩。蒜苔老",
+    "苔老的根部要",
+    "部要去掉。别"
+  ],
+  "risk_keywords": [
+    "生肉",
+    "热油"
+  ],
+  "source_urls": [
+    "https://www.xiachufang.com/search/?keyword=蒜苔炒肉",
+    "https://www.xiachufang.com/search/?keyword=蒜苔炒肉"
+  ],
+  "evidence_text": "薄切更容易嫩。蒜苔老的根部要去掉。别炒老。"
+}
+
+{
+  "id": "rag_043_02",
+  "query": "蒜苔炒肉为什么会蒜苔夹生？",
+  "category": "failure_reason",
+  "recipe_id": 43,
+  "expected_recipes": [
+    "蒜苔炒肉"
+  ],
+  "expected_chunk_types": [
+    "failure_reason"
+  ],
+  "must_include": [
+    "蒜苔夹生通常",
+    "生通常是火候",
+    "是火候不足或",
+    "不足或切段过"
+  ],
+  "risk_keywords": [
+    "生肉",
+    "热油"
+  ],
+  "source_urls": [
+    "https://www.xiachufang.com/search/?keyword=蒜苔炒肉",
+    "https://www.xiachufang.com/search/?keyword=蒜苔炒肉"
+  ],
+  "evidence_text": "蒜苔夹生通常是火候不足或切段过长。"
+}
+
+{
+  "id": "rag_043_03",
+  "query": "做蒜苔炒肉没有替代方案怎么办？",
+  "category": "substitution",
+  "recipe_id": 43,
+  "expected_recipes": [
+    "蒜苔炒肉"
+  ],
+  "expected_chunk_types": [
+    "substitution"
+  ],
+  "must_include": [
+    "猪肉可换成牛",
+    "换成牛肉、鸡",
+    "肉、鸡胸肉或",
+    "胸肉或腊肉。"
+  ],
+  "risk_keywords": [
+    "生肉",
+    "热油"
+  ],
+  "source_urls": [
+    "https://www.xiachufang.com/search/?keyword=蒜苔炒肉",
+    "https://www.xiachufang.com/search/?keyword=蒜苔炒肉"
+  ],
+  "evidence_text": "猪肉可换成牛肉、鸡胸肉或腊肉。"
+}
+
+{
+  "id": "rag_044_01",
+  "query": "新手做家常豆腐有什么关键技巧？",
+  "category": "beginner_tip",
+  "recipe_id": 44,
+  "expected_recipes": [
+    "家常豆腐"
+  ],
+  "expected_chunk_types": [
+    "beginner_tip"
+  ],
+  "must_include": [
+    "北豆腐更适合",
+    "合煎。木耳泡",
+    "泡发后沥干。",
+    "。豆腐下锅后"
+  ],
+  "risk_keywords": [],
+  "source_urls": [
+    "https://www.xiachufang.com/search/?keyword=家常豆腐",
+    "https://www.xiachufang.com/search/?keyword=家常豆腐"
+  ],
+  "evidence_text": "北豆腐更适合煎。木耳泡发后沥干。豆腐下锅后先别急着翻。"
+}
+
+{
+  "id": "rag_044_02",
+  "query": "家常豆腐为什么会豆腐煎碎？",
+  "category": "failure_reason",
+  "recipe_id": 44,
+  "expected_recipes": [
+    "家常豆腐"
+  ],
+  "expected_chunk_types": [
+    "failure_reason"
+  ],
+  "must_include": [
+    "豆腐煎碎通常",
+    "常是锅不够热",
+    "热、豆腐表面",
+    "面太湿，或翻"
+  ],
+  "risk_keywords": [],
+  "source_urls": [
+    "https://www.xiachufang.com/search/?keyword=家常豆腐",
+    "https://www.xiachufang.com/search/?keyword=家常豆腐"
+  ],
+  "evidence_text": "豆腐煎碎通常是锅不够热、豆腐表面太湿，或翻动太早。"
+}
+
+{
+  "id": "rag_044_03",
+  "query": "做家常豆腐没有豆瓣酱怎么办？",
+  "category": "substitution",
+  "recipe_id": 44,
+  "expected_recipes": [
+    "家常豆腐"
+  ],
+  "expected_chunk_types": [
+    "substitution"
+  ],
+  "must_include": [
+    "不吃辣可以不",
+    "以不放豆瓣酱",
+    "瓣酱，改用生",
+    "用生抽、蚝油"
+  ],
+  "risk_keywords": [],
+  "source_urls": [
+    "https://www.xiachufang.com/search/?keyword=家常豆腐",
+    "https://www.xiachufang.com/search/?keyword=家常豆腐"
+  ],
+  "evidence_text": "不吃辣可以不放豆瓣酱，改用生抽、蚝油和蒜末。"
+}
+
+{
+  "id": "rag_045_01",
+  "query": "新手做油焖大虾有什么关键技巧？",
+  "category": "beginner_tip",
+  "recipe_id": 45,
+  "expected_recipes": [
+    "油焖大虾"
+  ],
+  "expected_chunk_types": [
+    "beginner_tip"
+  ],
+  "must_include": [
+    "处理干净口感",
+    "感更好。姜蒜",
+    "蒜能去腥增香",
+    "香。虾表面沥"
+  ],
+  "risk_keywords": [],
+  "source_urls": [
+    "https://www.xiachufang.com/search/?keyword=油焖大虾",
+    "https://www.xiachufang.com/search/?keyword=油焖大虾"
+  ],
+  "evidence_text": "处理干净口感更好。姜蒜能去腥增香。虾表面沥干更香。"
+}
+
+{
+  "id": "rag_045_02",
+  "query": "油焖大虾为什么会虾肉变老？",
+  "category": "failure_reason",
+  "recipe_id": 45,
+  "expected_recipes": [
+    "油焖大虾"
+  ],
+  "expected_chunk_types": [
+    "failure_reason"
+  ],
+  "must_include": [
+    "虾肉变老通常",
+    "老通常是焖煮",
+    "是焖煮或收汁",
+    "或收汁时间过"
+  ],
+  "risk_keywords": [],
+  "source_urls": [
+    "https://www.xiachufang.com/search/?keyword=油焖大虾",
+    "https://www.xiachufang.com/search/?keyword=油焖大虾"
+  ],
+  "evidence_text": "虾肉变老通常是焖煮或收汁时间过长。"
+}
+
+{
+  "id": "rag_045_03",
+  "query": "做油焖大虾没有生抽怎么办？",
+  "category": "substitution",
+  "recipe_id": 45,
+  "expected_recipes": [
+    "油焖大虾"
+  ],
+  "expected_chunk_types": [
+    "substitution"
+  ],
+  "must_include": [
+    "没有生抽时可",
+    "抽时可用普通",
+    "用普通酱油替",
+    "酱油替代，用"
+  ],
+  "risk_keywords": [],
+  "source_urls": [
+    "https://www.xiachufang.com/search/?keyword=油焖大虾",
+    "https://www.xiachufang.com/search/?keyword=油焖大虾"
+  ],
+  "evidence_text": "没有生抽时可用普通酱油替代，用量减半。"
+}
+
+{
+  "id": "rag_046_01",
+  "query": "新手做蒜香鸡腿有什么关键技巧？",
+  "category": "beginner_tip",
+  "recipe_id": 46,
+  "expected_recipes": [
+    "蒜香鸡腿"
+  ],
+  "expected_chunk_types": [
+    "beginner_tip"
+  ],
+  "must_include": [
+    "划刀能帮助入",
+    "入味和成熟。",
+    "。腌制时间越",
+    "越长越入味。"
+  ],
+  "risk_keywords": [],
+  "source_urls": [
+    "https://www.xiachufang.com/search/?keyword=蒜香鸡腿",
+    "https://www.xiachufang.com/search/?keyword=蒜香鸡腿"
+  ],
+  "evidence_text": "划刀能帮助入味和成熟。腌制时间越长越入味。鸡皮先煎更香。"
+}
+
+{
+  "id": "rag_046_02",
+  "query": "蒜香鸡腿为什么会外焦内生？",
+  "category": "failure_reason",
+  "recipe_id": 46,
+  "expected_recipes": [
+    "蒜香鸡腿"
+  ],
+  "expected_chunk_types": [
+    "failure_reason"
+  ],
+  "must_include": [
+    "外焦内生通常",
+    "通常是火太大",
+    "太大，鸡腿厚",
+    "腿厚处还没熟"
+  ],
+  "risk_keywords": [],
+  "source_urls": [
+    "https://www.xiachufang.com/search/?keyword=蒜香鸡腿",
+    "https://www.xiachufang.com/search/?keyword=蒜香鸡腿"
+  ],
+  "evidence_text": "外焦内生通常是火太大，鸡腿厚处还没熟表面已焦。"
+}
+
+{
+  "id": "rag_046_03",
+  "query": "做蒜香鸡腿没有生抽怎么办？",
+  "category": "substitution",
+  "recipe_id": 46,
+  "expected_recipes": [
+    "蒜香鸡腿"
+  ],
+  "expected_chunk_types": [
+    "substitution"
+  ],
+  "must_include": [
+    "没有生抽时可",
+    "抽时可用普通",
+    "用普通酱油替",
+    "酱油替代，用"
+  ],
+  "risk_keywords": [],
+  "source_urls": [
+    "https://www.xiachufang.com/search/?keyword=蒜香鸡腿",
+    "https://www.xiachufang.com/search/?keyword=蒜香鸡腿"
+  ],
+  "evidence_text": "没有生抽时可用普通酱油替代，用量减半。"
+}
+
+{
+  "id": "rag_047_01",
+  "query": "新手做白菜炖豆腐有什么关键技巧？",
+  "category": "beginner_tip",
+  "recipe_id": 47,
+  "expected_recipes": [
+    "白菜炖豆腐"
+  ],
+  "expected_chunk_types": [
+    "beginner_tip"
+  ],
+  "must_include": [
+    "菜帮更耐炖。",
+    "炖。北豆腐更",
+    "腐更不容易碎",
+    "易碎。葱姜少"
+  ],
+  "risk_keywords": [],
+  "source_urls": [
+    "https://www.xiachufang.com/search/?keyword=白菜炖豆腐",
+    "https://www.xiachufang.com/search/?keyword=白菜炖豆腐"
+  ],
+  "evidence_text": "菜帮更耐炖。北豆腐更不容易碎。葱姜少量即可。"
+}
+
+{
+  "id": "rag_047_02",
+  "query": "白菜炖豆腐为什么会豆腐碎？",
+  "category": "failure_reason",
+  "recipe_id": 47,
+  "expected_recipes": [
+    "白菜炖豆腐"
+  ],
+  "expected_chunk_types": [
+    "failure_reason"
+  ],
+  "must_include": [
+    "豆腐碎通常是",
+    "通常是用嫩豆",
+    "用嫩豆腐且翻",
+    "腐且翻动过大"
+  ],
+  "risk_keywords": [],
+  "source_urls": [
+    "https://www.xiachufang.com/search/?keyword=白菜炖豆腐",
+    "https://www.xiachufang.com/search/?keyword=白菜炖豆腐"
+  ],
+  "evidence_text": "豆腐碎通常是用嫩豆腐且翻动过大。"
+}
+
+{
+  "id": "rag_047_03",
+  "query": "做白菜炖豆腐没有替代方案怎么办？",
+  "category": "substitution",
+  "recipe_id": 47,
+  "expected_recipes": [
+    "白菜炖豆腐"
+  ],
+  "expected_chunk_types": [
+    "substitution"
+  ],
+  "must_include": [
+    "可以加入粉条",
+    "入粉条、虾皮",
+    "、虾皮或肉丸",
+    "或肉丸增加风"
+  ],
+  "risk_keywords": [],
+  "source_urls": [
+    "https://www.xiachufang.com/search/?keyword=白菜炖豆腐",
+    "https://www.xiachufang.com/search/?keyword=白菜炖豆腐"
+  ],
+  "evidence_text": "可以加入粉条、虾皮或肉丸增加风味。"
+}
+
+{
+  "id": "rag_048_01",
+  "query": "新手做干锅花菜有什么关键技巧？",
+  "category": "beginner_tip",
+  "recipe_id": 48,
+  "expected_recipes": [
+    "干锅花菜"
+  ],
+  "expected_chunk_types": [
+    "beginner_tip"
+  ],
+  "must_include": [
+    "小朵更容易入",
+    "味。五花肉薄",
+    "一点更容易煸",
+    "出油。焯后要"
+  ],
+  "risk_keywords": [],
+  "source_urls": [
+    "https://www.xiachufang.com/search/?keyword=干锅花菜",
+    "https://www.xiachufang.com/search/?keyword=干锅花菜"
+  ],
+  "evidence_text": "小朵更容易入味。五花肉薄一点更容易煸出油。焯后要沥干，否则炒不香。"
+}
+
+{
+  "id": "rag_048_02",
+  "query": "干锅花菜为什么会花菜出水不香？",
+  "category": "failure_reason",
+  "recipe_id": 48,
+  "expected_recipes": [
+    "干锅花菜"
+  ],
+  "expected_chunk_types": [
+    "failure_reason"
+  ],
+  "must_include": [
+    "花菜出水不香",
+    "不香通常是焯",
+    "是焯水后没沥",
+    "没沥干或火力"
+  ],
+  "risk_keywords": [],
+  "source_urls": [
+    "https://www.xiachufang.com/search/?keyword=干锅花菜",
+    "https://www.xiachufang.com/search/?keyword=干锅花菜"
+  ],
+  "evidence_text": "花菜出水不香通常是焯水后没沥干或火力不足。"
+}
+
+{
+  "id": "rag_048_03",
+  "query": "做干锅花菜没有替代方案怎么办？",
+  "category": "substitution",
+  "recipe_id": 48,
+  "expected_recipes": [
+    "干锅花菜"
+  ],
+  "expected_chunk_types": [
+    "substitution"
+  ],
+  "must_include": [
+    "不吃辣可以去",
+    "以去掉干辣椒",
+    "辣椒，改用蒜",
+    "用蒜片和蚝油"
+  ],
+  "risk_keywords": [],
+  "source_urls": [
+    "https://www.xiachufang.com/search/?keyword=干锅花菜",
+    "https://www.xiachufang.com/search/?keyword=干锅花菜"
+  ],
+  "evidence_text": "不吃辣可以去掉干辣椒，改用蒜片和蚝油调味。"
+}
+
+{
+  "id": "rag_049_01",
+  "query": "新手做腐竹炒肉有什么关键技巧？",
+  "category": "beginner_tip",
+  "recipe_id": 49,
+  "expected_recipes": [
+    "腐竹炒肉"
+  ],
+  "expected_chunk_types": [
+    "beginner_tip"
+  ],
+  "must_include": [
+    "不要用开水猛",
+    "泡，容易外烂",
+    "内硬。肉片薄",
+    "一点更嫩。木"
+  ],
+  "risk_keywords": [
+    "热油"
+  ],
+  "source_urls": [
+    "https://www.xiachufang.com/search/?keyword=腐竹炒肉",
+    "https://www.xiachufang.com/search/?keyword=腐竹炒肉"
+  ],
+  "evidence_text": "不要用开水猛泡，容易外烂内硬。肉片薄一点更嫩。木耳沥干水分。"
+}
+
+{
+  "id": "rag_049_02",
+  "query": "腐竹炒肉为什么会腐竹外烂内硬？",
+  "category": "failure_reason",
+  "recipe_id": 49,
+  "expected_recipes": [
+    "腐竹炒肉"
+  ],
+  "expected_chunk_types": [
+    "failure_reason"
+  ],
+  "must_include": [
+    "腐竹外烂内硬",
+    "内硬通常是水",
+    "是水温过高或",
+    "高或浸泡时间"
+  ],
+  "risk_keywords": [
+    "热油"
+  ],
+  "source_urls": [
+    "https://www.xiachufang.com/search/?keyword=腐竹炒肉",
+    "https://www.xiachufang.com/search/?keyword=腐竹炒肉"
+  ],
+  "evidence_text": "腐竹外烂内硬通常是水温过高或浸泡时间不足。"
+}
+
+{
+  "id": "rag_049_03",
+  "query": "做腐竹炒肉没有替代方案怎么办？",
+  "category": "substitution",
+  "recipe_id": 49,
+  "expected_recipes": [
+    "腐竹炒肉"
+  ],
+  "expected_chunk_types": [
+    "substitution"
+  ],
+  "must_include": [
+    "猪肉可以换成",
+    "换成鸡肉、牛",
+    "、牛肉或只搭",
+    "只搭配木耳青"
+  ],
+  "risk_keywords": [
+    "热油"
+  ],
+  "source_urls": [
+    "https://www.xiachufang.com/search/?keyword=腐竹炒肉",
+    "https://www.xiachufang.com/search/?keyword=腐竹炒肉"
+  ],
+  "evidence_text": "猪肉可以换成鸡肉、牛肉或只搭配木耳青椒做素炒。"
+}
+
+{
+  "id": "rag_050_01",
+  "query": "新手做菠菜鸡蛋汤有什么关键技巧？",
+  "category": "beginner_tip",
+  "recipe_id": 50,
+  "expected_recipes": [
+    "菠菜鸡蛋汤"
+  ],
+  "expected_chunk_types": [
+    "beginner_tip"
+  ],
+  "must_include": [
+    "根部泥沙要洗",
+    "洗净。焯水能",
+    "能减少涩味。",
+    "。菠菜不需要"
+  ],
+  "risk_keywords": [],
+  "source_urls": [
+    "https://www.xiachufang.com/search/?keyword=菠菜鸡蛋汤",
+    "https://www.xiachufang.com/search/?keyword=菠菜鸡蛋汤"
+  ],
+  "evidence_text": "根部泥沙要洗净。焯水能减少涩味。菠菜不需要切太碎。"
+}
+
+{
+  "id": "rag_050_02",
+  "query": "菠菜鸡蛋汤为什么会蛋花成块？",
+  "category": "failure_reason",
+  "recipe_id": 50,
+  "expected_recipes": [
+    "菠菜鸡蛋汤"
+  ],
+  "expected_chunk_types": [
+    "failure_reason"
+  ],
+  "must_include": [
+    "蛋花成块通常",
+    "通常是汤滚得",
+    "滚得太猛或蛋",
+    "或蛋液一次倒"
+  ],
+  "risk_keywords": [],
+  "source_urls": [
+    "https://www.xiachufang.com/search/?keyword=菠菜鸡蛋汤",
+    "https://www.xiachufang.com/search/?keyword=菠菜鸡蛋汤"
+  ],
+  "evidence_text": "蛋花成块通常是汤滚得太猛或蛋液一次倒入。"
+}
+
+{
+  "id": "rag_050_03",
+  "query": "做菠菜鸡蛋汤没有替代方案怎么办？",
+  "category": "substitution",
+  "recipe_id": 50,
+  "expected_recipes": [
+    "菠菜鸡蛋汤"
+  ],
+  "expected_chunk_types": [
+    "substitution"
+  ],
+  "must_include": [
+    "菠菜可换成小",
+    "换成小白菜、",
+    "白菜、油麦菜",
+    "油麦菜或紫菜"
+  ],
+  "risk_keywords": [],
+  "source_urls": [
+    "https://www.xiachufang.com/search/?keyword=菠菜鸡蛋汤",
+    "https://www.xiachufang.com/search/?keyword=菠菜鸡蛋汤"
+  ],
+  "evidence_text": "菠菜可换成小白菜、油麦菜或紫菜。"
+}

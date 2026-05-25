@@ -502,13 +502,17 @@ def normalize_value(value: Any) -> Any:
 
 
 def iter_jsonl(path: Path, limit: int | None = None) -> Iterable[dict[str, Any]]:
-    with path.open("r", encoding="utf-8") as f:
-        for i, line in enumerate(f):
-            if limit is not None and i >= limit:
-                break
-            line = line.strip()
-            if line:
-                yield json.loads(line)
+    """Read JSON objects separated by blank lines (supports multi-line pretty-printed JSON)."""
+    text = path.read_text(encoding="utf-8")
+    count = 0
+    for block in text.split("\n\n"):
+        block = block.strip()
+        if not block:
+            continue
+        if limit is not None and count >= limit:
+            break
+        yield json.loads(block)
+        count += 1
 
 
 def write_json(path: Path, payload: dict[str, Any]) -> None:
@@ -520,8 +524,10 @@ def write_json(path: Path, payload: dict[str, Any]) -> None:
 
 def write_jsonl(path: Path, rows: list[dict[str, Any]]) -> None:
     with path.open("w", encoding="utf-8") as f:
-        for row in rows:
-            f.write(json.dumps(normalize_value(row), ensure_ascii=False) + "\n")
+        for i, row in enumerate(rows):
+            if i > 0:
+                f.write("\n")
+            f.write(json.dumps(normalize_value(row), ensure_ascii=False, indent=2) + "\n")
 
 
 def print_summary(summary_path: Path, outputs: dict[str, Any]) -> None:

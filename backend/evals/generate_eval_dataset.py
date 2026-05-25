@@ -242,10 +242,12 @@ def collect_risk_keywords(recipe: dict[str, Any]) -> list[str]:
 
 
 def write_jsonl(path: Path, rows: list[dict[str, Any]]) -> None:
-    """Write rows as JSONL."""
+    """Write rows as pretty-printed JSON, one object per blank-line-separated block."""
     with path.open("w", encoding="utf-8") as f:
-        for row in rows:
-            f.write(json.dumps(row, ensure_ascii=False) + "\n")
+        for i, row in enumerate(rows):
+            if i > 0:
+                f.write("\n")
+            f.write(json.dumps(row, ensure_ascii=False, indent=2) + "\n")
 
 
 if __name__ == "__main__":
