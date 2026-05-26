@@ -26,6 +26,7 @@ class ChunkType(StrEnum):
     OVERVIEW = "overview"
     INGREDIENTS = "ingredients"
     STEP = "step"
+    BEGINNER_TIP = "beginner_tip"
     FAILURE = "failure"
     SUBSTITUTION = "substitution"
     SAFETY = "safety"
