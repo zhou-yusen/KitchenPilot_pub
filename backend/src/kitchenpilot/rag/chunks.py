@@ -14,6 +14,7 @@ def build_recipe_chunks(recipes: list[Recipe]) -> list[SourceChunk]:
         chunks.append(_build_overview_chunk(recipe))
         chunks.append(_build_ingredients_chunk(recipe))
         chunks.extend(_build_step_chunks(recipe))
+        chunks.extend(_build_beginner_tip_chunks(recipe))
         chunks.extend(_build_failure_chunks(recipe))
         chunks.extend(_build_substitution_chunks(recipe))
         chunks.extend(_build_safety_chunks(recipe))
@@ -87,6 +88,28 @@ def _build_step_chunks(recipe: Recipe) -> list[SourceChunk]:
             )
         )
     return chunks
+
+
+def _build_beginner_tip_chunks(recipe: Recipe) -> list[SourceChunk]:
+    """Build one chunk combining all beginner tips for a recipe."""
+    tips = [step.beginner_tip for step in recipe.steps if step.beginner_tip]
+    if not tips:
+        return []
+    lines = [
+        f"菜谱：{recipe.name}",
+        "类型：新手提示",
+    ]
+    for i, tip in enumerate(tips, start=1):
+        lines.append(f"提示 {i}：{tip}")
+    lines.append(f"相关食材：{_join_text(_ingredient_names(recipe))}")
+    return [
+        _chunk(
+            recipe=recipe,
+            chunk_type=ChunkType.BEGINNER_TIP,
+            content="\n".join(lines),
+            chunk_key="beginner_tip",
+        )
+    ]
 
 
 def _build_failure_chunks(recipe: Recipe) -> list[SourceChunk]:
