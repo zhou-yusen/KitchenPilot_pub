@@ -4,21 +4,221 @@ from kitchenpilot.schemas.enums import ChunkType
 from kitchenpilot.schemas.recipe import Recipe, RecipeIngredient, SourceChunk
 
 
-CHUNK_SCHEMA_VERSION = 1
+CHUNK_SCHEMA_VERSION = 2
 
 
-def build_recipe_chunks(recipes: list[Recipe]) -> list[SourceChunk]:
-    """Build semantic RAG chunks from recipe schemas."""
+def build_recipe_chunks(
+    recipes: list[Recipe], *, merge: bool = False
+) -> list[SourceChunk]:
+    """Build semantic RAG chunks from recipe schemas.
+
+    Args:
+        recipes: List of Recipe objects to chunk.
+        merge: If True, merge all items of the same type into one chunk per
+            recipe (e.g. all failures in one chunk).  If False (default), each
+            item gets its own chunk for precise retrieval.
+    """
+    builder = _MergedBuilder if merge else _SplitBuilder
     chunks: list[SourceChunk] = []
     for recipe in recipes:
         chunks.append(_build_overview_chunk(recipe))
         chunks.append(_build_ingredients_chunk(recipe))
         chunks.extend(_build_step_chunks(recipe))
-        chunks.extend(_build_beginner_tip_chunks(recipe))
-        chunks.extend(_build_failure_chunks(recipe))
-        chunks.extend(_build_substitution_chunks(recipe))
-        chunks.extend(_build_safety_chunks(recipe))
+        chunks.extend(builder.build_beginner_tip_chunks(recipe))
+        chunks.extend(builder.build_failure_chunks(recipe))
+        chunks.extend(builder.build_substitution_chunks(recipe))
+        chunks.extend(builder.build_safety_chunks(recipe))
     return chunks
+
+
+# ── Split strategy: one chunk per item ───────────────────────────────────────
+
+
+class _SplitBuilder:
+    """Generate one chunk per individual item (tips, failures, …)."""
+
+    @staticmethod
+    def build_beginner_tip_chunks(recipe: Recipe) -> list[SourceChunk]:
+        chunks: list[SourceChunk] = []
+        for step in recipe.steps:
+            if not step.beginner_tip:
+                continue
+            chunks.append(
+                _chunk(
+                    recipe=recipe,
+                    chunk_type=ChunkType.BEGINNER_TIP,
+                    content="\n".join(
+                        [
+                            f"菜谱：{recipe.name}",
+                            "类型：新手提示",
+                            f"步骤 {step.order}：{step.beginner_tip}",
+                            f"相关食材：{_join_text(_ingredient_names(recipe))}",
+                        ]
+                    ),
+                    chunk_key=f"beginner_tip:{step.order}",
+                    extra_metadata={"step_order": step.order},
+                )
+            )
+        return chunks
+
+    @staticmethod
+    def build_failure_chunks(recipe: Recipe) -> list[SourceChunk]:
+        return [
+            _chunk(
+                recipe=recipe,
+                chunk_type=ChunkType.FAILURE,
+                content="\n".join(
+                    [
+                        f"菜谱：{recipe.name}",
+                        "类型：失败排查",
+                        f"常见问题 {index}：{failure}",
+                        f"相关食材：{_join_text(_ingredient_names(recipe))}",
+                    ]
+                ),
+                chunk_key=f"failure:{index}",
+                extra_metadata={"failure_order": index},
+            )
+            for index, failure in enumerate(recipe.common_failures, start=1)
+        ]
+
+    @staticmethod
+    def build_substitution_chunks(recipe: Recipe) -> list[SourceChunk]:
+        chunks: list[SourceChunk] = []
+        for index, (ingredient, substitution) in enumerate(
+            recipe.substitutions.items(), start=1
+        ):
+            chunks.append(
+                _chunk(
+                    recipe=recipe,
+                    chunk_type=ChunkType.SUBSTITUTION,
+                    content="\n".join(
+                        [
+                            f"菜谱：{recipe.name}",
+                            "类型：食材替代",
+                            f"原食材：{ingredient}",
+                            f"替代方案：{substitution}",
+                        ]
+                    ),
+                    chunk_key=f"substitution:{index}",
+                    extra_metadata={
+                        "substitution_order": index,
+                        "ingredient": ingredient,
+                    },
+                )
+            )
+        return chunks
+
+    @staticmethod
+    def build_safety_chunks(recipe: Recipe) -> list[SourceChunk]:
+        return [
+            _chunk(
+                recipe=recipe,
+                chunk_type=ChunkType.SAFETY,
+                content="\n".join(
+                    [
+                        f"菜谱：{recipe.name}",
+                        "类型：安全提醒",
+                        f"安全事项 {index}：{note}",
+                        f"相关食材：{_join_text(_ingredient_names(recipe))}",
+                    ]
+                ),
+                chunk_key=f"safety:{index}",
+                extra_metadata={"safety_order": index},
+            )
+            for index, note in enumerate(recipe.safety_notes, start=1)
+        ]
+
+
+# ── Merged strategy: one chunk per type per recipe ──────────────────────────
+
+
+class _MergedBuilder:
+    """Merge all items of the same type into a single chunk per recipe."""
+
+    @staticmethod
+    def build_beginner_tip_chunks(recipe: Recipe) -> list[SourceChunk]:
+        tips = [step.beginner_tip for step in recipe.steps if step.beginner_tip]
+        if not tips:
+            return []
+        lines = [
+            f"菜谱：{recipe.name}",
+            "类型：新手提示",
+        ]
+        for i, tip in enumerate(tips, start=1):
+            lines.append(f"提示 {i}：{tip}")
+        lines.append(f"相关食材：{_join_text(_ingredient_names(recipe))}")
+        return [
+            _chunk(
+                recipe=recipe,
+                chunk_type=ChunkType.BEGINNER_TIP,
+                content="\n".join(lines),
+                chunk_key="beginner_tip",
+            )
+        ]
+
+    @staticmethod
+    def build_failure_chunks(recipe: Recipe) -> list[SourceChunk]:
+        if not recipe.common_failures:
+            return []
+        lines = [
+            f"菜谱：{recipe.name}",
+            "类型：失败排查",
+        ]
+        for i, failure in enumerate(recipe.common_failures, start=1):
+            lines.append(f"常见问题 {i}：{failure}")
+        lines.append(f"相关食材：{_join_text(_ingredient_names(recipe))}")
+        return [
+            _chunk(
+                recipe=recipe,
+                chunk_type=ChunkType.FAILURE,
+                content="\n".join(lines),
+                chunk_key="failure",
+            )
+        ]
+
+    @staticmethod
+    def build_substitution_chunks(recipe: Recipe) -> list[SourceChunk]:
+        if not recipe.substitutions:
+            return []
+        lines = [
+            f"菜谱：{recipe.name}",
+            "类型：食材替代",
+        ]
+        for i, (ingredient, substitution) in enumerate(
+            recipe.substitutions.items(), start=1
+        ):
+            lines.append(f"替代 {i}：{ingredient} → {substitution}")
+        return [
+            _chunk(
+                recipe=recipe,
+                chunk_type=ChunkType.SUBSTITUTION,
+                content="\n".join(lines),
+                chunk_key="substitution",
+            )
+        ]
+
+    @staticmethod
+    def build_safety_chunks(recipe: Recipe) -> list[SourceChunk]:
+        if not recipe.safety_notes:
+            return []
+        lines = [
+            f"菜谱：{recipe.name}",
+            "类型：安全提醒",
+        ]
+        for i, note in enumerate(recipe.safety_notes, start=1):
+            lines.append(f"安全事项 {i}：{note}")
+        lines.append(f"相关食材：{_join_text(_ingredient_names(recipe))}")
+        return [
+            _chunk(
+                recipe=recipe,
+                chunk_type=ChunkType.SAFETY,
+                content="\n".join(lines),
+                chunk_key="safety",
+            )
+        ]
+
+
+# ── Overview & Ingredients (shared by both strategies) ──────────────────────
 
 
 def _build_overview_chunk(recipe: Recipe) -> SourceChunk:
@@ -88,96 +288,6 @@ def _build_step_chunks(recipe: Recipe) -> list[SourceChunk]:
             )
         )
     return chunks
-
-
-def _build_beginner_tip_chunks(recipe: Recipe) -> list[SourceChunk]:
-    """Build one chunk combining all beginner tips for a recipe."""
-    tips = [step.beginner_tip for step in recipe.steps if step.beginner_tip]
-    if not tips:
-        return []
-    lines = [
-        f"菜谱：{recipe.name}",
-        "类型：新手提示",
-    ]
-    for i, tip in enumerate(tips, start=1):
-        lines.append(f"提示 {i}：{tip}")
-    lines.append(f"相关食材：{_join_text(_ingredient_names(recipe))}")
-    return [
-        _chunk(
-            recipe=recipe,
-            chunk_type=ChunkType.BEGINNER_TIP,
-            content="\n".join(lines),
-            chunk_key="beginner_tip",
-        )
-    ]
-
-
-def _build_failure_chunks(recipe: Recipe) -> list[SourceChunk]:
-    """Build one chunk for each common failure reason or fix."""
-    return [
-        _chunk(
-            recipe=recipe,
-            chunk_type=ChunkType.FAILURE,
-            content="\n".join(
-                [
-                    f"菜谱：{recipe.name}",
-                    "类型：失败排查",
-                    f"常见问题 {index}：{failure}",
-                    f"相关食材：{_join_text(_ingredient_names(recipe))}",
-                ]
-            ),
-            chunk_key=f"failure:{index}",
-            extra_metadata={"failure_order": index},
-        )
-        for index, failure in enumerate(recipe.common_failures, start=1)
-    ]
-
-
-def _build_substitution_chunks(recipe: Recipe) -> list[SourceChunk]:
-    """Build one chunk for each ingredient substitution."""
-    chunks: list[SourceChunk] = []
-    for index, (ingredient, substitution) in enumerate(recipe.substitutions.items(), start=1):
-        chunks.append(
-            _chunk(
-                recipe=recipe,
-                chunk_type=ChunkType.SUBSTITUTION,
-                content="\n".join(
-                    [
-                        f"菜谱：{recipe.name}",
-                        "类型：食材替代",
-                        f"原食材：{ingredient}",
-                        f"替代方案：{substitution}",
-                    ]
-                ),
-                chunk_key=f"substitution:{index}",
-                extra_metadata={
-                    "substitution_order": index,
-                    "ingredient": ingredient,
-                },
-            )
-        )
-    return chunks
-
-
-def _build_safety_chunks(recipe: Recipe) -> list[SourceChunk]:
-    """Build one chunk for each safety note."""
-    return [
-        _chunk(
-            recipe=recipe,
-            chunk_type=ChunkType.SAFETY,
-            content="\n".join(
-                [
-                    f"菜谱：{recipe.name}",
-                    "类型：安全提醒",
-                    f"安全事项 {index}：{note}",
-                    f"相关食材：{_join_text(_ingredient_names(recipe))}",
-                ]
-            ),
-            chunk_key=f"safety:{index}",
-            extra_metadata={"safety_order": index},
-        )
-        for index, note in enumerate(recipe.safety_notes, start=1)
-    ]
 
 
 def _chunk(

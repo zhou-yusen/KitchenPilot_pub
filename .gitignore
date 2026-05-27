@@ -50,6 +50,8 @@ Thumbs.db
 # my files
 backend/script/mytest.py
 DEVELOPMENT_LOG.md
+AGENTS.md
 backend/script/output/
 backend/evals/results/
 local_docs/
+.claude/

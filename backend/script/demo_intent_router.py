@@ -4,7 +4,6 @@ from kitchenpilot.agent.nodes.intent_router import IntentRouter
 from kitchenpilot.core.config import get_settings
 from kitchenpilot.core.embeddings import build_embedding_provider
 
-
 DEFAULT_QUERIES = [
     "土豆丝怎么炒得脆？",
     "我有鸡蛋、番茄和米饭，推荐一道简单菜。",
@@ -25,13 +24,20 @@ def print_settings() -> None:
     if settings.llm_provider == "openai":
         print(f"OpenAI-compatible base URL: {settings.openai_base_url}")
         print(f"OpenAI-compatible chat model: {settings.openai_model}")
-        print(f"OpenAI-compatible embedding model: {settings.openai_embedding_model}")
         print(f"OpenAI-compatible trust env proxy: {settings.openai_trust_env}")
-    else:
+    elif settings.llm_provider == "mimo":
+        print(f"MiMo base URL: {settings.mimo_base_url}")
+        print(f"MiMo chat model: {settings.mimo_model}")
+        print(f"MiMo trust env proxy: {settings.mimo_trust_env}")
+    elif settings.llm_provider == "ollama":
         print(f"Ollama base URL: {settings.ollama_base_url}")
         print(f"Ollama chat model: {settings.ollama_model}")
-        print(f"Ollama embedding model: {settings.ollama_embedding_model}")
         print(f"Ollama trust env proxy: {settings.ollama_trust_env}")
+    print(f"Embedding provider: {settings.resolved_embedding_provider}")
+    if settings.resolved_embedding_provider == "openai":
+        print(f"OpenAI-compatible embedding model: {settings.openai_embedding_model}")
+    elif settings.resolved_embedding_provider == "ollama":
+        print(f"Ollama embedding model: {settings.ollama_embedding_model}")
     print()
 
 

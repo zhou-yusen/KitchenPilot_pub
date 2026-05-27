@@ -40,6 +40,26 @@ uv run python script/demo_api_flow.py
 uv run python script/mytest.py
 ```
 
+## Provider 直连验证
+
+填入 `.env` 中的 `MIMO_API_KEY` 后，先用最小聊天脚本验证 MiMo 鉴权和返回内容：
+
+```powershell
+uv run python script/chat_mimo_loop.py
+```
+
+该脚本不依赖 FastAPI、Qdrant 或 Agent 图。MiMo 只负责 chat 时，RAG/Router 仍需要通过 `EMBEDDING_PROVIDER` 配置 Ollama 或 OpenAI embedding。
+
+## HTML 菜谱抽取
+
+从 `script/data/preview_fixed_clickable_links.html` 重建 SQLite/RAG 可直接读取的结构化菜谱 JSON：
+
+```powershell
+uv run python script/extract_recipe_preview_html.py
+```
+
+默认输出到 `src/kitchenpilot/seed/data/recipes_extracted.json`。也可以通过 `--html` 和 `--output` 指定路径。
+
 ## 停止本地后端
 
 Windows 下使用 `uvicorn --reload` 时，可能出现 `Ctrl+C` 无法干净停止后端的情况。可以使用下面的 PowerShell 脚本按端口停止服务：

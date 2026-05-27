@@ -113,16 +113,17 @@ class OpenAICompatibleEmbeddingProvider:
 def build_embedding_provider(settings: Settings | None = None) -> EmbeddingProvider:
     """Build the configured embedding provider."""
     settings = settings or get_settings()
-    if settings.llm_provider == "mock":
+    provider_name = settings.resolved_embedding_provider
+    if provider_name == "mock":
         return MockEmbeddingProvider()
-    if settings.llm_provider == "ollama":
+    if provider_name == "ollama":
         return OllamaEmbeddingProvider(
             base_url=settings.ollama_base_url,
             model=settings.ollama_embedding_model,
             timeout=settings.llm_timeout,
             trust_env=settings.ollama_trust_env,
         )
-    if settings.llm_provider == "openai":
+    if provider_name == "openai":
         return OpenAICompatibleEmbeddingProvider(
             base_url=settings.openai_base_url,
             api_key=settings.openai_api_key,
@@ -130,4 +131,4 @@ def build_embedding_provider(settings: Settings | None = None) -> EmbeddingProvi
             timeout=settings.llm_timeout,
             trust_env=settings.openai_trust_env,
         )
-    raise RuntimeError(f"Unsupported LLM provider: {settings.llm_provider}")
+    raise RuntimeError(f"Unsupported embedding provider: {provider_name}")

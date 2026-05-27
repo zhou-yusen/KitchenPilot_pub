@@ -61,6 +61,7 @@ class QdrantRecipeStore:
         settings: Settings | None = None,
         client: QdrantClient | None = None,
         embedding_provider: EmbeddingProvider | None = None,
+        collection_name: str | None = None,
     ) -> None:
         """Initialize this store with Qdrant and embedding collaborators."""
         self.settings = settings or get_settings()
@@ -70,13 +71,14 @@ class QdrantRecipeStore:
             timeout=self.settings.qdrant_timeout,
         )
         self.embedding_provider = embedding_provider or build_embedding_provider(self.settings)
+        self.collection_name = collection_name or self.settings.qdrant_collection
 
     def ensure_collection(self, vector_size: int | None = None) -> None:
         """Create the configured collection when it does not already exist."""
-        if self.client.collection_exists(self.settings.qdrant_collection):
+        if self.client.collection_exists(self.collection_name):
             return
         self.client.create_collection(
-            collection_name=self.settings.qdrant_collection,
+            collection_name=self.collection_name,
             vectors_config=VectorParams(
                 size=vector_size or self.settings.qdrant_vector_size,
                 distance=Distance.COSINE,
@@ -97,7 +99,7 @@ class QdrantRecipeStore:
                 first_vector_size = len(vectors[0])
                 self.ensure_collection(first_vector_size)
             points = [chunk_to_point(chunk, vector) for chunk, vector in zip(batch, vectors, strict=True)]
-            self.client.upsert(collection_name=self.settings.qdrant_collection, points=points)
+            self.client.upsert(collection_name=self.collection_name, points=points)
             total += len(points)
         return total
 
@@ -107,7 +109,7 @@ class QdrantRecipeStore:
         if not vectors:
             return []
         response = self.client.query_points(
-            collection_name=self.settings.qdrant_collection,
+            collection_name=self.collection_name,
             query=vectors[0],
             limit=top_k,
             with_payload=True,

@@ -386,9 +386,10 @@ MySQL 更接近企业生产系统，但对当前项目来说不是必须。
 | 向量数据库 | Qdrant |
 | 数据建模 | Pydantic |
 | ORM | SQLAlchemy |
-| LLM | OpenAI / ModelScope / Ollama Qwen |
-| Embedding | bge-small-zh / bge-m3 / text-embedding 模型 |
-| 前端 | Streamlit 或 React |
+| LLM | Ollama Qwen / MiMo / OpenAI-compatible |
+| Embedding | qwen3-embedding (4096 维) / Ollama |
+| RAG 评测 | RAGAS 0.4.3 |
+| 前端 | 原生 HTML/CSS/JavaScript（零构建调试台） |
 | 部署 | Docker Compose |
 
 ## 12. 技术选型原因总结

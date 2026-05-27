@@ -1,11 +1,14 @@
 from kitchenpilot.core.config import Settings
 from kitchenpilot.core.embeddings import (
+    MockEmbeddingProvider,
     OllamaEmbeddingProvider,
     OpenAICompatibleEmbeddingProvider,
     build_embedding_provider,
 )
 from kitchenpilot.core.llm import (
     ChatMessage,
+    MiMoChatProvider,
+    MockChatProvider,
     OllamaChatProvider,
     OpenAICompatibleChatProvider,
     build_chat_provider,
@@ -56,6 +59,8 @@ class _FakeClient:
         self.requests.append((url, json, headers))
         if url.endswith("/api/embed"):
             return _FakeResponse({"embeddings": [[1, 2, 3]]})
+        if "xiaomimimo.com" in url and url.endswith("/v1/chat/completions"):
+            return _FakeResponse({"choices": [{"message": {"content": "mimo ok"}}]})
         if url.endswith("/v1/chat/completions"):
             return _FakeResponse({"choices": [{"message": {"content": "openai ok"}}]})
         if url.endswith("/v1/embeddings"):
@@ -129,6 +134,33 @@ def test_openai_compatible_chat_uses_standard_endpoint_and_reasoning_off(monkeyp
     assert client.requests[0][2]["Authorization"] == "Bearer ollama"
 
 
+def test_mimo_chat_uses_official_thinking_control(monkeypatch) -> None:
+    """Verify MiMo chat requests disable thinking with the MiMo request field."""
+    _FakeClient.instances = []
+    monkeypatch.setattr("kitchenpilot.core.http.httpx.Client", _FakeClient)
+    provider = MiMoChatProvider(
+        base_url="https://api.xiaomimimo.com/v1",
+        api_key="sk-demo",
+        model="mimo-v2.5",
+        timeout=12,
+        disable_thinking=True,
+        trust_env=True,
+    )
+
+    result = provider.chat([ChatMessage(role="user", content="番茄炒蛋怎么做？")])
+
+    client = _FakeClient.instances[0]
+    payload = client.requests[0][1]
+    assert result.content == "mimo ok"
+    assert client.timeout == 12
+    assert client.trust_env is True
+    assert client.requests[0][0] == "https://api.xiaomimimo.com/v1/chat/completions"
+    assert payload["model"] == "mimo-v2.5"
+    assert payload["thinking"] == {"type": "disabled"}
+    assert "reasoning_effort" not in payload
+    assert client.requests[0][2]["Authorization"] == "Bearer sk-demo"
+
+
 def test_openai_compatible_embedding_uses_standard_embeddings_endpoint(monkeypatch) -> None:
     """Verify OpenAI-compatible embedding requests use /embeddings."""
     _FakeClient.instances = []
@@ -162,6 +194,50 @@ def test_build_factories_use_project_ollama_defaults() -> None:
     assert chat_provider.disable_thinking is True
     assert chat_provider.trust_env is False
     assert embedding_provider.trust_env is False
+
+
+def test_build_factories_keep_mock_embedding_default() -> None:
+    """Verify mock chat keeps the matching mock embedding provider by default."""
+    settings = Settings(_env_file=None, llm_provider="mock")
+
+    chat_provider = build_chat_provider(settings)
+    embedding_provider = build_embedding_provider(settings)
+
+    assert isinstance(chat_provider, MockChatProvider)
+    assert isinstance(embedding_provider, MockEmbeddingProvider)
+
+
+def test_build_factories_use_mimo_chat_with_ollama_embedding_default() -> None:
+    """Verify MiMo chat falls back to Ollama for embeddings when not configured."""
+    settings = Settings(_env_file=None, llm_provider="mimo", mimo_api_key="sk-demo")
+
+    chat_provider = build_chat_provider(settings)
+    embedding_provider = build_embedding_provider(settings)
+
+    assert isinstance(chat_provider, MiMoChatProvider)
+    assert isinstance(embedding_provider, OllamaEmbeddingProvider)
+    assert chat_provider.model == "mimo-v2.5"
+    assert chat_provider.base_url == "https://api.xiaomimimo.com/v1"
+    assert chat_provider.disable_thinking is True
+    assert embedding_provider.model == "qwen3-embedding:0.6b"
+
+
+def test_build_factories_can_pair_mimo_chat_with_openai_embedding() -> None:
+    """Verify the explicit embedding provider can differ from the chat provider."""
+    settings = Settings(
+        _env_file=None,
+        llm_provider="mimo",
+        embedding_provider="openai",
+        mimo_api_key="sk-demo",
+        openai_api_key="embedding-key",
+    )
+
+    chat_provider = build_chat_provider(settings)
+    embedding_provider = build_embedding_provider(settings)
+
+    assert isinstance(chat_provider, MiMoChatProvider)
+    assert isinstance(embedding_provider, OpenAICompatibleEmbeddingProvider)
+    assert embedding_provider.api_key == "embedding-key"
 
 
 def test_build_factories_can_use_openai_compatible_settings() -> None:

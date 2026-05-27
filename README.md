@@ -111,3 +111,14 @@ uv run pytest
 - [技术架构](docs/TECHNICAL_ARCHITECTURE.md)
 - [RAG 技术细节](docs/RAG_TECHNICAL_DETAILS.md)
 - [意图识别技术细节](docs/INTENT_ROUTER_TECHNICAL_DETAILS.md)
+
+## 评测
+
+项目使用 RAGAS 框架对 RAG 系统进行端到端评测，测试集 250 条，覆盖 9 种问题类型。
+
+```powershell
+cd backend
+uv run python evals/run_ragas_eval.py --limit 3 --collection recipe_chunks_split
+```
+
+详见 [evals/README.md](backend/evals/README.md)。

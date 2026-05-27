@@ -50,6 +50,18 @@ http://127.0.0.1:8000/health
 uv run pytest
 ```
 
+## RAG 评测
+
+```powershell
+# 快速验证（3 条）
+uv run python evals/run_ragas_eval.py --limit 3 --collection recipe_chunks_split
+
+# 全量评测（250 条，约 3-4 小时）
+uv run python evals/run_ragas_eval.py --collection recipe_chunks_split
+```
+
+详见 [evals/README.md](evals/README.md)。
+
 ## 当前实现内容
 
 - Agent 意图路由：`recipe_qa / recommendation / fallback`
@@ -75,7 +87,8 @@ backend/
 │   ├── recommender/      # 推荐逻辑
 │   ├── schemas/          # 请求响应和业务 schema
 │   ├── services/         # 菜谱服务、安全检查、用户画像、session memory
-│   └── seed/             # 初始化脚本
+│   └── seed/             # 初始化脚本和数据
+├── evals/                # RAGAS 评测框架、测试集和报告
 ├── tests/                # 单元测试和集成测试
 └── script/               # 可视化验证和本地辅助脚本
 ```

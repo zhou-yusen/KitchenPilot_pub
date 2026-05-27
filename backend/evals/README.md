@@ -1,104 +1,65 @@
 # KitchenPilot Evals
 
-固定评测集位于 `dataset/`，评测输出写入 `results/`。
+评测框架和数据集位于 `evals/`，评测输出写入 `results/`。
 
-## RAG benchmark
+## RAGAS 评测（当前主力评测框架）
 
-快速检索评测，不调用 LLM：
+基于 RAGAS 0.4.3 框架的 RAG 端到端评测，使用 mimo-v2.5 作为 Judge LLM。
 
-```powershell
-uv run python evals/run_rag_benchmark.py --mode retrieval
-```
+评测指标：
 
-使用本地 lexical fallback 做 smoke test：
+| 指标 | 说明 | 类型 |
+| --- | --- | --- |
+| Faithfulness | 回答是否忠于检索到的 context | RAGAS (LLM judge) |
+| Answer Relevancy | 回答是否切题 | RAGAS (LLM judge) |
+| Context Precision | 检索结果排序是否精准 | RAGAS (LLM judge) |
+| Context Recall | 参考答案信息是否被检索覆盖 | RAGAS (LLM judge) |
+| Retrieval Hit Rate | 是否命中相关菜谱 | 自定义 |
+| Answer Similarity | 答案语义相似度 | 自定义 |
+| Recipe Coverage | 回答覆盖相关菜谱比例 | 自定义 |
+| Hard Case Accuracy | 难题通过率 | 自定义 |
+| Must-Include Fact Rate | 关键事实覆盖率 | 自定义 |
 
-```powershell
-uv run python evals/run_rag_benchmark.py --mode retrieval --limit 10 --no-rag-use-qdrant
-```
-
-评测 RAG 生成答案，会调用当前配置的 LLM：
-
-```powershell
-uv run python evals/run_rag_benchmark.py --mode answer
-```
-
-评测 session memory 多轮追问：
+### 快速验证（3 条）
 
 ```powershell
-uv run python evals/run_rag_benchmark.py --mode multiturn
+uv run python evals/run_ragas_eval.py --limit 3 --collection recipe_chunks_split
 ```
 
-完整评测：
+### 全量评测（250 条，约 3-4 小时）
 
 ```powershell
-uv run python evals/run_rag_benchmark.py --mode all
+uv run python evals/run_ragas_eval.py --collection recipe_chunks_split
 ```
 
-常用参数：
-
-- `--top-k 4`：设置检索 top-k。
-- `--limit 10`：只跑前 10 条，用于快速验证。
-- `--llm-provider mock|ollama|openai`：覆盖 LLM provider。
-- `--no-rag-use-qdrant`：不用 Qdrant，改用本地 lexical fallback。
-- `--output-prefix my_run`：指定输出文件前缀。
-
-输出文件：
-
-- `results/<prefix>_summary.json`：聚合指标。
-- `results/<prefix>_single_turn.jsonl`：单轮逐样例结果。
-- `results/<prefix>_multiturn.jsonl`：多轮逐样例结果。
-
-## Qdrant RAG focused benchmark
-
-绕过意图路由，直接测试 Qdrant RAG 层的检索和生成质量。
-
-纯 Qdrant 向量检索评测（不调 LLM，快速）：
+### 使用 Merged 策略对比
 
 ```powershell
-uv run python evals/run_qdrant_eval.py --mode qdrant-retrieval
+uv run python evals/run_ragas_eval.py --collection recipe_chunks_merged
 ```
 
-Qdrant 检索 + LLM 生成答案（绕过意图路由）：
+### 常用参数
 
-```powershell
-uv run python evals/run_qdrant_eval.py --mode qdrant-answer
-```
+- `--limit N`：只跑前 N 条，用于快速验证。
+- `--collection name`：指定 Qdrant collection（`recipe_chunks_split` 或 `recipe_chunks_merged`）。
+- `--dataset path`：自定义测试集 JSON 文件。
+- `--output path`：指定 HTML 报告输出路径。
 
-多轮追问 RAG 评测（绕过 agent graph）：
+### 输出
 
-```powershell
-uv run python evals/run_qdrant_eval.py --mode qdrant-multiturn
-```
+- `results/ragas_report.html`：自包含 HTML 评测报告，包含总览指标、分类型统计和逐条明细。
+- 终端输出 RAGAS 分数和自定义指标汇总。
 
-与本地 lexical fallback 对比（生成 Jaccard overlap 指标）：
+### 测试集
 
-```powershell
-uv run python evals/run_qdrant_eval.py --mode qdrant-retrieval --compare-local
-```
+测试集位于 `dataset/rag_eval_split_250.json`，共 250 条用例。
 
-限制条数快速验证：
+详见 [dataset/README.md](dataset/README.md)。
 
-```powershell
-uv run python evals/run_qdrant_eval.py --mode qdrant-retrieval --limit 10
-```
+## 评测分析报告
 
-使用自定义评测集：
+`results/rag_analysis_report.html` 包含系统架构、测试集说明、RAGAS 预评测结果、问题诊断和改进方案的完整分析。
 
-```powershell
-uv run python evals/run_qdrant_eval.py --mode qdrant-retrieval --dataset evals/dataset/my_questions.jsonl
-```
+## 历史评测脚本
 
-常用参数：
-
-- `--mode qdrant-retrieval|qdrant-answer|qdrant-multiturn`：评测模式。
-- `--top-k 4`：检索 top-k（默认 4）。
-- `--limit N`：只跑前 N 条。
-- `--compare-local`：同时跑本地 lexical 检索并输出 Jaccard overlap。
-- `--dataset path`：自定义 JSONL 数据集。
-- `--output-prefix my_run`：指定输出文件前缀。
-
-输出文件：
-
-- `results/<prefix>_summary.json`：聚合指标（含 per-category 分类统计）。
-- `results/<prefix>_qdrant_retrieval.jsonl`：逐样例结果。
-- `results/<prefix>_local_retrieval.jsonl`：本地检索对比结果（使用 `--compare-local` 时）。
+早期评测脚本（`run_rag_benchmark.py`、`run_qdrant_eval.py` 等）已被 `run_ragas_eval.py` 替代并删除。旧版测试数据集（`rag_questions.jsonl`、`router_questions.jsonl` 等）已被 `rag_eval_split_250.json` 替代。

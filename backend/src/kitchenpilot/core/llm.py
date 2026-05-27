@@ -125,6 +125,54 @@ class OpenAICompatibleChatProvider:
         return ChatResult(content=str(content).strip(), raw=data)
 
 
+class MiMoChatProvider:
+    """Call Xiaomi MiMo through its OpenAI-compatible chat completions endpoint."""
+
+    def __init__(
+        self,
+        *,
+        base_url: str,
+        api_key: str,
+        model: str,
+        timeout: float,
+        disable_thinking: bool = True,
+        trust_env: bool = True,
+    ) -> None:
+        """Initialize this chat provider with MiMo endpoint settings."""
+        self.base_url = base_url.rstrip("/")
+        self.api_key = api_key
+        self.model = model
+        self.timeout = timeout
+        self.disable_thinking = disable_thinking
+        self.trust_env = trust_env
+
+    def chat(self, messages: list[ChatMessage]) -> ChatResult:
+        """Call MiMo chat completions and return the first assistant content."""
+        payload = {
+            "model": self.model,
+            "messages": [message.model_dump() for message in messages],
+            "stream": False,
+        }
+        if self.disable_thinking:
+            payload["thinking"] = {"type": "disabled"}
+
+        data = post_json(
+            f"{self.base_url}/chat/completions",
+            payload,
+            headers=auth_headers(self.api_key),
+            timeout=self.timeout,
+            trust_env=self.trust_env,
+        )
+        choices = data.get("choices", [])
+        message: dict[str, object] = {}
+        if choices and isinstance(choices, list) and isinstance(choices[0], dict):
+            raw_message = choices[0].get("message", {})
+            if isinstance(raw_message, dict):
+                message = raw_message
+        content = message.get("content", "")
+        return ChatResult(content=str(content).strip(), raw=data)
+
+
 def build_chat_provider(settings: Settings | None = None) -> ChatProvider:
     """Build the configured chat provider."""
     settings = settings or get_settings()
@@ -146,6 +194,15 @@ def build_chat_provider(settings: Settings | None = None) -> ChatProvider:
             timeout=settings.llm_timeout,
             disable_thinking=settings.openai_disable_thinking,
             trust_env=settings.openai_trust_env,
+        )
+    if settings.llm_provider == "mimo":
+        return MiMoChatProvider(
+            base_url=settings.mimo_base_url,
+            api_key=settings.mimo_api_key,
+            model=settings.mimo_model,
+            timeout=settings.llm_timeout,
+            disable_thinking=settings.mimo_disable_thinking,
+            trust_env=settings.mimo_trust_env,
         )
     raise RuntimeError(f"Unsupported LLM provider: {settings.llm_provider}")
 

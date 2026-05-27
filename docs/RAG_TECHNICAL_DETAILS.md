@@ -72,16 +72,51 @@ chunk 生成入口是：
 build_recipe_chunks(recipes: list[Recipe]) -> list[SourceChunk]
 ```
 
-当前每道菜会被切成六类语义 chunk：
+当前每道菜会被切成七类语义 chunk：
 
 | chunk_type | 数量策略 | 作用 |
 | --- | --- | --- |
 | `overview` | 每道菜 1 条 | 支持菜名、难度、耗时、新手友好等概览型问题 |
 | `ingredients` | 每道菜 1 条 | 支持已有食材、缺失食材、食材清单相关问题 |
-| `step` | 每个步骤 1 条 | 支持“怎么做”“火候”“步骤顺序”等问题 |
-| `failure` | 每个常见失败点 1 条 | 支持“为什么失败”“太甜”“不脆”“腥味”等问题 |
-| `substitution` | 每个替代项 1 条 | 支持“没有某食材怎么办”“能不能替代”等问题 |
-| `safety` | 每条安全提醒 1 条 | 支持“怎么处理安全”“熟没熟”“烫伤风险”等问题 |
+| `step` | 每个步骤 1 条 | 支持”怎么做””火候””步骤顺序”等问题 |
+| `beginner_tip` | 每个有新手提示的步骤 1 条 | 支持”新手技巧””注意事项””容易出错”等问题 |
+| `failure` | 每个常见失败点 1 条 | 支持”为什么失败””太甜””不脆””腥味”等问题 |
+| `substitution` | 每个替代项 1 条 | 支持”没有某食材怎么办””能不能替代”等问题 |
+| `safety` | 每条安全提醒 1 条 | 支持”怎么处理安全””熟没熟””烫伤风险”等问题 |
+
+### 3.0.1 双 Chunk 策略：Split vs Merged
+
+系统支持两种 chunk 生成策略，通过 `build_recipe_chunks(recipes, merge=bool)` 控制：
+
+**Split 策略**（默认，`merge=False`）：
+- 每个步骤、提示、失败原因均为独立 chunk
+- 检索粒度最细，适合精确问答
+- 15 道菜 → 1080 个 chunk
+
+**Merged 策略**（`merge=True`）：
+- 同类型信息合并到一个 chunk（如所有失败原因合并为一条）
+- 信息密度高，适合概览型问题
+- 15 道菜 → 590 个 chunk
+
+两种策略的 chunk 分别存储在独立的 Qdrant collection 中：
+- `recipe_chunks_split`：Split 策略
+- `recipe_chunks_merged`：Merged 策略
+
+seed 命令：
+
+```powershell
+# 同时 seed 两个 collection
+uv run python -m kitchenpilot.seed.seed_qdrant --seed-both
+
+# 只 seed split
+uv run python -m kitchenpilot.seed.seed_qdrant
+
+# 只 seed merged
+uv run python -m kitchenpilot.seed.seed_qdrant --merge
+
+# 导出 chunk JSON（不写入 Qdrant）
+uv run python -m kitchenpilot.seed.seed_qdrant --dump-both
+```
 
 这种切法不是按固定字数切分，而是按食谱业务结构切分。原因是做菜问题通常有明确意图：问步骤、问失败、问替代、问安全时，需要优先命中对应类型的知识片段。
 
@@ -115,9 +150,9 @@ build_recipe_chunks(recipes: list[Recipe]) -> list[SourceChunk]
 
 ```json
 {
-  "chunk_id": "recipe:1:step:3:v1",
+  "chunk_id": "recipe:1:step:3:v2",
   "content_hash": "...",
-  "schema_version": 1,
+  "schema_version": 2,
   "difficulty": "easy",
   "beginner_friendly": true,
   "time_minutes": 15,
@@ -132,27 +167,28 @@ build_recipe_chunks(recipes: list[Recipe]) -> list[SourceChunk]
 
 - `chunk_id`：由菜谱 ID、chunk 类型、序号和 schema version 组成，用于生成稳定 Qdrant point id。
 - `content_hash`：对 chunk 文本做 SHA-256，用于后续判断内容是否变化。
-- `schema_version`：当前为 `1`，后续调整 chunk 结构时可以升级。
+- `schema_version`：当前为 `2`（v2 新增 BEGINNER_TIP 独立 chunk 和双策略支持），后续调整 chunk 结构时可以升级。
 - `difficulty / beginner_friendly / time_minutes / ingredients`：保留结构化属性，后续可用于 Qdrant payload filter 或结果解释。
 - `step_order / failure_order / substitution_order / safety_order`：保留原始业务顺序。
 
 ## 4. Qdrant 存储方法
 
-Qdrant 存储的是 chunk embedding 和 payload。当前 collection 名默认是：
+Qdrant 存储的是 chunk embedding 和 payload。当前 collection 名：
 
-```text
-recipe_chunks
-```
+- `recipe_chunks_split`：Split 策略（默认）
+- `recipe_chunks_merged`：Merged 策略
 
 配置来自 `Settings`：
 
 | 配置项 | 默认值 | 说明 |
 | --- | --- | --- |
 | `qdrant_url` | `http://localhost:6333` | Qdrant 服务地址 |
-| `qdrant_collection` | `recipe_chunks` | collection 名称 |
-| `qdrant_vector_size` | `1024` | 默认向量维度 |
+| `qdrant_collection` | `recipe_chunks` | 默认 collection 名称 |
+| `qdrant_vector_size` | `4096` | 向量维度（qwen3-embedding） |
 | `qdrant_timeout` | `5.0` | 请求超时 |
 | `rag_use_qdrant` | `True` | 是否优先使用 Qdrant |
+
+实际部署时，评测和对比使用 `recipe_chunks_split` 或 `recipe_chunks_merged`。
 
 ### 4.1 Point id
 
@@ -175,9 +211,9 @@ uuid5(NAMESPACE_URL, chunk_id)
   "chunk_type": "step",
   "content": "菜谱：番茄炒蛋\n类型：制作步骤\n步骤 3：...",
   "metadata": {
-    "chunk_id": "recipe:1:step:3:v1",
+    "chunk_id": "recipe:1:step:3:v2",
     "content_hash": "...",
-    "schema_version": 1,
+    "schema_version": 2,
     "difficulty": "easy",
     "beginner_friendly": true,
     "time_minutes": 15,
@@ -202,7 +238,18 @@ Qdrant seed 入口：
 
 ```powershell
 cd backend
+
+# 默认 seed split collection
 uv run python -m kitchenpilot.seed.seed_qdrant
+
+# 同时 seed split 和 merged 两个 collection
+uv run python -m kitchenpilot.seed.seed_qdrant --seed-both
+
+# 只 seed merged collection
+uv run python -m kitchenpilot.seed.seed_qdrant --merge
+
+# 导出 chunk JSON（不写入 Qdrant）
+uv run python -m kitchenpilot.seed.seed_qdrant --dump-both
 ```
 
 内部流程：
@@ -394,6 +441,13 @@ retrieved_context
 
 ## 10. 当前验证命令
 
+Seed Qdrant（同时写入 split 和 merged 两个 collection）：
+
+```powershell
+cd backend
+uv run python -m kitchenpilot.seed.seed_qdrant --seed-both
+```
+
 预览 chunk 生成结果：
 
 ```powershell
@@ -401,25 +455,16 @@ cd backend
 uv run python script/preview_recipe_chunks.py
 ```
 
-写入 Qdrant：
+运行 RAGAS 评测：
 
 ```powershell
 cd backend
-uv run python -m kitchenpilot.seed.seed_qdrant
-```
 
-运行 Qdrant RAG demo：
+# 快速验证（3 条）
+uv run python evals/run_ragas_eval.py --limit 3 --collection recipe_chunks_split
 
-```powershell
-cd backend
-uv run python script/demo_qdrant_rag.py --seed
-```
-
-只查单个问题：
-
-```powershell
-cd backend
-uv run python script/demo_qdrant_rag.py --query "土豆丝怎么炒得脆？" --top-k 4
+# 全量评测（250 条，约 3-4 小时）
+uv run python evals/run_ragas_eval.py --collection recipe_chunks_split
 ```
 
 运行 RAG 相关单元测试：
@@ -431,7 +476,8 @@ uv run pytest tests/unit/test_chunks.py tests/unit/test_qdrant_store.py tests/un
 
 ## 11. 当前已知边界
 
-- 当前 chunk 是业务结构切分，不是按 token 长度自适应切分。
+- 当前 chunk 是业务结构切分（schema v2），支持 split 和 merged 两种策略。
+- BEGINNER_TIP 已从 step 中拆分为独立 chunk 类型，支持更精确的新手技巧检索。
 - Qdrant payload 已保留 metadata，但当前查询尚未使用 metadata filter。
 - rerank 是规则型轻量 rerank，不是 cross-encoder 或 LLM rerank。
 - 本地 fallback 是关键词召回，适合兜底，不等价于完整语义检索。
@@ -442,8 +488,10 @@ uv run pytest tests/unit/test_chunks.py tests/unit/test_qdrant_store.py tests/un
 
 后续工程优化顺序：
 
-1. 增强回答结构：固定输出“直接建议、依据来源、新手安全提醒”。
+1. 增强回答结构：固定输出”直接建议、依据来源、新手安全提醒”。
 2. 增加 source 引用：让回答能明确对应第几条 source。
 3. 增加 metadata filter：根据 active_recipe、chunk_type 或食材先过滤再向量检索。
 4. 扩充固定评测集：覆盖做法、失败、替代、安全和多轮追问。
 5. 记录可复核指标：chunk 数、固定问题 Top-K 命中情况、RAG fallback 通过情况。
+6. 运行 RAGAS 全量评测（250 条 x 4 指标），对比 split vs merged 策略效果。
+7. 测试 Hybrid Retrieval（向量 + BM25）和 Re-ranking 层。
